@@ -1,4 +1,4 @@
-﻿using AmxSoapServicesActivities.Business.BalanceEnquiry;
+using AmxSoapServicesActivities.Business.BalanceEnquiry;
 using Ericsson.ETELCRM.Entities.Crm;
 using ExternalApiActivities.Common;
 using System.Activities;
@@ -16,6 +16,7 @@ namespace AmxSoapServicesActivities.Activities
         {
             var jsonResponseStr = "";
             if (BalanceHistoryReadRequest.Get(context) != null)
+			if (BalanceHistoryReadRequest.Get(context) != null)
             {
                 jsonResponseStr = new BalanceHistoryReadBusiness().GetBalanceHistoryReadDetails(BalanceHistoryReadRequest.Get(context), HostUrl.Get(context), ContextProvider.OrganizationService);
             }
