@@ -153,6 +153,7 @@
             <av:PointCollection x:Key="ConnectorLocation">300,40 330,40 330,99 280,99 280,129</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
+        </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="AmxPeruPSBWorkflows.AMxperuValidaCobertura_1" sap:VirtualizedContainerService.HintSize="654,716" />
     </sap2010:ViewStateManager>
