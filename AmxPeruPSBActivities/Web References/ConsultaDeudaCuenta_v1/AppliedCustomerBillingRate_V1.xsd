@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:entappcusbilrat="http://claro.com.pe/entity/Customer/AppliedCustomerBillingRate/V1/" xmlns:entcusaccbal="http://claro.com.pe/entity/Customer/CustomerAccountBalance/V1/" xmlns:entbastyp="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" targetNamespace="http://claro.com.pe/entity/Customer/AppliedCustomerBillingRate/V1/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xs:import schemaLocation="CustomerAccountBalance_V1.xsd" namespace="http://claro.com.pe/entity/Customer/CustomerAccountBalance/V1/" />
+  <xs:complexType name="ProductFinancialAccountRelationship">
+    <xs:annotation>
+      <xs:documentation>ProductChargeAccountRelationship entity relates product charge to one or more CustomerAccount(s) via which associated charging information is maintained. ProductChargeAccountRelationship uses rule information(from ChargeSplittingRule and ChargeAmountThreshold) and charge information held by FinancialChargeSpec and AtomicAppliedCustomerBillingRate to decide the charge relationship, such as which charge from one product usage should be directed to which CustomerAccount(s) and the charge amount.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="description" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Description of the ProductFinancialAccountRelationship.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="1" maxOccurs="1" name="name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Name of the ProductFinancialAccountRelationship.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="1" maxOccurs="1" name="relationshiptype" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A categorization of the relationship, such as aggregation, substitution, dependency, exclusivity.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="_chargeAmountThreshold" type="entcusaccbal:ChargeAmountThreshold" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FinancialCharge">
+    <xs:annotation>
+      <xs:documentation>FinancialCharge represent a normalized aggregation of AtomicAppliedCustomerBillingRate so every AtomicAppliedCustomerBillingRate appears in exactly one FinancialCharge. This is critical for financial reporting.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="_appliedCustomerBillingCharge" type="entappcusbilrat:AppliedCustomerBillingCharge" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="_appliedCustomerBillingCredit" type="entappcusbilrat:AppliedCustomerBillingCredit" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AppliedCustomerBillingCharge">
+    <xs:annotation>
+      <xs:documentation>An amount, usually of money, for which a person or organization is financially liable.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="entappcusbilrat:AtomicAppliedCustomerBillingRate">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AppliedCustomerBillingCredit">
+    <xs:annotation>
+      <xs:documentation>A credit assigned to the customer's account in the course or for the purpose of the billing process</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="entappcusbilrat:AtomicAppliedCustomerBillingRate">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AtomicAppliedCustomerBillingRate">
+    <xs:annotation>
+      <xs:documentation>A single charge or a credit.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="entappcusbilrat:AppliedCustomerBillingRate">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AppliedCustomerBillingRate" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A charge or a credit assigned to the customer's account in the course or for the purpose of the billing process. Subclasses further define these elements.  Information about the type of ACBR (such as description and revenue code) can be via the association to AppliedCustomerBillingRateSpec</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="date" type="xs:dateTime">
+        <xs:annotation>
+          <xs:documentation>A date of creation.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="exponent" type="xs:integer" />
+      <xs:element minOccurs="0" maxOccurs="1" name="description" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A textual description.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="quantity" type="entbastyp:Money">
+        <xs:annotation>
+          <xs:documentation>A unit (for example, US Dollars) and number of the applied rate.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="_appliedCustomerBillingTaxRate" type="entappcusbilrat:AppliedCustomerBillingTaxRate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AppliedCustomerBillingTaxRate">
+    <xs:annotation>
+      <xs:documentation>An amount of money levied on the price of a Product by a legislative body.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="taxcategory" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A categorization of the tax rate.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FinancialChargeSpec">
+    <xs:annotation>
+      <xs:documentation>FinancialChargeSpec defines one specification for certain kind(s) of FinancialCharge. FinancialChargeSpec could be applied to BalanceUsageRule to help to describe specification of FinancialCharge and relate them to the sharing information and the private usage information. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ID" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A unique identifier for the FinancialChargeSpec.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Name of the FinancialChargeSpec.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="description" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>An explanation of the FinancialChargeSpec.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="validFor" type="entbastyp:TimePeriod">
+        <xs:annotation>
+          <xs:documentation>The period for which the specification is valid.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="status" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The condition in which the FinancialChargeSpec  exists, such as planned, obsolete, active.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="financialcharge" type="entappcusbilrat:FinancialCharge" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

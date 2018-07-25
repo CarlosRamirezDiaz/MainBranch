@@ -1,0 +1,2 @@
+AmxCoCreateCaseHHPP.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

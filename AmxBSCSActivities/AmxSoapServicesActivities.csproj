@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EE5C5A19-2CD4-4E8C-9CA0-487B1C51CE2E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AmxSoapServicesActivities</RootNamespace>
+    <AssemblyName>AmxSoapServicesActivities</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ericsson.ETELCRM.CrmFoundationLibrary">
+      <HintPath>..\CrmDLLs\Ericsson.ETELCRM.CrmFoundationLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Ericsson.PSB.Workflow.Client.Core, Version=1.0.0.16, Culture=neutral, PublicKeyToken=414bcafa77a5a2a0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CrmDLLs\Ericsson.PSB.Workflow.Client.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ExternalApiActivities">
+      <HintPath>..\CrmDLLs\ExternalApiActivities.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CrmDLLs\Microsoft.Xrm.Sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Activities\BalanceHistoryRead.cs" />
+    <Compile Include="Activities\ContractsSearch.cs" />
+    <Compile Include="Activities\ContractsSearchByDirnumActivity.cs" />
+    <Compile Include="Activities\ContractsSearchByIdActivity.cs" />
+    <Compile Include="Activities\GenericDirectoryNumberRequestActivity.cs" />
+    <Compile Include="Activities\GenericDirectoryNumberSearchService.cs" />
+    <Compile Include="Activities\UploadDocumentActivity.cs" />
+    <Compile Include="Activities\GetDocumentActivity.cs" />
+    <Compile Include="Activities\StatusDocumentItem.cs" />
+    <Compile Include="Activities\StorageMediumReadActivity.cs" />
+    <Compile Include="Activities\StorageMediumSearchActivity.cs" />
+    <Compile Include="Activities\TestActivity.cs" />
+    <Compile Include="Business\BalanceHistoryReadBusiness.cs" />
+    <Compile Include="Business\BSCSServiceProxy.cs" />
+    <Compile Include="Business\ContractsSearchBusiness.cs" />
+    <Compile Include="Business\GenericDirectoryNumberBusiness.cs" />
+    <Compile Include="Connected Services\ContractsSearchService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\DocumentManagerService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\StorageMediumRead\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\StorageMediumSearch\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BalanceHistoryReadRequest.cs" />
+    <Compile Include="Model\ContractsSearchRequest.cs" />
+    <Compile Include="Model\ContractsSearchResponse.cs" />
+    <Compile Include="Model\GenericDirectoryNumberServiceRequest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ServiceContracts\GenericDirectoryNumberSearchServiceV2.cs" />
+    <Compile Include="XmlStrings\GenericDirectoryNumberRequestXml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AMXCommon\AMXCommon.csproj">
+      <Project>{5a153d91-2264-4d92-a110-a281c771218d}</Project>
+      <Name>AMXCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AmxPeruCommonLibrary\AmxPeruCommonLibrary.csproj">
+      <Project>{8c071151-ac56-4b9f-8849-832b5518e554}</Project>
+      <Name>AmxPeruCommonLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AmxPeruPSBActivities\AmxPeruPSBActivities.csproj">
+      <Project>{33d7bd10-fb66-4cfe-9da5-d428823c87d2}</Project>
+      <Name>AmxPeruPSBActivities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ContractsSearchService\AmxSoapServicesActivities.ContractsSearchService.contractsSearchResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ContractsSearchService\AmxSoapServicesActivities.ContractsSearchService.contractsSearchResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ContractsSearchService\ws_CIL_6_ContractsSearchService2.wsdl" />
+    <None Include="Connected Services\DocumentManagerService\AmxSoapServicesActivities.DocumentManagerService.GetDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DocumentManagerService\AmxSoapServicesActivities.DocumentManagerService.GetDocumentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DocumentManagerService\AmxSoapServicesActivities.DocumentManagerService.UploadDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DocumentManagerService\AmxSoapServicesActivities.DocumentManagerService.UploadDocumentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DocumentManagerService\BaseTypesABE.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DocumentManagerService\ClaroFault_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DocumentManagerService\ClaroHeaders.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DocumentManagerService\DocumentCMSV2.wsdl" />
+    <None Include="Connected Services\DocumentManagerService\GetDocumentV2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DocumentManagerService\UploadDocumentV2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\StorageMediumRead\AmxSoapServicesActivities.StorageMediumRead.storageMediumReadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\StorageMediumRead\AmxSoapServicesActivities.StorageMediumRead.storageMediumReadResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\StorageMediumRead\ws_CIL_7_StorageMediumReadService.wsdl" />
+    <None Include="Connected Services\StorageMediumSearch\AmxSoapServicesActivities.StorageMediumSearch.storageMediumSearchResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\StorageMediumSearch\AmxSoapServicesActivities.StorageMediumSearch.storageMediumSearchResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\StorageMediumSearch\ws_CIL_7_StorageMediumSearchService.wsdl" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ContractsSearchService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ContractsSearchService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ContractsSearchService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ContractsSearchService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\DocumentManagerService\" />
+    <WCFMetadataStorage Include="Connected Services\StorageMediumRead\" />
+    <WCFMetadataStorage Include="Connected Services\StorageMediumSearch\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\StorageMediumSearch\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\StorageMediumSearch\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\StorageMediumSearch\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BscsWsdl\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\StorageMediumRead\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\StorageMediumRead\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\StorageMediumRead\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\DocumentManagerService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\DocumentManagerService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\DocumentManagerService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

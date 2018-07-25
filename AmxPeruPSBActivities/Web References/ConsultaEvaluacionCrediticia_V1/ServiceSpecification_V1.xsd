@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd_14="http://claro.com.pe/entity/Product/ProductSpecification/V1/" xmlns:xsd_15="http://claro.com.pe/entity/Resource/ResourceSpecification/V1/" xmlns:xsd_2="http://claro.com.pe/entity/CommonBusiness/RootBusinessEntities/V1/" xmlns:xsd_3="http://claro.com.pe/entity/CommonBusiness/BusinessInteraction/V1/" xmlns:xsd_10="http://claro.com.pe/entity/Service/ServiceCatalog/V1/" xmlns:xsd_1="http://claro.com.pe/entity/Service/ServiceSpecification/V1/" xmlns:xsd_13="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:xsd_4="http://claro.com.pe/entity/Service/Service/V1/" xmlns:xsd_5="http://claro.com.pe/entity/Service/ServiceLevelSpec/V1/" xmlns:xsd_9="http://claro.com.pe/entity/CommonBusiness/Capacity/V1/" targetNamespace="http://claro.com.pe/entity/Service/ServiceSpecification/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="../Resource/ResourceSpecification_V1.xsd" namespace="http://claro.com.pe/entity/Resource/ResourceSpecification/V1/" />
+  <xsd:import schemaLocation="../Product/ProductSpecification_V1.xsd" namespace="http://claro.com.pe/entity/Product/ProductSpecification/V1/" />
+  <xsd:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:import schemaLocation="ServiceCatalog_V1.xsd" namespace="http://claro.com.pe/entity/Service/ServiceCatalog/V1/" />
+  <xsd:import schemaLocation="../CommonBusiness/Capacity_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/Capacity/V1/" />
+  <xsd:import schemaLocation="ServiceLevelSpec_V1.xsd" namespace="http://claro.com.pe/entity/Service/ServiceLevelSpec/V1/" />
+  <xsd:import schemaLocation="Service_V1.xsd" namespace="http://claro.com.pe/entity/Service/Service/V1/" />
+  <xsd:import schemaLocation="../CommonBusiness/BusinessInteraction_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BusinessInteraction/V1/" />
+  <xsd:annotation>
+    <xsd:documentation>The Service Specification ABE contains entities that define the invariant characteristics and behavior of both types of Service entities. This enables multiple instances to be derived from a single specification entity. In this derivation, each instance will use the invariant characteristics and behavior defined in its associated template.
+
+This ABE includes a third type of Service Specification entity: that of a ServiceLevelSpecification. This type of specification templatizes Services that are bound to a Service Level Agreement.
+
+Entities in this ABE focus on adherence to standards, distinguishing features of a Service, dependencies (both physical and logical, as well as on other services), quality, and cost. In general, entities in this ABE enable Services to be bound to Products and run using Resources.
+
+Network services are one example of Services that can be built. Additional examples include installation, maintenance, monitoring, and content authentication, authorization, accounting, and auditing functions.
+
+</xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="ServiceSpecification" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>This is an abstract base class for defining the ServiceSpecification hierarchy. All Services are characterized as either being possibly visible and usable by a Customer or not. This gives rise to the two subclasses of Service: CustomerFacingService and ResourceFacingService. However, each instance of a Service is made up of changeable as well as invariant attributes, methods, relationships and constraints. A ServiceSpecification defines the invariant characteristics of a Service. It can be conceptually thought of as a template that different Service instances can be instantiated from. Each of these Service instances will have the same invariant characteristics. However, the other characteristics of the instantiated Service will be specific to each instance.
+
+ 
+
+This class can be thought of as a template, which represents a generic specification for implementing a particular type of Service. A ServiceSpecification may consist of other ServiceSpecifications supplied together as a collection.  Members of the collection may be offered individually or collectively.  ServiceSpecifications may also exist within groupings, such as within a Product.
+
+ 
+
+ServiceSpecification inherits from Specification, which inherits from ManagedEntity.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="_serviceSpecificationType" type="xsd_1:ServiceSpecificationType" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceSpecificationRole" type="xsd_1:ServiceSpecificationRole" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceSpecVersion" type="xsd_1:ServiceSpecVersion" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_service" type="xsd_4:Service" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceLevelSpecification" type="xsd_5:ServiceLevelSpecification" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceSpecCharacteristic" type="xsd_1:ServiceSpecCharUse">
+        <xsd:annotation>
+          <xsd:documentation>A use of the ServiceSpecCharacteristic by an ServiceSpecification to which additional properties (attributes) apply or override the properties of similar properties contained in ServiceSpecCharacteristic.This aggregation defines the set of ServiceCharacteristicSpecs that are defined by a given ServiceSpecification.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceSpecification1" type="xsd_1:ServiceSpecRelationship" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceSpecification" type="xsd_1:ServiceSpecRelationship" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="serviceCapacity" type="xsd_9:ServiceCapacity" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="serviceCapacityDemand" type="xsd_9:ServiceCapacityDemand" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="serviceCandidate" type="xsd_10:ServiceCandidate" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceSpecificationType">
+    <xsd:annotation>
+      <xsd:documentation>The ServiceSpecificationType class defines a generic category of ServiceSpecifications. Each ServiceSpecificationType serves to group a set of particular ServiceSpecifications that share the same behavior and other semantics. One result of this is to be able to more efficiently define a set of related Services that can be grouped together to form a higher-level Service. For example, a given higher-level Service might include VPN and QoS Services. If these Services are always used together, then they can be categorized using a common type.
+
+Please see the DEN-ng Service model for more details.
+</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceSpecification" type="xsd_1:ServiceSpecification" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceSpecificationType" type="xsd_1:ServiceSpecificationType" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceSpecificationType1" type="xsd_1:ServiceSpecificationType" />
+      <xsd:element name="name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>
+A short set of text readable characters to identify the kind of service - e.g. IPTV, VoIP, IMS…-
+(Mandatory)
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceSpecVersion">
+    <xsd:annotation>
+      <xsd:documentation>This class represents the ability to distinguish between different instances of ServiceSpecifications. It represents a particular form or variety of a ServiceSpecification that is different from others or from the original. The form represents differences in attributes, methods, relationships, and/or constraints that characterize this particular ServiceSpecification, but which are not enough to warrant creating a new ServiceSpecification.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="svcSpecRevisionName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This defines the name of this revision of this ServiceSpecification.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="svcSpecRevisionFormat" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This attribute defines the specific revision format used in this version. Each field of the revision is separated by a period. For example, if the desired format is .&gt;, then the value of this string could be:
+
+ major-number.minor-number
+
+The semantics of the format should be described in the revisionSemantics attribute of this class.
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="svcSpecRevisionNumber" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This is the revision number of this instance. This includes subfileds such as major number, minor number, and so forth. The subfields are separated by a period delimited. The format of the subfields is provided in the revisionFormat attribute of this class.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="svcSpecRevisionReason" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This is a string that describes the reason for creating this version.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="svcSpecRevisionSemantics" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This is a string that is used to define the particular semantics of this version. This string should include as a minimum a description of the format of the revisionNumber.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="svcSpecRevisionTimestamp" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>This defines the date and time of the revision.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="svcSpecRevisionValidityPeriod" type="xsd_13:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>This defines the time period in which this revision is valid for.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_serviceSpecification" type="xsd_1:ServiceSpecification" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceSpecificationRole" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>This is an abstract base class that defines a ServiceSpecification in terms of a set of roles. The roles are then used to characterize the invariant functionality of the Service, regardless of whether it is a resource- or a customer-facing service.
+
+ServiceSpecificationRoles represent the invariant functionality of a Service. Representing a Service in terms of ServiceSpecificationRoles enables the functionality of the Service to be defined independently of BusinessActor, PhysicalResource, LogicalResource, or other Services.
+
+Please see the DEN-ng Service model for more details.
+</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="_serviceSpecification" type="xsd_1:ServiceSpecification" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceRole" type="xsd_4:ServiceRole" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceSpecificationRole" type="xsd_1:ServiceSpecificationRole" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceSpecificationRole1" type="xsd_1:ServiceSpecificationRole" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceSpecCharacteristic">
+    <xsd:annotation>
+      <xsd:documentation>This is an abstract base class that represents the key features of this ServiceSpecification. For example, bandwidth is characteristic of many different types of services; if bandwidth is important (e.g., from the point-of-view of a Customer obtaining this Service via a Product) then bandwidth would be a ServiceCharacteristic for that particular Service.
+
+Note that in this example, bandwidth would have to be defined as an invariant feature that multiple Services use. Otherwise, it should be defined as a ServiceCharacteristic.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A unique identifier for the CharacteristicSpecification.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A word, term, or phrase by which the CharacteristicSpecification is known and distinguished from other CharacteristicSpecifications.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="description" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A narrative that explains the CharacteristicSpecification.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="unique" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>An indicator that specifies if a value is unique for the specification.
+
+Possible values are; "unique while value is in effect" and "unique whether value is in effect or not"
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="valueType" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A kind of value that the characteristic can take on, such as numeric, text, and so forth.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="minCardinality" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>The minimum number of instances a CharacteristicValue can take on. For example, zero to five phone numbers in a group calling plan, where zero is the value for the minCardinality.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="maxCardinality" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>The maximum number of instances a CharacteristicValue can take on. For example, zero to five phone numbers in a group calling plan, where five is the value for the maxCardinality.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="extensible" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>An indicator that specifies that the values for the characteristic can be extended by adding new values when instantiating a characteristic for an Entity.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="derivationFormula" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A rule or principle represented in symbols, numbers, or letters, often in the form of an equation used to derive the value of a characteristic value.
+
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_13:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period of time for which a characteristic is applicable.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceCharacteristicValue" type="xsd_4:ServiceCharacteristicValue" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_containedBySscRefList" type="xsd_1:ServiceSpecCharRelationship">
+        <xsd:annotation>
+          <xsd:documentation>A aggregation, migration, substitution, dependency, or exclusivity relationship between/among ServiceSpecCharacteristics.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_containsSscRefList" type="xsd_1:ServiceSpecCharRelationship">
+        <xsd:annotation>
+          <xsd:documentation>A aggregation, migration, substitution, dependency, or exclusivity relationship between/among ServiceSpecCharacteristics.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_resourceSpecCharacteristic" type="xsd_15:ResourceSpecCharacteristic" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceSpecCharacteristicValue" type="xsd_1:ServiceSpecCharacteristicValue" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceSpecification" type="xsd_1:ServiceSpecCharUse">
+        <xsd:annotation>
+          <xsd:documentation>A use of the ServiceSpecCharacteristic by an ServiceSpecification to which additional properties (attributes) apply or override the properties of similar properties contained in ServiceSpecCharacteristic.This aggregation defines the set of ServiceCharacteristicSpecs that are defined by a given ServiceSpecification.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceSpecCharacteristicValue">
+    <xsd:annotation>
+      <xsd:documentation>A ServiceSpecCharacteristicValue object is used to define a set of attributes, each of which can be assigned to a corresponding set of attributes in a ServiceSpecCharacteristic object. The values of the attributes in the ServiceSpecCharacteristicValue object describe the values of the attributes that a corresponding ServiceSpecCharacteristic object can take on.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="valueType" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A kind of value that the characteristic can take on, such as numeric, text, and so forth.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_default" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Indicates if the value is the default value for a characterisitc.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="value" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A discrete value that the characteristic can take on.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="unitOfMeasure" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A length, surface, volume, dry measure, liquid measure, money, weight, time, and the like. Iin general, a determinate quantity or magnitude of the kind designated, taken as a standard of comparison for others of the same kind, in assigning to them numerical values, as 1 foot, 1 yard, 1 mile, 1 square foot.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="valueFrom" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The low range value that a characteristic can take on.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="valueTo" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The upper range value that a characteristic can take on.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="rangeInterval" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>An indicator that specifies the inclusion or exclusion of the valueFrom and valueTo attributes.
+
+Possible values are "open", "closed", "closedBottom" and "closedTop".
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_13:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period of time for which a value is applicable.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceCharacteristicValue" type="xsd_4:ServiceCharacteristicValue" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceSpecCharUse" type="xsd_1:ServiceSpecCharValueUse">
+        <xsd:annotation>
+          <xsd:documentation>This association defines the allowed set of values (represented as instances of theServiceSpecCharacteristicValue object) that a specific ServiceSpecification can have when that ServiceSpecification object is instantiated.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_resourceSpecCharacteristicValue" type="xsd_15:ResourceSpecCharacteristicValue" />
+      <xsd:element name="_serviceSpecCharacteristic" type="xsd_1:ServiceSpecCharacteristic" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_containsSscvList" type="xsd_1:ServiceSpecCharValueRelationship" />
+      <xsd:element minOccurs="0" name="_containedInSscv" type="xsd_1:ServiceSpecCharValueRelationship" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceSpecCharRelationship">
+    <xsd:annotation>
+      <xsd:documentation>A aggregation, migration, substitution, dependency, or exclusivity relationship between/among ServiceSpecCharacteristics.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="charRelationshipType" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A categorization of the relationship, such as aggregation, migration, substitution, dependency, exclusivity.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="charSpecSeq" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>The order in which a ServiceSpecCharacteristic appears within another CharacteristicSpecification that defines a grouping of ServiceSpecCharacteristics.
+
+For example, a grouping may represent the name of an individual. The given name is first, the middle name is second, and the last name is third.
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_13:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period for which the relationship is applicable.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceSpecCharUse">
+    <xsd:annotation>
+      <xsd:documentation>A use of the ServiceSpecCharacteristic by an ServiceSpecification to which additional properties (attributes) apply or override the properties of similar properties contained in ServiceSpecCharacteristic.This aggregation defines the set of ServiceCharacteristicSpecs that are defined by a given ServiceSpecification.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A word, term, or phrase by which the CharacteristicSpecification is known and distinguished from other CharacteristicSpecifications.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="description" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A narrative that explains the CharacteristicSpecification.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="unique" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>An indicator that specifies if a value is unique for the specification.
+
+Possible values are; "unique while value is in effect" and "unique whether value is in effect or not"
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_package" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>An indicator that specifies if the associated ServiceSpecCharacteristic is a composite.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="canBeOveridden" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>An indicator that specifies that the CharacteristicSpecValues associated with the CharacteristicSpec cannot be changed when instantiating a ServiceCharacteristicValue. For example, a bandwidth of 64 MB cannot be changed.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="minCardinality" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>The minimum number of instances a CharacteristicValue can take on. For example, zero to five phone numbers in a group calling plan, where zero is the value for the minCardinality.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="maxCardinality" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>The maximum number of instances a CharacteristicValue can take on. For example, zero to five phone numbers in a group calling plan, where five is the value for the maxCardinality.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="extensible" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>An indicator that specifies that the values for the characteristic can be extended by adding new values when instantiating a characteristic for a Service.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="globallySet" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>An indicator that specifies that the attribute value for a ServiceSpecCharacteristic is defined by the related ServiceDefinition and applies to all ServiceTemplates based on the ServiceDefinition.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_13:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period of time for which the use of the CharacteristicSpecification is applicable.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceSpecCharacteristicValue" type="xsd_1:ServiceSpecCharValueUse">
+        <xsd:annotation>
+          <xsd:documentation>This association defines the allowed set of values (represented as instances of theServiceSpecCharacteristicValue object) that a specific ServiceSpecification can have when that ServiceSpecification object is instantiated.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceSpecCharValueUse">
+    <xsd:annotation>
+      <xsd:documentation>This association defines the allowed set of values (represented as instances of theServiceSpecCharacteristicValue object) that a specific ServiceSpecification can have when that ServiceSpecification object is instantiated.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="_default" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Indicates if the value is the default value for a characterisitc.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_13:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period of time for which a value is applicable.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="serviceSpecCharValueUse" type="xsd_1:ServiceSpecCharValueUse" />
+      <xsd:element name="serviceSpecCharValueUse2" type="xsd_1:ServiceSpecCharValueUse" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceSpecRelationship">
+    <xsd:sequence>
+      <xsd:element name="type" type="xsd:string" />
+      <xsd:element name="validFor" type="xsd_13:TimePeriod" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceSpecCharValueRelationship" />
+</xsd:schema>

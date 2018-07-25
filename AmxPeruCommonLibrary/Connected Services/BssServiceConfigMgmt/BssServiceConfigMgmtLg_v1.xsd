@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:serord="http://claro.com.pe/entity/Service/ServiceOrder/V1/" xmlns:entpar="http://claro.com.pe/entity/EngagedParty/Party/V1/" xmlns:entpro="http://claro.com.pe/entity/Product/Product/V1/" xmlns:entbastyp="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:serconmg="http://claro.pe/esb/message/BssServiceConfigMgmtLg/v1/" xmlns:entbusint="http://claro.com.pe/entity/CommonBusiness/BusinessInteraction/V1/" xmlns:entcus="http://claro.com.pe/entity/Customer/Customer/V1/" xmlns:ressta="http://claro.com.pe/esb/data/generico/responseStatus/v1/" xmlns:doc="http://claro.com.pe/entity/CommonBusiness/Documents/V1/" targetNamespace="http://claro.pe/esb/message/BssServiceConfigMgmtLg/v1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/BusinessInteraction_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BusinessInteraction/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/Customer/Customer_V1.xsd" namespace="http://claro.com.pe/entity/Customer/Customer/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/Product/Product_V1.xsd" namespace="http://claro.com.pe/entity/Product/Product/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/EngagedParty/Party_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/Party/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/Service/ServiceOrder_V1.xsd" namespace="http://claro.com.pe/entity/Service/ServiceOrder/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/Documents_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/Documents/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/ResponseStatus_V1.xsd" namespace="http://claro.com.pe/esb/data/generico/responseStatus/v1/" />
+  <xsd:element name="getPortabilityDebtAccreditationRequestMessage" type="serconmg:getPortabilityDebtAccreditationRequestMessageType" />
+  <xsd:element name="getPortabilityDebtAccreditationResponseMessage" type="serconmg:getPortabilityDebtAccreditationResponseMessageType" />
+  <xsd:complexType name="ListRequestType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_attributeValuePair" type="entbastyp:AttributeValuePair" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ListResponseType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_attributeValuePair" type="entbastyp:AttributeValuePair" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="EnvioPortaResponseType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="listadoTelefono" type="serconmg:ListTelefonoType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="EnvioPortaRequestType">
+    <xsd:sequence>
+      <xsd:element name="_businessInteraction" type="entbusint:BusinessInteraction" />
+      <xsd:element name="_customerSpec" type="entcus:CustomerSpec" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ListDetEnvioPortaRequestType">
+    <xsd:sequence>
+      <xsd:element name="_product" type="entpro:Product" />
+      <xsd:element name="_partyRoleCategory" type="entpar:PartyRoleCategory" />
+      <xsd:element name="_serviceOrder" type="serord:ServiceOrder" />
+      <xsd:element name="_quantity" type="entbastyp:Quantity" />
+      <xsd:element name="_businessInteraction" type="entbusint:BusinessInteraction" />
+      <xsd:element name="_money" type="entbastyp:Money" />
+      <xsd:element name="_documents" type="doc:Documents" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="getPortabilityDebtAccreditationRequestMessageType">
+    <xsd:sequence>
+      <xsd:element name="requestEnvioPorta" type="serconmg:EnvioPortaRequestType" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="requestDetalleEnvioPorta" type="serconmg:ListDetEnvioPortaRequestType" />
+      <xsd:element name="optionalListRequest" type="serconmg:ListRequestType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="getPortabilityDebtAccreditationResponseMessageType">
+    <xsd:sequence>
+      <xsd:element name="responseEnvioPorta" type="serconmg:EnvioPortaResponseType" />
+      <xsd:element name="_responseStatus" type="ressta:ResponseStatus" />
+      <xsd:element name="optionalListResponse" type="serconmg:ListResponseType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ListTelefonoType">
+    <xsd:sequence>
+      <xsd:element name="_product" type="entpro:Product" />
+      <xsd:element name="_partyRoleCategory" type="entpar:PartyRoleCategory" />
+      <xsd:element name="_businessInteraction" type="entbusint:BusinessInteraction" />
+      <xsd:element name="_serviceOrder" type="serord:ServiceOrder" />
+      <xsd:element name="_money" type="entbastyp:Money" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://claro.com.pe/esb/data/generico/claroFault/v1/" elementFormDefault="qualified" targetNamespace="http://claro.com.pe/esb/data/generico/claroFault/v1/" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="claroFault" type="tns:ClaroFault" />
+  <complexType name="ClaroFaultType">
+    <sequence>
+      <element name="claroFault" type="tns:ClaroFault" />
+    </sequence>
+  </complexType>
+  <complexType name="ClaroFault">
+    <sequence>
+      <element name="idAuditoria" type="string" />
+      <element name="idTransaccionESB" type="string" />
+      <element name="idTransaccionNegocio" type="string" />
+      <element name="errorCode" type="string" />
+      <element name="errorMessage" type="string" />
+      <element minOccurs="0" name="errorLocation" type="string" />
+      <element name="date" type="dateTime" />
+      <element minOccurs="0" name="faultSource" type="anyType" />
+    </sequence>
+  </complexType>
+</schema>

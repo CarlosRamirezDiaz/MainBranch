@@ -1,0 +1,7 @@
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\b\AmxPeruPSBActivities\bin\Debug\AmxPeruPSBActivities.dll.config
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\b\AmxPeruPSBActivities\bin\Debug\AmxPeruPSBActivities.dll
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\b\AmxPeruPSBActivities\bin\Debug\AmxPeruPSBActivities.pdb
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\i\AmxPeruPSBActivities\Debug\AmxPeruPSBActivities.csproj.CoreCompileInputs.cache
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\i\AmxPeruPSBActivities\Debug\AmxPeruPSBActivities.csproj.CopyComplete
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\i\AmxPeruPSBActivities\Debug\AmxPeruPSBActivities.dll
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\i\AmxPeruPSBActivities\Debug\AmxPeruPSBActivities.pdb

@@ -1,0 +1,2 @@
+AmxPeruGetOfferingPrice.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

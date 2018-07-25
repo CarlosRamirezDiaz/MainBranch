@@ -1,0 +1,2 @@
+AddShoppingCart.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

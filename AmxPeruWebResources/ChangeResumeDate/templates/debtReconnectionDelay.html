@@ -1,0 +1,118 @@
+﻿<div ng-controller="debtReconnectionDelayController" rtl-dir="{{direct}}">
+    <div class="column">
+        <div class="formContent" id="newSubsStage1-formContent" disable-contents="!rootScopeData.currentStage.isActive">
+            <div id="newSubsStage1-deviceSelectionSection" ng-class="{'formSection newlineSection':!isRTL,'rtlformSection newlineSection':isRTL}">
+
+                <table class="formSectionTable">
+                    <colgroup>
+                        <col style="width: 115px;">
+                        <col>
+                    </colgroup>
+                    <tbody>
+                        <tr class="formField">
+                            <td>
+                                <input type="radio" name="rdbReconnectionInfo" ng-model="reconnectionInfo" ng-value="WS" />Wrong Suspension
+                            </td>
+                        </tr>
+                        <tr class="formField formFieldTextArea">
+                            <td>
+                                <input type="radio" name="rdbReconnectionInfo" ng-model="reconnectionInfo" ng-value="DR" />Debt Reconnection Delay
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="wrongSuspend"  ng-show="reconnectionInfo=='WS'">
+                <table class="formSectionTable" >
+                    <colgroup>
+                        <col style="width: 115px;">
+                        <col>
+                    </colgroup>
+                    <tbody>
+                        <tr class="formField">
+                            <td>
+                                <div title="Start date" class="formFieldLabel">
+                                    <span>Reconnection date:</span>
+                                    <div class="inlineGradientMask"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="formFieldValue">
+                                    <input type="date" id="dtReconnectionDate" ng-model="dtReconnectionDate" />
+                                </div>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div>
+                <table class="formSectionTable">
+                    <colgroup>
+                        <col style="width: 115px;">
+                        <col>
+                    </colgroup>
+                    <tbody>
+                        <tr class="formField">
+                            <td>
+                                <div title="Payment date" class="formFieldLabel">
+                                    <span>Payment date:</span>
+                                    <div class="inlineGradientMask"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="formFieldValue">
+                                    <input type="date" id="dtPaymentDate" ng-model="dtPaymentDate" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="formField formFieldTextArea">
+                            <td>
+                                <div title="Bank/place of payment" class="formFieldLabel">
+                                    <span>Bank/place of payment:</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="formFieldValue">
+                                    <input type="text" id="txtpaymentPlace" ng-model="paymentPlace" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="formField formFieldTextArea">
+                            <td>
+                                <div title="Reciept no" class="formFieldLabel">
+                                    <span>Reciept no:</span>
+                                </div>
+                            </td>
+                            <td>
+                                <input type="text" id="txtRecieptNo" ng-model="recptNo" />
+                            </td>
+                        </tr>
+                       
+                        <tr class="formField formFieldTextArea">
+                            <td>
+                                <div class="floatRightButtonGroup" >
+                                    <button class="formButton" id="btnChkData" ng-click="creditCheck()">Send for Credit Check</button>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>

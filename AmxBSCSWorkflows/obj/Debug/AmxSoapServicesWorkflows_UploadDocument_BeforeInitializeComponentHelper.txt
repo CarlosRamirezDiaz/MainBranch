@@ -1,0 +1,2 @@
+UploadDocument.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:entcusaccbaltyp="http://claro.com.pe/entity/Customer/CustomerAccountBalanceType/V1/" xmlns:entcusaccbal="http://claro.com.pe/entity/Customer/CustomerAccountBalance/V1/" xmlns:entbastyp="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" targetNamespace="http://claro.com.pe/entity/Customer/CustomerAccountBalance/V1/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xs:import schemaLocation="CustomerAccountBalanceType_V1.xsd" namespace="http://claro.com.pe/entity/Customer/CustomerAccountBalanceType/V1/" />
+  <xs:complexType name="CustomerAccountBalance">
+    <xs:annotation>
+      <xs:documentation>CustomerAccountBalance represents and tracks the amount remained or owed in certain account which is owned by certain customer.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="id" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A unique identifier for the CustomerAccountBalance.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="remainedamount" type="entbastyp:Quantity">
+        <xs:annotation>
+          <xs:documentation>Remained or owed account balance amount. Here Quantity type represents both non-monetary balance and monetary balance. Non-monetary balance is applied to the service usage volume and monetary balance is applied to the monetary amount.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="validfor" type="entbastyp:TimePeriod">
+        <xs:annotation>
+          <xs:documentation>The period for which CustomerAccountBalance is valid.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="_customerAccountBalanceType" type="entcusaccbaltyp:CustomerAccountBalanceType" />
+      <xs:element name="ChargeAmountThreshold" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ChargeAmountThreshold">
+    <xs:annotation>
+      <xs:documentation>ChargeAmountThreshold constrains relationship between product charges and CustomerAccount(s) by specifying a limited amount beyond which product charges will not be affordable by associated CustomerAccount.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="amountlimited" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Limited amount could be affordable by certain CustomerAccount.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

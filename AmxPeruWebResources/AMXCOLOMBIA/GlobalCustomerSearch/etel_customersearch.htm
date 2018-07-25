@@ -1,0 +1,104 @@
+﻿<html><head><meta><meta charset="utf-8"></head><body style="-ms-word-wrap: break-word;">﻿
+    <title>Customer Search</title>
+    <script src="../../ClientGlobalContext.js.aspx" type="text/javascript"></script>
+    <script src="../../amx_common.js" type="text/javascript"></script>
+    <script src="../../amx_/js/alert.js" type="text/javascript"></script>
+    <link href="../../amx_/css/alert.css" rel="stylesheet" type="text/css">
+    <link href="../common/styles/reset.css" rel="stylesheet" type="text/css">
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <link href="../common/styles/themes/icon.css" rel="stylesheet" type="text/css">
+    <link href="../common/styles/themes/gray/easyui.css" rel="stylesheet" type="text/css">
+    <script src="../common/scripts/jquery.min.js" type="text/javascript"></script>
+    <script src="../common/scripts/json2.js" type="text/javascript"></script>
+    <script src="../common/scripts/jquery.easyui.min.js" type="text/javascript"></script>
+    <script src="../common/exceptionhandling.js" type="text/javascript"></script>
+    <script src="../common/scripts/datagrid_detailview.js" type="text/javascript"></script>
+    <script src="../../etel_CrmRestKit" type="text/javascript"></script>
+    <script src="../../etel_jscripttranslationhandler.js" type="text/javascript"></script>
+    <script src="../../etel_htmltranslate.js" type="text/javascript"></script>
+    <script src="../../etel_optionSetHandler" type="text/javascript"></script>
+    <script src="scripts/script.js" type="text/javascript"></script>
+    <script src="scripts/customersearch.js" type="text/javascript"></script>
+    <script src="scripts/onload.js" type="text/javascript"></script>
+    <script src="../../amxperu_/Common/JS/XRMServiceToolkit.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            WelComeMessage();
+            loadSearchPage();
+            loadSearchGridOnCustomerSearch();
+            restOfLoadSearch();
+            setTranslation(translationCustomerSearch.GetData());
+            $("#customerSearchSection").hide();
+        });
+
+        function WelComeMessage() {
+            var param = GetQueryStrings(parent.Xrm.Page.context.getQueryStringParameters());
+            if (param != null && param != 'undefined') {
+                if (param[1] == "parameter_showWelcomeMessage") {
+                    var booleanParam = param[2].replace("\n","");
+                    if (booleanParam == "true") {
+                        var titleName = "Welcome Message";
+                        var wMessage = AMX.COMMON.RetrieveKBArticleByTitle(titleName);
+                        if (wMessage != null && wMessage != undefined) {
+                            wMessage = wMessage.replace("customername", "");
+                            Alert.show(wMessage, "", [new Alert.Button("Ok")], "INFO", 300, 150);
+                        }
+                    }
+                }
+            }
+        }
+
+        function GetQueryStrings(querystring) {
+            var dataParameterString;            
+            // get data from querystring
+            if (querystring != undefined && querystring != null && querystring != "") {
+                for (var i in querystring) {
+                    querystring[i] = querystring[i].replace(/\+/g, " ").split("=");
+                }
+                //look for the parameter named 'data'
+                for (var i in querystring) {
+                    if (querystring[i][0].toLowerCase() == "data") {
+                        dataParameterString = querystring[i];
+                        break;
+                    }
+                }
+                return dataParameterString;
+            }
+            else {
+                var messageInnerText = "No details were specified in the querystring.";
+                alert("ERROR: " + messageInnerText);
+            }
+        }
+    </script>
+    <style type="text/css">
+        .panel datagrid {
+            margin-top: 30px;
+        }
+    </style>
+
+
+    <div style="margin: 0px 0px 15px 20px; color: rgb(102, 102, 102); font-size: 21px;"><span class="tCustomerSearch" style="font-size: 21px;" data-translate="tCustomerSearch">Customer Search</span></div>
+    <div id="SearchButtons" style="margin: 0px 0px 15px 10px; padding: 5px;">
+        <a tabindex="90" class="easyui-linkbutton" id="btnIndividualCustomerAcquisition" onclick=" IndividualCustomerAcquisition() " href="#" data-options="plain:true,iconCls:'icon-individualcustomer'">
+            <span class="tIndividualCustomerAcquisition" style="font-size: 12px;" data-translate="tIndividualCustomerAcquisition">INDIVIDUAL CUSTOMER ACQUISITION</span>
+        </a>
+        <!--<a tabindex="91" class="easyui-linkbutton" id="btnCorporateCustomerCreation" onclick=" CorporateCustomerCreation() " href="#" data-options="plain:true,iconCls:'icon-corporatecustomer'">
+            <span class="tCorporateCustomerCreation" style="font-size: 12px;" data-translate="tCorporateCustomerCreation">CORPORATE CUSTOMER CREATION</span>
+        </a>-->
+<!--        <a tabindex="91" class="easyui-linkbutton" id="btnCorporateCustomerCreation" onclick=" CorporateCustomerCreationNewProcess() " href="#" data-options="plain:true,iconCls:'icon-corporatecustomer'">
+            <span class="tCorporateCustomerCreation" style="font-size: 12px;" data-translate="tCorporateCustomerCreation">CORPORATE CUSTOMER CREATION</span>
+        </a>-->
+		<a tabindex="91" class="easyui-linkbutton" id="btnGenericIndividualCustomer" onclick=" Open360GenericIndividualCustomer() " href="#" data-options="plain:true,iconCls:'icon-corporatecustomer'">
+            <span class="tGenericIndividualCustomer" style="font-size: 12px;" data-translate="tGenericIndividualCustomer">OPEN GENERIC CUSTOMER</span>
+        </a>
+<!--        <a tabindex="92" class="easyui-linkbutton" id="ToggleSearchMode" onclick=" changeSearchMode(); " href="#" data-options="plain:true,iconCls:'icon-advancedsearch',toggle:true,selected:false">
+            <span class="tAdvancedSearch" style="font-size: 12px;" data-translate="tAdvancedSearch">ADVANCED SEARCH</span>
+        </a>-->
+    </div>
+    <div id="SimpleSearchFiltersPanel">
+    </div>
+<!--    <div id="AdvancedSearchFiltersPanel">
+    </div>-->
+    <table id="SearchResultsGrid" style="width: 100%;"></table>
+
+</body></html>

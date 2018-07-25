@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:entcuex="http://claro.com.pe/entity/Customer/CustomerExtension/V1/" xmlns:entprod="http://claro.com.pe/entity/Product/Product/V1/" xmlns:entbuit="http://claro.com.pe/entity/CommonBusiness/BusinessInteraction/V1/" xmlns:MgDist="http://claro.com.pe/esb/message/BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG/getCreditScore/V1/" xmlns:entdocs="http://claro.com.pe/entity/CommonBusiness/Documents/V1/" xmlns:entcust="http://claro.com.pe/entity/Customer/Customer/V1/" xmlns:entpopr="http://claro.com.pe/entity/Product/ProductPrice/V1/" xmlns:entcube="http://claro.com.pe/entity/Customer/CustomerBillExtension/V1/" xmlns="http://www.example.org" xmlns:entbsty="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:entbtex="http://claro.com.pe/entity/CommonBusiness/BaseTypesExtension/V1/" elementFormDefault="qualified" targetNamespace="http://claro.com.pe/esb/message/BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG/getCreditScore/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/BaseTypesExtension_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypesExtension/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/Documents_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/Documents/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/BaseTypes_v1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/BusinessInteraction_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BusinessInteraction/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/Customer/Customer_V1.xsd" namespace="http://claro.com.pe/entity/Customer/Customer/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/Customer/CustomerBillExtension_V1.xsd" namespace="http://claro.com.pe/entity/Customer/CustomerBillExtension/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/Customer/CustomerExtension_V1.xsd" namespace="http://claro.com.pe/entity/Customer/CustomerExtension/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/Product/Product_V1.xsd" namespace="http://claro.com.pe/entity/Product/Product/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/Product/ProductPrice_V1.xsd" namespace="http://claro.com.pe/entity/Product/ProductPrice/V1/" />
+  <xsd:complexType name="getCreditScoreRequestType">
+    <xsd:sequence>
+      <xsd:element name="ConsultaBuroRequest" type="MgDist:ConsultaBuroRequestType" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="ListaRequestOpcional" type="MgDist:ListaRequestOpcionalType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="getCreditScoreResponseType">
+    <xsd:sequence>
+      <xsd:element name="ConsultaBuroResponse" type="MgDist:ConsultaBuroResponseType" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="ListaResponseOpcional" type="MgDist:ListaResponseOpcionalType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ConsultaBuroRequestType">
+    <xsd:sequence>
+      <xsd:element name="documents" type="entdocs:Documents" />
+      <xsd:element name="customerSpecExtension" type="entcuex:CustomerSpecExtension" />
+      <xsd:element name="TableConfig" type="MgDist:TableConfigType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TableConfigType">
+    <xsd:sequence>
+      <xsd:element name="customerSpec" type="entcust:CustomerSpec" />
+      <xsd:element name="documents" type="entdocs:Documents" />
+      <xsd:element name="URL" type="entbsty:URL" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ListaRequestOpcionalType">
+    <xsd:sequence>
+      <xsd:element name="attributeValuePair" type="entbsty:AttributeValuePair" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ConsultaBuroResponseType">
+    <xsd:sequence>
+      <xsd:element name="utilitysFieldsExtension" type="entbtex:UtilityFieldsExtension" />
+      <xsd:element name="customerSpec" type="entcust:CustomerSpec" />
+      <xsd:element name="Masivo" type="MgDist:MasivoType" />
+      <xsd:element name="Corporativo" type="MgDist:CorporativoType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MasivoType">
+    <xsd:sequence>
+      <xsd:element name="responseStatusExtension" type="entbtex:ResponseStatusExtension" />
+      <xsd:element name="utilitysFieldsExtension" type="entbtex:UtilityFieldsExtension" />
+      <xsd:element name="businessInteractionItem" type="entbuit:BusinessInteractionItem" />
+      <xsd:element name="documents" type="entdocs:Documents" />
+      <xsd:element name="customer" type="entcust:Customer" />
+      <xsd:element name="customerAccount" type="entcust:CustomerAccount" />
+      <xsd:element name="customerCreditProfile" type="entcust:CustomerCreditProfile" />
+      <xsd:element name="customerSpecExtension" type="entcuex:CustomerSpecExtension" />
+      <xsd:element name="product" type="entprod:Product" />
+      <xsd:element name="componentProdPrice" type="entpopr:ComponentProdPrice" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CorporativoType">
+    <xsd:sequence>
+      <xsd:element name="customerAccount" type="entcust:CustomerAccount" />
+      <xsd:element name="customerCreditProfile" type="entcust:CustomerCreditProfile" />
+      <xsd:element name="customerBillingCycleExtension" type="entcube:CustomerBillingCycleExtension" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Integrante" type="MgDist:IntegranteType" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Representante" type="MgDist:RepresentanteType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="IntegranteType">
+    <xsd:sequence>
+      <xsd:element name="customerSpecExtension" type="entcuex:CustomerSpecExtension" />
+      <xsd:element name="documents" type="entdocs:Documents" />
+      <xsd:element name="customer" type="entcust:Customer" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RepresentanteType">
+    <xsd:sequence>
+      <xsd:element name="customerSpec" type="entcust:CustomerSpec" />
+      <xsd:element name="documents" type="entdocs:Documents" />
+      <xsd:element name="serviceDocuments" type="entdocs:serviceDocuments" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ListaResponseOpcionalType">
+    <xsd:sequence>
+      <xsd:element name="attributeValuePair" type="entbsty:AttributeValuePair" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="getCreditScoreRequestMessageType" type="MgDist:getCreditScoreRequestType" />
+  <xsd:element name="getCreditScoreResponseMessageType" type="MgDist:getCreditScoreResponseType" />
+</xsd:schema>

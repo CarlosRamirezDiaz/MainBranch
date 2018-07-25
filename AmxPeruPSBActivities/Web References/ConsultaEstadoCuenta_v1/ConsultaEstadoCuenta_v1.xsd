@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:entclaroh="http://claro.com.pe/esb/data/generico/claroGenericHeader/v1/" xmlns:entcust="http://claro.com.pe/entity/Customer/Customer/V1/" xmlns:entpsset="http://claro.com.pe/entity/EngagedParty/PartySettlement/V1/" xmlns:entpart="http://claro.com.pe/entity/EngagedParty/PartyBill/V1/" xmlns:entppy="http://claro.com.pe/entity/EngagedParty/PartyPayment/V1/" xmlns:entdocext="http://claro.com.pe/entity/CommonBusiness/DocumentsExtension/V1/" xmlns:entser="http://claro.com.pe/entity/Service/ServiceCatalog/V1/" xmlns:entappcre="http://claro.com.pe/entity/Customer/AppliedCustomerBillingRateExtension/V1/" xmlns:entgeog="http://claro.com.pe/entity/CommonBusiness/GeographicAddress/V1/" xmlns:entbastypex="http://claro.com.pe/entity/CommonBusiness/BaseTypesExtension/V1/" xmlns:entbastyp="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:entheader="http://claro.com.pe/generic/messageFormat/v1.0/" xmlns:entcusex="http://claro.com.pe/entity/Customer/CustomerExtension/V1/" xmlns:entdoc="http://claro.com.pe/entity/CommonBusiness/Documents/V1/" xmlns:custmanf="http://claro.com.pe/esb/message/ConsultaEstadoCuenta/consultarEstadoCuenta/v1/" xmlns:entengadd="http://claro.com.pe/entity/EngagedParty/Agreement/V1/" xmlns:entbnss="http://claro.com.pe/entity/CommonBusiness/BusinessInteraction/V1/" xmlns:entrespst="http://claro.com.pe/esb/data/generico/responseStatus/v1/" xmlns:entpartmet="http://claro.com.pe/entity/EngagedParty/PaymentMethod/V1/" xmlns:entaddpe="http://claro.com.pe/entity/EngagedParty/AdditionalPartyEntities/V1/" xmlns:entservesp="http://claro.com.pe/entity/Service/ServiceCatalog/V1/" elementFormDefault="qualified" targetNamespace="http://claro.com.pe/esb/message/ConsultaEstadoCuenta/consultarEstadoCuenta/v1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/BusinessInteraction_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BusinessInteraction/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/Customer/Customer_V1.xsd" namespace="http://claro.com.pe/entity/Customer/Customer/V1/" />
+  <xsd:import schemaLocation="../../../../framework/servicios/esquemas/HeaderGeneric_v1.0.xsd" namespace="http://claro.com.pe/generic/messageFormat/v1.0/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/DocumentsExtension_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/DocumentsExtension/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/Documents_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/Documents/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/EngagedParty/AdditionalPartyEntities_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/AdditionalPartyEntities/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/GeographicAddress_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/GeographicAddress/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/EngagedParty/PartyBill_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/PartyBill/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/EngagedParty/PaymentMethod_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/PaymentMethod/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/ResponseStatus_V1.xsd" namespace="http://claro.com.pe/esb/data/generico/responseStatus/v1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/Customer/AppliedCustomerBillingRateExtension_V1.xsd" namespace="http://claro.com.pe/entity/Customer/AppliedCustomerBillingRateExtension/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/BaseTypesExtension_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypesExtension/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/BaseTypesExtension_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypesExtension/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/Service/ServiceCatalog_V1.xsd" namespace="http://claro.com.pe/entity/Service/ServiceCatalog/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/EngagedParty/Agreement_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/Agreement/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/EngagedParty/PartyPayment_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/PartyPayment/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/EngagedParty/PartySettlement_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/PartySettlement/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/Customer/CustomerExtension_V1.xsd" namespace="http://claro.com.pe/entity/Customer/CustomerExtension/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/ClaroGenericHeaders_V1.xsd" namespace="http://claro.com.pe/esb/data/generico/claroGenericHeader/v1/" />
+  <xsd:complexType name="consultarEstadoCuentaRequestType">
+    <xsd:sequence>
+      <xsd:element name="headerRequestType" type="entclaroh:HeaderRequestType" />
+      <xsd:element name="businessInteractionSpec" type="entbnss:BusinessInteractionSpec" />
+      <xsd:element name="customerAccount" type="entcust:CustomerAccount" />
+      <xsd:element name="customerContactSpec" type="entcust:CustomerContactSpec" />
+      <xsd:element name="utilityFields" type="entbastyp:UtilityFields" />
+      <xsd:element name="serviceCandidate" type="entservesp:ServiceCandidate" />
+      <xsd:element name="documentsExtension" type="entdocext:DocumentsExtension" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="consultarEstadoCuentaResponseType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="estadoCuentaResponse" type="custmanf:EstadoCuentaResponseType" />
+      <xsd:element name="responseStatus" type="entrespst:ResponseStatus" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="EstadoCuentaResponseType">
+    <xsd:sequence>
+      <xsd:element name="customerSpec" type="entcust:CustomerSpec" />
+      <xsd:element name="agreement" type="entengadd:Agreement" />
+      <xsd:element name="partyPayment" type="entppy:PartyPayment" />
+      <xsd:element name="paymentPlan" type="entppy:PaymentPlan" />
+      <xsd:element name="documents" type="entdoc:Documents" />
+      <xsd:element name="documentsExtension" type="entdocext:DocumentsExtension" />
+      <xsd:element name="partyAccount" type="entaddpe:PartyAccount" />
+      <xsd:element name="customer" type="entcust:Customer" />
+      <xsd:element name="geographicAddress" type="entgeog:GeographicAddress" />
+      <xsd:element name="timePeriod" type="entbastyp:TimePeriod" />
+      <xsd:element name="onCyclePartyBill" type="entpart:OnCyclePartyBill" />
+      <xsd:element name="customerCreditProfile" type="entcust:CustomerCreditProfile" />
+      <xsd:element name="paymentMethod" type="entpartmet:PaymentMethod" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="detalleEstadoResponse" type="custmanf:DetalleEstadoResponseType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DetalleEstadoResponseType">
+    <xsd:sequence>
+      <xsd:element name="documentsExtension" type="entdocext:DocumentsExtension" />
+      <xsd:element name="adjustmentDocuments" type="entdoc:adjustmentDocuments" />
+      <xsd:element name="financialChargeExtension" type="entappcre:FinancialChargeExtension" />
+      <xsd:element name="moneyExtension" type="entbastypex:MoneyExtension" />
+      <xsd:element name="serviceDocuments" type="entdoc:serviceDocuments" />
+      <xsd:element name="partyPayment" type="entppy:PartyPayment" />
+      <xsd:element name="paymentMethod" type="entpartmet:PaymentMethod" />
+      <xsd:element name="utilityFields" type="entbastyp:UtilityFields" />
+      <xsd:element name="partySettlement" type="entpsset:PartySettlement" />
+      <xsd:element name="customerContactSpecExtension" type="entcusex:CustomerContactSpecExtension" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="consultarEstadoCuentaRequestMessageType" type="custmanf:consultarEstadoCuentaRequestType" />
+  <xsd:element name="consultarEstadoCuentaResponseMessageType" type="custmanf:consultarEstadoCuentaResponseType" />
+</xsd:schema>

@@ -1,0 +1,2 @@
+ChangeResumeDate.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

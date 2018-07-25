@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:entaddparent="http://claro.com.pe/entity/EngagedParty/AdditionalPartyEntities/V1/" xmlns:entbastyp="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" targetNamespace="http://claro.com.pe/entity/EngagedParty/AdditionalPartyEntities/V1/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xs:complexType name="PartyAccount">
+    <xs:annotation>
+      <xs:documentation>An arrangement that a party has with an enterprise that provides products to the party and collects AppliedPartyBillingRate that are used to produce PartyBill.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="accountstatus" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The condition of the account, such as due, paid, in arrears.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="accounttype" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A categorization of an account, such as individual, joint, and so forth, whose instances share some of the same characteristics.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="creditlimit" type="entbastyp:Money">
+        <xs:annotation>
+          <xs:documentation>The maximum amount of money that may be charged on a account.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="id" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A unique identifier.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The name of the account.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="pin" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A multidigit personal identification numbe that is used by a Party to gain access to a PartyAccount at an ATM, a computer, or a telephone system, and so forth.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

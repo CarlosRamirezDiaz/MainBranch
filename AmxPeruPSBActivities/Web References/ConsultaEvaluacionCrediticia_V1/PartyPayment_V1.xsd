@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd_2="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:xsd_3="http://claro.com.pe/entity/EngagedParty/PaymentMethod/V1/" xmlns:xsd_1="http://claro.com.pe/entity/EngagedParty/PartyPayment/V1/" xmlns:xsd_6="http://claro.com.pe/entity/EngagedParty/PartySettlement/V1/" xmlns:xsd_7="http://claro.com.pe/entity/EngagedParty/Bank/V1/" xmlns:xsd_5="http://claro.com.pe/entity/EngagedParty/Party/V1/" xmlns:xsd_9="http://claro.com.pe/entity/Customer/Customer/V1/" targetNamespace="http://claro.com.pe/entity/EngagedParty/PartyPayment/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="../Customer/Customer_V1.xsd" namespace="http://claro.com.pe/entity/Customer/Customer/V1/" />
+  <xsd:import schemaLocation="Bank_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/Bank/V1/" />
+  <xsd:import schemaLocation="../EngagedParty/PartySettlement_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/PartySettlement/V1/" />
+  <xsd:import schemaLocation="../EngagedParty/Party_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/Party/V1/" />
+  <xsd:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:annotation>
+    <xsd:documentation>The Party Payment ABE contains all Entities required to describe a payment such as PaymentMethod and BankAccount.</xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="PartyPayment">
+    <xsd:annotation>
+      <xsd:documentation>The PartyPayment represents the transfer of wealth from any Party to another one.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Unique identifier </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="amount" type="xsd_2:Money">
+        <xsd:annotation>
+          <xsd:documentation>The monetary form of the PartyPayment.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="paymentDate" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>The date the PartyPayment was made</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="remainingAmount" type="xsd_2:Money">
+        <xsd:annotation>
+          <xsd:documentation>The payment amount that has not been applied as payment item.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_paymentMethod" type="xsd_3:PaymentMethod" />
+      <xsd:element minOccurs="0" name="_partyRole" type="xsd_5:PartyRole">
+        <xsd:annotation>
+          <xsd:documentation>A PartyPayment represents the transfer of wealth from one Party to another. So it is received from a PartyRole and made to a PartyRole.
+The PartyPayment might be either inbound or outbound and always uses a PaymentMethod.
+A PartyPayment might specify the BankAccount to which the payment is transferred.
+The diagram below shows different types of PaymentMethods identified at the present time, currently allowed for paying due amounts such as CheckPM, DigitalWalletPM, LoyaltyBurnPM...
+As all the PaymentMethod might not be yet described as a sub-class of PaymentMethod, a PaymentMethod might be described a PaymentMethodSpecification defining the characteristics.
+ThirdPartyCollectionPM is an example of payment method, using which payment can be made through the third party, such as bank transfer, payment tool(like PayPal, Alipay).
+A PaymentMethod is owned by a PartyRole.
+A PaymentPlan may specify PaymentMethods to use for auto-pay. If several PaymentMethod are specified, a priority is given to each of them. Over time, PartyPayments are collected according to the PaymentPlan.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_paymentPlan" type="xsd_1:PaymentPlan" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_paymentItem" type="xsd_1:PartyPaymentItem" />
+      <xsd:element name="paymentDirection" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The direction of the payment seen by the company. It can be be inbound (payment mate to the company) or outbound (payment made by the company).</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="status" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The payment might be either requested, accepted or rejected.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="description" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Description about the payment.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="bankAccount" type="xsd_7:BankAccount" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PaymentPlan">
+    <xsd:annotation>
+      <xsd:documentation>PaymentPlan defines the plan for payment via its associations to the PaymentMethod and PaymentAccount.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Unique identifier </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_2:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>Valid period for the PaymentPlan.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="maxAmount" type="xsd_2:Money">
+        <xsd:annotation>
+          <xsd:documentation>The maximum amount of the Payment when at least one PaymentMethod is declared so that the company generates each Payment. For example, with a due debt of $250, and a maxPaymentAmount of $100, 2 payments of $100 will be generated and the last one will be $50.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="totalAmount" type="xsd_2:Money">
+        <xsd:annotation>
+          <xsd:documentation>The total amount that the PaymentPlan has to recover through payments.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="paymentDay" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>The day chosen by the party for generating the payments</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="paymentPeriod" type="xsd_2:Duration">
+        <xsd:annotation>
+          <xsd:documentation>the period of time between two payments.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="priority" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>The priority of the PaymentPlan amongst all the PaymentPlans agree with the same PartyRole.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="type" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A grouping of PaymentPlans that have strongly marked and readily defined similarities.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="status" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A PayemntPlan might be initialized, validated,in progress or closed.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="maxTrialTimes" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>Maximum number of trial to submit a payment if it has been rejected.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_partyPayment" type="xsd_1:PartyPayment" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="paymentPlanPaymentMethod" type="xsd_1:PaymentPlanPaymentMethod" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="customerAccount" type="xsd_9:CustomerAccount" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PartyPaymentItem">
+    <xsd:annotation>
+      <xsd:documentation>PaymentItem is the application of PartyPayment. PaymentItem is applied to PartyBill or AppliedPartyBillingRate.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="appliedAmount" type="xsd_2:Money">
+        <xsd:annotation>
+          <xsd:documentation>The amount of money that has been applied to specific entity, such as PartyBill.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_partyPayment" type="xsd_1:PartyPayment" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ThirdPartyPaymentAgency">
+    <xsd:annotation>
+      <xsd:documentation>ThirdPartyPayeeAgency is a third party between SP and party. This agency takes a role of receiving payment for SP from SP's party. </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_5:PartyRole">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="thirdPartyCollectionPM" type="xsd_3:ThirdPartyCollectionPM" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="PaymentPlanPaymentMethod">
+    <xsd:annotation>
+      <xsd:documentation>A PaymentPlanPaymentMethod specifies the priority and valid period for each PaymentMethod in a PaymentPlan context.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="validFor" type="xsd_2:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>Validity period of the use of a PaymentMethod for a PaymentPlan autopay.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="priority" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>Priority of the use of a PaymentMethod for a PaymentPlan autopay.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="paymentPlan" type="xsd_1:PaymentPlan" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

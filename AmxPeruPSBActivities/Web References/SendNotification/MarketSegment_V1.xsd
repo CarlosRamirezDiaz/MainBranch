@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd_7="http://claro.com.pe/entity/Product/ProductOffering/V1/" xmlns:xsd_2="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:xsd_3="http://claro.com.pe/entity/CommonBusiness/GeographicPlace/V1/" xmlns:xsd_1="http://claro.com.pe/entity/MarketSales/MarketSegment/V1/" xmlns:xsd_13="http://claro.com.pe/entity/MarketSales/MarketingCampaign/V1/" xmlns:xsd_5="http://claro.com.pe/entity/MarketSales/SalesChannel/V1/" targetNamespace="http://claro.com.pe/entity/MarketSales/MarketSegment/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="MarketingCampaign_V1.xsd" namespace="http://claro.com.pe/entity/MarketSales/MarketingCampaign/V1/" />
+  <xsd:import schemaLocation="../Product/ProductOffering_V1.xsd" namespace="http://claro.com.pe/entity/Product/ProductOffering/V1/" />
+  <xsd:import schemaLocation="SalesChannel_V1.xsd" namespace="http://claro.com.pe/entity/MarketSales/SalesChannel/V1/" />
+  <xsd:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:complexType name="MarketSegment" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>A grouping of Parties, GeographicAreas, SalesChannels, and so forth. MarketSegments are the target of MarketingCampaigns, ProductOfferings, ProductPromotions, ProductPlacements, and ProductPrograms from both internal and external (Competitors, and other Providers) perspective.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A unique identifier for the MarketSegment.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A word, term, or phrase by which a MarketSegment is known and distinguished from other MarketSegments.
+
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="description" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A narrative that explains what the MarketSegment is.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="marketSegmentCategory" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A classification of MarketSegments because they share common characteristics. For example a vertical or horizontal MarketSegment. Vertical MarketSegments put a PartyRole in a single segment, while a PartyRole can exist in multiple horizontal MarketSegments
+
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="marketSegmentSubCategory" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A further classification of MarketSegments because they share common characteristics. For example, a vertical category MarketSegment may be further categorized as consumer, business, or carrier.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_2:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period during which the MarketSegment is applicable.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_salesChannel" type="xsd_5:SalesChannel" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_marketSegmentCharacteristic" type="xsd_1:MarketSegmentCharacteristic" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_compositeMarketSegment" type="xsd_1:CompositeMarketSegment" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_marketSegmentCharacteristicValue" type="xsd_1:MarketSegmentCharacteristicValue" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_productOffering" type="xsd_7:ProductOffering" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_marketingCampaign" type="xsd_13:MarketingCampaign" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MarketSegmentCharacteristic" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>A characteristic quality or distinctive feature of a MarketSegment. The characteristic can be take on a discrete value, such as sex, can take on a range of values, (for example, household income of $50,000 - $100,000), or can be derived from a formula (for example, number of households = number of customer party roles).</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A unique identifier for the MarketSegmentCharacteristic.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A word, term, or phrase by which the characteristic is known and distinguished from characteristics.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="description" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A narrative that explains what the characteristic is.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="unique" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>An indicator that specifies if a value is unique for the specification.
+
+Possible values are; "unique while value is in effect" and "unique whether value is in effect or not"
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="valueType" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A kind of value that the characteristic can take on, such as numeric, text, and so forth.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="minCardinality" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>The minimum number of instances a CharacteristicValue can take on. For example, zero to five phone numbers in a group calling plan, where zero is the value for the minCardinality.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="maxCardinality" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>The maximum number of instances a CharacteristicValue can take on. For example, zero to five phone numbers in a group calling plan, where five is the value for the maxCardinality.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="extensible" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>An indicator that specifies that the values for the characteristic can be extended by adding new values when instantiating a characteristic for an Entity.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="derivationFormula" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A rule or principle represented in symbols, numbers, or letters, often in the form of an equation used to derive the value of a characteristic value.
+
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_2:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period of time for which a characteristic is applicable.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_geographicArea" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_marketSegment" type="xsd_1:MarketSegment" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_productOffering" type="xsd_7:ProductOffering" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_marketSegmentCharacteristicValue" type="xsd_1:MarketSegmentCharacteristicValue" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_compositeMarketSegmentCharacteristic" type="xsd_1:CompositeMarketSegmentCharacteristic" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MarketSegmentCharacteristicValue">
+    <xsd:annotation>
+      <xsd:documentation>A number or text that can be assigned to a MarketSegmentCharacteristic.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="valueType" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A kind of value that the characteristic can take on, such as numeric, text, and so forth.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_default" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>Indicates if the value is the default value for a characteristic.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="value" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A discrete value that the characteristic can take on.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="unitOfMeasure" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A length, surface, volume, dry measure, liquid measure, money, weight, time, and the like. Iin general, a determinate quantity or magnitude of the kind designated, taken as a standard of comparison for others of the same kind, in assigning to them numerical values, as 1 foot, 1 yard, 1 mile, 1 square foot.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="fromValue" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The low range value that a characteristic can take on.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="toValue" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The upper range value that a characteristic can take on.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="rangeInterval" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>An indicator that specifies the inclusion or exclusion of the valueFrom and valueTo attributes.
+
+Possible values are "open", "closed", "closedBottom" and "closedTop".
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_2:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period of time for which a value is applicable.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_marketSegmentCharacteristic" type="xsd_1:MarketSegmentCharacteristic" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_marketSegment" type="xsd_1:MarketSegment" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CompositeMarketSegment">
+    <xsd:annotation>
+      <xsd:documentation>A type of MarketSegment that is formed by aggregating other MarketSegments, which may be Composite or Atomic MarketSegments.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:MarketSegment">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="_marketSegment" type="xsd_1:MarketSegment" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="AtomicMarketSegment">
+    <xsd:annotation>
+      <xsd:documentation>A type of MarketSegment that does not have any subordinate MarketSegments, that is, an AtomicMarketSegment is a leaf-level MarketSegment.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:MarketSegment" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="CompositeMarketSegmentCharacteristic">
+    <xsd:annotation>
+      <xsd:documentation>A type of MarketSegmentCharacteristic that is formed by aggregating other MarketSegmentCharacteristic, which may be Composite or Atomic MarketSegmentCharacteristic.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:MarketSegmentCharacteristic">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="_marketSegmentCharacteristic" type="xsd_1:MarketSegmentCharacteristic" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="AtomicMarketSegmentCharacteristic">
+    <xsd:annotation>
+      <xsd:documentation>A type of MarketSegmentCharacteristic that does not have any subordinate MarketSegmentCharacteristics, that is, an AtomicMarketSegmentCharacteristic is a leaf-level MarketSegmentCharacteristic.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:MarketSegmentCharacteristic" />
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

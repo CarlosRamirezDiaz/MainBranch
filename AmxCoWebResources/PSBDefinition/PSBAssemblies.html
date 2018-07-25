@@ -1,0 +1,138 @@
+<html ng-app="listPSBAssemblies">
+<head>
+	<title>List PSB Assemblies</title>
+	<script src="../../etel_/common/scripts/angular.min.js"></script>
+	<script src="../../ClientGlobalContext.js.aspx" type="text/javascript" ></script>
+	<script>
+		var app = angular.module('listPSBAssemblies', []);
+		app.controller("listPSBAssembliesCtrl", function ($scope, $http){
+		    $scope.listPSBAssemblies = "";
+		    $scope.ButtonText = "Recycle";
+			
+			listPSBAssemblies = function ($http) {
+			    var workflowUrlName = Xrm.Page.context.getClientUrlForInteractioncentricDashboard() + ":6005/api/v1/activities";
+
+				try {
+					$http.get(workflowUrlName)
+						.then(function (result) {
+							if (result) {
+								$scope.message = "";
+								$scope.listPSBAssemblies = result.data;
+							}}, 
+							function errorCallback(response) {
+								// called asynchronously if an error occurs
+								// or server returns response with an error status.
+								$scope.message = "ListPSBAssemblies: [" + response.config.url + "] " + response.xhrStatus + "-" + response.statusText;
+							});
+				}
+				catch (err) {
+					$scope.message = "ListPSBAssemblies: [" + workflowUrlName + "] " + err.message;
+				}
+				
+			};
+
+			$scope.recycle = function () {
+			    var workflowUrlName = Xrm.Page.context.getClientUrlForInteractioncentricDashboard() + ":6004/api/v1/admin/recycle";
+
+			    try {
+			        $scope.ButtonText = "Recycling";
+
+			        $http.defaults.useXDomain = true;
+			        $http({
+			            method: "GET",
+			            url: workflowUrlName,
+			            withCredentials: true,
+			        }).success(
+                            function (data, status, headers, config) {
+                                $scope.ButtonText = "Recycle";
+                                alert("Recycled!");
+                            }).error(function (data, status, headers, config) {
+                                $scope.ButtonText = "Recycle";
+                                alert(data);
+                            });
+			    }
+			    catch (err) {
+			        $scope.ButtonText = "Recycle";
+			        alert("recycle: [" + workflowUrlName + "] " + err.message);
+			    }
+			};
+
+			listPSBAssemblies($http);
+		});
+
+
+	</script>
+	<style>
+<!-- 		/* ------------------
+		 styling for the tables 
+		   ------------------   */   
+ -->		
+		body
+		{
+			line-height: 1.6em;
+		}
+
+		#hor-minimalist-a
+		{
+			font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+			font-size: 12px;
+			background: #fff;
+			margin: 5px;
+			border-collapse: collapse;
+			text-align: left;
+			display: block;
+		}
+		#hor-minimalist-a th
+		{
+			font-size: 14px;
+			font-weight: normal;
+			color: #039;
+			padding: 2px 2px;
+			border-bottom: 2px solid #6678b1;
+		}
+		#hor-minimalist-a td
+		{
+			color: #669;
+			padding: 2px 0px 0px 4px;
+		}
+		#hor-minimalist-a tbody tr:hover td
+		{
+			background-color: #e6e2d3;
+		}
+	</style>	
+</head>
+<body>
+	<div ng-controller="listPSBAssembliesCtrl">
+        
+        <a id='btnRecycle' ng-href='#here' ng-click='recycle()' >{{ButtonText}}</a>
+
+		<table id="hor-minimalist-a">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Status</th>
+					<th>Definition</th>
+					<th>FileName</th>
+					<th>CreateDate</th>
+					<th>UpdateDate</th>
+				</tr>
+			</thead>
+			<tbody ng-repeat="item in listPSBAssemblies | orderBy:'-CreateDate'">
+				<tr ng-repeat="version in item.Versions | orderBy:'-CreateDate'">
+					<td>{{version.Name}}</td>
+					<td>{{version.Description}}</td>
+					<td>{{version.Status}}</td>
+					<td>{{version.Definition}}</td>
+					<td>{{version.FileName}}</td>
+					<td>{{version.CreateDate}}</td>
+					<td>{{version.UpdateDate}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<div id="messageId">
+			<p>{{message}}</p>
+		</div>
+	</div>
+	</body>
+</html>

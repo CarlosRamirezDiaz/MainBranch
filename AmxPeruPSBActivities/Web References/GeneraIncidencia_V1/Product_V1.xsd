@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:entres="http://claro.com.pe/entity/Resource/Resource/V1/" xmlns:entpropri="http://claro.com.pe/entity/Product/ProductPrice/V1/" xmlns:entbastyp="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:entpro="http://claro.com.pe/entity/Product/Product/V1/" xmlns:entprospe="http://claro.com.pe/entity/Product/ProductSpecification/V1/" targetNamespace="http://claro.com.pe/entity/Product/Product/V1/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xs:import schemaLocation="../Resource/Resource_V1.xsd" namespace="http://claro.com.pe/entity/Resource/Resource/V1/" />
+  <xs:import schemaLocation="ProductPrice_V1.xsd" namespace="http://claro.com.pe/entity/Product/ProductPrice/V1/" />
+  <xs:import schemaLocation="ProductSpecification_V1.xsd" namespace="http://claro.com.pe/entity/Product/ProductSpecification/V1/" />
+  <xs:complexType name="Product">
+    <xs:annotation>
+      <xs:documentation>A ProductOffering procured by a Customer, or other interested Party playing a PartyRole, appearing as a BusinessInteractionItem, which could take the form of a Agreement. ProductSpecificationCharacteristic(s) in part define the Product. A Product is realized as one or more Service(s) and/or Resource(s).</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="chargeTypeCode" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="description" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>An explanation of what the product is.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="externalIDs" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="frequency" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="isBundled" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A word, term, or phrase by which the product is known and distinguished from other products.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="popId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="productserialnumber" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A set of identifying characters and/or numbers assigned to, and usually marked on, each of a series of identical products.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="productstatus" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The condition of the product, such as planned, designed, activated, disconnected.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="taxCode" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="validfor" type="entbastyp:TimePeriod">
+        <xs:annotation>
+          <xs:documentation>The period during which the product is applicable.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="_productSpecification" type="entprospe:ProductSpecification" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="_productCharacteristicsValue" type="entpro:ProductCharacteristicValue" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="_componentProdPrice" type="entpropri:ComponentProdPrice" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="_resource" type="entres:Resource" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProductCharacteristicValue">
+    <xs:annotation>
+      <xs:documentation>A value of a ProductSpecCharacteristic chosen for a Product that further defines what the Product is.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="validfor" type="entbastyp:TimePeriod">
+        <xs:annotation>
+          <xs:documentation>The period for which the characteristic value is applicable.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="value" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A fact that describes a Product.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

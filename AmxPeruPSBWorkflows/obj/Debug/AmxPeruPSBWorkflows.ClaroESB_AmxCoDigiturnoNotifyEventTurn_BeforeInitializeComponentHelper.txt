@@ -1,0 +1,2 @@
+AmxCoDigiturnoNotifyEventTurn.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

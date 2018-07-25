@@ -1,0 +1,2 @@
+AmxCoGetContractsByCustomer.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

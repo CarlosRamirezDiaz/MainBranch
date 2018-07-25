@@ -1,0 +1,206 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="AmxSoapServicesWorkflows.RetrieveGenericDirectoryNumber"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:aa="clr-namespace:AmxSoapServicesActivities.Activities;assembly=AmxSoapServicesActivities"
+ xmlns:am="clr-namespace:AmxSoapServicesActivities.Model;assembly=AmxSoapServicesActivities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:ec="clr-namespace:ExternalApiActivities.Common;assembly=ExternalApiActivities"
+ xmlns:epwa="clr-namespace:Ericsson.PSB.Workflow.Activities;assembly=Ericsson.PSB.Workflow.Activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="directoryNumberRequest" Type="InArgument(am:GenericDirectoryNumberServiceRequest)" />
+    <x:Property Name="response" Type="OutArgument(x:String)" />
+    <x:Property Name="sdpId" Type="OutArgument(x:String)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap2010:WorkflowViewState.IdRef>AmxSoapServicesWorkflows.RetrieveGenericDirectoryNumber_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>AmxSoapServicesActivities.Model</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Ericsson.ETELCRM.CrmCachingLibrary</AssemblyReference>
+      <AssemblyReference>Ericsson.ETELCRM.CrmFoundationLibrary</AssemblyReference>
+      <AssemblyReference>Ericsson.ETELCRM.Entities.Crm</AssemblyReference>
+      <AssemblyReference>Ericsson.PSB.Workflow.Activities</AssemblyReference>
+      <AssemblyReference>Ericsson.PSB.Workflow.Client.Core</AssemblyReference>
+      <AssemblyReference>ExternalApiActivities</AssemblyReference>
+      <AssemblyReference>ExternalApiWorkflows</AssemblyReference>
+      <AssemblyReference>Microsoft.Xrm.Client</AssemblyReference>
+      <AssemblyReference>Microsoft.Xrm.Sdk</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Activities.Core.Presentation</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Net.Http</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>AmxSoapServicesActivities</AssemblyReference>
+      <AssemblyReference>AmxPeruCommonLibrary</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>AmxSoapServicesWorkflows</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_2">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="x:String" Name="connectionString" />
+      <Variable x:TypeArguments="x:String" Name="retrieveDirectoryNumberUrl" />
+    </Flowchart.Variables>
+    <Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+        <epwa:ConfigurationActivity sap2010:WorkflowViewState.IdRef="ConfigurationActivity_1" Key="connectionString">
+          <epwa:ConfigurationActivity.Value>
+            <OutArgument x:TypeArguments="x:String">
+              <mca:CSharpReference x:TypeArguments="x:String">connectionString</mca:CSharpReference>
+            </OutArgument>
+          </epwa:ConfigurationActivity.Value>
+        </epwa:ConfigurationActivity>
+        <FlowStep.Next>
+          <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+            <ec:XrmAwareCompositeActivity UseServiceUser="{x:Null}" sap2010:WorkflowViewState.IdRef="XrmAwareCompositeActivity_1" IsGlobalContext="False">
+              <ec:XrmAwareCompositeActivity.Activities>
+                <Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_1">
+                  <Flowchart.StartNode>
+                    <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+                      <ec:RetrieveCrmConfigurationByName ConfigurationName="GenericDirectoryNumberUrl" sap2010:WorkflowViewState.IdRef="RetrieveCrmConfigurationByName_1">
+                        <ec:RetrieveCrmConfigurationByName.ConfigurationValue>
+                          <OutArgument x:TypeArguments="x:String">
+                            <mca:CSharpReference x:TypeArguments="x:String">retrieveDirectoryNumberUrl</mca:CSharpReference>
+                          </OutArgument>
+                        </ec:RetrieveCrmConfigurationByName.ConfigurationValue>
+                      </ec:RetrieveCrmConfigurationByName>
+                      <FlowStep.Next>
+                        <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+                          <aa:GenericDirectoryNumberRequestActivity sap2010:WorkflowViewState.IdRef="GenericDirectoryNumberRequestActivity_1">
+                            <aa:GenericDirectoryNumberRequestActivity.DirectoryNumberServiceRequest>
+                              <InArgument x:TypeArguments="am:GenericDirectoryNumberServiceRequest">
+                                <mca:CSharpValue x:TypeArguments="am:GenericDirectoryNumberServiceRequest">directoryNumberRequest</mca:CSharpValue>
+                              </InArgument>
+                            </aa:GenericDirectoryNumberRequestActivity.DirectoryNumberServiceRequest>
+                            <aa:GenericDirectoryNumberRequestActivity.DirectoryNumberServiceResponse>
+                              <OutArgument x:TypeArguments="x:String">
+                                <mca:CSharpReference x:TypeArguments="x:String">response</mca:CSharpReference>
+                              </OutArgument>
+                            </aa:GenericDirectoryNumberRequestActivity.DirectoryNumberServiceResponse>
+                            <aa:GenericDirectoryNumberRequestActivity.HostUrl>
+                              <InArgument x:TypeArguments="x:String">
+                                <mca:CSharpValue x:TypeArguments="x:String">retrieveDirectoryNumberUrl</mca:CSharpValue>
+                              </InArgument>
+                            </aa:GenericDirectoryNumberRequestActivity.HostUrl>
+                            <aa:GenericDirectoryNumberRequestActivity.SdpIdResponse>
+                              <OutArgument x:TypeArguments="x:String">
+                                <mca:CSharpReference x:TypeArguments="x:String">sdpId</mca:CSharpReference>
+                              </OutArgument>
+                            </aa:GenericDirectoryNumberRequestActivity.SdpIdResponse>
+                          </aa:GenericDirectoryNumberRequestActivity>
+                        </FlowStep>
+                      </FlowStep.Next>
+                    </FlowStep>
+                  </Flowchart.StartNode>
+                  <x:Reference>__ReferenceID0</x:Reference>
+                  <x:Reference>__ReferenceID1</x:Reference>
+                </Flowchart>
+              </ec:XrmAwareCompositeActivity.Activities>
+              <ec:XrmAwareCompositeActivity.ConnectionString>
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String">connectionString</mca:CSharpValue>
+                </InArgument>
+              </ec:XrmAwareCompositeActivity.ConnectionString>
+            </ec:XrmAwareCompositeActivity>
+          </FlowStep>
+        </FlowStep.Next>
+      </FlowStep>
+    </Flowchart.StartNode>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <x:Reference>__ReferenceID3</x:Reference>
+    <sads:DebugSymbol.Symbol>d0tDOlxBTVhDb1JlcG9cQU1YQ29NYWluXEFteEJTQ1NXb3JrZmxvd3NcUmV0cmlldmVHZW5lcmljRGlyZWN0b3J5TnVtYmVyLnhhbWwQPwOIAQ8CAQFGCUwmAgEsTw2AASwCAQJJD0llAgEuRmNGdQIBLX0TfWECAQRPkwFPmgECAQNREXkdAgEKVBdaOwIBJF0bckYCAQtUTFRnAgErVx1XfQIBJW8hb2sCAR5qIWp5AgEYYCFglAECARJlIWVvAgEM</sads:DebugSymbol.Symbol>
+  </Flowchart>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="ConfigurationActivity_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RetrieveCrmConfigurationByName_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="GenericDirectoryNumberRequestActivity_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="FlowStep_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,209</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,129</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,151 300,209</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="614,636">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,129</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="XrmAwareCompositeActivity_1" sap:VirtualizedContainerService.HintSize="222,175">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,254.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,139</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,161 300,254.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_2" sap:VirtualizedContainerService.HintSize="614,636">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,139</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="AmxSoapServicesWorkflows.RetrieveGenericDirectoryNumber_1" sap:VirtualizedContainerService.HintSize="654,716" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

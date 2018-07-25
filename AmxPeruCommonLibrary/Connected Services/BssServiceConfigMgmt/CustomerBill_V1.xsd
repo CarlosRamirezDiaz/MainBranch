@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:entappcusbilrat="http://claro.com.pe/entity/Customer/AppliedCustomerBillingRate/V1/" xmlns:entcusbil="http://claro.com.pe/entity/Customer/CustomerBill/V1/" xmlns:entbastyp="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:xsd_3="http://claro.com.pe/entity/Customer/Customer/V1/" targetNamespace="http://claro.com.pe/entity/Customer/CustomerBill/V1/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xs:import schemaLocation="../Customer/AppliedCustomerBillingRate_V1.xsd" namespace="http://claro.com.pe/entity/Customer/AppliedCustomerBillingRate/V1/" />
+  <xs:import schemaLocation="../Customer/Customer_V1.xsd" namespace="http://claro.com.pe/entity/Customer/Customer/V1/" />
+  <xs:complexType name="CustomerBillSpec">
+    <xs:annotation>
+      <xs:documentation>A detailed description of a customer's bill structure. The current version of this class is serving as a placeholder. It will be further developed in the next version of this document.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="description" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A narrative that explains in detail the specification.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A short descriptive name.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="validfor" type="entbastyp:TimePeriod">
+        <xs:annotation>
+          <xs:documentation>The period for which the CustomerBillSpec is valid.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="_customerBillingCycle" type="entcusbil:CustomerBillingCycle" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustomerBill">
+    <xs:annotation>
+      <xs:documentation>A total amount due from a CustomerAccount for all products during the billing period.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="_customerAccount" type="xsd_3:CustomerAccount" />
+      <xs:element name="_customerBillSpec" type="entcusbil:CustomerBillSpec" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="_appliedCustomerBillingRate" type="entappcusbilrat:AppliedCustomerBillingRate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustomerBillingCycle">
+    <xs:annotation>
+      <xs:documentation>An occurrence of a billing cycle. Besides significant dates, it records who triggered the cycle.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="billingdate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>A billing date.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="chargedate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>A date through which charges previously received by the billing system appear on the bill.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="creditdate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>A date through which credits previously received by the billing system appear on the bill.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="mailingdate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>A customer bill mailing date.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="paymentduedate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>A customer bill payment due date.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="productionreason" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The reason for this cycle run. Values may be SCHEDULE_RUN, PROVEIDER_REQUEST or others</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="_customerBillingCycleSpecification" type="entcusbil:CustomerBillingCycleSpecification" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustomerBillingCycleSpecification">
+    <xs:annotation>
+      <xs:documentation>A detailed description of when to initiate a billing cycle and the various sub steps of a billing cycle.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="billingdateshift" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>An offset of a billing date. The offset is expressed as number of days with regard to the start of the BillingPeriod.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="chargedateoffset" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>An offset of a date through which charges previously received by the billing system will appear on the bill. The offset is expressed as number of days with regard to the start of the BillingPeriod.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="creditdateoffset" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>An offset of a date through which credits previously received by the billing system will appear on the bill. The offset is expressed as number of days with regard to the start of the BillingPeriod.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="description" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A narrative that explains in detail the semantics of this component.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="mailingdateoffset" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>An offset of a customer bill mailing date. The offset is expressed as number of days with regard to the start of the BillingPeriod.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A short descriptive name.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="paymentduedateoffset" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>An offset of a payment due date. The offset is expressed as number of days with regard to the start of the BillingPeriod.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="validfor" type="entbastyp:TimePeriod">
+        <xs:annotation>
+          <xs:documentation>The period for which the CustomerBillingCycleSpecification is valid.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="id" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="information" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

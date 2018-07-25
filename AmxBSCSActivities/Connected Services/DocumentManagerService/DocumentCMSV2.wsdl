@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wacsonv="http://www.amx.com/Schema/Operation/UploadDocument/V2.0" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:waccscv="http://www.amx.com/CO/Schema/ClaroFault/v1" xmlns:tns="http://www.amx.com/Service/DocumentCMS/V2.0" xmlns:wacsogv="http://www.amx.com/Schema/Operation/GetDocument/V2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.amx.com/Service/DocumentCMS/V2.0" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="../Schemas/ClaroFault_V1.xsd" namespace="http://www.amx.com/CO/Schema/ClaroFault/v1" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="../Schemas/UploadDocumentV2.0.xsd" namespace="http://www.amx.com/Schema/Operation/UploadDocument/V2.0" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="../Schemas/GetDocumentV2.0.xsd" namespace="http://www.amx.com/Schema/Operation/GetDocument/V2.0" />
+    </xsd:schema>
+  </types>
+  <message name="UploadDocumentRequest">
+    <part name="body" element="wacsonv:uploadDocumentRequest" />
+  </message>
+  <message name="UploadDocumentResponse">
+    <part name="body" element="wacsonv:uploadDocumentResponse" />
+  </message>
+  <message name="ClaroFault">
+    <part name="ClaroFault" element="waccscv:claroFault" />
+  </message>
+  <message name="GetDocumentRequest">
+    <part name="GetDocumentRequest" element="wacsogv:getDocumentRequest" />
+  </message>
+  <message name="GetDocumentResponse">
+    <part name="GetDocumentResponse" element="wacsogv:getDocumentResponse" />
+  </message>
+  <portType name="DocumentCMSInterface">
+    <operation name="UploadDocument">
+      <input message="tns:UploadDocumentRequest" />
+      <output message="tns:UploadDocumentResponse" />
+    </operation>
+    <operation name="GetDocument">
+      <input message="tns:GetDocumentRequest" />
+      <output message="tns:GetDocumentResponse" />
+    </operation>
+  </portType>
+  <binding name="DocumentCMSSoapBinding" type="tns:DocumentCMSInterface">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="UploadDocument">
+      <soap:operation soapAction="http://www.amx.com/Service/DocumentCMS/V2.0/UploadDocument" style="document" />
+      <input>
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="GetDocument">
+      <soap:operation soapAction="http://www.amx.com/Service/DocumentCMS/V2.0/GetDocument" style="document" />
+      <input>
+        <soap:body use="literal" parts="GetDocumentRequest" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="GetDocumentResponse" />
+      </output>
+    </operation>
+  </binding>
+  <service name="DocumentCMS">
+    <port name="DocumentCMSPort" binding="tns:DocumentCMSSoapBinding">
+      <soap:address location="http://www.example.com" />
+    </port>
+  </service>
+</definitions>

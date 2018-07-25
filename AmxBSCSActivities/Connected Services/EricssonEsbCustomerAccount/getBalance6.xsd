@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:cuschatarres="http://www.ericsson.com/esb/message/customer/changeTariffResponse/v1.0" xmlns:entbastyp="http://www.ericsson.com/entity/CommonBusiness/BaseTypes/V1/" targetNamespace="http://www.ericsson.com/esb/message/customer/changeTariffResponse/v1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FCommonBusiness%2FBaseTypes_V1" namespace="http://www.ericsson.com/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:element name="changeTariffResponse" type="cuschatarres:changeTariffResponseType" />
+  <xsd:complexType name="changeTariffResponseType">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="_responseStatus" type="entbastyp:ResponseStatus" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,2 @@
+AmxCoTechnicianAppGetResource.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

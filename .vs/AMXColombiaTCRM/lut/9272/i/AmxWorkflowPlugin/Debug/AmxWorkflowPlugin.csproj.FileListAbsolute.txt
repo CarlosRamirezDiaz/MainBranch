@@ -1,0 +1,8 @@
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\b\AmxWorkflowPlugin\bin\Debug\AmxWorkflowPlugin.dll.config
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\b\AmxWorkflowPlugin\bin\Debug\AmxWorkflowPlugin.dll
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\b\AmxWorkflowPlugin\bin\Debug\AmxWorkflowPlugin.pdb
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\i\AmxWorkflowPlugin\Debug\AmxWorkflowPlugin.csprojResolveAssemblyReference.cache
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\i\AmxWorkflowPlugin\Debug\AmxWorkflowPlugin.csproj.CoreCompileInputs.cache
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\i\AmxWorkflowPlugin\Debug\AmxWorkflowPlugin.csproj.CopyComplete
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\i\AmxWorkflowPlugin\Debug\AmxWorkflowPlugin.dll
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\i\AmxWorkflowPlugin\Debug\AmxWorkflowPlugin.pdb

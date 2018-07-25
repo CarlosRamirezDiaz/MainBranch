@@ -1,0 +1,2 @@
+AmxCoEvidenteEvaluateQuestionnaire.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

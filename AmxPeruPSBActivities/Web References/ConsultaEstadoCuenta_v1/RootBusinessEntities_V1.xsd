@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd_7="http://claro.com.pe/entity/Resource/Resource/V1/" xmlns:xsd_14="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:xsd_1="http://claro.com.pe/entity/CommonBusiness/RootBusinessEntities/V1/" targetNamespace="http://claro.com.pe/entity/CommonBusiness/RootBusinessEntities/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:import schemaLocation="../Resource/Resource_V1.xsd" namespace="http://claro.com.pe/entity/Resource/Resource/V1/" />
+  <xsd:annotation>
+    <xsd:documentation>A set of common business entities that collectively serve as the foundation of the business view. This set of entities enables the entities in different domains of the SID Framework to be associated with each other, providing greater overall coherence to the information framework.
+</xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="Collection" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>This is an abstract base class for objects that represent collections of ManagedEntity objects. This enables common attributes, methods, relationships and other semantics to be applied to different types of Collections of ManagedEntity objects. These can then be refined in the subclasses of Collection.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:RootEntity">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="_managedEntity" type="xsd_1:ManagedEntity" />
+          <xsd:element name="orderMethod" type="xsd:integer">
+            <xsd:annotation>
+              <xsd:documentation>This is an enumerated integer, and is used to define the method by which elements in an OrderedSet or Sequence are collated. If the Collection type is Set or Bag, then this attribute MUST have the value 1 ("Not Applicable"). Values include:
+
+ 1: Not Applicable
+ 2: Ascending
+ 3: Descending
+</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="type" type="xsd:integer">
+            <xsd:annotation>
+              <xsd:documentation>This is an enumerated integer that defines the type of Collection that this object is. Values include:
+
+ 1: Set
+ 2: OrderedSet
+ 3: Sequence
+ 4: Bag
+
+A Set does not contain duplicate elements, and does not impose an order on its elements. An OrderedSet is like a Set, except that it does impose an order on its contents. A Bag is like a Set, except that it may contain duplicates. A Sequence is like a Bag, except that the elements are ordered.
+</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Entity" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>This is an abstract class that extends the RootEntity class in order to represent classes of objects that play a business function. Entities can be either managed or unmanaged. More formally, an Entity represents objects that have a separate and distinct existence. They are not just a collection of attributes or an abstraction of behavior.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:RootEntity">
+        <xsd:sequence>
+          <xsd:element name="version" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>This is a graphic string that identifies the version of the object.
+
+Notes:
+No analog in M.3100 or the CIM (version exists in some CIM subclasses, but these are relatively deep in the CIM hierarchy).</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="_entitySpecification" type="xsd_1:EntitySpecification" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ManagedEntity" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>This is an abstract base class that is used to represent entities in a managed environment that have the following semantics in common: (1) a ManagedBusinessEntity owns or is otherwise responsible for them, (2) management of the entity is critical for providing a service and/or maintaining the environment, and (3) the entity is "important" from a management point-of-view. As such, it is a point at which semantically important relationships can be created; this avoids duplicating these relationships on multiple subclasses as well as forcing ManagedObject to support these relationships.
+</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:Entity">
+        <xsd:sequence>
+          <xsd:element name="_collection" type="xsd_1:Collection" />
+          <xsd:element name="managementMethodCurrent" type="xsd:integer">
+            <xsd:annotation>
+              <xsd:documentation>This is an enumerated integer that defines the particular type of management method that is currently being used. 
+
+Permitted Values:
+ 0: Unknown
+ 1: None
+ 2: CLI
+ 3: SNMP
+ 4: TL1
+ 5: CMIP
+ 6: Proprietary
+
+Notes:No analog in M.3100 or the DMTF CIM.
+</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="managementMethodSupported" type="xsd:integer">
+            <xsd:annotation>
+              <xsd:documentation>This is an array of integers that define the different management methods that are supported by this object. 
+
+Permitted Values:
+ 
+ 0: Unknown
+ 1: None
+ 2: CLI
+ 3: SNMP
+ 4: TL1
+ 5: CMIP
+ 6: Proprietary
+
+Notes:
+
+No analog in M.3100 or the DMTF CIM.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="_managementDomain" type="xsd_1:ManagementDomain" />
+          <xsd:element minOccurs="0" name="_entitySpecification1" type="xsd_1:EntitySpecification" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="_entityRole" type="xsd_1:EntityRole" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="_managementInfo" type="xsd_1:ManagementInfo">
+            <xsd:annotation>
+              <xsd:documentation>This is an association class that defines the semantics of the DescribedByMgmtInfo aggregation. This class defines the specific semantics for different types of ManagementInfo, and how that information is obtained from the associated ManagedEntity. This enables different methods to be used to obtain different types of management information.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ManagementDomain" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>A ManagementDomain class represents a special grouping of ManagedEntities that has two important properties. First, it is used to partition managed objects into a meaningful logical grouping. One important use of such a grouping is to provide a means to define which EMS (as well as which NMS) manages, monitors, etc. which set of devices. It also provides a means to show how management functions are distributed and scaled.
+
+Second, it defines a common administrative domain that is used to administer the managed objects that it contains. This implies that all of the managed objects contained in this ManagementDomain are administered similarly - either by the same user, group of users or policy.
+</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:RootEntity">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="_managedEntity" type="xsd_1:ManagedEntity" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="_resource" type="xsd_7:Resource" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="_managementDomain" type="xsd_1:ManagementDomain" />
+          <xsd:element minOccurs="0" name="_managementDomain1" type="xsd_1:ManagementDomain" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="RootEntity" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>This is the top of the SID class hierarchy. The purpose of the RootEntity is to define a set of attributes that are common to all SID entities that derive from it. These properties enable us to name and describe all objects (manageable and unmanageable) in the environment.This is the top of the DEN-ng class hierarchy. These properties enable us to name, describe, and identify all objects (manageable and unmanageable) in the environment.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="_rootEntityType" type="xsd_1:RootEntityType" />
+      <xsd:element name="commonName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Represents a user-friendly identifier of an object. It is a (possibly ambiguous) name by which the object is commonly known in some limited scope (such as an organization) and conforms to the naming conventions of the country or culture with which it is associated. It is NOT used as a naming attribute (i.e., to uniquely identify an instance of the object).
+
+Notes: 
+The managedElementID attribute is defined in managedElement. This is similar to an objectID, which appears in the SID system view. It also embeds usageState, operationalState, and administrativeState in top (defined in X.721) which is inherited by managedElement. The SID and DEN-ng instead define rich state objects that are associated with a managed object. The CIM has in effect two attributes for this use: Name (but this is subclassed as a key) and ElementName.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="description" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This is a string, and defines a textual free-form description of the object.
+
+Notes:
+This attribute doesn’t exist in M.3100. The CIM has two attributes for this purpose, Caption (a short description) and Description.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="objectID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Unambiguously distinguishes different object instances. It is the naming attribute of the object.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Role" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>This is an abstract base class that defines the concept of various types of roles used in the DEN-ng model.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:RootEntity">
+        <xsd:sequence>
+          <xsd:element name="roleCombination" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>A roleCombination is an array of string attributes that are used to identify and potentially select one or more policies for a set of managed entities from among a much larger set of available policies. In contrast with the IETF definition, the DEN-ng definition of this attribute works with a second attribute, called roleSelectionMethod, that precisely defines how the selection process is determined.
+
+Values of this attribute should be entered in comma separated value format; white space should be ignored.
+</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="roleSelectionMethod" type="xsd:integer">
+            <xsd:annotation>
+              <xsd:documentation>This is an enumerated integer that defines the precise means used to select one or more entities which map to one or more roles contained in the roleCombination attribute of this object. Values include:
+
+ 0: retrieve all
+ 1: retrieve intersection
+
+For exampe, assume that there is an external query engine that is looking for the roles edge or ethernet. The result of this query will look at the roleCombination and roleSelectionMethod attributes of each managed object that it is querying.
+
+If the value of this attribute is 0, then all managed objects that have their roleCombination set to either {edge}, {ethernet}, or {edge, ethernet} will be retrieved. In contrast, if the value of this attribute is 1, then only those managed objects whose roleCombination attribute is set to {edge, ethernet} will be retrieved.
+</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="_specificationRole" type="xsd_1:SpecificationRole" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="EntityRole" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>This is an abstract base class that defines the concept of various types of roles for entities that are used to describe ManagedEntities in the DEN-ng model.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:Role">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="_managedEntity" type="xsd_1:ManagedEntity" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="EntitySpecification" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>This is an abstract base class that is used to define the invariant characteristics (attributes, methods, constraints, and relationships) of a managed entity.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:Specification">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="_managedEntity" type="xsd_1:ManagedEntity" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="_entity" type="xsd_1:Entity" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Specification" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>This is an abstract base class that is used to define the invariant characteristics (attributes, methods, and relationships) of a managed entity.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:RootEntity">
+        <xsd:sequence />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="SpecificationRole" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>This is the abstract base class for all RoleSpecification subclasses. It exists to enable relationships to be defined between it and other classes in the DEN-ng core model. This helps prevent relationship explosion.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:Specification">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="_role" type="xsd_1:Role" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ManagementInfo" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>This is an abstract base class that is used to represent entities that represent management information obtained in a managed environment . Specifically, in the process of managing an entity, information of various forms are created. This class is the base class for defining different types of management information.
+
+The design of how management information is obtained uses this class to gather specific type of information, and the ManagementMethodEntity class to obtain the desired data using an appropriate method. This combination of class hierarchies enables different management methods (e.g., CLI vs. SNMP) to be used to gather different types of management data, and is unique to the DEN-ng information model.
+</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:Entity">
+        <xsd:sequence>
+          <xsd:element name="mgmtInfoValidFor" type="xsd_14:TimePeriod">
+            <xsd:annotation>
+              <xsd:documentation>This attribute defines the time period that this management information is valid for. A TimePeriod is a complex datatype, that has a starting time and an ending time.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="retrievalMethodCurrent" type="xsd:integer">
+            <xsd:annotation>
+              <xsd:documentation>This is an enumerated integer that defines the particular type of method that is currently being used to retrieve the management information. Values include:
+
+ 0: Unknown
+ 1: None
+ 2: CLI
+ 3: SNMP
+ 4: TL1
+ 5: CMIP
+ 6: RMON
+ 7: Proprietary
+
+None could mean that this ManagedEntity performs a set function and is not configurable, as well as mean that this ManagedEntity is not configurable except by the factory.
+</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="retrievalMethodsSupported" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>This is an array of integers that define the different means of retrieving management methods that are supported by this object. Values include:
+ 
+ 0: Unknown
+ 1: None
+ 2: CLI
+ 3: SNMP
+ 4: TL1
+ 5: CMIP
+ 6: RMON
+ 7: Proprietary
+
+None could mean that this ManagedEntity performs a set function and is not configurable, as well as mean that this ManagedEntity is not configurable except by the factory.
+</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="_managedEntity" type="xsd_1:ManagedEntity">
+            <xsd:annotation>
+              <xsd:documentation>This is an association class that defines the semantics of the DescribedByMgmtInfo aggregation. This class defines the specific semantics for different types of ManagementInfo, and how that information is obtained from the associated ManagedEntity. This enables different methods to be used to obtain different types of management information.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="RootEntityType">
+    <xsd:annotation>
+      <xsd:documentation>A SID entity, such as Customer, Product, Service, and so forth.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_rootEntity" type="xsd_1:RootEntity" />
+      <xsd:element name="name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A word, term, or phrase by which the RootEntityType is known and distinguished from other RootEntityTypes.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

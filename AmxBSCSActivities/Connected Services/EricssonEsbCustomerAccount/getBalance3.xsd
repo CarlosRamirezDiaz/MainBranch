@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:cusgetbalreq="http://www.ericsson.com/esb/message/customer/getBalanceRequest/v1.0" targetNamespace="http://www.ericsson.com/esb/message/customer/getBalanceRequest/v1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="getBalanceRequest" type="cusgetbalreq:getBalanceRequestType" />
+  <xsd:complexType name="getBalanceRequestType">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="subscriberNumber" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="originHostName" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="originNodeType" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CustomerBalance">
+    <xsd:sequence />
+  </xsd:complexType>
+</xsd:schema>

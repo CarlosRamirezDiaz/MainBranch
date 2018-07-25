@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:entpro="http://claro.com.pe/entity/Product/Product/V1/" xmlns:entpropri="http://claro.com.pe/entity/Product/ProductPrice/V1/" xmlns:entbastyp="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" targetNamespace="http://claro.com.pe/entity/Product/ProductPrice/V1/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xs:import schemaLocation="Product_V1.xsd" namespace="http://claro.com.pe/entity/Product/Product/V1/" />
+  <xs:complexType name="ProductCharacteristicValue">
+    <xs:annotation>
+      <xs:documentation>A value of a ProductSpecCharacteristic chosen for a Product that further defines what the Product is.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="validfor" type="entbastyp:TimePeriod">
+        <xs:annotation>
+          <xs:documentation>The period for which the characteristic value is applicable.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="value" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A fact that describes a Product.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ComponentProdPrice">
+    <xs:annotation>
+      <xs:documentation>Part of a ProductPrice representing a single element of the price.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="entpropri:ProductPrice">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="price" type="entbastyp:Money">
+            <xs:annotation>
+              <xs:documentation>The amount of money that characterizes the price.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" maxOccurs="1" name="pricetype" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>A category that describes the price, such as recurring, discount, allowance, penalty, and so forth.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" maxOccurs="1" name="unitofmeasure" type="entbastyp:Quantity">
+            <xs:annotation>
+              <xs:documentation>A number representing the value of this component and units (such as each) of the price. Its meaning depends on the priceType. It could be a price, a rate, or a discount.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ProductPrice">
+    <xs:annotation>
+      <xs:documentation>An amount, usually of money, that represents the actual price paid by a Customer for a purchase, a rent or a lease of a Product. The price is valid for a defined period of time.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="description" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A narrative that explains in detail the semantics of this component.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A short descriptive name such as "affinity discount".</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="validfor" type="entbastyp:TimePeriod">
+        <xs:annotation>
+          <xs:documentation>The period for which the price is valid.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="_productPriceCharacteristicsValue" type="entpro:ProductCharacteristicValue" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

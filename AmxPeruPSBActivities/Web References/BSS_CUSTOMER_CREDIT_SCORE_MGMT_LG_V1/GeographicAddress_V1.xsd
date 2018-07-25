@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:entgeoadd="http://claro.com.pe/entity/CommonBusiness/GeographicAddress/V1/" xmlns:entbastyp="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" targetNamespace="http://claro.com.pe/entity/CommonBusiness/GeographicAddress/V1/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xs:complexType name="Country">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="id" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="value" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GeographicAddress">
+    <xs:annotation>
+      <xs:documentation>A structured textual way of describing how to find a Geographic Location. It is usually composed of an ordered list of Geographic Location names based on context specific rules.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="areaCode" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="city" type="entbastyp:AttributeValuePair" />
+      <xs:element minOccurs="0" maxOccurs="1" name="country" type="entbastyp:AttributeValuePair" />
+      <xs:element minOccurs="0" maxOccurs="1" name="county" type="entbastyp:AttributeValuePair" />
+      <xs:element minOccurs="1" maxOccurs="1" name="id" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="isCityIncorporated" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="isDeleted" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="isForward" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="isLevyTaxes" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="isToCheck" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="isUrgent" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="isWriteOnReq" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="jurisdictionID" type="entbastyp:AttributeValuePair" />
+      <xs:element minOccurs="0" maxOccurs="1" name="lasAddressValidation" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="location1" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="location2" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="note1" type="entbastyp:Notes" />
+      <xs:element minOccurs="0" maxOccurs="1" name="note2" type="entbastyp:Notes" />
+      <xs:element minOccurs="0" maxOccurs="1" name="note3" type="entbastyp:Notes" />
+      <xs:element minOccurs="0" maxOccurs="1" name="remark" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="state" type="entbastyp:AttributeValuePair" />
+      <xs:element minOccurs="0" maxOccurs="1" name="street" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="streetNumber" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="validFor" type="entbastyp:TimePeriod" />
+      <xs:element minOccurs="0" maxOccurs="1" name="years" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="zipCode" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

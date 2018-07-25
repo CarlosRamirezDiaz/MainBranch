@@ -1,0 +1,2 @@
+StorageMediumSearch.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

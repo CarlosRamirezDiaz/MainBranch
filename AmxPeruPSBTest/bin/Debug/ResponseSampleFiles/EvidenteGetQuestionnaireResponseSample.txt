@@ -1,0 +1,167 @@
+﻿{
+	"headerResponse": {
+		"responseDate": "2018-01-14T14:03:05.749-05:00",
+		"traceabilityId": "82d6feaf-bc2a-432e-91c1-18829219b6c4"
+	},
+	"listQuestions": [{
+		"sequenceQuestion": "8",
+		"answerList": [{
+			"textResponse": "NO",
+			"hashCodeCalc": "false",
+			"sequenceQuestion": "8",
+			"sequenceAnswer": "4057785"
+		},
+		{
+			"textResponse": "No tengo cuenta corriente con la entidad",
+			"hashCodeCalc": "false",
+			"sequenceQuestion": "8",
+			"sequenceAnswer": "4057783"
+		},
+		{
+			"textResponse": "SI",
+			"hashCodeCalc": "false",
+			"sequenceQuestion": "8",
+			"sequenceAnswer": "4057784"
+		}],
+		"questionPosition": "1",
+		"textQuestion": "¿Su cuenta corriente con AV VILLAS tiene cupo de sobregiro?",
+		"hashCodeCalc": "false"
+	},
+	{
+		"sequenceQuestion": "24",
+		"answerList": [{
+			"textResponse": "No tengo crédito de vivienda",
+			"hashCodeCalc": "false",
+			"sequenceQuestion": "24",
+			"sequenceAnswer": "4057790"
+		},
+		{
+			"textResponse": "CAJA DE CREDITO AGRARIO",
+			"hashCodeCalc": "false",
+			"sequenceQuestion": "24",
+			"sequenceAnswer": "4057791"
+		},
+		{
+			"textResponse": "JOHN F. KENNEDY LTDA - COOPERATIVA DE AHORRO Y CREDI",
+			"hashCodeCalc": "false",
+			"sequenceQuestion": "24",
+			"sequenceAnswer": "4057792"
+		},
+		{
+			"textResponse": "SUFI",
+			"hashCodeCalc": "false",
+			"sequenceQuestion": "24",
+			"sequenceAnswer": "4057793"
+		}],
+		"questionPosition": "2",
+		"textQuestion": "¿Con cuál entidad usted tiene un crédito de vivienda?",
+		"hashCodeCalc": "false"
+	},
+	{
+		"sequenceQuestion": "16",
+		"answerList": [{
+			"textResponse": "MENOS DE 3 AÑOS",
+			"hashCodeCalc": "false",
+			"sequenceQuestion": "16",
+			"sequenceAnswer": "4057787"
+		},
+		{
+			"textResponse": "ENTRE 3 Y 10 AÑOS",
+			"hashCodeCalc": "false",
+			"sequenceQuestion": "16",
+			"sequenceAnswer": "4057788"
+		},
+		{
+			"textResponse": "No tengo tarjeta de crédito de esa marca con la entidad",
+			"hashCodeCalc": "false",
+			"sequenceQuestion": "16",
+			"sequenceAnswer": "4057786"
+		},
+		{
+			"textResponse": "MAS DE 10 AÑOS",
+			"hashCodeCalc": "false",
+			"sequenceQuestion": "16",
+			"sequenceAnswer": "4057789"
+		}],
+		"questionPosition": "3",
+		"textQuestion": "¿Hace cuánto tiempo usted tiene tarjeta de crédito MASTER CARD con BCSC?",
+		"hashCodeCalc": "false"
+	},
+	{
+		"sequenceQuestion": "97",
+		"answerList": [{
+			"textResponse": "MARZO",
+			"hashCodeCalc": "false",
+			"sequenceQuestion": "97",
+			"sequenceAnswer": "4057799"
+		},
+		{
+			"textResponse": "JULIO",
+			"hashCodeCalc": "false",
+			"sequenceQuestion": "97",
+			"sequenceAnswer": "4057798"
+		},
+		{
+			"textResponse": "OCTUBRE",
+			"hashCodeCalc": "false",
+			"sequenceQuestion": "97",
+			"sequenceAnswer": "4057801"
+		},
+		{
+			"textResponse": "SEPTIEMBRE",
+			"hashCodeCalc": "false",
+			"sequenceQuestion": "97",
+			"sequenceAnswer": "4057800"
+		}],
+		"questionPosition": "4",
+		"textQuestion": "¿Cual es el mes de su fecha de nacimiento?",
+		"hashCodeCalc": "false"
+	},
+	{
+		"sequenceQuestion": "77",
+		"answerList": [{
+			"textResponse": "CUENTA CORRIENTE Y TARJETA DE CREDITO",
+			"hashCodeCalc": "false",
+			"sequenceQuestion": "77",
+			"sequenceAnswer": "4057797"
+		},
+		{
+			"textResponse": "Ninguna de las anteriores",
+			"hashCodeCalc": "false",
+			"sequenceQuestion": "77",
+			"sequenceAnswer": "4057794"
+		},
+		{
+			"textResponse": "TARJETA DE CREDITO",
+			"hashCodeCalc": "false",
+			"sequenceQuestion": "77",
+			"sequenceAnswer": "4057796"
+		},
+		{
+			"textResponse": "CUENTA CORRIENTE",
+			"hashCodeCalc": "false",
+			"sequenceQuestion": "77",
+			"sequenceAnswer": "4057795"
+		}],
+		"questionPosition": "5",
+		"textQuestion": "¿Cuál o cuáles de los siguientes productos adquirió con BANCO DE BOGOTA en los últimos seis meses?",
+		"hashCodeCalc": "false"
+	}],
+	"codeQuestionnaire": "7060",
+	"keyCIFIN": "523791",
+	"responseProcess": {
+		"responseCode": "1",
+		"descriptionCode": "Cuestionario obtenido exitosamente",
+		"hashCodeCalc": "false"
+	},
+	"dataThird": {
+		"identificationNumber": "1083916584",
+		"codeIdentificationType": "1",
+		"fullName": "ARANDA MONTES JENYFER ALEJANDRA",
+		"statusIdentification": "VIGENTE",
+		"hashCodeCalc": "false"
+	},
+	"questionnaireSequence": "13597334",
+	"descriptionQuestionnaire": "CONFRONTA PRUEBAS TELMEX",
+	"hashCodeCalc": "false"
+}

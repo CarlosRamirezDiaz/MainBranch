@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.props" Condition="Exists('..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AFF7222E-B632-4013-AE8D-F7AF239F0492}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AmxPeruPSBTest</RootNamespace>
+    <AssemblyName>AmxPeruPSBTest</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AmxDynamicsActivities">
+      <HintPath>..\AmxCoDynamicsActivities\obj\Debug\AmxDynamicsActivities.dll</HintPath>
+    </Reference>
+    <Reference Include="AmxDynamicsServices">
+      <HintPath>..\AmxCoDynamicsServices\bin\AmxDynamicsServices.dll</HintPath>
+    </Reference>
+    <Reference Include="AmxPeruPSBActivities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AmxPeruPSBActivities\bin\Debug\AmxPeruPSBActivities.dll</HintPath>
+    </Reference>
+    <Reference Include="AmxPeruPSBWorkflows">
+      <HintPath>..\AmxPeruPSBWorkflows\bin\Debug\AmxPeruPSBWorkflows.dll</HintPath>
+    </Reference>
+    <Reference Include="Ericsson.ETELCRM.CrmCachingLibrary">
+      <HintPath>..\AmxPeruPSBWorkflows\bin\Debug\Ericsson.ETELCRM.CrmCachingLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Ericsson.PSB.Workflow.Client.Core">
+      <HintPath>..\CrmDLLs\Ericsson.PSB.Workflow.Client.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ExternalApiActivities">
+      <HintPath>..\CrmDLLs\ExternalApiActivities.dll</HintPath>
+    </Reference>
+    <Reference Include="ExternalApiWorkflows">
+      <HintPath>..\CrmDLLs\ExternalApiWorkflows.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Crm.Sdk.Proxy, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CrmDLLs\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CrmDLLs\Microsoft.IdentityModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MSTest.TestFramework.1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MSTest.TestFramework.1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Client, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CrmDLLs\Microsoft.Xrm.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk">
+      <HintPath>..\CrmDLLs\Microsoft.Xrm.Sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="StackExchange.Redis">
+      <HintPath>..\CrmDLLs\StackExchange.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AmxCoAddUpdateResourceCharTest.cs" />
+    <Compile Include="AmxCoClaroESBTest.cs" />
+    <Compile Include="AmxCOCTITest.cs" />
+    <Compile Include="AmxCoEocApiBiTest.cs" />
+    <Compile Include="AmxCoGetConfigurableItemsTest.cs" />
+    <Compile Include="AmxCoGetMobileCustomerInfoTest.cs" />
+    <Compile Include="AMXCOLOMBIA\BalanceHistoryReadTest.cs" />
+    <Compile Include="AMXCOLOMBIA\BICreditProfileTest.cs" />
+    <Compile Include="AMXCOLOMBIA\BSCSServicesTest.cs" />
+    <Compile Include="AMXCOLOMBIA\BillCycleChangeSubmitEOCTest.cs" />
+    <Compile Include="AMXCOLOMBIA\AmxCoBillCycleChangeTest.cs" />
+    <Compile Include="AMXCOLOMBIA\AmxCoUpdateOrderItemAppointmentTest.cs" />
+    <Compile Include="AMXCOLOMBIA\AmxCreateAppointmentLogTest.cs" />
+    <Compile Include="AMXCOLOMBIA\AmxDigiturnoTest.cs" />
+    <Compile Include="AMXCOLOMBIA\AmxGetAppointmentLogs.cs" />
+    <Compile Include="AMXCOLOMBIA\AmxGetCustomerBillingAccountsTest.cs" />
+    <Compile Include="AMXCOLOMBIA\ContractSearchTest.cs" />
+    <Compile Include="AMXCOLOMBIA\GetCapacityTest.cs" />
+    <Compile Include="AMXCOLOMBIA\AmxListOrderCaptureTest.cs" />
+    <Compile Include="AMXCOLOMBIA\AMXRetrieveCustomerAddressTest.cs" />
+    <Compile Include="AMXCOLOMBIA\AmxCerticamaraTest.cs" />
+    <Compile Include="AMXCOLOMBIA\AmxGetRequiredAppointmentsTest.cs" />
+    <Compile Include="AMXCOLOMBIA\BiHeaderTest.cs" />
+    <Compile Include="AMXCOLOMBIA\GenericCustomerTest.cs" />
+    <Compile Include="AmxCOProspectTest.cs" />
+    <Compile Include="AMXCOLOMBIA\AmxGetCustomerAddressTests.cs" />
+    <Compile Include="AmxGetCustomerInfoTest.cs" />
+    <Compile Include="AmxRetrieveOrderCaptureTest.cs" />
+    <Compile Include="AmxUpdateAppointmentStatusTest.cs" />
+    <Compile Include="AmxUpdateOrderItemTest.cs" />
+    <Compile Include="AmxOrderUpdateAddressTest.cs" />
+    <Compile Include="AmxPeruAddDeviceToShoppingCartTest.cs" />
+    <Compile Include="AmxPeruUpdateShoppingCartTest.cs" />
+    <Compile Include="AmxPeruGetOfferingPricesTest.cs" />
+    <Compile Include="BSSCustomerCreditScoreTest.cs" />
+    <Compile Include="CustomerAddressTest.cs" />
+    <Compile Include="GetAvailableOfferingConfigurationTest.cs" />
+    <Compile Include="CreateTaskAndBILOG.cs" />
+    <Compile Include="CustomerDetails.cs" />
+    <Compile Include="GetAvgBilling.cs" />
+    <Compile Include="GetdebtAccountStatus.cs" />
+    <Compile Include="GetDocumentTest.cs" />
+    <Compile Include="GetOrderBasketItem.cs" />
+    <Compile Include="GetProdCharacteristicsTest.cs" />
+    <Compile Include="CreateCaseTest.cs" />
+    <Compile Include="DontInsistTest.cs" />
+    <Compile Include="GetProductCatalogueTest.cs" />
+    <Compile Include="Helpers\TestHelper.cs" />
+    <Compile Include="OrderCaptureUnitTests.cs" />
+    <Compile Include="OrderCartServiceTest.cs" />
+    <Compile Include="ProductOfferingSyncTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GetSelectedDeviceAvailableResourcesTest.cs" />
+    <Compile Include="RedisCacheTest.cs" />
+    <Compile Include="ReserveReourceInERMSTest.cs" />
+    <Compile Include="AmxCoRetrieveFixedNumbersTest.cs" />
+    <Compile Include="RetrieveCfssListTest.cs" />
+    <Compile Include="RetrieveProductOfferingsTest.cs" />
+    <Compile Include="UnitTest1.cs" />
+    <Compile Include="AmxCoHttpCallTest.cs" />
+    <Compile Include="AmxOrderSubmitTests.cs" />
+    <Compile Include="AmxBiLogTest.cs" />
+    <Compile Include="FixedLineNumberTest.cs" />
+    <Compile Include="UpdateOrderItemBillingAccountBusinessTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ResponseSampleFiles\AmxCoEocApiBiTest_SampleFile.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResponseSampleFiles\EvidenteGetQuestionnaireResponseSample.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResponseSampleFiles\EvidenteGetQuestionnaireResponseWithErrorSample.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="webTest\TestGetProdCharacteristics.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AmxBSCSActivities\AmxSoapServicesActivities.csproj">
+      <Project>{ee5c5a19-2cd4-4e8c-9ca0-487b1c51ce2e}</Project>
+      <Name>AmxSoapServicesActivities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AmxBSCSWorkflows\AmxSoapServicesWorkflows.csproj">
+      <Project>{56d0e4b6-6bfe-4153-9387-60f63e33db07}</Project>
+      <Name>AmxSoapServicesWorkflows</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.props'))" />
+    <Error Condition="!Exists('..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.targets'))" />
+  </Target>
+  <Import Project="..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.targets" Condition="Exists('..\packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.targets')" />
+</Project>

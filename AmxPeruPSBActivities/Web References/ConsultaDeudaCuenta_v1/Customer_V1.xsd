@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:entagr="http://claro.com.pe/entity/EngagedParty/Agreement/V1/" xmlns:entcusaccbal="http://claro.com.pe/entity/Customer/CustomerAccountBalance/V1/" xmlns:entbastyp="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:entgeoadd="http://claro.com.pe/entity/CommonBusiness/GeographicAddress/V1/" xmlns:entpar="http://claro.com.pe/entity/EngagedParty/Party/V1/" xmlns:entaddparent="http://claro.com.pe/entity/EngagedParty/AdditionalPartyEntities/V1/" xmlns:entdun="http://claro.com.pe/entity/Customer/Dunning/V1/" xmlns:entcusbil="http://claro.com.pe/entity/Customer/CustomerBill/V1/" xmlns:entcus="http://claro.com.pe/entity/Customer/Customer/V1/" xmlns:entappcusbilrat="http://claro.com.pe/entity/Customer/AppliedCustomerBillingRate/V1/" targetNamespace="http://claro.com.pe/entity/Customer/Customer/V1/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xs:import schemaLocation="Dunning_V1.xsd" namespace="http://claro.com.pe/entity/Customer/Dunning/V1/" />
+  <xs:import schemaLocation="CustomerBill_V1.xsd" namespace="http://claro.com.pe/entity/Customer/CustomerBill/V1/" />
+  <xs:import schemaLocation="../EngagedParty/Agreement_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/Agreement/V1/" />
+  <xs:import schemaLocation="AppliedCustomerBillingRate_V1.xsd" namespace="http://claro.com.pe/entity/Customer/AppliedCustomerBillingRate/V1/" />
+  <xs:import schemaLocation="../EngagedParty/AdditionalPartyEntities_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/AdditionalPartyEntities/V1/" />
+  <xs:import schemaLocation="CustomerAccountBalance_V1.xsd" namespace="http://claro.com.pe/entity/Customer/CustomerAccountBalance/V1/" />
+  <xs:import schemaLocation="../EngagedParty/Party_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/Party/V1/" />
+  <xs:import schemaLocation="../CommonBusiness/GeographicAddress_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/GeographicAddress/V1/" />
+  <xs:complexType name="CustomerAccount">
+    <xs:annotation>
+      <xs:documentation>An arrangement that a customer has with an enterprise that provides products to the customer and collects AppliedCustomerBillingRate that are used to produce CustomerBill.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="_costumerAccountBalance" type="entcusaccbal:CustomerAccountBalance" />
+      <xs:element minOccurs="0" maxOccurs="1" name="_partyAccount" type="entaddparent:PartyAccount" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="_productFinancialAccountRelationship" type="entappcusbilrat:ProductFinancialAccountRelationship" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="_financialCharge" type="entappcusbilrat:FinancialCharge" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="_customerBillSpec" type="entcusbil:CustomerBillSpec" />
+      <xs:element minOccurs="0" maxOccurs="1" name="_dunningScenario" type="entdun:DunningScenario" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustomerSpec">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="birthDate" type="xs:date" />
+      <xs:element minOccurs="0" maxOccurs="1" name="cashCollector" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="category" type="entbastyp:AttributeValuePair" />
+      <xs:element minOccurs="0" maxOccurs="1" name="changeStatusReasonCode" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="companyNumber" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="conversionRateTypePayment" type="entbastyp:AttributeValuePair" />
+      <xs:element minOccurs="0" maxOccurs="1" name="conversionRateTypeRefund" type="entbastyp:AttributeValuePair" />
+      <xs:element minOccurs="0" maxOccurs="1" name="costCenter" type="entbastyp:AttributeValuePair" />
+      <xs:element minOccurs="0" maxOccurs="1" name="creditLimitAmount" type="entbastyp:Money" />
+      <xs:element minOccurs="0" maxOccurs="1" name="currency" type="entbastyp:AttributeValuePair" />
+      <xs:element minOccurs="0" maxOccurs="1" name="dealer" type="entbastyp:AttributeValuePair" />
+      <xs:element minOccurs="0" maxOccurs="1" name="depositAmount" type="entbastyp:Money" />
+      <xs:element minOccurs="0" maxOccurs="1" name="driversLicence" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="employee" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="employer" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="expectedPaymentCurrency" type="entbastyp:AttributeValuePair" />
+      <xs:element minOccurs="0" maxOccurs="1" name="externalCustomerid" type="entbastyp:AttributeValuePair" />
+      <xs:element minOccurs="0" maxOccurs="1" name="family" type="entbastyp:AttributeValuePair" />
+      <xs:element minOccurs="0" maxOccurs="1" name="fullName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="gender" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="isCreditCheckAgreed" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="isIndividualOverdiscDisabled" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="isPrepaymentRequired" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="jobDescription" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="language" type="entbastyp:AttributeValuePair" />
+      <xs:element minOccurs="0" maxOccurs="1" name="lastName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="level" type="entbastyp:AttributeValuePair" />
+      <xs:element minOccurs="0" maxOccurs="1" name="limitThreshold1" type="entbastyp:Threshold" />
+      <xs:element minOccurs="0" maxOccurs="1" name="limitThreshold2" type="entbastyp:Threshold" />
+      <xs:element minOccurs="0" maxOccurs="1" name="limitThreshold3" type="entbastyp:Threshold" />
+      <xs:element minOccurs="0" maxOccurs="1" name="maritalStatus" type="entbastyp:AttributeValuePair" />
+      <xs:element minOccurs="0" maxOccurs="1" name="maxCarryOverLenght" type="xs:long" />
+      <xs:element minOccurs="0" maxOccurs="1" name="maxCarryOverPeriodType" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="middleName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="nacionality" type="entgeoadd:Country" />
+      <xs:element minOccurs="0" maxOccurs="1" name="name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="newCsIdPub" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="parentLevel" type="entbastyp:AttributeValuePair" />
+      <xs:element minOccurs="0" maxOccurs="1" name="password" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="paymentResponsability" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="priceGroup" type="entbastyp:AttributeValuePair" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ratePlan" type="entbastyp:AttributeValuePair" />
+      <xs:element minOccurs="0" maxOccurs="1" name="refundCurrency" type="entbastyp:AttributeValuePair" />
+      <xs:element minOccurs="0" maxOccurs="1" name="remark1" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="remark2" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="roles" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="sequence" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="socialSecurityNumber" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="subscriptionReduction" type="entbastyp:AttributeValuePair" />
+      <xs:element minOccurs="0" maxOccurs="1" name="taxNumber" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="thresholdActionType" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="thresholdAmont" type="entbastyp:Money" />
+      <xs:element minOccurs="0" maxOccurs="1" name="thresholdLimitAmount" type="entbastyp:Money" />
+      <xs:element minOccurs="0" maxOccurs="1" name="thresholdMode" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="thresholdPurpuse" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="title" type="entbastyp:AttributeValuePair" />
+      <xs:element minOccurs="0" maxOccurs="1" name="tradeCode" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="useLastBillDate" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="welcomeProcedure" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="_customerContactSpec" type="entcus:CustomerContactSpec" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="_agreement" type="entagr:Agreement" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="_geographicAddress" type="entgeoadd:GeographicAddress" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustomerContactSpec">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="email" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="faxArea" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="faxNumber" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="id" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="phoneNumber1" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="phoneNumber2" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="phoneNumberArea1" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="phoneNumberArea2" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="smsNumber" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Customer">
+    <xs:annotation>
+      <xs:documentation>A person or organization that buys products and services from the enterprise or receives free offers or services. This is modeled as a Party playing the role of Customer. A Customer is a type of PartyRole. Customers can also be other service providers who resell the enterprises products, other service providers that lease the enterprise's resources for utilization by the other service provider's products and services, and so forth.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="reference" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="customerstatus" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The current condition of a customer, such as unknown, 	active, 	inactive, terminated, 	pending, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="id" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A unique identifier that enables different instances of a Customer to be distinguished from each other. This is a required attribute.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="validFor" type="entbastyp:TimePeriod" />
+      <xs:element minOccurs="0" maxOccurs="1" name="_partyRole" type="entpar:PartyRole" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="_customerAccount" type="entcus:CustomerAccount" />
+      <xs:element minOccurs="0" maxOccurs="1" name="_customerSpec" type="entcus:CustomerSpec" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustomerCreditProfile">
+    <xs:annotation>
+      <xs:documentation>An outline of a Customer's credit worthiness.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ID" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A unique identifier that enables different instances of a CustomerCreditProfile to be distinguished from each other.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="creditProfileDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>The date the profile was established.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="validFor" type="entbastyp:TimePeriod">
+        <xs:annotation>
+          <xs:documentation>The period for which the profile is valid.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="creditRiskRating" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>This is an integer whose value is used to rate the risk of this Customer paying late or defaulting versus paying on time.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="creditScore" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>A measure of a person’s or organization’s creditworthiness calculated on the basis of a combination of factors such as their income and credit history.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="_custCreditProfileReference" type="entcus:CustCreditProfileReference" />
+      <xs:element name="_customer" type="entcus:Customer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustCreditProfileReference">
+    <xs:annotation>
+      <xs:documentation>A source of information that helps define a Customer's credit worthiness.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="financialInstitutionName" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The name of the financial institution that holds the referenced account.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="financialInstitutionAccoutNumber" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The financial institution account number that identifies the customer account at the financial institution.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="financialInstitutionAccountType" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The type of financial institution account.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="_customerCreditProfile" type="entcus:CustomerCreditProfile" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="partyRole" type="entpar:PartyRole" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="partyRole2" type="entpar:PartyRole" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

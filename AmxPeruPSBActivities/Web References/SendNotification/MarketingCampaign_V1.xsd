@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd_2="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:xsd_3="http://claro.com.pe/entity/MarketSales/Media/V1/" xmlns:xsd_11="http://claro.com.pe/entity/Product/ProductCatalog/V1/" xmlns:xsd_1="http://claro.com.pe/entity/MarketSales/MarketingCampaign/V1/" xmlns:xsd_7="http://claro.com.pe/entity/EngagedParty/Party/V1/" xmlns:xsd_4="http://claro.com.pe/entity/MarketSales/MarketSegment/V1/" xmlns:xsd_5="http://claro.com.pe/entity/MarketSales/SalesChannel/V1/" targetNamespace="http://claro.com.pe/entity/MarketSales/MarketingCampaign/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="../Product/ProductCatalog_V1.xsd" namespace="http://claro.com.pe/entity/Product/ProductCatalog/V1/" />
+  <xsd:import schemaLocation="../EngagedParty/Party_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/Party/V1/" />
+  <xsd:import schemaLocation="SalesChannel_V1.xsd" namespace="http://claro.com.pe/entity/MarketSales/SalesChannel/V1/" />
+  <xsd:import schemaLocation="MarketSegment_V1.xsd" namespace="http://claro.com.pe/entity/MarketSales/MarketSegment/V1/" />
+  <xsd:import schemaLocation="Media_V1.xsd" namespace="http://claro.com.pe/entity/MarketSales/Media/V1/" />
+  <xsd:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:complexType name="MarketingCampaign">
+    <xsd:annotation>
+      <xsd:documentation>A depiction of how the launch or re-launch of a ProductOffering is or will be undertaken.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A unique identifier for the MarketingCampaign.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A word, term, or phrase by which a MarketingCampaign is known and distinguished from other MarketingCampaigns.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="description" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A narrative that explains what the MarketingCampaign is.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="mcType" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A categorization of a MarketingCampaign, such as new or re-launch.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_2:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period during which the MarketingCampaign is applicable.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_media" type="xsd_3:Media" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_marketingCampaignCharacteristic" type="xsd_1:MarketingCampaignCharacteristic" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_marketingCampaignCharacteristicValue" type="xsd_1:MarketingCampaignCharacteristicValue" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_marketSegment" type="xsd_4:MarketSegment" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_salesChannel" type="xsd_5:SalesChannel" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MarketingCampaignCharacteristic" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>A characteristic quality or distinctive feature of a MarketingCampaign. The characteristic can be take on a discrete value, such as number of press releases, can take on a range of values, (for example, number of prospects reached 50,000 - 100,000), or can be derived from a formula (for example, number of brokerage house pickups = sum of all brokerage house instance characteristics).</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A unique identifier for the MarketingCampaignCharacteristic.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A word, term, or phrase by which the characteristic is known and distinguished from characteristics.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="description" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A narrative that explains what the characteristic is.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="valueType" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A kind of value that the characteristic can take on, such as numeric, text, and so forth.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="minCardinality" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>The minimum number of instances a CharacteristicValue can take on. For example, zero to five phone numbers in a group calling plan, where zero is the value for the minCardinality.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="maxCardinality" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>The maximum number of instances a CharacteristicValue can take on. For example, zero to five phone numbers in a group calling plan, where five is the value for the maxCardinality.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="derivationFormula" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A rule or principle represented in symbols, numbers, or letters, often in the form of an equation used to derive the value of a characteristic value.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_2:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period of time for which a characteristic is applicable.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_marketingCampaign" type="xsd_1:MarketingCampaign" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_compositeMarketingCampaignCharacteristic" type="xsd_1:CompositeMarketingCampaignCharacteristic" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_marketingCampaignCharacteristicValue" type="xsd_1:MarketingCampaignCharacteristicValue" />
+      <xsd:element name="unique" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>An indicator that specifies if a value is unique for the specification.
+
+Possible values are; "unique while value is in effect" and "unique whether value is in effect or not"
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="extensible" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>An indicator that specifies that the values for the characteristic can be extended by adding new values when instantiating a characteristic for an Entity.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MarketingCampaignCharacteristicValue">
+    <xsd:annotation>
+      <xsd:documentation>A number or text that can be assigned to a MarketingCampaignCharacteristic.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="valueType" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A kind of value that the characteristic can take on, such as numeric, text, and so forth.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_default" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>Indicates if the value is the default value for a characteristic.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="value" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A discrete value that the characteristic can take on.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="unitOfMeasure" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A length, surface, volume, dry measure, liquid measure, money, weight, time, and the like. Iin general, a determinate quantity or magnitude of the kind designated, taken as a standard of comparison for others of the same kind, in assigning to them numerical values, as 1 foot, 1 yard, 1 mile, 1 square foot.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="fromValue" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The low range value that a characteristic can take on.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="toValue" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The upper range value that a characteristic can take on.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="rangeInterval" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>An indicator that specifies the inclusion or exclusion of the valueFrom and valueTo attributes.
+
+Possible values are "open", "closed", "closedBottom" and "closedTop".
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_2:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period of time for which a value is applicable.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_marketingCampaign" type="xsd_1:MarketingCampaign" />
+      <xsd:element name="_marketingCampaignCharacteristic" type="xsd_1:MarketingCampaignCharacteristic" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CompositeMarketingCampaignCharacteristic">
+    <xsd:annotation>
+      <xsd:documentation>A type of MarketingCampaignCharacteristic that is formed by aggregating other MarketingCampaignCharacteristic, which may be Composite or Atomic MarketingCampaignCharacteristic.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:MarketingCampaignCharacteristic">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="_marketingCampaignCharacteristic" type="xsd_1:MarketingCampaignCharacteristic" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="AtomicMarketingCampaignCharacteristic">
+    <xsd:annotation>
+      <xsd:documentation>A type of MarketingCampaignCharacteristic that does not have any subordinate MarketingCampaignCharacteristics, that is, an AtomicMarketingCampaignCharacteristic is a leaf-level MarketingCampaignCharacteristic.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:MarketingCampaignCharacteristic" />
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

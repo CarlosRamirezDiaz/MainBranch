@@ -1,0 +1,75 @@
+﻿<div ng-controller="changeResumeDateController" rtl-dir="{{direct}}">
+    <div class="column">
+        <div class="formContent" id="newSubsStage1-formContent" >
+            <div id="newSubsStage1-deviceSelectionSection" ng-class="{'formSection newlineSection':!isRTL,'rtlformSection newlineSection':isRTL}">
+                
+                <table class="formSectionTable">
+                    <colgroup>
+                        <col style="width: 115px;">
+                        <col>
+                    </colgroup>
+                    <tbody>
+                        <tr class="formField">
+                            <td>
+                                <div title="Start date" class="formFieldLabel">
+                                    <span>Start date:</span>
+                                    <div class="inlineGradientMask"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="formFieldValue">
+                                    <input type="date" id="dtSartDate"  ng-model="dtSartDate"  />  
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="formField formFieldTextArea">
+                            <td>
+                                <div title="End date" class="formFieldLabel">
+                                    <span>End date:</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="formFieldValue">
+                                    <input type="date" id="dtEndDate" ng-model="dtEndDate" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="formField formFieldTextArea">
+                            <td>
+                                <div title="Remaining days" class="formFieldLabel">
+                                    <span>Remaining days:</span>
+                                </div>
+                            </td>
+                            <td>
+                                <input type="text" id="txtRemDays" ng-model="remainingDays" />
+                            </td>
+                        </tr>
+                        <tr class="formField formFieldTextArea">
+                            <td>
+                                <div title="New Resume date" class="formFieldLabel">
+                                    <span>New Resume date:</span>
+                                </div>
+                            </td>
+                            <td>
+                                <input type="date" id="dtNewResumeDate" ng-model="newResumeDate" />
+                            </td>
+                        </tr>
+                        <tr class="formField formFieldTextArea">
+                            <td>
+                                <div class="floatRightButtonGroup" id="btnChkData">
+                                    <button class="formButton" ng-click="checkData()">Check data</button>
+                                </div>  
+                            </td>
+                            <td>
+                               
+                            </td>
+                        </tr>
+                       
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+    </div>

@@ -1,0 +1,2 @@
+AmxPeruGetCustomerAddress.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

@@ -1,0 +1,2 @@
+GetConsultationAccountStatus.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

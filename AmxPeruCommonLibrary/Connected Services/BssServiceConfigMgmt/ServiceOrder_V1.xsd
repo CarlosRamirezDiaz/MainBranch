@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd_2="http://claro.com.pe/entity/CommonBusiness/BusinessInteraction/V1/" xmlns:xsd_1="http://claro.com.pe/entity/Service/ServiceOrder/V1/" targetNamespace="http://claro.com.pe/entity/Service/ServiceOrder/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="../CommonBusiness/BusinessInteraction_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BusinessInteraction/V1/" />
+  <xsd:complexType name="ServiceOrder">
+    <xsd:annotation>
+      <xsd:documentation>A type of Request that represents a Customer Order's products decomposed into the services through which the products are realized.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_2:Request">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceOrderItem" type="xsd_1:ServiceOrderItem" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceOrderItem">
+    <xsd:annotation>
+      <xsd:documentation>The purpose for the ServiceOrder expressed in terms of a ServiceSpecification or a Service.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_2:BusinessInteractionItem">
+        <xsd:sequence>
+          <xsd:element name="_serviceOrder" type="xsd_1:ServiceOrder" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

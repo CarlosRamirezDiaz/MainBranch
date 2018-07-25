@@ -1,0 +1,2 @@
+AMXRetrieveCustomerAddress.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

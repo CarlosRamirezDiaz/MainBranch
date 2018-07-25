@@ -1,0 +1,132 @@
+﻿<html>
+<head>
+    <script src="../../ClientGlobalContext.js.aspx" type="text/javascript"></script>
+    <script src="../../etel_/common/scripts/angular.min.js" type="text/javascript"></script>
+    <script src="../../etel_/common/scripts/jquery.min.js" type="text/javascript"></script>
+    <script src="../../amx_/AppointmentCancelationreasons/html/AppointmentCancelationreasonsController.js"></script>
+    <script src="../../etel_jscripttranslationhandler.js" type="text/javascript"></script>
+    <script src="../../etel_htmltranslate.js" type="text/javascript"></script>
+    <script src="../../amx_common.js" type="text/javascript"></script>
+
+
+    <style>
+        h1 {
+            background-color: white;
+            text-align: center;
+        }
+
+        .button {
+            height: 6%;
+            background-color: #1e96ae;
+            border: 1px solid;
+            border-radius: 8px;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 2px 2px;
+            cursor: pointer; 
+        }
+        .button span {
+            line-height: 40%;
+            font-size: 13px;
+        }
+        .button1 {
+            background-color: #f44336;
+        }
+        #btn_cancel {
+            background-color: white;
+            color: #1e96ae;
+            border: 1px solid #1e96ae;
+        }
+        
+    </style>
+
+
+  
+
+    <meta charset="utf-8">
+</head>
+<body ng-app="AccountSummaryTabbedViewApp">
+    <div class="main-container" dir="{{direct}}" ng-controller="AppointmentCancelationreasonsController">
+
+        <script>
+            debugger;
+            document.onreadystatechange = function () {
+                if (document.readyState == "complete") {
+                    getData();
+                    setTranslation(Translation_CancelAppointmentReasons.GetData());
+                }
+            }
+            function getData() {
+                var vals = new Array();
+                var messages = new Array();
+                if (location.search != "") {
+
+                    vals = location.search.substr(1).split("=");
+                    for (var i in vals) {
+                        if (vals[0].toLowerCase() == "data") {
+
+                            var title = decodeURIComponent(vals[1]).split("&");
+                            messages = decodeURIComponent(title[0]).split(",");
+
+                            var etel_name = messages[2];
+                            var etel_appointmentdate = messages[3];
+                            $("#messageDiv").text("You are about to cancel the scheduled visit for the day " + etel_appointmentdate + " of order " + etel_name + ".Then select the reasons for cancelation.");
+                        }
+                    }
+                }
+            }
+
+        </script>
+
+        <h1><span class="tAlert" data-translate="tAlert"> Alert</span></h1>
+        <p><div id="messageDiv"><span class="tMessage" data-translate="tMessage"></span></div><p></p>
+        
+
+
+        <div style="text-align: center;">
+            <select name="mydropdown" id="dropdown">
+                <option value="C02" class="tSubscribersrequest" data-translate="tSubscribersrequest">Subscriber's request</option>
+                <option value="C04" class="tLackofManagementPermits" data-translate="tLackofManagementPermits">Lack of Management Permits</option>
+                <option value="C05" class="tMassiveIncidentStillOpen" data-translate="tMassiveIncidentStillOpen">Massive Incident Still Open</option>
+                <option value="C06" class="tLackofMaterialsEquipment" data-translate="tLackofMaterialsEquipment">Lack of Materials / Equipment</option>
+                <option value="C03" class="tTechnicalbreach" data-translate="tTechnicalbreach">Technical breach</option>
+            </select>
+
+        </div>
+        <!--<label class="tComments" data-translate="tComments">Comments</label><br>-->
+        <label><span class="tComments" data-translate="tComments">Comments</span></label>
+
+        <!--<div style="margin: 0px 0px 15px 20px; color: rgb(102, 102, 102); font-size: 21px;"><span class="tComments" style="font-size: 21px;" data-translate="tComments">Comments</span></div>-->
+        <div align="center">
+
+            <textarea name="textarea" id="output" style="width: 648px;" rows="3"></textarea>
+        </div>
+        <br>
+        <div style="text-align: center;">
+
+            <!--<button name="Submit" class="button" ng-click="cancelAppointment()">Accept</button>
+    <button name="Cancel" class="button">Cancel</button>-->
+            <button name="Cancel" class="button" id="btn_cancel"><span class="tCancel" data-translate="tCancel">Cancel</span></button>
+            <button name="Submit" class="button" ng-click="cancelAppointment()"><span class="tAccept" data-translate="tAccept">Accept</span></button>
+
+
+        </div>
+        <script>
+                    //function Cancel() {
+            //    alert("Appointment Canceled Successfully.");
+            //    document.getElementById("output").value = "";
+            //}
+        </script>
+
+    </div>
+
+
+
+
+
+</body>
+</html>

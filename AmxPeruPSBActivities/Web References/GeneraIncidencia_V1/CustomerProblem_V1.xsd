@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd_2="http://claro.com.pe/entity/CommonBusiness/BusinessInteraction/V1/" xmlns:xsd_1="http://claro.com.pe/entity/Customer/CustomerProblem/V1/" targetNamespace="http://claro.com.pe/entity/Customer/CustomerProblem/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="../CommonBusiness/BusinessInteraction_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BusinessInteraction/V1/" />
+  <xsd:annotation>
+    <xsd:documentation>The Customer Problem ABE focuses on technical assistance and problem handling for customers.
+</xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="CustomerProblem">
+    <xsd:annotation>
+      <xsd:documentation>Represents a problem which affects the Customer experience. CustomerProblem can be raised by the Customer (a complaint) or by the CSP (typically through some analytics system)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_2:BusinessInteraction">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="customerProblemDescription" type="xsd_1:KnownProblemDescription" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="closeCustomerProblemSummary" type="xsd_1:CloseCustomerProblemSummary" />
+          <xsd:element minOccurs="0" name="customerProblemWorkaround" type="xsd_1:CustomerProblemWorkaround" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="customerProblemTask" type="xsd_1:CustomerProblemTask" />
+          <xsd:element name="severity" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>The severity of the CustomerProblem (in the eyes of the CSP).</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="KnownProblemDescription">
+    <xsd:annotation>
+      <xsd:documentation>A description of a known problem, optionally with some known workarounds. It may be shared by multiple CustomerProblems.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="customerProblem" type="xsd_1:CustomerProblem" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="customerProblemWorkaround" type="xsd_1:CustomerProblemWorkaround" />
+      <xsd:element name="name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Short readable name for the known problem</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="description" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A text explaining the problem and its possible sources</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CloseCustomerProblemSummary">
+    <xsd:annotation>
+      <xsd:documentation>Records the closure activity of a CustomerProblem. There may be more than one CloseCustomerProblemSummary per CustomerProblem because CustomerProblems can be reopened, or a temporary solution may be replaced by a permanent one.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="customerProblem" type="xsd_1:CustomerProblem" />
+      <xsd:element name="closeDate" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>The date in which the CustomerProblem was closed</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A unique identifier that enables different instances of a CloseCustomerProblemSummary to be distinguished from each other.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="summary" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A textual description of the solution applied to the CustomerProblem</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CustomerProblemWorkaround">
+    <xsd:annotation>
+      <xsd:documentation>A resolution (sometimes temporary) for a KnownProblemDescription. </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="commonProblemDescription" type="xsd_1:KnownProblemDescription" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="customerProblem" type="xsd_1:CustomerProblem" />
+      <xsd:element name="name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Short readable name for the workaround</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="description" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A text explaining the workaround for the known problem. </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CustomerProblemTask">
+    <xsd:annotation>
+      <xsd:documentation>A trackable task delegated from the CustomerProblem with a specified due date</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="customerProblem" type="xsd_1:CustomerProblem" />
+      <xsd:element name="creationDate" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>The date and time in which the CustomerProblemTask was created</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="dueDate" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>The date and time in which the CustomerProblemTask should be completed</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="status" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The current status of the task. Possible values (among others) are Waiting, In Process, Completed, Failed, Rejected </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A unique identifier that enables different instances of a CustomerProblemTask to be distinguished from each other.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

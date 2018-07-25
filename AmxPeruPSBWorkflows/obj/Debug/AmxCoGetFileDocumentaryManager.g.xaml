@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<a:AmxCoGetFileDocumentaryManager xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:a="clr-namespace:AmxPeruPSBWorkflows;assembly=AmxPeruPSBWorkflows" xmlns:sap="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation" xmlns:sapv="clr-namespace:System.Activities.Presentation.View;assembly=System.Activities.Presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <a:AmxCoGetFileDocumentaryManager.Content>
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="3*" />
+        <ColumnDefinition Width="106*" />
+        <ColumnDefinition Width="77*" />
+      </Grid.ColumnDefinitions>
+    </Grid>
+  </a:AmxCoGetFileDocumentaryManager.Content>
+</a:AmxCoGetFileDocumentaryManager>

@@ -1,0 +1,257 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="AmxPeruPSBWorkflows.AmxCoAppointmentCancel"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:aamc="clr-namespace:AmxPeruPSBActivities.AMXCOLOMBIA.Model.CancelAppointment;assembly=AmxPeruPSBActivities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:ec="clr-namespace:ExternalApiActivities.Common;assembly=ExternalApiActivities"
+ xmlns:epwa="clr-namespace:Ericsson.PSB.Workflow.Activities;assembly=Ericsson.PSB.Workflow.Activities"
+ xmlns:epwa1="clr-namespace:Ericsson.PSB.Workflow.Activities;assembly=AmxPeruPSBActivities"
+ xmlns:epwccs="clr-namespace:Ericsson.PSB.Workflow.Client.Core.Serializer;assembly=Ericsson.PSB.Workflow.Client.Core"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="cancelAppntRequest" Type="InArgument(aamc:AmxCancelAppointmentOSBRequest)" />
+    <x:Property Name="cancelAppntResponse" Type="OutArgument(aamc:AmxCancelAppointmentOSBResponce)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap2010:WorkflowViewState.IdRef>AmxPeruPSBWorkflows.AmxCoAppointmentCancel_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>AmxPeruPSBActivities.AMXCOLOMBIA.Model.CancelAppointment</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Ericsson.ETELCRM.CrmCachingLibrary</AssemblyReference>
+      <AssemblyReference>Ericsson.ETELCRM.CrmFoundationLibrary</AssemblyReference>
+      <AssemblyReference>Ericsson.ETELCRM.Entities.Crm</AssemblyReference>
+      <AssemblyReference>Ericsson.PSB.Workflow.Activities</AssemblyReference>
+      <AssemblyReference>Ericsson.PSB.Workflow.Client.Core</AssemblyReference>
+      <AssemblyReference>ExternalApiActivities</AssemblyReference>
+      <AssemblyReference>ExternalApiWorkflows</AssemblyReference>
+      <AssemblyReference>Microsoft.Crm.Sdk.Proxy</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Compatibility</AssemblyReference>
+      <AssemblyReference>Microsoft.Xrm.Client</AssemblyReference>
+      <AssemblyReference>Microsoft.Xrm.Sdk</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Activities.Core.Presentation</AssemblyReference>
+      <AssemblyReference>System.Activities.Presentation</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data.Linq</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Net.Http</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>AmxPeruPSBActivities</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>AmxPeruPSBWorkflows</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_2">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="x:String" Name="connectionString" />
+    </Flowchart.Variables>
+    <Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+        <epwa:ConfigurationActivity sap2010:WorkflowViewState.IdRef="ConfigurationActivity_1" Key="connectionString">
+          <epwa:ConfigurationActivity.Value>
+            <OutArgument x:TypeArguments="x:String">
+              <mca:CSharpReference x:TypeArguments="x:String">connectionString</mca:CSharpReference>
+            </OutArgument>
+          </epwa:ConfigurationActivity.Value>
+        </epwa:ConfigurationActivity>
+        <FlowStep.Next>
+          <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+            <ec:XrmAwareCompositeActivity sap2010:WorkflowViewState.IdRef="XrmAwareCompositeActivity_1" IsGlobalContext="False" UseServiceUser="False">
+              <ec:XrmAwareCompositeActivity.Activities>
+                <Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_1">
+                  <Flowchart.Variables>
+                    <Variable x:TypeArguments="x:String" Name="cancelAppEndpoint" />
+                  </Flowchart.Variables>
+                  <Flowchart.StartNode>
+                    <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+                      <ec:RetrieveCrmConfigurationByName ConfigurationName="ClaroESB_CancelAppointment_URL" sap2010:WorkflowViewState.IdRef="RetrieveCrmConfigurationByName_1">
+                        <ec:RetrieveCrmConfigurationByName.ConfigurationValue>
+                          <OutArgument x:TypeArguments="x:String">
+                            <mca:CSharpReference x:TypeArguments="x:String">cancelAppEndpoint</mca:CSharpReference>
+                          </OutArgument>
+                        </ec:RetrieveCrmConfigurationByName.ConfigurationValue>
+                      </ec:RetrieveCrmConfigurationByName>
+                      <FlowStep.Next>
+                        <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+                          <TryCatch sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                            <TryCatch.Try>
+                              <epwa1:AmxHttpCall x:TypeArguments="aamc:AmxCancelAppointmentOSBRequest, aamc:AmxCancelAppointmentOSBResponce" Headers="{x:Null}" sap2010:WorkflowViewState.IdRef="AmxHttpCall`2_3" Method="PUT" TimeoutTicks="100000000">
+                                <epwa1:AmxHttpCall.JsonSerializerSetting>
+                                  <InArgument x:TypeArguments="epwccs:JsonSettings">
+                                    <mca:CSharpValue x:TypeArguments="epwccs:JsonSettings">Ericsson.PSB.Workflow.Client.Core.Serializer.JsonSettings.Custom</mca:CSharpValue>
+                                  </InArgument>
+                                </epwa1:AmxHttpCall.JsonSerializerSetting>
+                                <epwa1:AmxHttpCall.RequestParameter>
+                                  <InArgument x:TypeArguments="aamc:AmxCancelAppointmentOSBRequest">
+                                    <mca:CSharpValue x:TypeArguments="aamc:AmxCancelAppointmentOSBRequest">cancelAppntRequest</mca:CSharpValue>
+                                  </InArgument>
+                                </epwa1:AmxHttpCall.RequestParameter>
+                                <epwa1:AmxHttpCall.Result>
+                                  <OutArgument x:TypeArguments="aamc:AmxCancelAppointmentOSBResponce">
+                                    <mca:CSharpReference x:TypeArguments="aamc:AmxCancelAppointmentOSBResponce">cancelAppntResponse</mca:CSharpReference>
+                                  </OutArgument>
+                                </epwa1:AmxHttpCall.Result>
+                                <epwa1:AmxHttpCall.Uri>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <mca:CSharpValue x:TypeArguments="x:String">cancelAppEndpoint</mca:CSharpValue>
+                                  </InArgument>
+                                </epwa1:AmxHttpCall.Uri>
+                              </epwa1:AmxHttpCall>
+                            </TryCatch.Try>
+                            <TryCatch.Catches>
+                              <Catch x:TypeArguments="s:ArgumentException" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                                <ActivityAction x:TypeArguments="s:ArgumentException">
+                                  <ActivityAction.Argument>
+                                    <DelegateInArgument x:TypeArguments="s:ArgumentException" Name="exception" />
+                                  </ActivityAction.Argument>
+                                </ActivityAction>
+                              </Catch>
+                            </TryCatch.Catches>
+                          </TryCatch>
+                        </FlowStep>
+                      </FlowStep.Next>
+                    </FlowStep>
+                  </Flowchart.StartNode>
+                  <x:Reference>__ReferenceID0</x:Reference>
+                  <x:Reference>__ReferenceID1</x:Reference>
+                </Flowchart>
+              </ec:XrmAwareCompositeActivity.Activities>
+              <ec:XrmAwareCompositeActivity.ConnectionString>
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String">connectionString</mca:CSharpValue>
+                </InArgument>
+              </ec:XrmAwareCompositeActivity.ConnectionString>
+            </ec:XrmAwareCompositeActivity>
+          </FlowStep>
+        </FlowStep.Next>
+      </FlowStep>
+    </Flowchart.StartNode>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <x:Reference>__ReferenceID3</x:Reference>
+    <sads:DebugSymbol.Symbol>d3hDOlxBTVhDT0xURlNcQU1YIE9ORSBDb2x1bWJpYSBGdWxsIFN0YWNrXFNwcmludCAxXEFteE9uZVBlcnVcQU1YUGVydVRDUk1cQW14UGVydVBTQldvcmtmbG93c1xBbXhDb0FwcG9pbnRtZW50Q2FuY2VsLnhhbWwUSAOgAQ8CAQFOCVQmAgEpVw2YASwCAQJRD1FlAgErTmNOdQIBKpUBE5UBYQIBBVd5V4ABAgEEV5ABV5cBAgEDWRGRAR0CAQlfF2U7AgEiaBuKASYCAQpfTF9sAgEoYh1idAIBI2offzMCAQtyJXKQAQIBHW0lba4BAgEYdyV3mgECARNq7QFq+AECARJ8JXx0AgENatoBat8BAgEM</sads:DebugSymbol.Symbol>
+  </Flowchart>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="ConfigurationActivity_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RetrieveCrmConfigurationByName_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="AmxHttpCall`2_3" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Catch`1_1" sap:VirtualizedContainerService.HintSize="404,21">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TryCatch_1" sap:VirtualizedContainerService.HintSize="418,287">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">220,244.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">220,149</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">320,171 320,244.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="614,636">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,107.5 320,107.5 320,149</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="XrmAwareCompositeActivity_1" sap:VirtualizedContainerService.HintSize="222,175">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">210,254.02</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">210,149</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">310,171 310,254.02</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_2" sap:VirtualizedContainerService.HintSize="614,636">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,107.5 310,107.5 310,149</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="AmxPeruPSBWorkflows.AmxCoAppointmentCancel_1" sap:VirtualizedContainerService.HintSize="654,716" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

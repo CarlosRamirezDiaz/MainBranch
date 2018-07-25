@@ -1,0 +1,2 @@
+GetDocument.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

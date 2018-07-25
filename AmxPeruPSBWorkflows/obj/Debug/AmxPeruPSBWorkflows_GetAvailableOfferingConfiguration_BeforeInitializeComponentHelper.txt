@@ -1,0 +1,2 @@
+GetAvailableOfferingConfiguration.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

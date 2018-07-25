@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:entmktcam="http://claro.com.pe/entity/MarketSales/MarketingCampaign/V1/" xmlns="http://claro.com.pe/entity/MarketSales/MarketingCampaignExtension/V1/" targetNamespace="http://claro.com.pe/entity/MarketSales/MarketingCampaignExtension/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="MarketingCampaign_V1.xsd" namespace="http://claro.com.pe/entity/MarketSales/MarketingCampaign/V1/" />
+  <xsd:complexType name="MarketingCampaignExtension">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="entmktcam:MarketingCampaign">
+        <xsd:sequence>
+          <xsd:element name="_campaignMessage" type="xsd:string" />
+          <xsd:element name="_campaignUserCreator" type="xsd:string" />
+          <xsd:element name="_centralName" type="xsd:string" />
+          <xsd:element name="_channelCampaign" type="xsd:string" />
+          <xsd:element name="_statusCampaign" type="xsd:string" />
+          <xsd:element name="_userCampaing" type="xsd:string" />
+          <xsd:element name="_dispatchID" type="xsd:string" />
+          <xsd:element name="_subjectMail" type="xsd:string" />
+          <xsd:element name="_bodyMail" type="xsd:string" />
+          <xsd:element name="_mailSender" type="xsd:string" />
+          <xsd:element name="_mailRecipient" type="xsd:string" />
+          <xsd:element name="_campaignFlow" type="xsd:string" />
+          <xsd:element name="_offerCode" type="xsd:string" />
+          <xsd:element name="_nameFile" type="xsd:string" />
+          <xsd:element name="_shippinDate" type="xsd:date" />
+          <xsd:element name="_deliveryTime" type="xsd:string" />
+          <xsd:element name="_claroPoints" type="xsd:string" />
+          <xsd:element name="_specialDate" type="xsd:string" />
+          <xsd:element name="_hobbie" type="xsd:string" />
+          <xsd:element name="_shareRRSS" type="xsd:string" />
+          <xsd:element name="_participationDraw" type="xsd:string" />
+          <xsd:element name="_clickToCall" type="xsd:string" />
+          <xsd:element name="_RedeemClaroPoints" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

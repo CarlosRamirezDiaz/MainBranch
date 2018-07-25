@@ -1,0 +1,1565 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WL5G3N0:definitions xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:WL5G3N1="http://services.pim.avaya.com/AgentAPI/" name="AgentAPI" targetNamespace="http://services.pim.avaya.com/AgentAPI/" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/">
+  <WL5G3N0:types>
+    <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://services.pim.avaya.com/AgentAPI/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://services.pim.avaya.com/AgentAPI/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:element name="GetContactData">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ContactID" type="xsd:string" />
+            <xsd:element name="ContactGroupName" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetContactDataResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Contact" type="tns:ContactType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ContactType">
+        <xsd:sequence>
+          <xsd:element name="ContactId" type="xsd:string" />
+          <xsd:element name="ContactGroupName" type="xsd:string" />
+          <xsd:element minOccurs="0" name="PhoneNumber1" type="xsd:string" />
+          <xsd:element minOccurs="0" name="PhoneNumber2" type="xsd:string" />
+          <xsd:element minOccurs="0" name="FirstName" type="xsd:string" />
+          <xsd:element minOccurs="0" name="LastName" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Email" type="xsd:string" />
+          <xsd:element minOccurs="0" name="LastModifiedOn" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="LastModifiedBy" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Language" type="xsd:string" />
+          <xsd:element minOccurs="0" name="TimeZone" type="xsd:string" />
+          <xsd:element minOccurs="0" name="LastAttemptTime" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="LastSuccessfulAttemptTime" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="LastCompletionCodeId" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="AttributeObj" type="tns:AttributeType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetContactAttributeValue">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ContactID" type="xsd:string" />
+            <xsd:element name="ContactGroupName" type="xsd:string" />
+            <xsd:element name="AttributeName" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetContactAttributeValueResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="AttributeValue" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SaveContact">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Contact" type="tns:ContactType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SaveContactResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Result" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddContactToJob">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="CampaignName" type="xsd:string" />
+            <xsd:element name="ContactID" type="xsd:string" />
+            <xsd:element name="ContactGroupName" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddContactToJobResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Result" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IsDNC">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Address" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="OrgName" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="1" default="false" name="CheckForRejectPattern" type="xsd:boolean" />
+            <xsd:element minOccurs="0" maxOccurs="1" default="false" name="CheckForPhoneFormatsRule" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IsDNCResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddToDNCList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Address" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="OrgName" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="1" default="false" name="CheckForRejectPattern" type="xsd:boolean" />
+            <xsd:element minOccurs="0" maxOccurs="1" default="false" name="CheckForPhoneFormatsRule" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddToDNCListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RemoveFromDNCList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Address" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="OrgName" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="1" default="false" name="CheckForRejectPattern" type="xsd:boolean" />
+            <xsd:element minOccurs="0" maxOccurs="1" default="false" name="CheckForPhoneFormatsRule" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RemoveFromDNCListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="AttributeType">
+        <xsd:sequence>
+          <xsd:element name="Name" type="xsd:string" />
+          <xsd:element name="Value" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Type" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DisplayName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Masked" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ReadOnly" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="UpdateContactAttributeValue">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ContactID" type="xsd:string" />
+            <xsd:element name="ContactGroupName" type="xsd:string" />
+            <xsd:element name="AttributeName" type="xsd:string" />
+            <xsd:element name="AttributeValue" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateContactAttributeValueResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Result" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetContactDataFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RetCode" type="xsd:int" />
+            <xsd:element name="FaultMsg" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetContactAttributeValueFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RetCode" type="xsd:int" />
+            <xsd:element name="FaultMsg" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddContactToJobFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RetCode" type="xsd:int" />
+            <xsd:element name="FaultMsg" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IsDNCFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RetCode" type="xsd:int" />
+            <xsd:element name="FaultMsg" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateContactAttributeValueFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RetCode" type="xsd:int" />
+            <xsd:element name="FaultMsg" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetAllCompletionCodesForCampaign">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="JobID" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetAllCompletionCodesForCampaignResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="CompletionCodes" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetAllCompletionCodesForCampaignFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RetCode" type="xsd:int" />
+            <xsd:element name="FaultMsg" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SaveContactFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="FaultMsg" type="xsd:string" />
+            <xsd:element name="RetCode" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddToDNCListFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="FaultMsg" type="xsd:string" />
+            <xsd:element name="RetCode" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RemoveFromDNCListFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="FaultMsg" type="xsd:string" />
+            <xsd:element name="RetCode" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateCompletionCode">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="PimSessionID" type="xsd:double" />
+            <xsd:element name="CompletionCode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateCompletionCodeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Result" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateCompletionCodeFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RetCode" type="xsd:int" />
+            <xsd:element name="FaultMsg" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="DeleteContact">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ContactID" type="xsd:string" />
+            <xsd:element name="ContactGroupName" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="DeleteContactResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="DeleteContactFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RetCode" type="xsd:int" />
+            <xsd:element name="FaultMsg" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddContactGroupToJob">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="CampaignName" type="xsd:string" />
+            <xsd:element name="ContactGroupName" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddContactGroupToJobResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Result" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddContactGroupToJobFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RetCode" type="xsd:int" />
+            <xsd:element name="FaultMsg" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ContactDataType">
+        <xsd:sequence>
+          <xsd:element name="UserContactId" type="xsd:string" />
+          <xsd:element name="ContactListName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Title" type="xsd:string" />
+          <xsd:element minOccurs="0" name="FirstName" type="xsd:string" />
+          <xsd:element minOccurs="0" name="LastName" type="xsd:string" />
+          <xsd:element minOccurs="0" name="PhoneNumber1" type="xsd:string" />
+          <xsd:element minOccurs="0" name="TimeZone" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PhoneNumber1CountryCode" type="xsd:string" />
+          <xsd:element minOccurs="0" name="PhoneNumber2" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PhoneNumber2TimeZone" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PhoneNumber2CountryCode" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Email" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Language" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AddressLine1" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AddressLine2" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AddressLine3" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AddressLine4" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AddressLine5" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Country" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ZipCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="AttributeObj" type="tns:AttributeType" />
+          <xsd:element minOccurs="0" name="LastCompletionCodeId" type="xsd:int" />
+          <xsd:element minOccurs="0" name="LastAttemptTime" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="LastSuccessfulAttemptTime" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="LastModifiedOn" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="LastModifiedBy" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PhoneType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="CountryCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PhoneNumber" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="TimeZone" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PhoneAttributeName" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="UpdatePhoneNumber">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ContactID" type="xsd:string" />
+            <xsd:element name="ContactListName" type="xsd:string" />
+            <xsd:element name="PhoneObject" type="tns:PhoneType" />
+            <xsd:element minOccurs="0" maxOccurs="1" default="false" name="AutomaticUpdateForTimeZone" type="xsd:boolean" />
+            <xsd:element minOccurs="0" maxOccurs="1" default="false" name="CheckForRejectPattern" type="xsd:boolean" />
+            <xsd:element minOccurs="0" maxOccurs="1" default="false" name="CheckForPhoneFormatsRule" type="xsd:boolean" />
+            <xsd:element minOccurs="0" maxOccurs="1" default="false" name="CheckDNC" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdatePhoneNumberResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Result" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdatePhoneNumberFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RetCode" type="xsd:int" />
+            <xsd:element name="FaultMsg" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPhoneNumber">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ContactID" type="xsd:string" />
+            <xsd:element name="ContactListName" type="xsd:string" />
+            <xsd:element name="PhoneAttributeName" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPhoneNumberResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Phone" type="tns:PhoneType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetPhoneNumberFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RetCode" type="xsd:int" />
+            <xsd:element name="FaultMsg" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ScheduleCallBack">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="UserContactID" type="xsd:string" />
+            <xsd:element name="ContactListName" type="xsd:string" />
+            <xsd:element name="CampaignName" type="xsd:string" />
+            <xsd:element name="StartTime" type="xsd:string" />
+            <xsd:element name="EndTime" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="TimeZone" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="ContactAttributeName" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="Address" type="xsd:string" />
+            <xsd:element name="Notes" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ScheduleCallBackResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Result" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ScheduleCallBackFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RetCode" type="xsd:int" />
+            <xsd:element name="FaultMsg" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddContactFromListToJob">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="CampaignName" type="xsd:string" />
+            <xsd:element name="ContactID" type="xsd:string" />
+            <xsd:element name="ContactListName" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="1" default="MEDIUM" name="ContactPriority" type="tns:Priority" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddContactFromListToJobResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Result" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddContactFromListToJobFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RetCode" type="xsd:int" />
+            <xsd:element name="FaultMsg" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SaveContactToList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ContactToBeSaved" type="tns:ContactDataType" />
+            <xsd:element minOccurs="0" maxOccurs="1" default="false" name="AutomaticUpdateForTimeZone" type="xsd:boolean" />
+            <xsd:element minOccurs="0" maxOccurs="1" default="false" name="CheckForRejectPattern" type="xsd:boolean" />
+            <xsd:element minOccurs="0" maxOccurs="1" default="false" name="CheckForPhoneFormatsRule" type="xsd:boolean" />
+            <xsd:element minOccurs="0" maxOccurs="1" default="false" name="UpdateExisting" type="xsd:boolean" />
+            <xsd:element minOccurs="0" maxOccurs="1" default="false" name="CheckDNC" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SaveContactToListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Result" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SaveContactToListFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RetCode" type="xsd:int" />
+            <xsd:element name="FaultMsg" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetContactDataFromList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="UserContactID" type="xsd:string" />
+            <xsd:element name="ContactListName" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetContactDataFromListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ContactRecord" type="tns:ContactDataType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetContactDataFromListFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="FaultMsg" type="xsd:string" />
+            <xsd:element name="RetCode" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetContactAttributeValueFromList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ContactID" type="xsd:string" />
+            <xsd:element name="ContactListName" type="xsd:string" />
+            <xsd:element name="AttributeName" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetContactAttributeValueFromListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="AttributeValue" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetContactAttributeValueFromListFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RetCode" type="xsd:int" />
+            <xsd:element name="FaultMsg" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateContactAttributeValueToList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ContactID" type="xsd:string" />
+            <xsd:element name="ContactListName" type="xsd:string" />
+            <xsd:element name="AttributeName" type="xsd:string" />
+            <xsd:element name="AttributeValue" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateContactAttributeValueToListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Result" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateContactAttributeValueToListFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RetCode" type="xsd:int" />
+            <xsd:element name="FaultMsg" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddContactListToJob">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="CampaignName" type="xsd:string" />
+            <xsd:element name="ContactListName" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="1" default="MEDIUM" name="ContactPriority" type="tns:Priority" />
+            <xsd:element minOccurs="0" maxOccurs="1" default="false" name="ApplyFilter" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddContactListToJobResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Result" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AddContactListToJobFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RetCode" type="xsd:int" />
+            <xsd:element name="FaultMsg" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="DeleteContactFromList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ContactID" type="xsd:string" />
+            <xsd:element name="ContactListName" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="DeleteContactFromListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="DeleteContactFromListFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RetCode" type="xsd:int" />
+            <xsd:element name="FaultMsg" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetAttributesList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="ContactListName" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetAttributesListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="attributes" type="tns:AttributeType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetAttributesListFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RetCode" type="xsd:int" />
+            <xsd:element name="FaultMsg" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="EmptyContactList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ContactListName" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="EmptyContactListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="TotalContacts" type="xsd:long" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="EmptyContactListFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RetCode" type="xsd:int" />
+            <xsd:element name="FaultMsg" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetContactListEmptyStatus">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ContactListName" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetContactListEmptyStatusResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ContactListEmptyStatus" type="tns:ContactListStatus" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetContactListEmptyStatusFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RetCode" type="xsd:int" />
+            <xsd:element name="FaultMsg" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ContactListStatus">
+        <xsd:sequence>
+          <xsd:element name="EmptyStatus" type="tns:ListStatus" />
+          <xsd:element name="TotalCount" type="xsd:long" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="Priority">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="LOW" />
+          <xsd:enumeration value="TWO" />
+          <xsd:enumeration value="THREE" />
+          <xsd:enumeration value="FOUR" />
+          <xsd:enumeration value="MEDIUM" />
+          <xsd:enumeration value="SIX" />
+          <xsd:enumeration value="SEVEN" />
+          <xsd:enumeration value="EIGHT" />
+          <xsd:enumeration value="NINE" />
+          <xsd:enumeration value="HIGH" />
+          <xsd:enumeration value="BOTTOM" />
+          <xsd:enumeration value="TOP" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ListStatus">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="LIST_BEING_IDLE" />
+          <xsd:enumeration value="LIST_BEING_EMPTIED" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="UpdateCampaignAttributeValue">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="JobId" type="xsd:int" />
+            <xsd:element name="AttributeName" type="xsd:string" />
+            <xsd:element name="AttributeValue" type="xsd:double" />
+            <xsd:element minOccurs="0" default="ADD" name="Operation" type="tns:OperationType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateCampaignAttributeValueResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Result" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateCampaignAttributeValueFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RetCode" type="xsd:int" />
+            <xsd:element name="FaultMsg" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateAgentAttributeValue">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="JobId" type="xsd:int" />
+            <xsd:element name="AgentId" type="xsd:string" />
+            <xsd:element name="AttributeName" type="xsd:string" />
+            <xsd:element name="AttributeValue" type="xsd:double" />
+            <xsd:element minOccurs="0" default="ADD" name="Operation" type="tns:OperationType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateAgentAttributeValueResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Result" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateAgentAttributeValueFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RetCode" type="xsd:int" />
+            <xsd:element name="FaultMsg" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:simpleType name="OperationType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="ADD" />
+          <xsd:enumeration value="MINUS" />
+          <xsd:enumeration value="ASSIGN" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="GetCampaignAttributesList">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="GetCampaignAttributesListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="campaignAttributes" type="tns:AttributeType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetCampaignAttributesListFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RetCode" type="xsd:int" />
+            <xsd:element name="FaultMsg" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetAgentAttributesList">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="GetAgentAttributesListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="agentAttributes" type="tns:AttributeType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetAgentAttributesListFaultInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RetCode" type="xsd:int" />
+            <xsd:element name="FaultMsg" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="GetContactListEmptyStatusRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetContactListEmptyStatus" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="DeleteContactFromListRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:DeleteContactFromList" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="UpdateCompletionCodeRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:UpdateCompletionCode" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="UpdateAgentAttributeValueResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:UpdateAgentAttributeValueResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="AddContactListToJobFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:AddContactListToJobFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="AddContactGroupToJobFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:AddContactGroupToJobFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="UpdateAgentAttributeValueRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:UpdateAgentAttributeValue" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="AddToDNCListRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:AddToDNCList" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetContactDataFromListFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetContactDataFromListFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetContactDataFromListRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetContactDataFromList" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="RemoveFromDNCListResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:RemoveFromDNCListResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="AddContactFromListToJobRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:AddContactFromListToJob" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetContactAttributeValueRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetContactAttributeValue" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetAgentAttributesListRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetAgentAttributesList" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="ScheduleCallBackFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:ScheduleCallBackFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="EmptyContactListRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:EmptyContactList" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetContactDataResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetContactDataResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="AddToDNCListResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:AddToDNCListResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetContactAttributeValueFromListFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetContactAttributeValueFromListFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="AddToDNCListFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:AddToDNCListFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="UpdateCompletionCodeFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:UpdateCompletionCodeFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="DeleteContactFromListFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:DeleteContactFromListFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="ScheduleCallBackRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:ScheduleCallBack" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="SaveContactFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:SaveContactFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="AddContactFromListToJobFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:AddContactFromListToJobFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="UpdateCampaignAttributeValueRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:UpdateCampaignAttributeValue" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetCampaignAttributesListFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetCampaignAttributesListFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="SaveContactToListFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:SaveContactToListFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="UpdateCampaignAttributeValueFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:UpdateCampaignAttributeValueFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="RemoveFromDNCListFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:RemoveFromDNCListFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetAgentAttributesListResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetAgentAttributesListResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetContactListEmptyStatusResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetContactListEmptyStatusResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetAttributesListFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetAttributesListFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetContactAttributeValueFromListRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetContactAttributeValueFromList" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetAttributesListRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetAttributesList" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="IsDNCRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:IsDNC" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetAllCompletionCodesForCampaignResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetAllCompletionCodesForCampaignResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetAllCompletionCodesForCampaignRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetAllCompletionCodesForCampaign" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetAllCompletionCodesForCampaignFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetAllCompletionCodesForCampaignFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="UpdateAgentAttributeValueFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:UpdateAgentAttributeValueFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="UpdatePhoneNumberResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:UpdatePhoneNumberResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="UpdatePhoneNumberFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:UpdatePhoneNumberFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="UpdateContactAttributeValueFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:UpdateContactAttributeValueFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="AddContactGroupToJobRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:AddContactGroupToJob" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetContactListEmptyStatusFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetContactListEmptyStatusFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="UpdateContactAttributeValueToListFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:UpdateContactAttributeValueToListFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="DeleteContactRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:DeleteContact" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="AddContactFromListToJobResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:AddContactFromListToJobResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="UpdateContactAttributeValueToListRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:UpdateContactAttributeValueToList" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="SaveContactRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:SaveContact" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="AddContactListToJobRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:AddContactListToJob" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetAgentAttributesListFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetAgentAttributesListFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="IsDNCFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:IsDNCFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetContactDataRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetContactData" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="AddContactListToJobResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:AddContactListToJobResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="UpdateCampaignAttributeValueResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:UpdateCampaignAttributeValueResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="DeleteContactResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:DeleteContactResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="ScheduleCallBackResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:ScheduleCallBackResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="UpdateContactAttributeValueToListResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:UpdateContactAttributeValueToListResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="SaveContactToListResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:SaveContactToListResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="SaveContactToListRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:SaveContactToList" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetAttributesListResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetAttributesListResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="UpdatePhoneNumberRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:UpdatePhoneNumber" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetPhoneNumberRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetPhoneNumber" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="SaveContactResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:SaveContactResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="AddContactGroupToJobResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:AddContactGroupToJobResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetCampaignAttributesListResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetCampaignAttributesListResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetCampaignAttributesListRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetCampaignAttributesList" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetContactDataFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetContactDataFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="DeleteContactFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:DeleteContactFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="EmptyContactListResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:EmptyContactListResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetContactAttributeValueFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetContactAttributeValueFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="UpdateContactAttributeValueResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:UpdateContactAttributeValueResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="AddContactToJobResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:AddContactToJobResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="IsDNCResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:IsDNCResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="AddContactToJobFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:AddContactToJobFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="DeleteContactFromListResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:DeleteContactFromListResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetContactAttributeValueResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetContactAttributeValueResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetPhoneNumberResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetPhoneNumberResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="AddContactToJobRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:AddContactToJob" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="UpdateContactAttributeValueRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:UpdateContactAttributeValue" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetContactDataFromListResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetContactDataFromListResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetPhoneNumberFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetPhoneNumberFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="RemoveFromDNCListRequest">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:RemoveFromDNCList" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="EmptyContactListFault">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:EmptyContactListFaultInfo" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="UpdateCompletionCodeResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:UpdateCompletionCodeResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GetContactAttributeValueFromListResponse">
+    <WL5G3N0:part name="parameters" element="WL5G3N1:GetContactAttributeValueFromListResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="VP_POMAgentAPIService">
+    <WL5G3N0:operation name="GetContactData">
+      <WL5G3N0:input message="WL5G3N1:GetContactDataRequest" />
+      <WL5G3N0:output message="WL5G3N1:GetContactDataResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:GetContactDataFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="GetContactAttributeValue">
+      <WL5G3N0:input message="WL5G3N1:GetContactAttributeValueRequest" />
+      <WL5G3N0:output message="WL5G3N1:GetContactAttributeValueResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:GetContactAttributeValueFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="SaveContact">
+      <WL5G3N0:input message="WL5G3N1:SaveContactRequest" />
+      <WL5G3N0:output message="WL5G3N1:SaveContactResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:SaveContactFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="AddContactToJob">
+      <WL5G3N0:input message="WL5G3N1:AddContactToJobRequest" />
+      <WL5G3N0:output message="WL5G3N1:AddContactToJobResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:AddContactToJobFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="IsDNC">
+      <WL5G3N0:input message="WL5G3N1:IsDNCRequest" />
+      <WL5G3N0:output message="WL5G3N1:IsDNCResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:IsDNCFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="AddToDNCList">
+      <WL5G3N0:input message="WL5G3N1:AddToDNCListRequest" />
+      <WL5G3N0:output message="WL5G3N1:AddToDNCListResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:AddToDNCListFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="RemoveFromDNCList">
+      <WL5G3N0:input message="WL5G3N1:RemoveFromDNCListRequest" />
+      <WL5G3N0:output message="WL5G3N1:RemoveFromDNCListResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:RemoveFromDNCListFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="UpdateContactAttributeValue">
+      <WL5G3N0:input message="WL5G3N1:UpdateContactAttributeValueRequest" />
+      <WL5G3N0:output message="WL5G3N1:UpdateContactAttributeValueResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:UpdateContactAttributeValueFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="GetAllCompletionCodesForCampaign">
+      <WL5G3N0:input message="WL5G3N1:GetAllCompletionCodesForCampaignRequest" />
+      <WL5G3N0:output message="WL5G3N1:GetAllCompletionCodesForCampaignResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:GetAllCompletionCodesForCampaignFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="UpdateCompletionCode">
+      <WL5G3N0:input message="WL5G3N1:UpdateCompletionCodeRequest" />
+      <WL5G3N0:output message="WL5G3N1:UpdateCompletionCodeResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:UpdateCompletionCodeFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="DeleteContact">
+      <WL5G3N0:input message="WL5G3N1:DeleteContactRequest" />
+      <WL5G3N0:output message="WL5G3N1:DeleteContactResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:DeleteContactFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="AddContactGroupToJob">
+      <WL5G3N0:input message="WL5G3N1:AddContactGroupToJobRequest" />
+      <WL5G3N0:output message="WL5G3N1:AddContactGroupToJobResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:AddContactGroupToJobFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="UpdatePhoneNumber">
+      <WL5G3N0:input message="WL5G3N1:UpdatePhoneNumberRequest" />
+      <WL5G3N0:output message="WL5G3N1:UpdatePhoneNumberResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:UpdatePhoneNumberFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="GetPhoneNumber">
+      <WL5G3N0:input message="WL5G3N1:GetPhoneNumberRequest" />
+      <WL5G3N0:output message="WL5G3N1:GetPhoneNumberResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:GetPhoneNumberFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="ScheduleCallBack">
+      <WL5G3N0:input message="WL5G3N1:ScheduleCallBackRequest" />
+      <WL5G3N0:output message="WL5G3N1:ScheduleCallBackResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:ScheduleCallBackFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="AddContactFromListToJob">
+      <WL5G3N0:input message="WL5G3N1:AddContactFromListToJobRequest" />
+      <WL5G3N0:output message="WL5G3N1:AddContactFromListToJobResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:AddContactFromListToJobFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="SaveContactToList">
+      <WL5G3N0:input message="WL5G3N1:SaveContactToListRequest" />
+      <WL5G3N0:output message="WL5G3N1:SaveContactToListResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:SaveContactToListFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="GetContactDataFromList">
+      <WL5G3N0:input message="WL5G3N1:GetContactDataFromListRequest" />
+      <WL5G3N0:output message="WL5G3N1:GetContactDataFromListResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:GetContactDataFromListFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="GetContactAttributeValueFromList">
+      <WL5G3N0:input message="WL5G3N1:GetContactAttributeValueFromListRequest" />
+      <WL5G3N0:output message="WL5G3N1:GetContactAttributeValueFromListResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:GetContactAttributeValueFromListFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="UpdateContactAttributeValueToList">
+      <WL5G3N0:input message="WL5G3N1:UpdateContactAttributeValueToListRequest" />
+      <WL5G3N0:output message="WL5G3N1:UpdateContactAttributeValueToListResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:UpdateContactAttributeValueToListFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="AddContactListToJob">
+      <WL5G3N0:input message="WL5G3N1:AddContactListToJobRequest" />
+      <WL5G3N0:output message="WL5G3N1:AddContactListToJobResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:AddContactListToJobFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="DeleteContactFromList">
+      <WL5G3N0:input message="WL5G3N1:DeleteContactFromListRequest" />
+      <WL5G3N0:output message="WL5G3N1:DeleteContactFromListResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:DeleteContactFromListFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="GetAttributesList">
+      <WL5G3N0:input message="WL5G3N1:GetAttributesListRequest" />
+      <WL5G3N0:output message="WL5G3N1:GetAttributesListResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:GetAttributesListFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="EmptyContactList">
+      <WL5G3N0:input message="WL5G3N1:EmptyContactListRequest" />
+      <WL5G3N0:output message="WL5G3N1:EmptyContactListResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:EmptyContactListFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="GetContactListEmptyStatus">
+      <WL5G3N0:input message="WL5G3N1:GetContactListEmptyStatusRequest" />
+      <WL5G3N0:output message="WL5G3N1:GetContactListEmptyStatusResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:GetContactListEmptyStatusFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="UpdateCampaignAttributeValue">
+      <WL5G3N0:input message="WL5G3N1:UpdateCampaignAttributeValueRequest" />
+      <WL5G3N0:output message="WL5G3N1:UpdateCampaignAttributeValueResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:UpdateCampaignAttributeValueFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="UpdateAgentAttributeValue">
+      <WL5G3N0:input message="WL5G3N1:UpdateAgentAttributeValueRequest" />
+      <WL5G3N0:output message="WL5G3N1:UpdateAgentAttributeValueResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:UpdateAgentAttributeValueFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="GetCampaignAttributesList">
+      <WL5G3N0:input message="WL5G3N1:GetCampaignAttributesListRequest" />
+      <WL5G3N0:output message="WL5G3N1:GetCampaignAttributesListResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:GetCampaignAttributesListFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="GetAgentAttributesList">
+      <WL5G3N0:input message="WL5G3N1:GetAgentAttributesListRequest" />
+      <WL5G3N0:output message="WL5G3N1:GetAgentAttributesListResponse" />
+      <WL5G3N0:fault name="fault" message="WL5G3N1:GetAgentAttributesListFault" />
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="AgentAPISOAP" type="WL5G3N1:VP_POMAgentAPIService">
+    <WL5G3N2:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <WL5G3N0:operation name="GetContactData">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/GetContactData" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="GetContactAttributeValue">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/GetContactAttributeValue" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="SaveContact">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/SaveContact" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="AddContactToJob">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/AddContactToJob" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="IsDNC">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/IsDNC" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="AddToDNCList">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/AddToDNCList" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="RemoveFromDNCList">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/RemoveFromDNCList" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="UpdateContactAttributeValue">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/UpdateContactAttributeValue" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="GetAllCompletionCodesForCampaign">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/GetAllCompletionCodesForCampaign" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="UpdateCompletionCode">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/UpdateCompletionCode" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="DeleteContact">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/DeleteContact" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="AddContactGroupToJob">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/AddContactGroupToJob" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="UpdatePhoneNumber">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/UpdatePhoneNumber" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="GetPhoneNumber">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/GetPhoneNumber" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="ScheduleCallBack">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/ScheduleCallBack" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="AddContactFromListToJob">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/AddContactFromListToJob" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="SaveContactToList">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/SaveContactToList" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="GetContactDataFromList">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/GetContactDataFromList" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="GetContactAttributeValueFromList">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/GetContactAttributeValueFromList" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="UpdateContactAttributeValueToList">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/UpdateContactAttributeValueToList" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="AddContactListToJob">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/AddContactListToJob" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="DeleteContactFromList">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/DeleteContactFromList" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="GetAttributesList">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/GetAttributesList" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="EmptyContactList">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/EmptyContactList" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="GetContactListEmptyStatus">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/GetContactListEmptyStatus" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="UpdateCampaignAttributeValue">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/UpdateCampaignAttributeValue" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="UpdateAgentAttributeValue">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/UpdateAgentAttributeValue" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="GetCampaignAttributesList">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/GetCampaignAttributesList" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="GetAgentAttributesList">
+      <WL5G3N2:operation soapAction="http://services.pim.avaya.com/AgentAPI/GetAgentAttributesList" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="fault">
+        <WL5G3N2:fault use="literal" name="fault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="AgentAPISOAPQSService">
+    <WL5G3N0:documentation>OSB Service</WL5G3N0:documentation>
+    <WL5G3N0:port name="AgentAPISOAPQSPort" binding="WL5G3N1:AgentAPISOAP">
+      <WL5G3N2:address location="http://172.24.42.211:8002/axis2/services/VP_POMAgentAPIService/" />
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>

@@ -1,0 +1,5 @@
+﻿var validateCustomerInCerticamara = {
+    openFingerPrintDialogForm: function () {
+
+    }
+}

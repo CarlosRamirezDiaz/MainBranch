@@ -1,0 +1,2 @@
+AmxPeruGetAverageBilling.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

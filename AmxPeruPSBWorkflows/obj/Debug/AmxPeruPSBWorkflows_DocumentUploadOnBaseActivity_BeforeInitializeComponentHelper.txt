@@ -1,0 +1,2 @@
+DocumentUploadOnBaseActivity.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd_1="http://claro.com.pe/entity/EngagedParty/Identification/V1/" xmlns:entparidext="http://claro.com.pe/esb/IdentificationExtension/V1/" targetNamespace="http://claro.com.pe/esb/IdentificationExtension/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="../../Entidades/EngagedParty/Identification_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/Identification/V1/" />
+  <xsd:complexType name="OrganizationIdentificationExtension">
+    <xsd:sequence>
+      <xsd:element maxOccurs="1" name="_RUC" type="xsd:string" />
+      <xsd:element name="_issuingCompanyRUC" type="xsd:string" />
+      <xsd:element name="_receivingCompanyRUC" type="xsd:string" />
+      <xsd:element name="_RFC" type="xsd:string" />
+      <xsd:element name="OrganizationIdentification" type="xsd_1:OrganizationIdentification" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,89 @@
+﻿
+    <div ng-controller="UsageGraphController" class="main-container" dir="{{direct}}">
+        <button onclick="bindChartData()" style="margin:0px">Refresh</button>
+        <canvas id="chart_0" height="200px" width="700px"></canvas>
+        <script>
+
+        function bindChartData() {
+            debugger;
+            var graphXAxis = [];
+            var graphYAxis = [];
+
+            //var entityName = Xrm.Page.data.entity.getEntityName();
+            //var entityId = Xrm.Page.data.entity.getId();
+            //if (entityName != null && entityId != null) {
+            //    var graphQuery = "<fetch version='1.0' output-format='xml-platform' mapping='logical' aggregate='true' distinct='false'>" +
+            //        " <entity name='incident'>" +
+            //        " <attribute name='amxperu_casetype' groupby='true' alias='CASETYPE' />" +
+            //        "         <attribute name='incidentid' aggregate='count' alias='CASECOUNT' />" +
+            //        //  "        <attribute name='customerid' groupby='true' alias='_CRMAutoGen_groupby_column_Num_13' />" +
+
+            //        " <filter type='and'>" +
+            //        "  <condition attribute='customerid' operator='eq'  uitype='" + entityName + "' value='" + entityId+"' />" +
+            //        " </filter>" +
+            //        "</entity>" +
+            //        "</fetch>";
+            //    var graphRecords = XrmServiceToolkit.Soap.Fetch(graphQuery);
+            //    for (var i = 0; i < graphRecords.length; i++) {
+            //        if (graphRecords[i].attributes.CASETYPE != null) {
+            //            graphXAxis.push(graphRecords[i].attributes.CASETYPE.formattedValue);
+            //            graphYAxis.push(graphRecords[i].attributes.CASECOUNT.value);
+            //        }
+            //    }
+
+
+            //}
+
+
+            graphXAxis = ["21 Aug", "22 Aug", "23 Aug", "24 Aug", "25 Aug"];
+
+            graphYAxis = [20,34,43,2,23];
+
+            var color = Chart.helpers.color;
+
+            var data = {
+                labels: graphXAxis,//["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"],
+                datasets: [{
+                    label: "Dates",
+                    backgroundColor: "rgba(54, 162, 235,1)",// "rgba(255,255,255,1)",
+                    //backgroundColor: color(window.chartColors.blue).alpha(1).rgbString(),
+                    borderColor: "rgba(54, 162, 235,1)",// "rgba(255,99,132,1)",
+                    borderWidth: 2,
+                    hoverBackgroundColor: "rgba(0,0,255,1)",
+                    hoverBorderColor: "rgba(0,0,255,1)",
+                    // hoverBackgroundColor: "rgba(255,99,132,0.4)",
+                    // hoverBorderColor: "rgba(255,99,132,1)",
+                    data: graphYAxis,//[65, 59, 40, 81, 56, 55, 40, 90],
+                }]
+            };
+
+            var option = {
+                responsive: false,
+                scales: {
+                    yAxes: [{
+                        stacked: true,
+                        gridLines: {
+                            display: true,
+                            color: "rgba(255,255,132,0.2)"
+                            //  color: "rgba(255,99,132,0.2)"
+                        }
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            display: false
+                        }
+                    }]
+                }
+            };
+
+            Chart.Bar('chart_0', {
+                options: option,
+                data: data
+            });
+
+        }
+        bindChartData();
+//# sourceURL=pen.js
+        </script>
+
+    </div>

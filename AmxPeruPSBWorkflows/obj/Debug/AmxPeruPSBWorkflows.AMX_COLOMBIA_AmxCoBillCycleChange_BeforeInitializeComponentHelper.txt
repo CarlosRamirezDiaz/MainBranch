@@ -1,0 +1,2 @@
+AmxCoBillCycleChange.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:entbastyp="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:entsercat="http://claro.com.pe/entity/Service/ServiceCatalog/V1/" targetNamespace="http://claro.com.pe/entity/Service/ServiceCatalog/V1/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xs:complexType name="ServiceCandidate">
+    <xs:annotation>
+      <xs:documentation>A ServiceCandidate is an entity that makes a ServiceSpecification available to a catalog. A ServiceCandidate and its associated ServiceSpecification may be “published” – made visible – in any number of ServiceCatalogs, or in none.  One ServiceSpecification can be composed of other ServiceSpecifications.  These ServiceSpecifications may also be published.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="description" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A narrative that explains the ServiceCandidate.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="id" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A unique identifier for the ServiceCandidate.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A word or phrase that a ServiceCandidate is known and distinguished from other ServiceCandidate.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="status" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The condition at which the ServiceCandidate exists such as planned, active and Obsolete.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="validfor" type="entbastyp:TimePeriod">
+        <xs:annotation>
+          <xs:documentation>The period of time during which the ServiceCandidate is applicable.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

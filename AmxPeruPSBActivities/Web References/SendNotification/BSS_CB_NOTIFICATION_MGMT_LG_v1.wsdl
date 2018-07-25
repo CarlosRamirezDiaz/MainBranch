@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:cf="http://claro.com.pe/esb/data/generico/claroFault/v1/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="urn:WSDLDocument1" xmlns:notmgm="http://claro.com.pe/esb/message/BssCbNotificationMgmtLG/v1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bsscusman="http://claro.com.pe/esb/ws/bss/Customer/CustomerManagement/V1/" xmlns:hd="http://claro.com.pe/esb/data/generico/claroGenericHeader/v1/" xmlns:notidmgm="http://claro.com.pe/esb/CommonBusiness/BssCbNotificationMgmtLG/v1/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://claro.com.pe/esb/CommonBusiness/BssCbNotificationMgmtLG/v1/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified">
+      <xsd:import schemaLocation="../../../../UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/ClaroFault_v1.xsd" namespace="http://claro.com.pe/esb/data/generico/claroFault/v1/" />
+      <xsd:import schemaLocation="../../../../UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/ClaroGenericHeaders_V1.xsd" namespace="http://claro.com.pe/esb/data/generico/claroGenericHeader/v1/" />
+      <xsd:import schemaLocation="../XSD/BssCbNotificationMgmtLG_v1.xsd" namespace="http://claro.com.pe/esb/message/BssCbNotificationMgmtLG/v1/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="sendNotificationRequestMessage">
+    <wsdl:part name="sendNotificationReq" element="notmgm:sendNotificationRequest" />
+  </wsdl:message>
+  <wsdl:message name="sendNotificationResponseMessage">
+    <wsdl:part name="sendNotificationRes" element="notmgm:sendNotificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="claroFault">
+    <wsdl:part name="claroFault" element="cf:claroFault" />
+  </wsdl:message>
+  <wsdl:message name="headerRequest">
+    <wsdl:part name="headerReq" element="hd:headerRequest" />
+  </wsdl:message>
+  <wsdl:message name="headerResponse">
+    <wsdl:part name="headerResp" element="hd:headerResponse" />
+  </wsdl:message>
+  <wsdl:portType name="NotificationManagementLgPort">
+    <wsdl:operation name="sendNotification">
+      <wsdl:input message="notidmgm:sendNotificationRequestMessage" />
+      <wsdl:output message="notidmgm:sendNotificationResponseMessage" />
+      <wsdl:fault name="claroFault" message="notidmgm:claroFault" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NotificationManagementLgSOAPBinding" type="notidmgm:NotificationManagementLgPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="sendNotification">
+      <soap:operation soapAction="http://claro.com.pe/esb/CommonBusiness/BssCbNotificationMgmtLG/v1/sendNotification" style="document" />
+      <wsdl:input>
+        <soap:header message="notidmgm:headerRequest" part="headerReq" use="literal" />
+        <soap:body use="literal" parts="sendNotificationReq" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:header message="notidmgm:headerResponse" part="headerResp" use="literal" />
+        <soap:body use="literal" parts="sendNotificationRes" />
+      </wsdl:output>
+      <wsdl:fault name="claroFault">
+        <soap:fault use="literal" name="claroFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NotificationManagementLg">
+    <wsdl:port name="NotificationManagementLgPort" binding="notidmgm:NotificationManagementLgSOAPBinding">
+      <soap:address location="http://www.example.com" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

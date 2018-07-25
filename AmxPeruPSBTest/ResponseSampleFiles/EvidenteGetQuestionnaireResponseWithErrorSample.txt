@@ -1,0 +1,15 @@
+﻿{
+"headerResponse" : {
+"responseDate" : "2018-02-20T11:07:01.643-05:00",
+"traceabilityId" : "18ebc189-2cd2-478a-b5b6-a0d3d6232007"
+},
+"codeQuestionnaire" : "7060",
+"keyCIFIN" : "523791",
+"responseProcess" : {
+"responseCode" : "11",
+"descriptionCode" : "Se presento error durante la obtención del cuestionario",
+"hashCodeCalc" : "false"
+},
+"questionnaireSequence" : "0",
+"hashCodeCalc" : "false"
+}

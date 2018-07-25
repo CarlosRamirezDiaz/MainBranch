@@ -1,0 +1,8 @@
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\b\AmxCoDynamicsServices\bin\AmxDynamicsServices.dll.config
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\b\AmxCoDynamicsServices\bin\AmxDynamicsServices.dll
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\b\AmxCoDynamicsServices\bin\AmxDynamicsServices.pdb
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\i\AmxCoDynamicsServices\Debug\AmxCoDynamicsServices.csprojResolveAssemblyReference.cache
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\i\AmxCoDynamicsServices\Debug\AmxCoDynamicsServices.csproj.CoreCompileInputs.cache
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\i\AmxCoDynamicsServices\Debug\AmxCoDynamicsServices.csproj.CopyComplete
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\i\AmxCoDynamicsServices\Debug\AmxDynamicsServices.dll
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\i\AmxCoDynamicsServices\Debug\AmxDynamicsServices.pdb

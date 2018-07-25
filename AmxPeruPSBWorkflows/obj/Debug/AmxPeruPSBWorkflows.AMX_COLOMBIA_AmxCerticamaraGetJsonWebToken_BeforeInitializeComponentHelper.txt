@@ -1,0 +1,2 @@
+AmxGetHClientJsonWebToken.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

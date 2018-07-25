@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:doccon="http://claro.com.pe/esb/postventa/consultaDocumentoOnBase/v1/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:comtyp="http://claro.com.pe/generic/messageFormat/v1.0/" xmlns:custmanf="http://claro.com.pe/esb/message/consultaDocumentoOnBase/consultarDocumentoOnBase/v1/" xmlns:comexcep="http://claro.com.pe/eai/ebs/xsd/CommonsException" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap11/" targetNamespace="http://claro.com.pe/esb/postventa/consultaDocumentoOnBase/v1/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://claro.com.pe/esb/postventa/consultaDocumentoOnBase/v1/types">
+      <xsd:import schemaLocation="../esquemas/ConsultaDocumentoOnBase_V1.xsd" namespace="http://claro.com.pe/esb/message/consultaDocumentoOnBase/consultarDocumentoOnBase/v1/" />
+      <xsd:import schemaLocation="../../../../framework/servicios/esquemas/HeaderGeneric_v1.0.xsd" namespace="http://claro.com.pe/generic/messageFormat/v1.0/" />
+      <xsd:import schemaLocation="../../../../framework/servicios/esquemas/CommonsException.xsd" namespace="http://claro.com.pe/eai/ebs/xsd/CommonsException" />
+    </xsd:schema>
+  </types>
+  <message name="consultarDocumentoOnBaseRequestMessage">
+    <part name="consultarDocumentoOnBaseReq" element="custmanf:consultarDocumentoOnBaseRequestMessageType" />
+  </message>
+  <message name="consultarDocumentoOnBaseResponseMessage">
+    <part name="consultarDocumentoOnBaseRes" element="custmanf:consultarDocumentoOnBaseResponseMessageType" />
+  </message>
+  <message name="claroFault">
+    <part name="claroFault" element="comexcep:IntegrationError" />
+  </message>
+  <message name="headerRequest">
+    <part name="headerReq" element="comtyp:HeaderRequest" />
+  </message>
+  <message name="headerResponse">
+    <part name="headerResp" element="comtyp:HeaderResponse" />
+  </message>
+  <portType name="consultarDocumentoOnBasePort">
+    <operation name="consultarDocumentoOnBase">
+      <input message="doccon:consultarDocumentoOnBaseRequestMessage" />
+      <output message="doccon:consultarDocumentoOnBaseResponseMessage" />
+      <fault name="claroFault" message="doccon:claroFault" />
+    </operation>
+  </portType>
+  <binding name="consultarDocumentoOnBaseBinding" type="doccon:consultarDocumentoOnBasePort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="consultarDocumentoOnBase">
+      <soap:operation soapAction="http://claro.com.pe/esb/consultaDocumentoOnBase/v1/" style="document" />
+      <input>
+        <soap:header message="doccon:headerRequest" part="headerReq" use="literal" />
+        <soap:body use="literal" parts="consultarDocumentoOnBaseReq" />
+      </input>
+      <output>
+        <soap:header message="doccon:headerResponse" part="headerResp" use="literal" />
+        <soap:body use="literal" parts="consultarDocumentoOnBaseRes" />
+      </output>
+      <fault name="claroFault">
+        <soap:fault use="literal" name="claroFault" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="consultarDocumentoOnBaseSOAP">
+    <port name="consultarDocumentoOnBaseBindingSOAP" binding="doccon:consultarDocumentoOnBaseBinding">
+      <soap:address location="http://www.example.org/" />
+    </port>
+  </service>
+</definitions>

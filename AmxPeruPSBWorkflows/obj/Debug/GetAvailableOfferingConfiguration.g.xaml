@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<a:GetAvailableOfferingConfiguration sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="AmxPeruPSBWorkflows.GetAvailableOfferingConfiguration_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:a="clr-namespace:AmxPeruPSBWorkflows;assembly=AmxPeruPSBWorkflows" xmlns:aao="clr-namespace:AmxPeruPSBActivities.Activities.OrderItem;assembly=AmxPeruPSBActivities" xmlns:am="clr-namespace:AmxPeruPSBActivities.Model;assembly=AmxPeruPSBActivities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:ec="clr-namespace:ExternalApiActivities.Common;assembly=ExternalApiActivities" xmlns:eeecc="clr-namespace:Ericsson.ETELCRM.Entities.Crm.CustomEntities;assembly=Ericsson.ETELCRM.CrmFoundationLibrary" xmlns:epwa="clr-namespace:Ericsson.PSB.Workflow.Activities;assembly=Ericsson.PSB.Workflow.Activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:mxs="clr-namespace:Microsoft.Xrm.Sdk;assembly=Microsoft.Xrm.Sdk" xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>Microsoft.Xrm.Sdk</x:String>
+      <x:String>Ericsson.ETELCRM.Entities.Crm.CustomEntities</x:String>
+      <x:String>AmxPeruPSBActivities.Model</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Ericsson.ETELCRM.CrmCachingLibrary</AssemblyReference>
+      <AssemblyReference>Ericsson.ETELCRM.CrmFoundationLibrary</AssemblyReference>
+      <AssemblyReference>Ericsson.PSB.Workflow.Activities</AssemblyReference>
+      <AssemblyReference>Ericsson.PSB.Workflow.Client.Core</AssemblyReference>
+      <AssemblyReference>ExternalApiActivities</AssemblyReference>
+      <AssemblyReference>ExternalApiWorkflows</AssemblyReference>
+      <AssemblyReference>Microsoft.Crm.Sdk.Proxy</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Compatibility</AssemblyReference>
+      <AssemblyReference>Microsoft.Xrm.Client</AssemblyReference>
+      <AssemblyReference>Microsoft.Xrm.Sdk</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Activities.Core.Presentation</AssemblyReference>
+      <AssemblyReference>System.Activities.Presentation</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data.Linq</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Net.Http</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>AmxPeruPSBActivities</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>AmxPeruPSBWorkflows</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <a:GetAvailableOfferingConfiguration.Implementation>
+    <Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_1">
+      <Flowchart.Variables>
+        <Variable x:TypeArguments="x:String" Name="connectionString" />
+        <Variable x:TypeArguments="mxs:EntityCollection" Name="availabilityOfferingConfiguration" />
+        <Variable x:TypeArguments="mxs:EntityCollection" Name="offeringPriceConfiguration" />
+        <Variable x:TypeArguments="mxs:EntityCollection" Name="offeringPrices" />
+        <Variable x:TypeArguments="scg:List(eeecc:OptionSet)" Name="priceTypeCodeList" />
+        <Variable x:TypeArguments="scg:List(eeecc:OptionSet)" Name="pricePeriodCodeList" />
+      </Flowchart.Variables>
+      <Flowchart.StartNode>
+        <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+          <epwa:ConfigurationActivity sap2010:WorkflowViewState.IdRef="ConfigurationActivity_1" Key="connectionString">
+            <epwa:ConfigurationActivity.Value>
+              <OutArgument x:TypeArguments="x:String">
+                <mca:CSharpReference x:TypeArguments="x:String">connectionString</mca:CSharpReference>
+              </OutArgument>
+            </epwa:ConfigurationActivity.Value>
+          </epwa:ConfigurationActivity>
+          <FlowStep.Next>
+            <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+              <ec:XrmAwareCompositeActivity sap2010:WorkflowViewState.IdRef="XrmAwareCompositeActivity_1" IsGlobalContext="False" UseServiceUser="False">
+                <ec:XrmAwareCompositeActivity.Activities>
+                  <ec:OptionSetGet EntityLogicalName="{x:Null}" AttributeName="etel_pricetypecode" sap2010:WorkflowViewState.IdRef="OptionSetGet_1" LanguageCode="1033">
+                    <ec:OptionSetGet.OptionSet>
+                      <OutArgument x:TypeArguments="scg:List(eeecc:OptionSet)">
+                        <mca:CSharpReference x:TypeArguments="scg:List(eeecc:OptionSet)">priceTypeCodeList</mca:CSharpReference>
+                      </OutArgument>
+                    </ec:OptionSetGet.OptionSet>
+                  </ec:OptionSetGet>
+                  <ec:OptionSetGet EntityLogicalName="{x:Null}" AttributeName="etel_periodcode" sap2010:WorkflowViewState.IdRef="OptionSetGet_2" LanguageCode="1033">
+                    <ec:OptionSetGet.OptionSet>
+                      <OutArgument x:TypeArguments="scg:List(eeecc:OptionSet)">
+                        <mca:CSharpReference x:TypeArguments="scg:List(eeecc:OptionSet)">pricePeriodCodeList</mca:CSharpReference>
+                      </OutArgument>
+                    </ec:OptionSetGet.OptionSet>
+                  </ec:OptionSetGet>
+                  <aao:GetOfferingAvailabilityList sap2010:WorkflowViewState.IdRef="GetOfferingAvailabilityList_1">
+                    <aao:GetOfferingAvailabilityList.OfferingAvailabilityConfigurationList>
+                      <OutArgument x:TypeArguments="mxs:EntityCollection">
+                        <mca:CSharpReference x:TypeArguments="mxs:EntityCollection">availabilityOfferingConfiguration</mca:CSharpReference>
+                      </OutArgument>
+                    </aao:GetOfferingAvailabilityList.OfferingAvailabilityConfigurationList>
+                  </aao:GetOfferingAvailabilityList>
+                  <aao:GetOfferingPriceConfiguration sap2010:WorkflowViewState.IdRef="GetOfferingPriceConfiguration_1">
+                    <aao:GetOfferingPriceConfiguration.OfferingPriceConfigurationList>
+                      <OutArgument x:TypeArguments="mxs:EntityCollection">
+                        <mca:CSharpReference x:TypeArguments="mxs:EntityCollection">offeringPriceConfiguration</mca:CSharpReference>
+                      </OutArgument>
+                    </aao:GetOfferingPriceConfiguration.OfferingPriceConfigurationList>
+                  </aao:GetOfferingPriceConfiguration>
+                  <aao:GetOfferingPrices sap2010:WorkflowViewState.IdRef="GetOfferingPrices_1">
+                    <aao:GetOfferingPrices.OfferingPriceList>
+                      <OutArgument x:TypeArguments="mxs:EntityCollection">
+                        <mca:CSharpReference x:TypeArguments="mxs:EntityCollection">offeringPrices</mca:CSharpReference>
+                      </OutArgument>
+                    </aao:GetOfferingPrices.OfferingPriceList>
+                  </aao:GetOfferingPrices>
+                  <If sap2010:WorkflowViewState.IdRef="If_1">
+                    <If.Condition>
+                      <InArgument x:TypeArguments="x:Boolean">
+                        <mca:CSharpValue x:TypeArguments="x:Boolean">availableOfferingInputModel.OfferTypeCode == "Basic"</mca:CSharpValue>
+                      </InArgument>
+                    </If.Condition>
+                    <If.Then>
+                      <aao:GetAvailableOfferConfigurationWithPrices sap2010:WorkflowViewState.IdRef="GetAvailableOfferConfigurationWithPrices_2">
+                        <aao:GetAvailableOfferConfigurationWithPrices.FilterAvailableOfferingInputModel>
+                          <InArgument x:TypeArguments="am:AvailableOfferingInputModel">
+                            <mca:CSharpValue x:TypeArguments="am:AvailableOfferingInputModel">availableOfferingInputModel</mca:CSharpValue>
+                          </InArgument>
+                        </aao:GetAvailableOfferConfigurationWithPrices.FilterAvailableOfferingInputModel>
+                        <aao:GetAvailableOfferConfigurationWithPrices.OfferingAvailabilityConfigurationList>
+                          <InArgument x:TypeArguments="mxs:EntityCollection">
+                            <mca:CSharpValue x:TypeArguments="mxs:EntityCollection">availabilityOfferingConfiguration</mca:CSharpValue>
+                          </InArgument>
+                        </aao:GetAvailableOfferConfigurationWithPrices.OfferingAvailabilityConfigurationList>
+                        <aao:GetAvailableOfferConfigurationWithPrices.OfferingPriceConfigurationList>
+                          <InArgument x:TypeArguments="mxs:EntityCollection">
+                            <mca:CSharpValue x:TypeArguments="mxs:EntityCollection">offeringPriceConfiguration</mca:CSharpValue>
+                          </InArgument>
+                        </aao:GetAvailableOfferConfigurationWithPrices.OfferingPriceConfigurationList>
+                        <aao:GetAvailableOfferConfigurationWithPrices.OfferingPriceList>
+                          <InArgument x:TypeArguments="mxs:EntityCollection">
+                            <mca:CSharpValue x:TypeArguments="mxs:EntityCollection">offeringPrices</mca:CSharpValue>
+                          </InArgument>
+                        </aao:GetAvailableOfferConfigurationWithPrices.OfferingPriceList>
+                        <aao:GetAvailableOfferConfigurationWithPrices.PricePeriodCodeList>
+                          <InArgument x:TypeArguments="scg:List(eeecc:OptionSet)">
+                            <mca:CSharpValue x:TypeArguments="scg:List(eeecc:OptionSet)">pricePeriodCodeList</mca:CSharpValue>
+                          </InArgument>
+                        </aao:GetAvailableOfferConfigurationWithPrices.PricePeriodCodeList>
+                        <aao:GetAvailableOfferConfigurationWithPrices.PriceTypeCodeList>
+                          <InArgument x:TypeArguments="scg:List(eeecc:OptionSet)">
+                            <mca:CSharpValue x:TypeArguments="scg:List(eeecc:OptionSet)">priceTypeCodeList</mca:CSharpValue>
+                          </InArgument>
+                        </aao:GetAvailableOfferConfigurationWithPrices.PriceTypeCodeList>
+                        <aao:GetAvailableOfferConfigurationWithPrices.ProductOfferingPriceList>
+                          <OutArgument x:TypeArguments="scg:List(am:ProductOfferingConfigurationPriceModel)">
+                            <mca:CSharpReference x:TypeArguments="scg:List(am:ProductOfferingConfigurationPriceModel)">responseModel</mca:CSharpReference>
+                          </OutArgument>
+                        </aao:GetAvailableOfferConfigurationWithPrices.ProductOfferingPriceList>
+                      </aao:GetAvailableOfferConfigurationWithPrices>
+                    </If.Then>
+                    <If.Else>
+                      <aao:GetAssociatedOffersAvailableConfigurationWithPrices sap2010:WorkflowViewState.IdRef="GetAssociatedOffersAvailableConfigurationWithPrices_1">
+                        <aao:GetAssociatedOffersAvailableConfigurationWithPrices.FilterAvailableOfferingInputModel>
+                          <InArgument x:TypeArguments="am:AvailableOfferingInputModel">
+                            <mca:CSharpValue x:TypeArguments="am:AvailableOfferingInputModel">availableOfferingInputModel</mca:CSharpValue>
+                          </InArgument>
+                        </aao:GetAssociatedOffersAvailableConfigurationWithPrices.FilterAvailableOfferingInputModel>
+                        <aao:GetAssociatedOffersAvailableConfigurationWithPrices.OfferingAvailabilityConfigurationList>
+                          <InArgument x:TypeArguments="mxs:EntityCollection">
+                            <mca:CSharpValue x:TypeArguments="mxs:EntityCollection">availabilityOfferingConfiguration</mca:CSharpValue>
+                          </InArgument>
+                        </aao:GetAssociatedOffersAvailableConfigurationWithPrices.OfferingAvailabilityConfigurationList>
+                        <aao:GetAssociatedOffersAvailableConfigurationWithPrices.OfferingPriceConfigurationList>
+                          <InArgument x:TypeArguments="mxs:EntityCollection">
+                            <mca:CSharpValue x:TypeArguments="mxs:EntityCollection">offeringPriceConfiguration</mca:CSharpValue>
+                          </InArgument>
+                        </aao:GetAssociatedOffersAvailableConfigurationWithPrices.OfferingPriceConfigurationList>
+                        <aao:GetAssociatedOffersAvailableConfigurationWithPrices.OfferingPriceList>
+                          <InArgument x:TypeArguments="mxs:EntityCollection">
+                            <mca:CSharpValue x:TypeArguments="mxs:EntityCollection">offeringPrices</mca:CSharpValue>
+                          </InArgument>
+                        </aao:GetAssociatedOffersAvailableConfigurationWithPrices.OfferingPriceList>
+                        <aao:GetAssociatedOffersAvailableConfigurationWithPrices.PricePeriodCodeList>
+                          <InArgument x:TypeArguments="scg:List(eeecc:OptionSet)">
+                            <mca:CSharpValue x:TypeArguments="scg:List(eeecc:OptionSet)">pricePeriodCodeList</mca:CSharpValue>
+                          </InArgument>
+                        </aao:GetAssociatedOffersAvailableConfigurationWithPrices.PricePeriodCodeList>
+                        <aao:GetAssociatedOffersAvailableConfigurationWithPrices.PriceTypeCodeList>
+                          <InArgument x:TypeArguments="scg:List(eeecc:OptionSet)">
+                            <mca:CSharpValue x:TypeArguments="scg:List(eeecc:OptionSet)">priceTypeCodeList</mca:CSharpValue>
+                          </InArgument>
+                        </aao:GetAssociatedOffersAvailableConfigurationWithPrices.PriceTypeCodeList>
+                        <aao:GetAssociatedOffersAvailableConfigurationWithPrices.ProductOfferingPriceList>
+                          <OutArgument x:TypeArguments="scg:List(am:ProductOfferingConfigurationPriceModel)">
+                            <mca:CSharpReference x:TypeArguments="scg:List(am:ProductOfferingConfigurationPriceModel)">responseModel</mca:CSharpReference>
+                          </OutArgument>
+                        </aao:GetAssociatedOffersAvailableConfigurationWithPrices.ProductOfferingPriceList>
+                      </aao:GetAssociatedOffersAvailableConfigurationWithPrices>
+                    </If.Else>
+                  </If>
+                </ec:XrmAwareCompositeActivity.Activities>
+                <ec:XrmAwareCompositeActivity.ConnectionString>
+                  <InArgument x:TypeArguments="x:String">
+                    <mca:CSharpValue x:TypeArguments="x:String">connectionString</mca:CSharpValue>
+                  </InArgument>
+                </ec:XrmAwareCompositeActivity.ConnectionString>
+              </ec:XrmAwareCompositeActivity>
+            </FlowStep>
+          </FlowStep.Next>
+        </FlowStep>
+      </Flowchart.StartNode>
+      <x:Reference>__ReferenceID0</x:Reference>
+      <x:Reference>__ReferenceID1</x:Reference>
+      <sads:DebugSymbol.Symbol>9xDSAyLUwby+HivZN+ScDUtRXkQ6XENhcmxvc1JhbWlyZXpcRGVza3RvcFxNYWluQnJhbmNoXEFteFBlcnVQU0JXb3JrZmxvd3NcR2V0QXZhaWxhYmxlT2ZmZXJpbmdDb25maWd1cmF0aW9uLnhhbWwoSQPlAQ8CAQFUCVomAwHOAV0N3QEsAgECVw9XZQMB0AFUY1R1AwHPAdoBE9oBYQIBBV15XYABAgEEXZABXZcBAgEDXxFlIwMBwgFmEWwjAwG2AW0RczMDAawBdBF6NQMBogF7EYEBKQMBmAGCARHWARYCAQ5iF2J/AwHFAV+gAV+mAQMBxAFfTV9hAwHDAWkXaYEBAwG5AWadAWajAQMBuAFmTWZeAwG3AXAXcIoBAwGtAXcXd4MBAwGjAX4XfncDAZkBhQEXhQGKAQIBD4kBFa0BRAIBWLABFdQBTwIBGKoBG6oBmQEDAY8BmwEbmwFzAwGGAYwBG4wBigECAX2lARulAXsCAXSgARugAX0CAWuWARuWAX8CAWKRARuRAYYBAgFZ0QEb0QGZAQIBT8IBG8IBcwIBRrMBG7MBigECAT3MARvMAXsCATTHARvHAX0CASu9ARu9AX8CASK4ARu4AYYBAgEZ</sads:DebugSymbol.Symbol>
+    </Flowchart>
+  </a:GetAvailableOfferingConfiguration.Implementation>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="ConfigurationActivity_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="OptionSetGet_1" sap:VirtualizedContainerService.HintSize="464,22" />
+      <sap2010:ViewStateData Id="OptionSetGet_2" sap:VirtualizedContainerService.HintSize="464,22" />
+      <sap2010:ViewStateData Id="GetOfferingAvailabilityList_1" sap:VirtualizedContainerService.HintSize="464,22" />
+      <sap2010:ViewStateData Id="GetOfferingPriceConfiguration_1" sap:VirtualizedContainerService.HintSize="464,22" />
+      <sap2010:ViewStateData Id="GetOfferingPrices_1" sap:VirtualizedContainerService.HintSize="464,22" />
+      <sap2010:ViewStateData Id="GetAvailableOfferConfigurationWithPrices_2" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="GetAssociatedOffersAvailableConfigurationWithPrices_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="464,210" />
+      <sap2010:ViewStateData Id="XrmAwareCompositeActivity_1" sap:VirtualizedContainerService.HintSize="486,644">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">300,199.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">300,127.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">400,149.5 400,199.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="614,636">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,107.5 400,107.5 400,127.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="AmxPeruPSBWorkflows.GetAvailableOfferingConfiguration_1" sap:VirtualizedContainerService.HintSize="654,716" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</a:GetAvailableOfferingConfiguration>

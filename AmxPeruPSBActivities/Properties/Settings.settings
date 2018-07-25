@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AmxPeruPSBActivities.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="AmxPeruPSBActivities_ConsultaEstadoCuenta_v1_ConsultaDeudaCuenta" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://www.example.org/</Value>
+    </Setting>
+    <Setting Name="AmxPeruPSBActivities_ConsultaDeudaCuenta_v1_ConsultaDeudaCuenta" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://www.example.org/</Value>
+    </Setting>
+    <Setting Name="AmxPeruPSBActivities_GeneraIncidencia_V1_GeneraIncidencia" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://www.example.org/</Value>
+    </Setting>
+    <Setting Name="AmxPeruPSBActivities_SendNotification_NotificationManagementLg" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://www.example.com</Value>
+    </Setting>
+    <Setting Name="AmxPeruPSBActivities_CargaDocumentoOnBase_V1_CargaDocumentoOnBase" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://www.example.org/</Value>
+    </Setting>
+    <Setting Name="AmxPeruPSBActivities_BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1_BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://www.example.org/</Value>
+    </Setting>
+    <Setting Name="AmxPeruPSBActivities_ConsultaEvaluacionCrediticia_V1_consultaEvaluacionCrediticiaSOAP" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://www.example.org/</Value>
+    </Setting>
+    <Setting Name="AmxPeruPSBActivities_ConsultaDocumentoOnBase_V1_consultarDocumentoOnBaseSOAP" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://www.example.org/</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

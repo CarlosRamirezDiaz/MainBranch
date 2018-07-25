@@ -1,0 +1,2 @@
+AmxCoSendBase64FileToDocumentaryManager.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

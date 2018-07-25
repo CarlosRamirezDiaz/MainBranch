@@ -1,0 +1,2 @@
+AmxPeruGetAvailableStocks.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

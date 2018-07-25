@@ -1,0 +1,121 @@
+﻿<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta>
+    <meta>
+</head>
+<body style="word-wrap: break-word;">
+
+    <div id="container" ng-controller="billingController" rtl-dir="{{direct}}" style="font-family: undefined;">
+        <div class="formContent" disable-contents="!rootScopeData.currentStage.isActive">
+            <table style="width: 100%;" border="0">
+                <tbody>
+                    <tr>
+                        <td valign="top" style="width: 50%;">
+                            <div id="billingAccountDataSection" ng-class="{'formSection newlineSection':!isRTL,'rtlformSection newlineSection':isRTL}">
+                                <div class="dataGridTitleText dataGridTitleTextUnderlined"><span>{{scopeData.translations.tBillingAccount}}</span></div>
+                                <div class="floatRightButtonGroup_remove" id="newCustomerSearchButtonGroup">
+                                    <button class="formButton" ng-click="scopeData.CreateBillingAccount()">{{scopeData.translations.tCreate}}</button>
+                                    <!--  <button class="formButton" ng-click="scopeData.UpdateBillingAccount()">Update</button> -->
+                                    <button class="formButton" ng-click="scopeData.RefreshBillingAccount()">{{scopeData.translations.tRefresh}}</button>
+                                </div>
+                                <div class="panel-group" id="accordion">
+                                    <div class="panel panel-default" ng-repeat="item in scopeData.SelectedBillingAccounts">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$index}}">{{item.billingAccount}}</a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse{{$index}}" class="panel-collapse collapse">
+                                            <div class="panel-body">
+
+                                                <table class="formTable" style="border: currentColor; border-image: none;">
+                                                    <tbody>
+
+                                                        <tr class="formField formFieldTextArea">
+                                                            <td>
+                                                                <div title="Billing Address" class="formFieldLabel">
+                                                                    <span><b>{{scopeData.translations.tBillingAddress}} : </b></span>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <span class="nullable">{{item.billingAddress}}</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="formField">
+                                                            <td>
+                                                                <div title="Bill Medium" class="formFieldLabel">
+                                                                    <span><b>{{scopeData.translations.tBillMedium}} : </b></span>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <span class="nullable">{{item.billMedium}}</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td valign="top" style="width: 50%;">
+                            <div class="dataGridTitleText dataGridTitleTextUnderlined"><span>{{scopeData.translations.tShoppingCart}}</span></div>
+                            <div class="dataGridWrapper" style="min-width: 0px;">
+                                <table style="width: 100%; font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif; font-size: 11px; border-collapse: collapse;">
+                                    <colgroup>
+                                        <col style="width: 100px;">
+                                        <col ng-repeat="item in scopeData.BAMatrix" style="width: 80px;">
+                                    </colgroup>
+                                    <thead>
+                                        <tr style="border-top-color: rgb(204, 204, 204); border-bottom-color: rgb(204, 204, 204); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid;">
+                                            <th style="text-align: center; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">{{scopeData.translations.tOffers}}</th>
+                                            <th ng-repeat="item in scopeData.BAMatrix" ng-init="baMatrixIndex = $index" style="text-align: center; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">{{scopeData.BAMatrix[baMatrixIndex].billingAccount}} <br> <input type="radio" name="apply_all" ng-checked="scopeData.BAMatrix[baMatrixIndex].selected" ng-click="scopeData.selectApplyToAll(scopeData.BAMatrix[baMatrixIndex].billingAccount)">{{scopeData.translations.tApplyToAll}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="dataGridBodyRow" ng-class="{ selectedRow : OrderItem.IsSelected }" ng-repeat-start="OrderItem in scopeData.OrderItemBAMatrix" ng-init="orderItemIndex = $index">
+                                            <td align="left">
+                                                <div class="dataGridCellContent">
+                                                    <span>{{scopeData.OrderItemBAMatrix[orderItemIndex].orderItem.name}}</span>
+                                                </div>
+                                            </td>
+
+                                            <td ng-repeat="item in scopeData.OrderItemBAMatrix[orderItemIndex].billingAccounts" ng-init="billingAccountIndex = $index" align="center">
+                                                <div class="dataGridCellContent">
+                                                    <input type="radio" name="orderitem_{{scopeData.OrderItemBAMatrix[orderItemIndex].orderItem.guid}}" ng-checked="scopeData.OrderItemBAMatrix[orderItemIndex].billingAccounts[billingAccountIndex].selected" ng-click="scopeData.UpdateOrderItemWithBA(scopeData.OrderItemBAMatrix[orderItemIndex].orderItem.guid, scopeData.OrderItemBAMatrix[orderItemIndex].billingAccounts[billingAccountIndex].billingAccountID)">
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                        <tr class="dataGridBodyRow" style="text-align: center; font-size: 11px;" ng-repeat="char in OrderItem.CharacteristicList track by $index">
+                                            <td align="left" style="padding-left: 15px;">
+                                                <div class="dataGridCellContent">
+                                                    <span>{{char.CharacteristicName}}</span>
+                                                </div>
+                                            </td>
+                                            <td align="left">
+                                                <div class="dataGridCellContent">
+                                                    <span>{{char.ValueList[0].ValueText}}</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr ng-repeat-end=""></tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,233 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="AmxPeruPSBWorkflows.UpdateOrderItemsForMultiPlay"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:aao="clr-namespace:AmxPeruPSBActivities.Activities.OrderItem;assembly=AmxPeruPSBActivities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:ec="clr-namespace:ExternalApiActivities.Common;assembly=ExternalApiActivities"
+ xmlns:epwa="clr-namespace:Ericsson.PSB.Workflow.Activities;assembly=Ericsson.PSB.Workflow.Activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:mxs="clr-namespace:Microsoft.Xrm.Sdk;assembly=Microsoft.Xrm.Sdk"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="estrato" Type="InArgument(x:String)" />
+    <x:Property Name="orderCaptureId" Type="InArgument(x:String)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap2010:WorkflowViewState.IdRef>AmxPeruPSBWorkflows.UpdateOrderItemsForMultiPlay_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>AmxPeruPSBActivities.Model</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Ericsson.ETELCRM.CrmCachingLibrary</AssemblyReference>
+      <AssemblyReference>Ericsson.ETELCRM.CrmFoundationLibrary</AssemblyReference>
+      <AssemblyReference>Ericsson.ETELCRM.Entities.Crm</AssemblyReference>
+      <AssemblyReference>Ericsson.PSB.Workflow.Activities</AssemblyReference>
+      <AssemblyReference>Ericsson.PSB.Workflow.Client.Core</AssemblyReference>
+      <AssemblyReference>ExternalApiActivities</AssemblyReference>
+      <AssemblyReference>ExternalApiWorkflows</AssemblyReference>
+      <AssemblyReference>Microsoft.Crm.Sdk.Proxy</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Compatibility</AssemblyReference>
+      <AssemblyReference>Microsoft.Xrm.Client</AssemblyReference>
+      <AssemblyReference>Microsoft.Xrm.Sdk</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Activities.Core.Presentation</AssemblyReference>
+      <AssemblyReference>System.Activities.Presentation</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data.Linq</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Net.Http</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>AmxSoapServicesActivities</AssemblyReference>
+      <AssemblyReference>AmxDynamicsActivities</AssemblyReference>
+      <AssemblyReference>AmxPeruPSBActivities</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>AmxPeruPSBWorkflows</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_2">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="x:String" Name="connectionString" />
+    </Flowchart.Variables>
+    <Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+        <epwa:ConfigurationActivity sap2010:WorkflowViewState.IdRef="ConfigurationActivity_1" Key="connectionString">
+          <epwa:ConfigurationActivity.Value>
+            <OutArgument x:TypeArguments="x:String">
+              <mca:CSharpReference x:TypeArguments="x:String">connectionString</mca:CSharpReference>
+            </OutArgument>
+          </epwa:ConfigurationActivity.Value>
+        </epwa:ConfigurationActivity>
+        <FlowStep.Next>
+          <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+            <ec:XrmAwareCompositeActivity sap2010:WorkflowViewState.IdRef="XrmAwareCompositeActivity_1" IsGlobalContext="False" UseServiceUser="True">
+              <ec:XrmAwareCompositeActivity.Activities>
+                <Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_1">
+                  <Flowchart.Variables>
+                    <Variable x:TypeArguments="scg:List(mxs:Entity)" Name="orderItemList" />
+                  </Flowchart.Variables>
+                  <Flowchart.StartNode>
+                    <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_5">
+                      <aao:RetrieveOrderItemsForMultiPlay sap2010:WorkflowViewState.IdRef="RetrieveOrderItemsForMultiPlay_1">
+                        <aao:RetrieveOrderItemsForMultiPlay.OrderCaptureId>
+                          <InArgument x:TypeArguments="x:String">
+                            <mca:CSharpValue x:TypeArguments="x:String">orderCaptureId</mca:CSharpValue>
+                          </InArgument>
+                        </aao:RetrieveOrderItemsForMultiPlay.OrderCaptureId>
+                        <aao:RetrieveOrderItemsForMultiPlay.OrderItemList>
+                          <OutArgument x:TypeArguments="scg:List(mxs:Entity)">
+                            <mca:CSharpReference x:TypeArguments="scg:List(mxs:Entity)">orderItemList</mca:CSharpReference>
+                          </OutArgument>
+                        </aao:RetrieveOrderItemsForMultiPlay.OrderItemList>
+                      </aao:RetrieveOrderItemsForMultiPlay>
+                      <FlowStep.Next>
+                        <FlowStep x:Name="__ReferenceID1">
+                          <aao:UpdateOrderItemsForMultiPlay>
+                            <aao:UpdateOrderItemsForMultiPlay.Estrato>
+                              <InArgument x:TypeArguments="x:String">
+                                <mca:CSharpValue x:TypeArguments="x:String">estrato</mca:CSharpValue>
+                              </InArgument>
+                            </aao:UpdateOrderItemsForMultiPlay.Estrato>
+                            <aao:UpdateOrderItemsForMultiPlay.OrderItemList>
+                              <InArgument x:TypeArguments="scg:List(mxs:Entity)">
+                                <mca:CSharpValue x:TypeArguments="scg:List(mxs:Entity)">orderItemList</mca:CSharpValue>
+                              </InArgument>
+                            </aao:UpdateOrderItemsForMultiPlay.OrderItemList>
+                            <sap2010:WorkflowViewState.IdRef>UpdateOrderItemsForMultiPlay_1</sap2010:WorkflowViewState.IdRef>
+                          </aao:UpdateOrderItemsForMultiPlay>
+                          <sap2010:WorkflowViewState.IdRef>FlowStep_6</sap2010:WorkflowViewState.IdRef>
+                        </FlowStep>
+                      </FlowStep.Next>
+                    </FlowStep>
+                  </Flowchart.StartNode>
+                  <x:Reference>__ReferenceID0</x:Reference>
+                  <x:Reference>__ReferenceID1</x:Reference>
+                </Flowchart>
+              </ec:XrmAwareCompositeActivity.Activities>
+              <ec:XrmAwareCompositeActivity.ConnectionString>
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String">connectionString</mca:CSharpValue>
+                </InArgument>
+              </ec:XrmAwareCompositeActivity.ConnectionString>
+            </ec:XrmAwareCompositeActivity>
+          </FlowStep>
+        </FlowStep.Next>
+      </FlowStep>
+    </Flowchart.StartNode>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <x:Reference>__ReferenceID3</x:Reference>
+    <sads:DebugSymbol.Symbol>d2ZDOlxBbXggUHJvamVjdHNcQ2xvdWRcQW14Q29sb21iaWFUQ1JNXE1haW5CcmFuY2hcQW14UGVydVBTQldvcmtmbG93c1xVcGRhdGVPcmRlckl0ZW1zRm9yTXVsdGlQbGF5LnhhbWwPSAOQAQ8CAQFOCVQmAgEgVw2IASwCAQJRD1FlAgEiTmNOdQIBIYUBE4UBYQIBBVd5V4ABAgEEV5ABV5YBAgEDWRGBAR0CAQlfF2o8AgEVbRt5PgIBCmIdYmkCARtnHWd8AgEWcCFwZgIBEHUhdXgCAQs=</sads:DebugSymbol.Symbol>
+  </Flowchart>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="ConfigurationActivity_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RetrieveOrderItemsForMultiPlay_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="UpdateOrderItemsForMultiPlay_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,199.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_5">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,127.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,149.5 300,199.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="614,636">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,127.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="XrmAwareCompositeActivity_1" sap:VirtualizedContainerService.HintSize="222,175">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,221</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,149</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,171 300,221</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_2" sap:VirtualizedContainerService.HintSize="618,636">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,149</av:PointCollection>
+            <x:Double x:Key="Width">604</x:Double>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="AmxPeruPSBWorkflows.UpdateOrderItemsForMultiPlay_1" sap:VirtualizedContainerService.HintSize="658,716" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

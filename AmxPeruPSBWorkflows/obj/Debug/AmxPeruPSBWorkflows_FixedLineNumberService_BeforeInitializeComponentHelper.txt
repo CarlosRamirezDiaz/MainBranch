@@ -1,0 +1,2 @@
+FixedLineNumberService.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

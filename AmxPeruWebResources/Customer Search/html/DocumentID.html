@@ -1,0 +1,36 @@
+﻿<script src="amxperu_/common/JS/XrmServiceToolkit.min.js" type="text/javascript"></script>
+<table style="height:60px;backgroung-color:#ccc;">
+    <tr>
+        <td>
+            <table>
+                <tr>
+                    <td class="tDocType" style="width: 60px; " data-translate="tDocType">DocType</td>
+                    <td>
+                        <!--DocType field-->
+                        <select tabindex="1" id="SearchDocType" style='margin: 5px 5px 5px 0px; margin-right: 20px; padding: 2px 0px 3px 5px; border: 1px solid rgb(204, 204, 204); width: 150px; font-family: "Segoe UI"; font-size: 11px; font-weight: 600;'></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tDocId" style="position: absolute; margin-top: 9px; " data-translate="tDocId">DocId</td>
+                    <td>
+                        <!--DocId field-->
+                        <input tabindex="3" id="SearchDocId" style='padding: 2px 0px 3px 5px; border: 1px solid rgb(204, 204, 204); width: 150px; font-family: "Segoe UI"; font-size: 11px; font-weight: 600; margin: 5px 5px 5px 0px; position: absolute;' type="text">
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td style="padding-left: 5px;padding-right: 5px">
+            <input name="CustomerType" tabindex="4" type="radio" onclick="changeCustomerType(this)" checked="checked" value="Individuals"><span class="tIndividuals" data-translate="tIndividuals">Individuals</span>
+            <input name="CustomerType" tabindex="5" type="radio" onclick="changeCustomerType(this)" value="Corporates"><span class="tCorporates" data-translate="tCorporates">Corporates</span>
+        </td>
+        <td>
+            <a tabindex="6" class="easyui-linkbutton l-btn l-btn-plain" onclick=" doSimpleSearch() " href=" #" data-options="plain:true,iconCls:'icon-search'" group="">
+                <span class="l-btn-left">
+                    <span class="l-btn-text icon-search l-btn-icon-left">
+                        <span class="tSearch" style="font-size: 12px;" data-translate="tSearch">SEARCH</span>
+                    </span>
+                </span>
+            </a>
+        </td>
+    </tr>
+</table>

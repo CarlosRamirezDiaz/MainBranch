@@ -1,0 +1,2 @@
+AmxCoBAAssignment.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

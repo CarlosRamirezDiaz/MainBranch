@@ -1,0 +1,2 @@
+ValidatePortability.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

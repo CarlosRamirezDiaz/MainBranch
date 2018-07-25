@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd_2="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:xsd_1="http://claro.com.pe/entity/Service/ServiceLevelSpec/V1/" xmlns:xsd_6="http://claro.com.pe/entity/Product/ProductSpecification/V1/" xmlns:xsd_4="http://claro.com.pe/entity/EngagedParty/Agreement_V1/" xmlns:xsd_5="http://claro.com.pe/entity/Product/ProductOffering/V1/" targetNamespace="http://claro.com.pe/entity/Service/ServiceLevelSpec/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="../Product/ProductSpecification_V1.xsd" namespace="http://claro.com.pe/entity/Product/ProductSpecification/V1/" />
+  <xsd:import schemaLocation="../Product/ProductOffering_V1.xsd" namespace="http://claro.com.pe/entity/Product/ProductOffering/V1/" />
+  <xsd:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:annotation>
+    <xsd:documentation>The Service Specification ABE contains entities that define the invariant characteristics and behavior of both types of Service entities. This enables multiple instances to be derived from a single specification entity. In this derivation, each instance will use the invariant characteristics and behavior defined in its associated template.
+
+This ABE includes a third type of Service Specification entity: that of a ServiceLevelSpecification. This type of specification templatizes Services that are bound to a Service Level Agreement.
+</xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="ServiceLevelSpecExpression">
+    <xsd:annotation>
+      <xsd:documentation>ServiceLevelSpecExpression describes strict relations between ServiceLevelSpecification subordinates (ServiceLevelSpecParameter, ServiceLevelObjective, ServiceLevelConsequence, and ServiceLevelApplicability)). The baseline idea of ServiceLevelSpecExpression is to resolve the multiple associations between its subordinates. For example, an expression may consist of a consequence and its applicability for a ServiceLevelSpecification.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="serviceLevelSpecParameter1" type="xsd_1:ServiceLevelSpecParameter" />
+      <xsd:element name="serviceLevelSpecification" type="xsd_1:ServiceLevelSpecification" />
+      <xsd:element minOccurs="0" name="serviceLevelSpecApplicability1" type="xsd_1:ServiceLevelSpecApplicability" />
+      <xsd:element minOccurs="0" name="serviceLevelSpecConsequence1" type="xsd_1:ServiceLevelSpecConsequence" />
+      <xsd:element minOccurs="0" name="serviceLevelObjective1" type="xsd_1:ServiceLevelObjective" />
+      <xsd:element name="serviceLevelSpecApplicability" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>An indicator that is set to true if a ServiceLevelSpecApplicability is part of the expresssion.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="serviceLevelSpecConsequence" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>An indicator that is set to true if a ServiceLevelSpecConsequence is part of the expresssion.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="serviceLevelObjective" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>An indicator that is set to true if a ServiceLevelSpecObjective is part of the expresssion.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="serviceLevelSpecParameter" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>An indicator that is set to true if a ServiceLevelSpecParameter is part of the expresssion.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_2:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period of time for which the expression is valid.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="KeyPerformanceIndicatorSLSParm">
+    <xsd:annotation>
+      <xsd:documentation>A measure of a specific aspect of the performance of a ServiceResource (network or non-network) or a group of ServiceResources of the same type.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:ServiceLevelSpecParameter" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="KeyQualityIndicatorSLSParm">
+    <xsd:annotation>
+      <xsd:documentation>A measure of a specific aspect of the performance of a product (ProductSpecification, ProductOffering, or Product) or a service (ServiceSpecification or Service). A KQI draws its data from a number of sources, including KPIs.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:ServiceLevelSpecParameter">
+        <xsd:sequence>
+          <xsd:element name="KQITransformationAlgorithm" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>A logical step-by-step procedure used to calculate the value of a KQI.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="NegotiatedServiceLevelSpec">
+    <xsd:annotation>
+      <xsd:documentation>A negotiated set of service level objectives, and consequences that occur, if the objectives are not met.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:ServiceLevelSpecification" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceLevelObjective">
+    <xsd:annotation>
+      <xsd:documentation>Quality goal for a ServiceLevelSpecification defined in terms of parameters and metrics, thresholds, and tolerances associated with the parameters.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="conformanceTarget" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>A value used to determine if ServiceLevelObjective is met.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="conformanceComparator" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>An operator that specifies whether a ServiceLevelObjective is violated above or below the conformanceTarget.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="conformancePeriod" type="xsd_2:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>An interval of time during which the conformanceTarget must be measured.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="thresholdTarget" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>A value that used to specify when a warning should be used that indicates an objective is danger of not being met.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="toleranceTarget" type="xsd:long">
+        <xsd:annotation>
+          <xsd:documentation>A value that specifies the allowable variation of a conformanceTarget.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="tolerancePeriod" type="xsd_2:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>An interval of time over which the toleranceTarget is acceptable before indication of an objective violation.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="gracePeriods" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>The number of times an objective can remain un-updated without a violation of a ServiceLevelAgreement in reference to a measurement period and/or ServiceLevelAgreement reporting period.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_2:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period of time during which the objective is applicable.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_serviceLevelSpecParameter" type="xsd_1:ServiceLevelSpecParameter" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceLevelSpecApplicability" type="xsd_1:ServiceLevelSpecApplicability" />
+      <xsd:element name="_serviceLevelSpecification" type="xsd_1:ServiceLevelSpecification" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceLevelSpecConsequence" type="xsd_1:ServiceLevelSpecConsequence" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="serviceLevelSpecificationExpression" type="xsd_1:ServiceLevelSpecExpression" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceLevelSpecApplicability">
+    <xsd:annotation>
+      <xsd:documentation>The time of day or days during which a ServiceLevelSpecification, ServiceLevelObjective, or ServiceLevelSpecConsequence is relent or not.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="_unapplicableCode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Indicator that specifies whether an instance represents applicability or un-applicability.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_unapplicableDuring" type="xsd_2:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>A period of time representing applicability or un-applicability, for example from 8AM to 12PM.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_unapplicableDays" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A day or days representing applicability or un-applicability, for example 2,3 represents Monday and Tuesday.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceLevelSpecConsequence" type="xsd_1:ServiceLevelSpecConsequence" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceLevelObjective" type="xsd_1:ServiceLevelObjective" />
+      <xsd:element name="_serviceLevelSpecification" type="xsd_1:ServiceLevelSpecification" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="serviceLevelSpecificationExpression" type="xsd_1:ServiceLevelSpecExpression" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceLevelSpecConsequence">
+    <xsd:annotation>
+      <xsd:documentation>An action that takes place in the event that a ServiceLevelObjective is not met.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="prescribedAction" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Recommended remedy for a violated ServiceLevelObjective.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_2:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period of time for which a ServiceLevelSpecConsequence applies.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceLevelSpecApplicability" type="xsd_1:ServiceLevelSpecApplicability" />
+      <xsd:element name="_serviceLevelSpecification" type="xsd_1:ServiceLevelSpecification" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceLevelObjective" type="xsd_1:ServiceLevelObjective" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="serviceLevelSpecificationExpression" type="xsd_1:ServiceLevelSpecExpression" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceLevelSpecification" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>A pre-defined or negotiated set of service level objectives, and consequences that occur, if the objectives are not met.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="validFor" type="xsd_2:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period during which a ServiceLevelSpecicifcation is applicable.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceLevelSpecApplicability" type="xsd_1:ServiceLevelSpecApplicability" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceLevelObjective" type="xsd_1:ServiceLevelObjective" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceLevelSpecConsequence" type="xsd_1:ServiceLevelSpecConsequence" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_productOffering" type="xsd_5:ProductOffering" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_productSpecification" type="xsd_6:ProductSpecification" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="serviceLevelSpecParameter" type="xsd_1:ServiceLevelSpecParameter" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="serviceLevelSpecificationExpression2" type="xsd_1:ServiceLevelSpecExpression" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceLevelSpecParameter" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>A variable whose value is used to determine compliance with a ServiceLevelObjective.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="serviceParmPerspective" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A string that specifies whether the ServiceLevelSpecParameter represents a single user instance parameter or a parameter that represents an aggregation.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="serviceParmCategory" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A string that specifies whether the ServiceLevelSpecParameter is technology specific, service specific, or technology/service independent</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_2:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period of time during with the ServiceLevelSpecParameter is applicable.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceLevelObjective" type="xsd_1:ServiceLevelObjective" />
+      <xsd:element name="serviceLevelSpecification" type="xsd_1:ServiceLevelSpecification" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="serviceLevelSpecificationExpression" type="xsd_1:ServiceLevelSpecExpression" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TemplateServiceLevelSpec">
+    <xsd:annotation>
+      <xsd:documentation>A pre-defined set of service level objectives, and consequences that occur, if the objectives are not met.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:ServiceLevelSpecification" />
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,2254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{33D7BD10-FB66-4CFE-9DA5-D428823C87D2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AmxPeruPSBActivities</RootNamespace>
+    <AssemblyName>AmxPeruPSBActivities</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ericsson.ETELCRM.CrmFoundationLibrary">
+      <HintPath>..\CrmDLLs\Ericsson.ETELCRM.CrmFoundationLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Ericsson.PSB.Workflow.Activities">
+      <HintPath>..\CrmDLLs\Ericsson.PSB.Workflow.Activities.dll</HintPath>
+    </Reference>
+    <Reference Include="Ericsson.PSB.Workflow.Client.Core">
+      <HintPath>..\CrmDLLs\Ericsson.PSB.Workflow.Client.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ExternalApiActivities">
+      <HintPath>..\CrmDLLs\ExternalApiActivities.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Crm.Sdk.Proxy">
+      <HintPath>..\CrmDLLs\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CrmDLLs\Microsoft.IdentityModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=5.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.5.2.1\lib\net451\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.2.1\lib\net451\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Client">
+      <HintPath>..\CrmDLLs\Microsoft.Xrm.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk">
+      <HintPath>..\CrmDLLs\Microsoft.Xrm.Sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk.Workflow, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CrmDLLs\microsoft.xrm.sdk.workflow.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Selectors" />
+    <Reference Include="System.identitymodel.services" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.2.1\lib\net451\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activities" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\AMXCommon\Business\AppointmentLog\AMXGetAppointmentDetailsBusiness.cs">
+      <Link>AMXCOLOMBIA\Activities\AppointmentLog\IVR\AMXGetAppointmentDetailsBusiness.cs</Link>
+    </Compile>
+    <Compile Include="..\AMXCommon\Business\AppointmentLog\IVR\AMXGetAppointmentStatusBusiness.cs">
+      <Link>AMXCOLOMBIA\Activities\AppointmentLog\IVR\AMXGetAppointmentStatusBusiness.cs</Link>
+    </Compile>
+    <Compile Include="..\AMXCommon\Business\AppointmentLog\IVR\AMXUpdateAppointmentStatusBusiness.cs">
+      <Link>AMXCOLOMBIA\Activities\AppointmentLog\IVR\AMXUpdateAppointmentStatusBusiness.cs</Link>
+    </Compile>
+    <Compile Include="..\AMXCommon\Common.cs">
+      <Link>AMXCOLOMBIA\Common.cs</Link>
+    </Compile>
+    <Compile Include="..\AMXCommon\Model\AppointmentLog\AMXGetAppointmentDetailsRequestModel.cs">
+      <Link>AMXCOLOMBIA\Activities\AppointmentLog\IVR\AMXGetAppointmentDetailsRequestModel.cs</Link>
+    </Compile>
+    <Compile Include="..\AMXCommon\Model\AppointmentLog\AMXGetAppointmentDetailsResponseModel.cs">
+      <Link>AMXCOLOMBIA\Activities\AppointmentLog\IVR\AMXGetAppointmentDetailsResponseModel.cs</Link>
+    </Compile>
+    <Compile Include="..\AMXCommon\Model\AppointmentLog\IVR\AMXAddContactFromListToJobModel.cs">
+      <Link>AMXCOLOMBIA\Activities\AppointmentLog\IVR\AMXAddContactFromListToJobModel.cs</Link>
+    </Compile>
+    <Compile Include="..\AMXCommon\Model\AppointmentLog\IVR\AMXSaveContactToListResponseModel.cs">
+      <Link>AMXCOLOMBIA\Activities\AppointmentLog\IVR\AMXSaveContactToListResponseModel.cs</Link>
+    </Compile>
+    <Compile Include="..\AMXCommon\Model\AppointmentLog\IVR\AMXUpdateAppointmentStatusModel.cs">
+      <Link>AMXCOLOMBIA\Activities\AppointmentLog\IVR\AMXUpdateAppointmentStatusModel.cs</Link>
+    </Compile>
+    <Compile Include="..\AMXCommon\Model\BiHeader\BiHeaderModel.cs">
+      <Link>AMXCOLOMBIA\Model\BiHeader\BiHeaderModel.cs</Link>
+    </Compile>
+    <Compile Include="..\AMXCommon\Model\Individual\AMXIndividualCustomerModel.cs">
+      <Link>AMXCOLOMBIA\Activities\AppointmentLog\IVR\AMXIndividualCustomerModel.cs</Link>
+    </Compile>
+    <Compile Include="..\AMXCommon\Repository\AppointmentLog\AMXGetAppointmentDetailsRepository.cs">
+      <Link>AMXCOLOMBIA\Activities\AppointmentLog\IVR\AMXGetAppointmentDetailsRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\AMXCommon\Repository\AppointmentLog\IVR\AMXGetAppointmentStatusRepository.cs">
+      <Link>AMXCOLOMBIA\Activities\AppointmentLog\IVR\AMXGetAppointmentStatusRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\AMXCommon\Repository\AppointmentLog\IVR\AMXUpdateAppointmentStatusRepository.cs">
+      <Link>AMXCOLOMBIA\Activities\AppointmentLog\IVR\AMXUpdateAppointmentStatusRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\AMXCommon\Repository\BiHeader\BiHeaderRepository.cs">
+      <Link>Repository\BiHeaderRepository.cs</Link>
+    </Compile>
+    <Compile Include="ActivitiesClaroESB\AmxCoBureauAct.cs" />
+    <Compile Include="ActivitiesClaroESB\AmxCoDigiturnoNotifyEventTurn.cs" />
+    <Compile Include="ActivitiesClaroESB\AmxCoDigiturnoUpdateUserTurn.cs" />
+    <Compile Include="ActivitiesClaroESB\AmxCoEvidenteGetQuestionnaireAct.cs" />
+    <Compile Include="ActivitiesClaroESB\AmxCoGetInfoListsAct.cs" />
+    <Compile Include="ActivitiesClaroESB\AmxCoInternalBureauAct.cs" />
+    <Compile Include="ActivitiesClaroESB\AmxCoSarglaft.cs" />
+    <Compile Include="ActivitiesClaroESB\AmxCoEvidenteEvaluateQuestionnaireAct.cs" />
+    <Compile Include="ActivitiesClaroESB\AmxCoTest.cs" />
+    <Compile Include="ActivitiesClaroESB\AmxCoTorreDeControlAct.cs" />
+    <Compile Include="ActivitiesClaroESB\AmxCoUpdateListAct.cs" />
+    <Compile Include="ActivitiesClaroESB\CustomerBiographicAct.cs" />
+    <Compile Include="Activities\Address\AmxPeruGetCustomerAddress.cs" />
+    <Compile Include="Activities\Address\AmxPeruModifyCustomerAddress.cs" />
+    <Compile Include="Activities\Address\AmxPeruCreateCustomerAddress.cs" />
+    <Compile Include="Activities\Address\GetAddressAvailableTechnologyActivity.cs" />
+    <Compile Include="Activities\Address\RetrieveEstratoByAddressId.cs" />
+    <Compile Include="Activities\AffilateDisaffiliate\AffiliateDisaffiliateBlacklist.cs" />
+    <Compile Include="Activities\AffilateDisaffiliate\AffiliateDisaffiliateDataProtection.cs" />
+    <Compile Include="Activities\AffilateDisaffiliate\AmxPeruAffiliateDisaffiliatetoWhitePagesActivity.cs" />
+    <Compile Include="Activities\AffilateDisaffiliate\ExternalAffiliateDisaffiliatetoWhitepagesActivity.cs" />
+    <Compile Include="Activities\AffilateDisaffiliate\UpdateBlacklistServiceforSubscription.cs" />
+    <Compile Include="Activities\AmxPeruBulkIndividualCreation.cs" />
+    <Compile Include="Activities\AmxPeruChangeSimCardGeneral .cs" />
+    <Compile Include="Activities\AmxPeruValidaCobertura.cs" />
+    <Compile Include="Activities\AmxPeruValidaDireccion.cs" />
+    <Compile Include="Activities\Appointment\CreateAppointmentRequestActivity.cs" />
+    <Compile Include="Activities\Appointment\GetCapacityActivity.cs" />
+    <Compile Include="Activities\Appointment\MapGetCapacityResponse.cs" />
+    <Compile Include="Activities\Appointment\NotifyCancelAppointmentESB.cs" />
+    <Compile Include="Activities\Bill Cycle Change\BillCycleChangefromOM.cs" />
+    <Compile Include="Activities\BillCycleChange\AmxCoBillCycleChange.cs" />
+    <Compile Include="Activities\BillCycleChange\BillCycleChangeEOC.cs" />
+    <Compile Include="Activities\BillCycleChange\AmxGetCustomerBillingAccounts.cs" />
+    <Compile Include="Activities\BillingAccount\CreateBillingAccount.cs" />
+    <Compile Include="Activities\BillingAccount\GetAvgBillActualDebt.cs" />
+    <Compile Include="Activities\BillingAccount\ModifyBillingAccount.cs" />
+    <Compile Include="Activities\BSSCustomerCreditScoreMgmtLG\BSSCustomerCreditScoreMgmtLG.cs" />
+    <Compile Include="Activities\Case\AmxCoCreateCaseHHPP.cs" />
+    <Compile Include="Activities\Case\AmxCoUpdateCaseStatus.cs" />
+    <Compile Include="Activities\Case\AmxPeruGeneraIncidencia.cs" />
+    <Compile Include="Activities\Case\CaseGetCun.cs" />
+    <Compile Include="Activities\Case\CreateCase.cs" />
+    <Compile Include="Activities\Cfss\RetrieveCfssListByProductExternalId.cs" />
+    <Compile Include="Activities\ChangeResource\AmxPeruMSISDNChangeActivity.cs" />
+    <Compile Include="Activities\ChangeResource\AmxPeruValidatioIsOpenShoppingCartActivity.cs" />
+    <Compile Include="Activities\ChangeResource\AmxPeruValidationBeforeChangeResourceActivity.cs" />
+    <Compile Include="Activities\CheckDebtAccount\GetDebtAccountStatus.cs" />
+    <Compile Include="Activities\Common\AmxCoGetEntities.cs" />
+    <Compile Include="Activities\Common\LogCreator.cs" />
+    <Compile Include="Activities\Common\RedirectActivity.cs" />
+    <Compile Include="Activities\CompanyClientList\AmxPeruGetCompanyClientInfo.cs" />
+    <Compile Include="Activities\Compatibility\ApplyCompatibilityRule.cs" />
+    <Compile Include="Activities\Compatibility\ApplyCompatibilityRuleForOrderBasketItems.cs" />
+    <Compile Include="Activities\CreditScore\AmxPeruGetCreditScore.cs" />
+    <Compile Include="Activities\CustomerAccountStatement\GetConsultationAccountStatus.cs" />
+    <Compile Include="Activities\CustomerCampaign\CustomerCampaignActivity.cs" />
+    <Compile Include="Activities\CustomerDetails\GetCustomerDetailsAmxCo.cs" />
+    <Compile Include="Activities\CustomerDetails\CustomerDetails.cs" />
+    <Compile Include="Activities\CustomerDetails\GetCustomerById.cs" />
+    <Compile Include="Activities\CustomerEmailBilling\AmxCoCustomerEmailBillingActivity.cs" />
+    <Compile Include="Activities\Eligibility\ApplyEligibilityRule.cs" />
+    <Compile Include="Activities\EOC\GetCustomerProductsFromSRActivity.cs" />
+    <Compile Include="Activities\External\ConsultaDocumentoOnBase.cs" />
+    <Compile Include="Activities\External\ConsultaEvaluacionCrediticia.cs" />
+    <Compile Include="Activities\GeneralEnquiry\GeneralEnquiryProductOffersCatalog.cs" />
+    <Compile Include="Activities\Individual\AmxCoCTIExistsCustomerByANI.cs" />
+    <Compile Include="Activities\Individual\AmxCoGetContractsByCustomer.cs" />
+    <Compile Include="Activities\Individual\AmxCoNotityStratumChange.cs" />
+    <Compile Include="Activities\Individual\AmxCoReceiveConfirmationAndSynchronizeClient.cs" />
+    <Compile Include="Activities\Individual\AmxCoSendSurvey.cs" />
+    <Compile Include="Activities\Individual\AmxGetCustomerInfo.cs" />
+    <Compile Include="Activities\Individual\AmxPeruGetCustomerSpecialCase.cs" />
+    <Compile Include="Activities\Individual\AmxPeruCreateProspect.cs" />
+    <Compile Include="Activities\Individual\AmxPeruCTIService.cs" />
+    <Compile Include="Activities\Individual\AmxPeruBlacklist.cs" />
+    <Compile Include="Activities\Individual\AmxPeruDontInsist.cs" />
+    <Compile Include="Activities\Individual\AmxPeruGetCustomerContact.cs" />
+    <Compile Include="Activities\Individual\AmxPeruGetCustomerInfo.cs" />
+    <Compile Include="Activities\InternalExternalAccount\AmcCoGenerateSimulation.cs" />
+    <Compile Include="Activities\InternalExternalAccount\AmxCoBAAssignment.cs" />
+    <Compile Include="Activities\InvoiceClarification\AmxCoGetFileDocumentaryManagerActivity.cs" />
+    <Compile Include="Activities\InternalExternalAccount\AmxCoCreateItemsAccountWithDataBSCS.cs" />
+    <Compile Include="Activities\LinePortability\ClaroDirectoryNumberConfigActivity.cs" />
+    <Compile Include="Activities\LinePortability\DirectoryNumberTypeReadActivity.cs" />
+    <Compile Include="Activities\LinePortability\ReservePhoneNumberActivity.cs" />
+    <Compile Include="Activities\LinePortability\RetrievePhoneNumberActivity.cs" />
+    <Compile Include="Activities\Offering\ReserveResourceInERMS.cs" />
+    <Compile Include="Activities\Offering\GetSelectedDeviceAvailableResources.cs" />
+    <Compile Include="Activities\Offering\GetSelectedDevicePriceConfiguration.cs" />
+    <Compile Include="Activities\Offering\RetrieveOptionalOfferingsFromInfoTable.cs" />
+    <Compile Include="Activities\Offering\RetrieveAssociatedOfferingsByParentId.cs" />
+    <Compile Include="Activities\Offering\RetrieveBasicOfferings.cs" />
+    <Compile Include="Activities\Offering\RetrieveConfigOfferingPopList.cs" />
+    <Compile Include="Activities\Offering\RetrieveDevicePriceConfiguration.cs" />
+    <Compile Include="Activities\Offering\RetrieveEstratoBasedOfferings.cs" />
+    <Compile Include="Activities\Offering\RetrieveOptionalOfferings.cs" />
+    <Compile Include="Activities\Offering\RetrievePopConfigIdsByEstrato.cs" />
+    <Compile Include="Activities\Offering\RetrievePopListByOfferingIdList.cs" />
+    <Compile Include="Activities\Offering\RetrivePopConfigIdsByEstrato.cs" />
+    <Compile Include="Activities\OrderItem\AddRelevantPOToCart.cs" />
+    <Compile Include="Activities\OrderItem\AmxPeruAddDeviceToShoppingCart.cs" />
+    <Compile Include="Activities\OrderItem\AmxPeruUpdateShoppingCart.cs" />
+    <Compile Include="Activities\OrderItem\AddOrderItemToShoppingCart.cs" />
+    <Compile Include="Activities\OrderItem\GetAssociatedProductOfferingList.cs" />
+    <Compile Include="Activities\OrderItem\GetAssociatedOffersAvailableConfigurationWithPrices.cs" />
+    <Compile Include="Activities\OrderItem\GetAvailableOfferConfigurationWithPrices.cs" />
+    <Compile Include="Activities\OrderItem\AmxPeruGetOfferingPrices.cs" />
+    <Compile Include="Activities\OrderItem\GetAvailableStocks.cs" />
+    <Compile Include="Activities\OrderItem\GetOrderBasket.cs" />
+    <Compile Include="Activities\OrderItem\GetProductCatalogueList.cs" />
+    <Compile Include="Activities\OrderItem\GetOfferingAvailabilityList.cs" />
+    <Compile Include="Activities\OrderItem\GetOfferingPriceConfiguration.cs" />
+    <Compile Include="Activities\OrderItem\GetOfferingPrices.cs" />
+    <Compile Include="Activities\OrderItem\GetProductCharacteristics.cs" />
+    <Compile Include="Activities\OrderItem\RemoveOrderItemFromShoppingCart.cs" />
+    <Compile Include="Activities\OrderItem\RetrieveInfoTableValues.cs" />
+    <Compile Include="Activities\OrderItem\RetrieveOrderItemsForMultiPlay.cs" />
+    <Compile Include="Activities\OrderItem\RetrieveProductOfferings.cs" />
+    <Compile Include="Activities\OrderItem\RetrieveProductsFromOrderBasket.cs" />
+    <Compile Include="Activities\OrderItem\RevertCartPricess.cs" />
+    <Compile Include="Activities\OrderItem\SIMCardOrderItemOperationsActivity.cs" />
+    <Compile Include="Activities\OrderItem\UpdateOrderItemAction.cs" />
+    <Compile Include="Activities\OrderItem\UpdateOrderItemBillingAccount.cs" />
+    <Compile Include="Activities\OrderItem\UpdateOrderItemsForMultiPlay.cs" />
+    <Compile Include="Activities\OrderItem\UpdateShoppingCartDevice.cs" />
+    <Compile Include="Activities\OrderItem\ValidatePortability.cs" />
+    <Compile Include="Activities\OrderMilestone\AmxPeruSetOrderMilestoneActivity.cs" />
+    <Compile Include="Activities\Order\GetOrderCaptureAddressActivity.cs" />
+    <Compile Include="Activities\Order\UpdateOrderAddress.cs" />
+    <Compile Include="Activities\Order\PostSubmitOrderCapture.cs" />
+    <Compile Include="Activities\Order\GetOfferingActivity.cs" />
+    <Compile Include="Activities\Order\MapOrderCaptureActivity.cs" />
+    <Compile Include="Activities\Order\OrderCaptureResult.cs" />
+    <Compile Include="Activities\Order\RetrieveOrderCapture.cs" />
+    <Compile Include="Activities\Order\RetrieveOrderCaptureItems.cs" />
+    <Compile Include="Activities\Order\ProcessEocResponse.cs" />
+    <Compile Include="Activities\Order\SubmitOrderCaptureActivity.cs" />
+    <Compile Include="Activities\ProductCfsReadServiceActivity.cs" />
+    <Compile Include="Activities\ProductOfferingSync\AmxPeruProductOfferingSync.cs" />
+    <Compile Include="Activities\ProductOfferingSync\CreateProductOffering.cs" />
+    <Compile Include="Activities\SendNotification\AmxperuSendNotification.cs" />
+    <Compile Include="Activities\StratumChange\AmxCoSendBase64FileToDocumentaryManagerActivity.cs" />
+    <Compile Include="Activities\StratumChange\AmxCoStratumChangeCreateCase.cs" />
+    <Compile Include="Activities\StratumChange\StratumChangeCreateItemAddress.cs" />
+    <Compile Include="Activities\Task\AmxPeruCreateBILOG.cs" />
+    <Compile Include="Activities\Task\CreateTaskInCrm.cs" />
+    <Compile Include="Activities\Task\CreateTAskUpdated.cs" />
+    <Compile Include="Activities\UpdateGenericEntityFieldsActivity.cs" />
+    <Compile Include="Activities\UploadDocument\DocumentUploadActivity.cs" />
+    <Compile Include="AMXCOLOMBIA\Activities\AddressMGL\AmxGetCustomerAddressHhpp.cs" />
+    <Compile Include="AMXCOLOMBIA\Activities\AddressMGL\AmxGetCustomerAddressMGLTechDetails.cs" />
+    <Compile Include="AMXCOLOMBIA\Activities\AddressMGL\AmxGetCustomerAddress.cs" />
+    <Compile Include="AMXCOLOMBIA\Activities\AddressMGL\AmxGetMGLTabularConfiguration.cs" />
+    <Compile Include="AMXCOLOMBIA\Activities\AMXClaroESBLogActivity.cs" />
+    <Compile Include="AMXCOLOMBIA\Activities\AmxCoTechnicianAppGetResourceActivity.cs" />
+    <Compile Include="AMXCOLOMBIA\Activities\AmxCoUpdateOrderItemAppointment.cs" />
+    <Compile Include="AMXCOLOMBIA\Activities\AppointmentLog\AmxGetAppointmentLog.cs" />
+    <Compile Include="AMXCOLOMBIA\Activities\AppointmentLog\IVR\AMXGetAppointmentStatus.cs" />
+    <Compile Include="AMXCOLOMBIA\Activities\AppointmentLog\IVR\AMXUpdateAppointmentStatus.cs" />
+    <Compile Include="AMXCOLOMBIA\Activities\BI Log\AmxBiLogAdd.cs" />
+    <Compile Include="AMXCOLOMBIA\Activities\BICreditProfile\BICreditProfile.cs" />
+    <Compile Include="AMXCOLOMBIA\Activities\Certicamara\AmxGetHClientJsonWebToken.cs" />
+    <Compile Include="AMXCOLOMBIA\Activities\Certicamara\AmxValidateHClientResponse.cs" />
+    <Compile Include="AMXCOLOMBIA\Activities\Configuration\AmxCoCreteUpdateResourceChar.cs" />
+    <Compile Include="AMXCOLOMBIA\Activities\Configuration\GetConfigurableItems.cs" />
+    <Compile Include="AMXCOLOMBIA\Activities\Digiturno\SendStartInteractionNotificationToDigiturno.cs" />
+    <Compile Include="AMXCOLOMBIA\Activities\EOC\GetRequiredAppointments.cs" />
+    <Compile Include="AMXCOLOMBIA\Activities\EOC\GenerateEOCRequestActivity.cs" />
+    <Compile Include="AMXCOLOMBIA\Activities\Individual\AmxGetMobileCustomerInfo.cs" />
+    <Compile Include="AMXCOLOMBIA\Activities\Paradigma\ParadigmaGetIFrameUrl.cs" />
+    <Compile Include="AMXCOLOMBIA\Business\AddUpdateOrderResourceBusiness.cs" />
+    <Compile Include="AMXCOLOMBIA\Business\AmxCoUpdateOrderItemAppointmentBusiness.cs" />
+    <Compile Include="AMXCOLOMBIA\Business\BI Log\AmxBiLogBusiness.cs" />
+    <Compile Include="AMXCOLOMBIA\Business\BICreditProfile\BICreditProfileBusiness.cs" />
+    <Compile Include="AMXCOLOMBIA\Business\CancelAppointment\AmxCancelAppointmentOSBBusiness.cs" />
+    <Compile Include="AMXCOLOMBIA\Business\CancelAppointment\AmxNotifyCancelAppointmentESBBusiness.cs" />
+    <Compile Include="AMXCOLOMBIA\Business\Certicamara\CerticamaraBusiness.cs" />
+    <Compile Include="AMXCOLOMBIA\Business\EOC\EocBiBusiness.cs" />
+    <Compile Include="AMXCOLOMBIA\Business\Individual\AmxGetMobileCustomerInfoBusiness.cs" />
+    <Compile Include="AMXCOLOMBIA\Business\OrderCapture\RetrieveOrderCaptureBusiness.cs" />
+    <Compile Include="AMXCOLOMBIA\Business\ParadigmaBusiness.cs" />
+    <Compile Include="AMXCOLOMBIA\Model\AddressMGL\AmxAddressMGLHhppRequest.cs" />
+    <Compile Include="AMXCOLOMBIA\Model\AddressMGL\AmxAddressMGLHhppResponse.cs" />
+    <Compile Include="AMXCOLOMBIA\Model\AddressMGL\MglHhPpsModel.cs" />
+    <Compile Include="AMXCOLOMBIA\Model\AmxCoAppointmentLogModel.cs" />
+    <Compile Include="AMXCOLOMBIA\Model\AmxCoOrderResourceCharModel.cs" />
+    <Compile Include="AMXCOLOMBIA\Model\AmxCoOrderResourceModel.cs" />
+    <Compile Include="AMXCOLOMBIA\Business\GetResourceSpecificationBusiness.cs" />
+    <Compile Include="AMXCOLOMBIA\Activities\OrdeCapture\RetrieveOrderCapture.cs" />
+    <Compile Include="AMXCOLOMBIA\Business\AddressMGL\AmxGetCustomerAddressBusiness.cs" />
+    <Compile Include="AMXCOLOMBIA\Model\AddressMGL\AmxAddressMGLRequest.cs" />
+    <Compile Include="AMXCOLOMBIA\Model\AddressMGL\AmxAddressMGLResponse.cs" />
+    <Compile Include="AMXCOLOMBIA\Model\AmxCoTechnicianAppGetResourceRequest.cs" />
+    <Compile Include="AMXCOLOMBIA\Model\AmxCoTechnicianAppGetResourceResponce.cs" />
+    <Compile Include="AMXCOLOMBIA\Model\BI Log\AmxBiLogRequest.cs" />
+    <Compile Include="AMXCOLOMBIA\Model\BI Log\AmxBiLogResponse.cs" />
+    <Compile Include="AMXCOLOMBIA\Model\BICreditProfile\BICreditProfileRequest.cs" />
+    <Compile Include="AMXCOLOMBIA\Model\BICreditProfile\BICreditProfileResponse.cs" />
+    <Compile Include="AMXCOLOMBIA\Model\CancelAppointment\AmxCancelAppointmentOSBRequest.cs" />
+    <Compile Include="AMXCOLOMBIA\Model\CancelAppointment\AmxCancelAppointmentOSBResponce.cs" />
+    <Compile Include="AMXCOLOMBIA\Model\CancelAppointment\AmxNotifyCancelAppointmentESBRequest.cs" />
+    <Compile Include="AMXCOLOMBIA\Model\CancelAppointment\AmxNotifyCancelAppointmentESBResponce.cs" />
+    <Compile Include="AMXCOLOMBIA\Model\Certicamara\CerticamaraHClientResponse.cs" />
+    <Compile Include="AMXCOLOMBIA\Model\Certicamara\CerticamaraHClientPayload.cs" />
+    <Compile Include="AMXCOLOMBIA\Model\EOC\RequiredAppointment.cs" />
+    <Compile Include="AMXCOLOMBIA\Model\Individual\AmxGetMobileCustomerInfoResponse.cs" />
+    <Compile Include="AMXCOLOMBIA\Model\OrderCapture\ListOrderCapture.cs" />
+    <Compile Include="AMXCOLOMBIA\Model\Paradigma\GetIFrameUrlResponse.cs" />
+    <Compile Include="BusinessClaroESB\AmxCoBureauBusiness.cs" />
+    <Compile Include="BusinessClaroESB\AmxCoClaroESBCommon.cs" />
+    <Compile Include="BusinessClaroESB\AmxCoDigiturnoBusiness.cs" />
+    <Compile Include="BusinessClaroESB\AmxCoEvidenteBusiness.cs" />
+    <Compile Include="BusinessClaroESB\AmxCoListasBusiness.cs" />
+    <Compile Include="BusinessClaroESB\AmxCoSarglaftBusiness.cs" />
+    <Compile Include="BusinessClaroESB\AmxCoTorreDeControlBusiness.cs" />
+    <Compile Include="BusinessClaroESB\CustomerBiographicBusiness.cs" />
+    <Compile Include="Business\AmcCoGenerateSimulationBusiness.cs" />
+    <Compile Include="Business\AmxCoBAAssignmentBusiness.cs" />
+    <Compile Include="Business\AmxCoCreateItemsBABusiness.cs" />
+    <Compile Include="Business\AmxCoCreateProspectBusiness.cs" />
+    <Compile Include="Business\AmxCoCreateCaseHHPPBusiness.cs" />
+    <Compile Include="Business\AmxCoCustomerEmailBillingBusiness.cs" />
+    <Compile Include="Business\AmxCoGetContractsByCustomerBusiness.cs" />
+    <Compile Include="Business\AmxCoNotityStratumChangeBusiness.cs" />
+    <Compile Include="Business\AmxCoSendBase64FileToDocumentaryManagerBusiness.cs" />
+    <Compile Include="Business\AmxCoSendSurveyBusiness.cs" />
+    <Compile Include="Business\AmxCoStratumChangeCreateCaseBusiness.cs" />
+    <Compile Include="Business\AmxCoReceiveConfirmationAndSynchronizeClientBusiness.cs" />
+    <Compile Include="Business\AmxCoStratumChangeCreateItemBusiness.cs" />
+    <Compile Include="Business\AmxCoTechnicianAppGetResourceBusiness.cs" />
+    <Compile Include="Business\AmxGetCustomerInfoBusiness.cs" />
+    <Compile Include="Business\AmxPeruAffiliateDisaffilateBlacklistBusiness.cs" />
+    <Compile Include="Business\AmxPeruAffiliateDisaffiliateDataProtectionBusiness.cs" />
+    <Compile Include="Business\AmxPeruAffiliateDisaffiliatetoWhitePagesBusiness.cs" />
+    <Compile Include="Business\AmxPeruBillCycleChangefromOMBusiness.cs" />
+    <Compile Include="Business\AmxPeruBILOGBusiness.cs" />
+    <Compile Include="Business\AmxPeruBulkIndividualCreationBusiness.cs" />
+    <Compile Include="Business\AmxPeruCreateCaseBusiness.cs" />
+    <Compile Include="Business\AmxPeruCreateProspectBusiness.cs" />
+    <Compile Include="Business\AmxPeruCreateTaskBusiness.cs" />
+    <Compile Include="Business\AmxPeruGeneraIncidenciaBusiness.cs" />
+    <Compile Include="Business\AmxPeruGetAvgBillActualDebtBusiness.cs" />
+    <Compile Include="Business\AmxPeruGetCompanyClientInfoBusiness.cs" />
+    <Compile Include="Business\AmxPeruGetCreditScoreBusiness.cs" />
+    <Compile Include="Business\AmxPeruGetCustomerSpecialCasesBusiness.cs" />
+    <Compile Include="Business\AmxperuSendNotificationBusiness.cs" />
+    <Compile Include="Business\AmxPeruSetOrderMilestoneBusiness.cs" />
+    <Compile Include="Business\AmxPeruValidaCoberturaBusiness.cs" />
+    <Compile Include="Business\AmxPeruValidaDireccionBusiness.cs" />
+    <Compile Include="Business\AxmPeruGetCustomerInfoBusiness.cs" />
+    <Compile Include="Business\BillCycleChange\BillCycleChangeSubmitToEOC.cs" />
+    <Compile Include="Business\BillCycleChange\AmxCoBillCycleReadBusiness.cs" />
+    <Compile Include="Business\BillCycleChange\AmxCoCustomerReadBusiness.cs" />
+    <Compile Include="Business\CaseGetCunBusiness.cs" />
+    <Compile Include="Business\BillingAccountBusiness.cs" />
+    <Compile Include="Business\CreateCaseBusiness.cs" />
+    <Compile Include="Business\AmxPeruCTIServiceBusiness.cs" />
+    <Compile Include="Business\AmxPeruDontInsistBusiness.cs" />
+    <Compile Include="Business\AmxPeruCustomerAddressBusiness.cs" />
+    <Compile Include="Business\CustomerAddressBusiness.cs" />
+    <Compile Include="Business\ExternalAffiliateDisaffiliatetoWhitepagesBusiness.cs" />
+    <Compile Include="Business\AmxCoGetConfigurableItemsBusiness.cs" />
+    <Compile Include="Business\GetCustomerContactBusiness.cs" />
+    <Compile Include="Business\InvoiceClarification\AmxCoGetFileDocumentaryManagerBusiness.cs" />
+    <Compile Include="Business\OfferingsBusiness.cs" />
+    <Compile Include="Business\OrderResourceBusiness.cs" />
+    <Compile Include="Business\PricingBusiness.cs" />
+    <Compile Include="Business\TaxBusiness.cs" />
+    <Compile Include="Common\AmxHTTPCall.cs" />
+    <Compile Include="Common\AmxHTTPCallEOC.cs" />
+    <Compile Include="Common\DebugIt.cs" />
+    <Compile Include="Common\OptionSet.cs" />
+    <Compile Include="Common\TranslationManage.cs" />
+    <Compile Include="Connected Services\BillAvgBilling\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\NotifyCancelAppointment\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\TechnicianAppGetResource\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ConfigurationBuilder.cs" />
+    <Compile Include="Interfaces\ICustomerModel.cs" />
+    <Compile Include="ModelClaroESB\AmxCoClaroESBExceptionResponse.cs" />
+    <Compile Include="ModelClaroESB\ClaroESBInterfaceHeaderRequest.cs" />
+    <Compile Include="ModelClaroESB\AmxCoClaroESBHeaderRequest.cs" />
+    <Compile Include="ModelClaroESB\AmxCoClaroESBRequestBase.cs" />
+    <Compile Include="ModelClaroESB\AmxCoClaroESBResponseBase.cs" />
+    <Compile Include="ModelClaroESB\Bureau\GetBureauRequest.cs" />
+    <Compile Include="ModelClaroESB\Bureau\GetBureauResponse.cs" />
+    <Compile Include="ModelClaroESB\Digiturno\NotifyEventTurnRequest.cs" />
+    <Compile Include="ModelClaroESB\Digiturno\NotifyEventTurnResponse.cs" />
+    <Compile Include="ModelClaroESB\Digiturno\UpdateUserTurnRequest.cs" />
+    <Compile Include="ModelClaroESB\Digiturno\UpdateUserTurnResponse.cs" />
+    <Compile Include="ModelClaroESB\Evidente\EvaluateQuestionnaireRequest.cs" />
+    <Compile Include="ModelClaroESB\Evidente\GetQuestionnaireRequest.cs" />
+    <Compile Include="ModelClaroESB\Evidente\EvaluateQuestionnaireResponse.cs" />
+    <Compile Include="ModelClaroESB\Evidente\GetQuestionnaireResponse.cs" />
+    <Compile Include="ModelClaroESB\Listas\GetInfoListsRequest.cs" />
+    <Compile Include="ModelClaroESB\Listas\GetInfoListsResponse.cs" />
+    <Compile Include="ModelClaroESB\Listas\UpdateListRequest.cs" />
+    <Compile Include="ModelClaroESB\Sarglaft\ConsultListsRequest.cs" />
+    <Compile Include="ModelClaroESB\Sarglaft\ConsultListsResponse.cs" />
+    <Compile Include="ModelClaroESB\TorreDeControl\TorreDeControlRequest.cs" />
+    <Compile Include="ModelClaroESB\TorreDeControl\TorreDeControlRespose.cs" />
+    <Compile Include="Model\AffiliateDisaffiliate\AffiliateDisaffilateBlacklistRequest.cs" />
+    <Compile Include="Model\AffiliateDisaffiliate\AmxPeruAffiliateDisaffiliatetoWhitePagesRequest.cs" />
+    <Compile Include="Model\AffiliateDisaffiliate\AmxPeruAffiliateDisaffiliatetoWhitePagesResponse.cs" />
+    <Compile Include="Model\AffiliateDisaffiliate\AmxPeruDataProtectionRequest.cs" />
+    <Compile Include="Model\AffiliateDisaffiliate\AmxPeruDataProtectionResponse.cs" />
+    <Compile Include="Model\AffiliateDisaffiliate\ExternalAffiliateDisaffiliatetoWhitepagesRequest.cs" />
+    <Compile Include="Model\AffiliateDisaffiliate\ExternalAffiliateDisaffiliatetoWhitepagesResponse.cs" />
+    <Compile Include="Model\AffiliateDisaffiliate\SubscriptionBlacklistResponse.cs" />
+    <Compile Include="Model\AmxCoBaseResponse.cs" />
+    <Compile Include="Model\AmxCoCTIGetCustomerRequest.cs" />
+    <Compile Include="Model\AmxCoCTIGetCustomerResponse.cs" />
+    <Compile Include="Model\AmxCoCurrencyModel.cs" />
+    <Compile Include="Model\AmxCoProducResourceSpecificationModel.cs" />
+    <Compile Include="Model\AmxCoProductResourceCardinalityModel.cs" />
+    <Compile Include="Model\AmxCoProductSpecificationModel.cs" />
+    <Compile Include="Model\AmxCoResourceCharModel.cs" />
+    <Compile Include="Model\AmxCoResourceCharValueModel.cs" />
+    <Compile Include="Model\BiSpecification\BISpecificationModel.cs" />
+    <Compile Include="Model\Case\CaseGetCunRequest.cs" />
+    <Compile Include="Model\Case\CaseGetCunResponse.cs" />
+    <Compile Include="Model\CustomerEmailBilling\AmxCoCustomerEmailBillingRequest.cs" />
+    <Compile Include="Model\AmxGetCustomerInfoRequest.cs" />
+    <Compile Include="Model\AmxGetCustomerInfoResponse.cs" />
+    <Compile Include="Model\AmxPeruBulkIndividualCreationRequest.cs" />
+    <Compile Include="Model\AmxPeruBulkIndividualCreationResponse.cs" />
+    <Compile Include="Model\AMXPeruCreditProfileRequestModel.cs" />
+    <Compile Include="Model\AmxPeruProductCFSRequest.cs" />
+    <Compile Include="Model\Appointment\AppEventModel.cs" />
+    <Compile Include="Model\Appointment\CapacityModel.cs" />
+    <Compile Include="Model\Appointment\CreateAppointmentRequestModel.cs" />
+    <Compile Include="Model\Appointment\CreateAppointmentResponseModel.cs" />
+    <Compile Include="Model\Appointment\GetCapacityRequestModel.cs" />
+    <Compile Include="Model\Appointment\GetCapacityResponseModel.cs" />
+    <Compile Include="Model\BIBillingAccountCreate\BIBillingAccountCreateModel.cs" />
+    <Compile Include="Model\BillCycle\BillCycleChangeEOCRequest.cs" />
+    <Compile Include="Model\BillCycle\AmxCoBillCycleReadServiceRequest.cs" />
+    <Compile Include="Model\BillCycle\AmxCoCustomerReadServiceRequest.cs" />
+    <Compile Include="Model\Case\AmxCoCreateCaseHHPPRequest.cs" />
+    <Compile Include="Model\Case\AmxCoCreateCaseHHPPResponse.cs" />
+    <Compile Include="Model\Case\AmxCoUpdateCaseStatusRequest.cs" />
+    <Compile Include="Model\Case\AmxCoUpdateCaseStatusResponse.cs" />
+    <Compile Include="Model\Cfss\CfssCharacteristicList.cs" />
+    <Compile Include="Model\ChangeResource\ChangeResourceRequest.cs" />
+    <Compile Include="Model\ChangeResource\ChangeResourceResponse.cs" />
+    <Compile Include="Model\ConfigurableItemsModel.cs" />
+    <Compile Include="Model\CreditProfile\CreditProfileModel.cs" />
+    <Compile Include="Model\CustomerEmailBilling\AmxCoCustomerEmailBillingRespose.cs" />
+    <Compile Include="Model\Digiturno\DigiturnoEnum.cs" />
+    <Compile Include="Model\Digiturno\DigiturnoNotifyEventTurnRequest.cs" />
+    <Compile Include="Model\Digiturno\DigiturnoNotifyEventTurnResponse.cs" />
+    <Compile Include="Model\Digiturno\DigiturnoUpdateUserTurnRequest.cs" />
+    <Compile Include="Model\Digiturno\DigiturnoUpdateUserTurnResponse.cs" />
+    <Compile Include="Model\DirectoryNumberRead\GenericDirectoryNumberReadResponseModel.cs" />
+    <Compile Include="Model\EOC\EocBiFaultResponseModel.cs" />
+    <Compile Include="Model\EOC\EocBiResponseModel.cs" />
+    <Compile Include="Model\EOC\SRProductResponseModel.cs" />
+    <Compile Include="Model\EOC\SRRetrieveProductRequestModel.cs" />
+    <Compile Include="Model\Evidente\AmxCoEvaluateQuestionnaireRequest.cs" />
+    <Compile Include="Model\Evidente\AmxCoEvaluateQuestionnaireResponse.cs" />
+    <Compile Include="Model\Evidente\AmxCoGetQuestionnaireRequest.cs" />
+    <Compile Include="Model\Evidente\AmxCoGetQuestionnaireResponse.cs" />
+    <Compile Include="Model\Evidente\Question.cs" />
+    <Compile Include="Model\Individual\AmxCoGetContractsByCustomerRequest.cs" />
+    <Compile Include="Model\Individual\AmxCoGetContractsByCustomerResponse.cs" />
+    <Compile Include="Model\Individual\AmxCoNotityStratumChangeRequest.cs" />
+    <Compile Include="Model\Individual\AmxCoNotityStratumChangeResponse.cs" />
+    <Compile Include="Model\Individual\AmxCoReceiveConfirmationAndSynchronizeClientRequest.cs" />
+    <Compile Include="Model\Individual\AmxCoReceiveConfirmationAndSynchronizeClientResponse.cs" />
+    <Compile Include="Model\Individual\AmxCoSendSurveyRequest.cs" />
+    <Compile Include="Model\Individual\AmxCoSendSurveyResponse.cs" />
+    <Compile Include="Model\Individual\IndividualCustomerModel.cs" />
+    <Compile Include="Model\InternalExternalAccount\AmcCoGenerateSimulationRequest.cs" />
+    <Compile Include="Model\InternalExternalAccount\AmcCoGenerateSimulationResponse.cs" />
+    <Compile Include="Model\InternalExternalAccount\AmxCoBillingAccountAssignmentRequest.cs" />
+    <Compile Include="Model\InternalExternalAccount\AmxCoBillingAccountAssignmentResponse.cs" />
+    <Compile Include="Model\InvoiceClarification\AmxCoGetFileDocumentaryManagerRequest.cs" />
+    <Compile Include="Model\InvoiceClarification\AmxCoGetFileDocumentaryManagerResponse.cs" />
+    <Compile Include="Model\InternalExternalAccount\AmxCoCreateItemsAccountWithDataBSCSResponse.cs" />
+    <Compile Include="Model\Listas\AmxCoGetListsResponse.cs" />
+    <Compile Include="Model\OrderCapture\OrderCaptureModel.cs" />
+    <Compile Include="Model\OrderCapture\OfferingModel.cs" />
+    <Compile Include="Model\Individual\AmxCoDocumentTypeEnum.cs" />
+    <Compile Include="Model\OrderItem\OrderItemCustomerAddressModel.cs" />
+    <Compile Include="Model\OrderItem\OrderItemAddShoppingCartModel.cs" />
+    <Compile Include="Model\OrderResource\ResourceCharacteristicsModel.cs" />
+    <Compile Include="Model\ProductOfferingPrice\ProductOfferingPriceModel.cs" />
+    <Compile Include="Model\ProductOfferingSync\ProductOfferingRequest.cs" />
+    <Compile Include="Model\Resources\SimCardOrderResourceCharacteristicModel.cs" />
+    <Compile Include="Model\Segment.cs" />
+    <Compile Include="Model\StratumChange\AmxCoSendBase64FileToDocumentaryManagerRequest.cs" />
+    <Compile Include="Model\StratumChange\AmxCoSendBase64FileToDocumentaryManagerResponse.cs" />
+    <Compile Include="Model\StratumChange\StratumChangeCreateItemRequest.cs" />
+    <Compile Include="Model\StratumChange\StratumChangeCreateItemResponse.cs" />
+    <Compile Include="Model\Task\AmxPeruCreateTaskRequest.cs" />
+    <Compile Include="Model\Task\AmxPeruCreateTaskResponse.cs" />
+    <Compile Include="Model\TorreDeControl\AmxCoTorreDeControlRequest.cs" />
+    <Compile Include="Model\TorreDeControl\AmxCoTorreDeControlResponse.cs" />
+    <Compile Include="Model\User\UserModel.cs" />
+    <Compile Include="Repository\AmxCoAppointmentLogRepository.cs" />
+    <Compile Include="Repository\BISpecificationRepository.cs" />
+    <Compile Include="Repository\Factory\BISpecificationFactory.cs" />
+    <Compile Include="Repository\Factory\OfferingFactory.cs" />
+    <Compile Include="Repository\OfferingRepository.cs" />
+    <Compile Include="Repository\CerticamaraLogRepository.cs" />
+    <Compile Include="Repository\MglHHPPsRepository.cs" />
+    <Compile Include="Repository\Factory\MglHhPpsFactory.cs" />
+    <Compile Include="Repository\OrderItemCustomerAddressRepository.cs" />
+    <Compile Include="Repository\AmxCoCurrencyRepository.cs" />
+    <Compile Include="Repository\AmxCoOrderResourceCharRepository.cs" />
+    <Compile Include="Repository\AmxCoOrderResourceRepository.cs" />
+    <Compile Include="Repository\AmxCoProductOfferingPriceRepository.cs" />
+    <Compile Include="Repository\AmxCoProductOffertingRepository.cs" />
+    <Compile Include="Repository\AmxCoProductResourceSpecificationRepository.cs" />
+    <Compile Include="Repository\AmxCoResourceCharRepository.cs" />
+    <Compile Include="Repository\AmxCoResourceCharValueRepository.cs" />
+    <Compile Include="Repository\AmxCoRiskConfigurationRepository.cs" />
+    <Compile Include="Repository\ConfigurationRepository.cs" />
+    <Compile Include="Repository\EOCRequestLogRepository.cs" />
+    <Compile Include="Repository\Factory\AmxCoAppointmentLogFactory.cs" />
+    <Compile Include="Repository\Factory\AmxCoOrderResourceCharFactory.cs" />
+    <Compile Include="Repository\Factory\AmxCoOrderResourceFactory.cs" />
+    <Compile Include="Repository\Factory\AmxCoProductResourceCardinalityFactory.cs" />
+    <Compile Include="Repository\AmxCoProductResourceCardinalityRepository.cs" />
+    <Compile Include="Repository\AmxCoProductSpecificationRepository.cs" />
+    <Compile Include="Repository\BIBillingAccountCreateRepository.cs" />
+    <Compile Include="Repository\ClaroESBLogRepository.cs" />
+    <Compile Include="Repository\Factory\AmxCoCurrencyFactory.cs" />
+    <Compile Include="Repository\Factory\AmxCoProductOfferingFactory.cs" />
+    <Compile Include="Repository\Factory\AmxCoProductOfferingPriceFactory.cs" />
+    <Compile Include="Repository\Factory\AmxCoProductSpecificationFactory.cs" />
+    <Compile Include="Repository\Factory\OrderItemCustomerAddressFactory.cs" />
+    <Compile Include="Repository\Factory\AmxCoResourceCharFactory.cs" />
+    <Compile Include="Repository\Factory\AmxCoResourceCharValueFactory.cs" />
+    <Compile Include="Repository\Factory\BIBillingAccountCreateFactory.cs" />
+    <Compile Include="Repository\Factory\OrderItemFactory.cs" />
+    <Compile Include="Repository\Factory\OrderCaptureFactory.cs" />
+    <Compile Include="Repository\Factory\AmxCoProductResourceSpecificationFactory.cs" />
+    <Compile Include="Repository\Factory\UserFactory.cs" />
+    <Compile Include="Repository\OrderCaptureRepository.cs" />
+    <Compile Include="Repository\CreditProfileRepository.cs" />
+    <Compile Include="Repository\EvidenteLogRepository.cs" />
+    <Compile Include="Repository\Factory\CreditProfileFactory.cs" />
+    <Compile Include="Repository\Factory\IndividualCustomerFactory.cs" />
+    <Compile Include="Repository\IndividualCustomerRepository.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Service\Case\AmxCoUpdateCaseStatusService.cs" />
+    <Compile Include="Service\Mapping\MapSellableStockLevelToAvailableStock.cs" />
+    <Compile Include="Model\AmexPeruERMSReserveResource.cs" />
+    <Compile Include="Service\Mapping\OrderMapping.cs" />
+    <Compile Include="Model\AmxPeruBillCycleChangefromOMResponse.cs" />
+    <Compile Include="Model\AmxPeruBlacklistRequest.cs" />
+    <Compile Include="Model\AmxPeruBlacklistResponse.cs" />
+    <Compile Include="Model\AmxPeruChangeSimCardGeneralRequest.cs" />
+    <Compile Include="Model\AmxPeruChangeSimCardGeneralResponse .cs" />
+    <Compile Include="Model\AmxPeruCompanyClientlistRequest.cs" />
+    <Compile Include="Model\AmxPeruCompanyClientlistResponse.cs" />
+    <Compile Include="Model\AmxPeruConstants.cs" />
+    <Compile Include="Model\AmxPeruCreateBillingAccountRequest.cs" />
+    <Compile Include="Model\AmxPeruCreateBillingAccountResponse.cs" />
+    <Compile Include="Model\AmxPeruCreateBILOGResponse.cs" />
+    <Compile Include="Model\AmxPeruCreateTaskUpdatedRequest.cs" />
+    <Compile Include="Model\AmxPeruCreateTaskUpdatedResponse.cs" />
+    <Compile Include="Model\AmxPeruCTIServiceRequest.cs" />
+    <Compile Include="Model\AmxPeruCTIServiceResponse.cs" />
+    <Compile Include="Model\AmxPeruCustomerAddressRequest.cs" />
+    <Compile Include="Model\AmxPeruCustomerAddressResponse.cs" />
+    <Compile Include="Model\AmxPeruCustomerContactResponse.cs" />
+    <Compile Include="Model\AmxPeruDontInsistResponse.cs" />
+    <Compile Include="Model\AMxperuGeneralIncidenciaRequest.cs" />
+    <Compile Include="Model\AMxperuGeneralIncidenciaResponse.cs" />
+    <Compile Include="Model\AmxPeruGetAvgBillDebtLimitRequest.cs" />
+    <Compile Include="Model\AmxPeruGetAvgBillDebtLimitResponse.cs" />
+    <Compile Include="Model\AmxPeruGetCustomerAddressRequest.cs" />
+    <Compile Include="Model\AmxPeruGetCustomerAddressResponse.cs" />
+    <Compile Include="Model\AmxPeruGetCustomerSpecialCasesRequest.cs" />
+    <Compile Include="Model\AmxPeruGetCustomerSpecialCasesResponse.cs" />
+    <Compile Include="Model\AmxPeruOfferingPriceModel.cs" />
+    <Compile Include="Model\AmxPeruGetCustomerInfoRequest.cs" />
+    <Compile Include="Model\AmxPeruGetCustomerInfoResponse.cs" />
+    <Compile Include="Model\AmxPeruModifyBillingAccountRequest.cs" />
+    <Compile Include="Model\AmxPeruModifyBillingAccountResponse.cs" />
+    <Compile Include="Model\AMxperuValidaCoberturaRequest.cs" />
+    <Compile Include="Model\AMxperuValidaCoberturaResponse.cs" />
+    <Compile Include="Model\AMxperuValidaDireccionRequest.cs" />
+    <Compile Include="Model\AMxperuValidaDireccionResponse.cs" />
+    <Compile Include="Model\AvailableStocks\AvailabeStock.cs" />
+    <Compile Include="Model\AvailableStocks\AvailablePagingInfo.cs" />
+    <Compile Include="Model\AvailableStocks\AvailableStockItem.cs" />
+    <Compile Include="Model\AvailableStocks\AvailableStockResponse.cs" />
+    <Compile Include="Model\AxmPeruCreateProspectRequest.cs" />
+    <Compile Include="Model\AxmPeruCreateProspectResponse.cs" />
+    <Compile Include="Model\AxmPeruCustomerContactRequest.cs" />
+    <Compile Include="Model\BaseRequest.cs" />
+    <Compile Include="Business\ContractBusiness.cs" />
+    <Compile Include="Business\CustomerBusiness.cs" />
+    <Compile Include="Business\CustomerGroupBusiness.cs" />
+    <Compile Include="Business\EligibilityBusiness.cs" />
+    <Compile Include="Business\OrderCaptureBusiness.cs" />
+    <Compile Include="Business\OrderItemBusiness.cs" />
+    <Compile Include="Business\RatePlanBusiness.cs" />
+    <Compile Include="Business\SalesChannelBusiness.cs" />
+    <Compile Include="Business\SubscriptionBusiness.cs" />
+    <Compile Include="Model\AmxPeruDontInsistRequest.cs" />
+    <Compile Include="Model\AvailableOfferingInputModel.cs" />
+    <Compile Include="Model\BaseResponse.cs" />
+    <Compile Include="Model\AmxPeruBillCycleChangefromOMRequest.cs" />
+    <Compile Include="Model\BillingAccount.cs" />
+    <Compile Include="Model\BSSCustomerCreditScoreMgmtLG\AMXPeruBSSCustomerCreditScoreMgmtLGRequest.cs" />
+    <Compile Include="Model\BSSCustomerCreditScoreMgmtLG\AMXPeruBSSCustomerCreditScoreMgmtLGResponse.cs" />
+    <Compile Include="Model\BSSCustomerCreditScoreMgmtLG\AMXPeruCorporatetype.cs" />
+    <Compile Include="Model\BSSCustomerCreditScoreMgmtLG\AMXPeruInquiryburoresponsetype.cs" />
+    <Compile Include="Model\BSSCustomerCreditScoreMgmtLG\AMXPeruIntegraltype.cs" />
+    <Compile Include="Model\BSSCustomerCreditScoreMgmtLG\AMXPeruMassivetype.cs" />
+    <Compile Include="Model\BSSCustomerCreditScoreMgmtLG\AMXPeruOptionalrequestlisttype.cs" />
+    <Compile Include="Model\BSSCustomerCreditScoreMgmtLG\AMXPeruOptionalresponselisttype.cs" />
+    <Compile Include="Model\BSSCustomerCreditScoreMgmtLG\AMXPeruRequestBuroRequestType.cs" />
+    <Compile Include="Model\BSSCustomerCreditScoreMgmtLG\AMXPeruTableconfigtype.cs" />
+    <Compile Include="Model\BSSCustomerCreditScoreMgmtLG\AMXPeruTyperepresentative.cs" />
+    <Compile Include="Model\Case\CaseRequest.cs" />
+    <Compile Include="Model\Case\CaseResponse.cs" />
+    <Compile Include="Model\Case\Documents.cs" />
+    <Compile Include="Model\Case\Indecopi.cs" />
+    <Compile Include="Model\Case\Osiptel.cs" />
+    <Compile Include="Model\Case\PaymentDispute.cs" />
+    <Compile Include="Model\AmxPeruCreateBILOGRequest.cs" />
+    <Compile Include="Model\CheckDebtAccount\CheckDebtAccountRequest.cs" />
+    <Compile Include="Model\CheckDebtAccount\CheckDebtAccountResponse.cs" />
+    <Compile Include="Model\CheckDebtAccount\DetailReferenceType.cs" />
+    <Compile Include="Model\CheckDebtAccount\HeadQuestionType.cs" />
+    <Compile Include="Model\ConsultaDocumentoOnBase\AMXPeruConsultaDocumentoOnBaseRequest.cs" />
+    <Compile Include="Model\ConsultaDocumentoOnBase\AMXPeruConsultaDocumentoOnBaseResponse.cs" />
+    <Compile Include="Model\CreditScore\AmxPeruGetCreditScoreRequest.cs" />
+    <Compile Include="Model\CreditScore\AmxPeruGetCreditScoreResponse.cs" />
+    <Compile Include="Model\CustomerAccountStatement\AMXPeruAccountConsultationRequest.cs" />
+    <Compile Include="Model\CustomerAccountStatement\AMXPeruAccountConsultationResponse.cs" />
+    <Compile Include="Model\CustomerAccountStatement\AMXPeruDetailStateType.cs" />
+    <Compile Include="Model\CustomerAccountStatement\AMXPruStateCountType.cs" />
+    <Compile Include="Model\CustomerCampaign\CustomerCampaignRequest.cs" />
+    <Compile Include="Model\CustomerCampaign\CustomerCampaignResponse.cs" />
+    <Compile Include="Model\DocumentUpload\DocumentType.cs" />
+    <Compile Include="Model\Eligibility\AmxPeruCreateBILOGResponse.cs" />
+    <Compile Include="Model\Enum.cs" />
+    <Compile Include="Model\FamilyModel.cs" />
+    <Compile Include="Model\GeneralEnquiry\ProductCatalogSearchRequest.cs" />
+    <Compile Include="Model\GetCreditScoreRequest.cs" />
+    <Compile Include="Model\GetCreditScoreResponse.cs" />
+    <Compile Include="Model\OrderCapture\OrderSubmitRequest.cs" />
+    <Compile Include="Model\OrderItemsBasketModel.cs" />
+    <Compile Include="Model\OrderItemDataModel.cs" />
+    <Compile Include="Model\OrderMilestone\AmxPeruSetOrderMilestoneRequest.cs" />
+    <Compile Include="Model\OrderMilestone\AmxPeruSetOrderMilestoneResponse.cs" />
+    <Compile Include="Model\ProductCatalogueModel.cs" />
+    <Compile Include="Model\ProductCharacteristicsModel.cs" />
+    <Compile Include="Model\ProductOfferingCatalogModel.cs" />
+    <Compile Include="Model\ProductOfferingConfigurationPriceModel.cs" />
+    <Compile Include="Model\CustomCustomerSubscriptionsModel.cs" />
+    <Compile Include="Model\CustomerAddressModel.cs" />
+    <Compile Include="Model\Eligibility\EligiblityViewModel.cs" />
+    <Compile Include="Model\ProductOffering.cs" />
+    <Compile Include="Model\SeeCreditAssessment\AMXPeruAdditionalResultsType.cs" />
+    <Compile Include="Model\SeeCreditAssessment\AMXPeruAddressType.cs" />
+    <Compile Include="Model\SeeCreditAssessment\AMXPeruAutonomyType.cs" />
+    <Compile Include="Model\SeeCreditAssessment\AMXPeruBellType.cs" />
+    <Compile Include="Model\SeeCreditAssessment\AMXPeruCurrentPlanType.cs" />
+    <Compile Include="Model\SeeCreditAssessment\AMXPeruCustomerType.cs" />
+    <Compile Include="Model\SeeCreditAssessment\AMXPeruDocumentType.cs" />
+    <Compile Include="Model\SeeCreditAssessment\AMXPeruLegalRepresentativeType.cs" />
+    <Compile Include="Model\SeeCreditAssessment\AMXPeruOfferingType.cs" />
+    <Compile Include="Model\SeeCreditAssessment\AMXPeruOfferType.cs" />
+    <Compile Include="Model\SeeCreditAssessment\AMXPeruOptionsType.cs" />
+    <Compile Include="Model\SeeCreditAssessment\AMXPeruPointofSaleType.cs" />
+    <Compile Include="Model\SeeCreditAssessment\AMXPeruQuotaType.cs" />
+    <Compile Include="Model\SeeCreditAssessment\AMXPeruRequestedPlan.cs" />
+    <Compile Include="Model\SeeCreditAssessment\AMXPeruSeeCreditAssessmentRequest.cs" />
+    <Compile Include="Model\SeeCreditAssessment\AMXPeruSeeCreditAssessmentResponse.cs" />
+    <Compile Include="Model\SeeCreditAssessment\AMXPeruTypeEquipment.cs" />
+    <Compile Include="Model\SeeCreditAssessment\AMXPeruTyperequest.cs" />
+    <Compile Include="Model\SeeCreditAssessment\AMXPeruTypeService.cs" />
+    <Compile Include="Model\SeeCreditAssessment\AMXPeruWarrantyType.cs" />
+    <Compile Include="Model\SendNotification\AmxperuSendNotificationRequest.cs" />
+    <Compile Include="Model\SendNotification\AmxperuSendNotificationResponse.cs" />
+    <Compile Include="Model\ValidAddressCoverage\ValidAddressCoverageRequest.cs" />
+    <Compile Include="Model\ValidAddressCoverage\ValidAddressCoverageResponse.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\OrderItemRepository.cs" />
+    <Compile Include="Repository\RepositoryBase.cs" />
+    <Compile Include="Rules\Eligibility\EligibilityHandler.cs" />
+    <Compile Include="Service\AvailableStocks\AvailableStockBroker.cs" />
+    <Compile Include="Service\BSSCustomerCreditScoreMgmtLG\BSSCustomerCreditScoreMgmtLGStatusService.cs" />
+    <Compile Include="Service\CheckDebtAccount\CheckDebtAccountStatusService.cs" />
+    <Compile Include="Service\ContractService.cs" />
+    <Compile Include="Service\CustomerAccountStatement\ConsultationAccountStatusService.cs" />
+    <Compile Include="Service\CustomerCampaign\CustomerCampaignService.cs" />
+    <Compile Include="Service\DocumentUpload\DocumentUploadService.cs" />
+    <Compile Include="Service\SendNotification\SendNotificationServiceStatus.cs" />
+    <Compile Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\CargaDocumentoOnBase_V1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ConsultaDeudaCuenta_v1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ConsultaDocumentoOnBase_V1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ConsultaEstadoCuenta_v1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\GeneraIncidencia_V1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\SendNotification\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\BillAvgBilling\AmxPeruPSBActivities.BillAvgBilling.nkAverageBillReadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BillAvgBilling\AmxPeruPSBActivities.BillAvgBilling.nkAverageBillReadResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BillAvgBilling\ws_CIL_7_NkAverageBillReadService.wsdl" />
+    <None Include="Connected Services\NotifyCancelAppointment\AmxPeruPSBActivities.NotifyCancelAppointment.HeaderResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\AmxPeruPSBActivities.NotifyCancelAppointment.notifyCancellationAppointmentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\AmxPeruPSBActivities.NotifyCancelAppointment.NotifyCancellationAppointmentResponse_TYPE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\AmxPeruPSBActivities.NotifyCancelAppointment.notifyCancelWorkOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\AmxPeruPSBActivities.NotifyCancelAppointment.NotifyCancelWorkOrderResponse_TYPE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\AmxPeruPSBActivities.NotifyCancelAppointment.notifyEmployeeAssignmentWorkOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\AmxPeruPSBActivities.NotifyCancelAppointment.NotifyEmployeeAssignmentWorkOrderResponse_TYPE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\AmxPeruPSBActivities.NotifyCancelAppointment.notifyHardCloseWorkOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\AmxPeruPSBActivities.NotifyCancelAppointment.NotifyHardCloseWorkOrderResponse_TYPE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\AmxPeruPSBActivities.NotifyCancelAppointment.notifySoftCloseWorkOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\AmxPeruPSBActivities.NotifyCancelAppointment.NotifySoftCloseWorkOrderResponse_TYPE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\AmxPeruPSBActivities.NotifyCancelAppointment.notifyStartWorkOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\AmxPeruPSBActivities.NotifyCancelAppointment.NotifyStartWorkOrderResponse_TYPE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\AmxPeruPSBActivities.NotifyCancelAppointment.notifySuspendWorkOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\AmxPeruPSBActivities.NotifyCancelAppointment.NotifySuspendWorkOrderResponse_TYPE.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\notifyCancellationAppointment.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\notifyCancellationAppointment1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\notifyCancellationAppointment10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\notifyCancellationAppointment11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\notifyCancellationAppointment12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\notifyCancellationAppointment13.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\notifyCancellationAppointment14.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\notifyCancellationAppointment15.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\notifyCancellationAppointment16.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\notifyCancellationAppointment17.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\notifyCancellationAppointment18.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\notifyCancellationAppointment19.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\notifyCancellationAppointment2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\notifyCancellationAppointment20.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\notifyCancellationAppointment21.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\notifyCancellationAppointment22.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\notifyCancellationAppointment23.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\notifyCancellationAppointment24.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\notifyCancellationAppointment3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\notifyCancellationAppointment4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\notifyCancellationAppointment5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\notifyCancellationAppointment6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\notifyCancellationAppointment7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\notifyCancellationAppointment8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\notifyCancellationAppointment9.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\NotifyCancelAppointment\serviceOrder.wsdl" />
+    <None Include="Connected Services\TechnicianAppGetResource\AmxPeruPSBActivities.TechnicianAppGetResource.GetResourceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\TechnicianAppGetResource\AmxPeruPSBActivities.TechnicianAppGetResource.GetResourceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\TechnicianAppGetResource\GetTechndata.wsdl" />
+    <None Include="Connected Services\TechnicianAppGetResource\V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\TechnicianAppGetResource\V11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\TechnicianAppGetResource\V12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\TechnicianAppGetResource\V13.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\AdditionalPartyEntities_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\Agreement_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\AppliedCustomerBillingRate_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\AppliedPartyBillingRate_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\Bank_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\BaseTypesExtension_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\BaseTypes_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\BaseTypes_v10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1.wsdl" />
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\BusinessInteraction_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\Calendar_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\Capacity_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\ClaroGenericHeaders_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\CommonsException.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\CustomerAccountBalanceType_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\CustomerAccountBalance_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\CustomerBillExtension_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\CustomerBill_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\CustomerExtension_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\CustomerOrder_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\Customer_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\Documents_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\Dunning_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\Dunning_V10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\GeographicAddress_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\getCreditScoreResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\HeaderGeneric_v1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\PartyBill_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\PartyPayment_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\PartyRoleProductOffering_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\PartySettlement_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\Party_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\PaymentMethod_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\PhysicalResource_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\ProductOffering_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\ProductPrice_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\ProductSpecification_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\Product_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\ResourceCatalog_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\ResourceSpecification_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\Resource_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\RootBusinessEntities_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\ServiceCatalog_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\ServiceLevelSpec_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\ServiceSpecification_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\Service_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\TIPServiceManagement_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\AdditionalPartyEntities_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\Agreement_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\AppliedCustomerBillingRate_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\AppliedPartyBillingRate_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\Bank_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\BaseTypes_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\BusinessInteraction_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\Calendar_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\Capacity_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\CargaDocumentoOnBase_V1.wsdl" />
+    <None Include="Web References\CargaDocumentoOnBase_V1\CargaDocumentoOnBase_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\CargarDocumentoOnBaseResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\ClaroGenericHeaders_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\CommonsException.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\CommonTypes_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\CustomerAccountBalanceType_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\CustomerAccountBalance_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\CustomerBill_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\CustomerOrder_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\Customer_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\DocumentsExtension_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\Documents_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\Dunning_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\Dunning_V10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\GeographicAddress_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\HeaderGeneric_v1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\PartyBill_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\PartyPayment_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\PartyRoleProductOffering_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\PartySettlement_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\Party_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\PaymentMethod_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\PhysicalResource_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\ProductOffering_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\ProductPrice_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\ProductSpecification_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\Product_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\ResourceCatalog_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\ResourceSpecification_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\Resource_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\ResponseStatus_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\RootBusinessEntities_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\ServiceCatalog_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\ServiceLevelSpec_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\ServiceSpecification_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\Service_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CargaDocumentoOnBase_V1\TIPServiceManagement_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\AdditionalPartyEntities_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\Agreement_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\AppliedCustomerBillingRate_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\AppliedPartyBillingRate_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\Bank_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\BaseTypes_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\BusinessInteraction_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\Calendar_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\Capacity_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\ClaroGenericHeaders_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\CommonsException.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\CommonTypes_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\ConsultaDeudaCuenta_v1.wsdl" />
+    <None Include="Web References\ConsultaDeudaCuenta_v1\ConsultaDeudaCuenta_v1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\consultarDeudaCuentaResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\CustomerAccountBalanceType_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\CustomerAccountBalance_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\CustomerBill_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\CustomerExtension_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\CustomerOrder_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\Customer_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\Documents_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\Dunning_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\Dunning_V10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\GeographicAddress_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\HeaderGeneric_v1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\IdentificationExtension_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\Identification_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\PartyBill_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\PartyPayment_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\PartyRoleProductOffering_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\PartySettlement_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\Party_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\PaymentMethod_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\PhysicalResource_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\ProductOffering_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\ProductPrice_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\ProductSpecification_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\Product_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\ResourceCatalog_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\ResourceSpecification_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\Resource_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\ResponseStatus_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\RootBusinessEntities_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\ServiceCatalog_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\ServiceLevelSpec_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\ServiceSpecification_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\Service_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDeudaCuenta_v1\TIPServiceManagement_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\AdditionalPartyEntities_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\Agreement_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\AppliedCustomerBillingRate_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\AppliedPartyBillingRate_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\Bank_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\BaseTypes_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\BusinessInteraction_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\Calendar_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\Capacity_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\CommonsException.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\ConsultaDocumentoOnBase_V1.wsdl" />
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\ConsultaDocumentoOnBase_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\consultarDocumentoOnBaseResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\CustomerAccountBalanceType_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\CustomerAccountBalance_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\CustomerBill_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\CustomerOrder_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\Customer_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\DocumentsExtension_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\Documents_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\Dunning_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\Dunning_V10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\GeographicAddress_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\HeaderGeneric_v1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\PartyBill_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\PartyPayment_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\PartyRoleProductOffering_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\PartySettlement_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\Party_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\PaymentMethod_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\PhysicalResource_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\ProductOffering_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\ProductPrice_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\ProductSpecification_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\Product_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\ResourceCatalog_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\ResourceSpecification_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\Resource_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\RootBusinessEntities_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\ServiceCatalog_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\ServiceLevelSpec_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\ServiceSpecification_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\Service_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaDocumentoOnBase_V1\TIPServiceManagement_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\AdditionalPartyEntities_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\Agreement_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\AppliedCustomerBillingRateExtension_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\AppliedCustomerBillingRate_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\AppliedPartyBillingRate_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\Bank_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\BaseTypesExtension_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\BaseTypes_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\BusinessInteraction_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\Calendar_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\Capacity_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\ClaroGenericHeaders_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\CommonsException.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\ConsultaEstadoCuenta_v1.wsdl" />
+    <None Include="Web References\ConsultaEstadoCuenta_v1\ConsultaEstadoCuenta_v1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\consultarEstadoCuentaResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\CustomerAccountBalanceType_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\CustomerAccountBalance_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\CustomerBill_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\CustomerExtension_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\CustomerOrder_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\Customer_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\DocumentsExtension_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\Documents_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\Dunning_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\Dunning_V10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\GeographicAddress_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\HeaderGeneric_v1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\PartyBill_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\PartyPayment_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\PartyRoleProductOffering_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\PartySettlement_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\Party_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\PaymentMethod_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\PhysicalResource_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\ProductOffering_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\ProductPrice_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\ProductSpecification_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\Product_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\ResourceCatalog_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\ResourceSpecification_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\Resource_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\ResponseStatus_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\RootBusinessEntities_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\ServiceCatalog_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\ServiceLevelSpec_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\ServiceSpecification_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\Service_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEstadoCuenta_v1\TIPServiceManagement_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\AdditionalPartyEntities_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\Agreement_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\AppliedCustomerBillingRate_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\AppliedPartyBillingRate_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\Bank_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\BaseTypes_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\BusinessInteraction_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\Calendar_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\Capacity_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\CommonsException.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\ConsultaEvaluacionCrediticia_V1.wsdl" />
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\ConsultaEvaluacionCrediticia_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\CustomerAccountBalanceType_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\CustomerAccountBalance_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\CustomerBill_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\CustomerOrder_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\Customer_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\Documents_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\Dunning_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\Dunning_V10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\GeographicAddress_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\HeaderGeneric_v1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\PartyBill_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\PartyPayment_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\PartyRoleProductOffering_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\PartySettlement_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\Party_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\PaymentMethod_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\PhysicalResource_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\ProductOffering_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\ProductPrice_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\ProductSpecification_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\Product_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\ResourceCatalog_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\ResourceSpecification_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\Resource_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\RootBusinessEntities_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\ServiceCatalog_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\ServiceLevelSpec_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\ServiceSpecification_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\Service_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ConsultaEvaluacionCrediticia_V1\TIPServiceManagement_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\AdditionalPartyEntities_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\Agreement_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\AppliedCustomerBillingRate_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\AppliedPartyBillingRate_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\Bank_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\BaseTypes_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\BusinessInteraction_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\Calendar_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\ClaroGenericHeaders_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\CommonsException.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\CustomerAccountBalanceType_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\CustomerAccountBalance_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\CustomerBill_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\CustomerOrder_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\CustomerProblemExtension_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\CustomerProblem_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\Customer_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\Dunning_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\Dunning_V10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\GeneraIncidencia_V1.wsdl" />
+    <None Include="Web References\GeneraIncidencia_V1\GeneraIncidencia_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\generarIncidenciaResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\GeographicAddress_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\HeaderGeneric_v1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\PartyBill_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\PartyPayment_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\PartyRoleProductOffering_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\PartySettlement_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\Party_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\PaymentMethod_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\PhysicalResource_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\ProductOffering_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\ProductPrice_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\ProductSpecification_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\Product_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\ResourceCatalog_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\ResourceSpecification_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\Resource_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\GeneraIncidencia_V1\ServiceCatalog_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\AdditionalPartyEntities_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\Agreement_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\AppliedCustomerBillingRate_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\AppliedPartyBillingRate_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\Bank_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\BaseTypes_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\BssCbNotificationMgmtLG_v1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\BSS_CB_NOTIFICATION_MGMT_LG_v1.wsdl" />
+    <None Include="Web References\SendNotification\BusinessInteraction_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\Calendar_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\Capacity_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\Catalog_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\ClaroFault_v1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\ClaroGenericHeaders_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\CustomerAccountBalanceType_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\CustomerAccountBalance_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\CustomerBill_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\CustomerOrder_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\Customer_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\DocumentsExtension_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\Documents_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\Dunning_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\Dunning_V10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\GeographicAddress_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\MarketingCampaignExtension_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\MarketingCampaign_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\MarketSegment_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\Media_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\PartyBill_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\PartyPayment_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\PartyRoleProductOffering_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\PartySettlement_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\Party_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\PaymentMethod_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\PhysicalResource_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\ProductCatalog_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\ProductOffering_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\ProductPrice_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\ProductSpecification_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\Product_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\SendNotification\ResourceCatalog_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\ResourceSpecification_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\Resource_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\ResponseStatus_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\RootBusinessEntities_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\SalesChannel_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\SalesStatistics_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\sendNotificationResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SendNotification\ServiceCatalog_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\ServiceLevelSpec_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\ServiceSpecification_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\Service_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SendNotification\TIPServiceManagement_V1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\BillAvgBilling\" />
+    <WCFMetadataStorage Include="Connected Services\NotifyCancelAppointment\" />
+    <WCFMetadataStorage Include="Connected Services\TechnicianAppGetResource\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BillAvgBilling\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BillAvgBilling\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BillAvgBilling\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BilOOBServices\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BilOOBServices\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BilOOBServices\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\OrderProc\OrderProcess.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\OrderProc\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\OrderProc\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\OrderProc\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AmxPeruCommonLibrary\AmxPeruCommonLibrary.csproj">
+      <Project>{8c071151-ac56-4b9f-8849-832b5518e554}</Project>
+      <Name>AmxPeruCommonLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="C:\AMXPeru\WSDL\Sprint_1\06_10082017\ONDA 1\ONDA 1\01_ContractDocumentDelivery_02062017_PA1\BSS_CB_NOTIFICATION_MGMT_LG_v1\WSDL\BSS_CB_NOTIFICATION_MGMT_LG_v1.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\SendNotification\</RelPath>
+      <UpdateFromURL>C:\AMXPeru\WSDL\Sprint_1\06_10082017\ONDA 1\ONDA 1\01_ContractDocumentDelivery_02062017_PA1\BSS_CB_NOTIFICATION_MGMT_LG_v1\WSDL\BSS_CB_NOTIFICATION_MGMT_LG_v1.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>AmxPeruPSBActivities_SendNotification_NotificationManagementLg</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="C:\CRM\AMX Peru\05_19072017\Entrega a ERICSSON ONDA 1 ACTUALIZADO 4\01_ContractDocumentDelivery_19072017_PA1\ConsultaDeudaCuenta_V1\contratos\ConsultaDeudaCuenta_v1.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ConsultaDeudaCuenta_v1\</RelPath>
+      <UpdateFromURL>C:\CRM\AMX Peru\05_19072017\Entrega a ERICSSON ONDA 1 ACTUALIZADO 4\01_ContractDocumentDelivery_19072017_PA1\ConsultaDeudaCuenta_V1\contratos\ConsultaDeudaCuenta_v1.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>AmxPeruPSBActivities_ConsultaDeudaCuenta_v1_ConsultaDeudaCuenta</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="C:\CRM\AMX Peru\05_19072017\Entrega a ERICSSON ONDA 1 ACTUALIZADO 4\01_ContractDocumentDelivery_19072017_PA1\ConsultaEstadoCuenta_V1\contratos\ConsultaEstadoCuenta_v1.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ConsultaEstadoCuenta_v1\</RelPath>
+      <UpdateFromURL>C:\CRM\AMX Peru\05_19072017\Entrega a ERICSSON ONDA 1 ACTUALIZADO 4\01_ContractDocumentDelivery_19072017_PA1\ConsultaEstadoCuenta_V1\contratos\ConsultaEstadoCuenta_v1.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>AmxPeruPSBActivities_ConsultaEstadoCuenta_v1_ConsultaDeudaCuenta</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="C:\ONDA 1\ONDA 1\01_ContractDocumentDelivery_02062017_PA1\CargaDocumentOnBase_V1\contratos\CargaDocumentoOnBase_V1.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\CargaDocumentoOnBase_V1\</RelPath>
+      <UpdateFromURL>C:\ONDA 1\ONDA 1\01_ContractDocumentDelivery_02062017_PA1\CargaDocumentOnBase_V1\contratos\CargaDocumentoOnBase_V1.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>AmxPeruPSBActivities_CargaDocumentoOnBase_V1_CargaDocumentoOnBase</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="C:\ONDA 1\ONDA 1\01_ContractDocumentDelivery_02062017_PA1\ConsultaEvaluacionCrediticia_V1\contratos\ConsultaEvaluacionCrediticia_V1.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ConsultaEvaluacionCrediticia_V1\</RelPath>
+      <UpdateFromURL>C:\ONDA 1\ONDA 1\01_ContractDocumentDelivery_02062017_PA1\ConsultaEvaluacionCrediticia_V1\contratos\ConsultaEvaluacionCrediticia_V1.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>AmxPeruPSBActivities_ConsultaEvaluacionCrediticia_V1_consultaEvaluacionCrediticiaSOAP</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="C:\Users\eganash\Desktop\ClaroWSDL\ONDA 1\01_ContractDocumentDelivery_02062017_PA1\GeneraIncidencia_V1\contratos\GeneraIncidencia_V1.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\GeneraIncidencia_V1\</RelPath>
+      <UpdateFromURL>C:\Users\eganash\Desktop\ClaroWSDL\ONDA 1\01_ContractDocumentDelivery_02062017_PA1\GeneraIncidencia_V1\contratos\GeneraIncidencia_V1.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>AmxPeruPSBActivities_GeneraIncidencia_V1_GeneraIncidencia</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="C:\Users\epulsta\Desktop\claro\05_19072017\01_ContractDocumentDelivery_19072017_PA1\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG\contratos\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1\</RelPath>
+      <UpdateFromURL>C:\Users\epulsta\Desktop\claro\05_19072017\01_ContractDocumentDelivery_19072017_PA1\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG\contratos\BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>AmxPeruPSBActivities_BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1_BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="C:\Users\ezmukar\Desktop\SOAPXML\06_10082017\ONDA 1\ONDA 1\01_ContractDocumentDelivery_02062017_PA1\ConsultaDocumentoOnBase_V1\contratos\ConsultaDocumentoOnBase_V1.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ConsultaDocumentoOnBase_V1\</RelPath>
+      <UpdateFromURL>C:\Users\ezmukar\Desktop\SOAPXML\06_10082017\ONDA 1\ONDA 1\01_ContractDocumentDelivery_02062017_PA1\ConsultaDocumentoOnBase_V1\contratos\ConsultaDocumentoOnBase_V1.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>AmxPeruPSBActivities_ConsultaDocumentoOnBase_V1_consultarDocumentoOnBaseSOAP</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\NotifyCancelAppointment\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\NotifyCancelAppointment\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\NotifyCancelAppointment\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\TechnicianAppGetResource\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\TechnicianAppGetResource\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\TechnicianAppGetResource\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

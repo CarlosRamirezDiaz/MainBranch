@@ -1,0 +1,2 @@
+AmxCoUpdateOrderItemAction.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

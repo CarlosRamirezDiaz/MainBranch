@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:entcusext="http://claro.com.pe/entity/Customer/CustomerExtension/V1/" xmlns:entcus="http://claro.com.pe/entity/Customer/Customer/V1/" targetNamespace="http://claro.com.pe/entity/Customer/CustomerExtension/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="Customer_V1.xsd" namespace="http://claro.com.pe/entity/Customer/Customer/V1/" />
+  <xsd:complexType name="CustomerSpecExtension">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="entcus:CustomerSpec">
+        <xsd:sequence>
+          <xsd:element name="_secondLastName" type="xsd:string" />
+          <xsd:element name="_age" type="xsd:int" />
+          <xsd:element name="_memberNumber" type="xsd:integer" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="CustomerContactSpecExtension">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="entcus:CustomerContactSpec">
+        <xsd:sequence>
+          <xsd:element name="_emailBody" type="xsd:string" />
+          <xsd:element name="_emailAddressee" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="CustomerCreditProfileExtension">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="entcus:CustomerCreditProfile">
+        <xsd:sequence>
+          <xsd:element name="_experienceIndex" type="xsd:double" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

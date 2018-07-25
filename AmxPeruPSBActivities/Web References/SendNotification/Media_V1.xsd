@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd_2="http://claro.com.pe/entity/MarketSales/MarketingCampaign/V1/" xmlns:xsd_1="http://claro.com.pe/entity/MarketSales/Media/V1/" xmlns:xsd_3="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" targetNamespace="http://claro.com.pe/entity/MarketSales/Media/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:import schemaLocation="MarketingCampaign_V1.xsd" namespace="http://claro.com.pe/entity/MarketSales/MarketingCampaign/V1/" />
+  <xsd:complexType name="Media">
+    <xsd:annotation>
+      <xsd:documentation>A mechanism by which MarketingCampaigns, ProductPromotions, and ProductPlacements can be launched into the marketplace. It describes such mechanisms as the press, radio, trade shows, internet, and so forth. It is also used to advertise other provider ProductPromotions and ProductPlacements.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_marketingCampaign" type="xsd_2:MarketingCampaign" />
+      <xsd:element name="ID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A unique identifier for the Media.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A word, term, or phrase by which a Media is known and distinguished from other Media.
+
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="description" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A narrative that explains what the Media is.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_3:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period during which the Media is applicable.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

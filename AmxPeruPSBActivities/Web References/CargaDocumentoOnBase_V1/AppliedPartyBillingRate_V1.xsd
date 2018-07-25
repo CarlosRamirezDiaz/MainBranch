@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd_7="http://claro.com.pe/entity/EngagedParty/PartyPayment/V1/" xmlns:xsd_3="http://claro.com.pe/entity/Product/ProductPrice/V1/" xmlns:xsd_10="http://claro.com.pe/entity/EngagedParty/AdditionalPartyEntities/V1/" xmlns:xsd_11="http://claro.com.pe/entity/CommonBusiness/RootBusinessEntities/V1/" xmlns:xsd_1="http://claro.com.pe/entity/EngagedParty/AppliedPartyBillingRate/V1/" xmlns:xsd_12="http://claro.com.pe/entity/EngagedParty/Dunning/V1/" xmlns:xsd_4="http://claro.com.pe/entity/ProductDomain/ProductUsage_V1/" xmlns:xsd_5="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:xsd_6="http://claro.com.pe/entity/EngagedParty/PartyBill/V1/" xmlns:xsd_9="http://claro.com.pe/entity/EngagedParty/PartySettlement/V1/" targetNamespace="http://claro.com.pe/entity/EngagedParty/AppliedPartyBillingRate/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="Dunning_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/Dunning/V1/" />
+  <xsd:import schemaLocation="PartySettlement_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/PartySettlement/V1/" />
+  <xsd:import schemaLocation="PartyPayment_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/PartyPayment/V1/" />
+  <xsd:import schemaLocation="PartyBill_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/PartyBill/V1/" />
+  <xsd:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:complexType name="AppliedPartyBillingCharge" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>An amount, usually of money, for which a person or organization is financially liable.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:AtomicAppliedPartyBillingRate" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="AppliedPartyBillingAllowance">
+    <xsd:annotation>
+      <xsd:documentation>An applied amount, usually of money, deducted from the charge for a Product as a discount or in exchange for something. The applied amount could also be a number of free units, such as minutes, applied to usage.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:AppliedPartyBillingProductAlteration" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="AppliedPartyBillingCredit" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>A credit assigned to the party's account in the course or for the purpose of the billing process</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:AtomicAppliedPartyBillingRate" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="AppliedPartyBillingDiscount">
+    <xsd:annotation>
+      <xsd:documentation>AppliedPartyBillingDiscount
+A reduction in the price of a Product that is applied to reduce the associated charge.
+
+</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:AppliedPartyBillingProductAlteration" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="AppliedPartyBillingProductAlteration" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>A credit that is applied in order to reduce the associated charge.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:AppliedPartyBillingCredit">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="_appliedPartyBillingRate" type="xsd_1:AppliedPartyBillingRate" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="AppliedPartyBillingProductCharge" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>A charge applied to a product.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:AppliedPartyBillingCharge" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="AppliedPartyBillingProductUsageRate">
+    <xsd:annotation>
+      <xsd:documentation>A rated usage event typically produced by a rating engine.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:AppliedPartyBillingProductCharge" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="AppliedPartyBillingRate" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>A charge or a credit assigned to the party's account in the course or for the purpose of the billing process. Subclasses further define these elements.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="date" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>A date of creation.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="quantity" type="xsd_5:Money">
+        <xsd:annotation>
+          <xsd:documentation>A unit (for example, US Dollars) and number of the applied rate.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="description" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A textual description.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_compositeAppliedPartyBillingRate" type="xsd_1:CompositeAppliedPartyBillingRate" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_appliedPartyBillingTaxRate" type="xsd_1:AppliedPartyBillingTaxRate" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_appliedPartyBillingProductAlteration" type="xsd_1:AppliedPartyBillingProductAlteration" />
+      <xsd:element minOccurs="0" name="_partyBill" type="xsd_6:PartyBill" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_paymentItem" type="xsd_7:PartyPaymentItem" />
+      <xsd:element name="_appliedPartyBillingRateSpec" type="xsd_1:AppliedPartyBillingRateSpec" />
+      <xsd:element minOccurs="0" name="partySettlement" type="xsd_9:PartySettlement" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AtomicAppliedPartyBillingRate" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>A single charge or a credit.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:AppliedPartyBillingRate">
+        <xsd:sequence>
+          <xsd:element name="_partyFinancialCharge" type="xsd_1:PartyFinancialCharge" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="AppliedPartyBillingRebate">
+    <xsd:annotation>
+      <xsd:documentation>An amount, usually of money, which is paid back to a party's account, for example, because a party is entitled to a refund.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:AppliedPartyBillingCredit" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="CompositeAppliedPartyBillingRate">
+    <xsd:annotation>
+      <xsd:documentation>A sum of one or more other AppliedPartyBillingRates formed by aggregating other AppliedPartyBillingRates, which may be either Composite or Atomic AppliedPartyBillingRates.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:AppliedPartyBillingRate">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="_appliedPartyBillingRate" type="xsd_1:AppliedPartyBillingRate" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="AppliedPartyBillingTaxRate">
+    <xsd:annotation>
+      <xsd:documentation>An amount of money levied on the price of a Product by a legislative body.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:AtomicAppliedPartyBillingRate">
+        <xsd:sequence>
+          <xsd:element name="taxCategory" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>A categorization of the tax rate.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="_appliedPartyBillingRate" type="xsd_1:AppliedPartyBillingRate" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="PartyFinancialCharge">
+    <xsd:annotation>
+      <xsd:documentation>FinancialCharge represent a normalized aggregation of AtomicAppliedPartyBillingRate so every AtomicAppliedPartyBillingRate appears in exactly one FinancialCharge. This is critical for financial reporting.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_atomicAppliedPartyBillingRate" type="xsd_1:AtomicAppliedPartyBillingRate" />
+      <xsd:element name="_partyBill" type="xsd_6:PartyBill" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AppliedPartyBillingRateSpec">
+    <xsd:annotation>
+      <xsd:documentation>A detailed description of AppliedPartyBillingRate entity. This business entity holds the definition of all the characteristics (variant attributes) of AppliedPartyBillingRate</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_appliedPartyBillingRate" type="xsd_1:AppliedPartyBillingRate" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AppliedPartyPenaltyCharge">
+    <xsd:annotation>
+      <xsd:documentation>The AppliedPartyPenaltyCharge is a type of AppliedPartyBillingCharge.
+It represents penalty charges such as late fees, payment rejection fees, interests, that could be applied, linked to dunning of a due amount, in order to bill the party according to contractual terms and conditions.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:AtomicAppliedPartyBillingRate">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="dunningCaseRule" type="xsd_12:DunningCaseRule" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

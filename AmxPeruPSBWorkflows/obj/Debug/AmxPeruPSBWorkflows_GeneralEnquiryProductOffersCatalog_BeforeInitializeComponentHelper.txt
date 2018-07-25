@@ -1,0 +1,2 @@
+GeneralEnquiryProductOffersCatalog.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

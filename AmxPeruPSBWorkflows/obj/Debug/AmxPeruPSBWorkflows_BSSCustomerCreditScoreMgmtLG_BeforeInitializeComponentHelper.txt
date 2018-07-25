@@ -1,0 +1,2 @@
+BSSCustomerCreditScoreMgmtLG.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

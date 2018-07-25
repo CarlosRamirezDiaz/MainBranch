@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6bf7c8e6-895b-4f94-b1bf-a935dfe1e8a2" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="D:\CarlosRamirez\Desktop\Claro\PQR\DocumentCMSV2.0\WSDLs\DocumentCMSV2.0.wsdl" Protocol="file" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BaseTypesABE.xsd" MetadataType="Schema" ID="0469fe5c-22ed-4c50-881f-eba4b81c6d61" SourceId="1" SourceUrl="file:///D:/CarlosRamirez/Desktop/Claro/PQR/DocumentCMSV2.0/Schemas/BaseTypesABE.xsd" />
+    <MetadataFile FileName="ClaroFault_V1.xsd" MetadataType="Schema" ID="99a65767-3dc5-4888-bbfd-a64791beb583" SourceId="1" SourceUrl="file:///D:/CarlosRamirez/Desktop/Claro/PQR/DocumentCMSV2.0/Schemas/ClaroFault_V1.xsd" />
+    <MetadataFile FileName="DocumentCMSV2.wsdl" MetadataType="Wsdl" ID="8710c54e-dc9d-4287-be57-57db9599f6d6" SourceId="1" SourceUrl="file:///D:/CarlosRamirez/Desktop/Claro/PQR/DocumentCMSV2.0/WSDLs/DocumentCMSV2.0.wsdl" />
+    <MetadataFile FileName="GetDocumentV2.xsd" MetadataType="Schema" ID="25367c9d-b931-4d28-ae8b-8835b98b8804" SourceId="1" SourceUrl="file:///D:/CarlosRamirez/Desktop/Claro/PQR/DocumentCMSV2.0/Schemas/GetDocumentV2.0.xsd" />
+    <MetadataFile FileName="UploadDocumentV2.xsd" MetadataType="Schema" ID="50a7d72e-32e6-49cf-be78-8f14134f4041" SourceId="1" SourceUrl="file:///D:/CarlosRamirez/Desktop/Claro/PQR/DocumentCMSV2.0/Schemas/UploadDocumentV2.0.xsd" />
+    <MetadataFile FileName="ClaroHeaders.xsd" MetadataType="Schema" ID="69d41f2f-9ebf-47f4-97f6-cc3734828156" SourceId="1" SourceUrl="file:///D:/CarlosRamirez/Desktop/Claro/PQR/DocumentCMSV2.0/Schemas/ClaroHeaders.xsd" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

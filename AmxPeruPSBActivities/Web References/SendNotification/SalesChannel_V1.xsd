@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd_2="http://claro.com.pe/entity/MarketSales/MarketSegment/V1/" xmlns:xsd_1="http://claro.com.pe/entity/MarketSales/SalesChannel/V1/" xmlns:xsd_6="http://claro.com.pe/entity/Product/ProductCatalog/V1/" xmlns:xsd_4="http://claro.com.pe/entity/MarketSales/MarketingCampaign/V1/" xmlns:xsd_5="http://claro.com.pe/entity/Product/ProductOffering/V1/" targetNamespace="http://claro.com.pe/entity/MarketSales/SalesChannel/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="../Product/ProductCatalog_V1.xsd" namespace="http://claro.com.pe/entity/Product/ProductCatalog/V1/" />
+  <xsd:import schemaLocation="../Product/ProductOffering_V1.xsd" namespace="http://claro.com.pe/entity/Product/ProductOffering/V1/" />
+  <xsd:import schemaLocation="MarketingCampaign_V1.xsd" namespace="http://claro.com.pe/entity/MarketSales/MarketingCampaign/V1/" />
+  <xsd:import schemaLocation="SalesStatistics_V1.xsd" namespace="http://claro.com.pe/entity/MarketSales/SalesStatistics/V1/" />
+  <xsd:import schemaLocation="MarketSegment_V1.xsd" namespace="http://claro.com.pe/entity/MarketSales/MarketSegment/V1/" />
+  <xsd:complexType name="SalesChannel">
+    <xsd:annotation>
+      <xsd:documentation>A means by which a ServiceProvider makes available and sells ProductOfferings to the market. SalesChannels include DirectSalesForce, SalesAgents, TeleMarketers, and AlternateChannels.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_marketSegment" type="xsd_2:MarketSegment" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_marketingCampaign" type="xsd_4:MarketingCampaign" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_productOffering" type="xsd_5:ProductOffering" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_productCatalogSpecification" type="xsd_6:ProductCatalogSpecification" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

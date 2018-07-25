@@ -1,0 +1,2 @@
+AmxCoGetInfoLists.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

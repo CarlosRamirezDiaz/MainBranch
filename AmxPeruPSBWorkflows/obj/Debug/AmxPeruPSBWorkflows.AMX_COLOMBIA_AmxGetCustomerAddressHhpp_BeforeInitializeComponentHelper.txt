@@ -1,0 +1,2 @@
+AmxGetCustomerAddressHhpp.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

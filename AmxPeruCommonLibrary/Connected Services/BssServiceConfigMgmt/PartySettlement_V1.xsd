@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:entpar="http://claro.com.pe/entity/EngagedParty/Party/V1/" xmlns:entagr="http://claro.com.pe/entity/EngagedParty/Agreement/V1/" xmlns:entparset="http://claro.com.pe/entity/EngagedParty/PartySettlement/V1/" xmlns:entbastyp="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" targetNamespace="http://claro.com.pe/entity/EngagedParty/PartySettlement/V1/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xs:import schemaLocation="Agreement_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/Agreement/V1/" />
+  <xs:import schemaLocation="Party_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/Party/V1/" />
+  <xs:complexType name="PartySettlement">
+    <xs:annotation>
+      <xs:documentation>A monetary value that will be paid to a party by the enterprise or a party will pay to the enterprise as a result of the usage/recurring fee of a product/service/resource provided. PartySettlement is managed by agreements and can be created between an enterprise and other MVNOs, dealers, retailers, content providers, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="amount" type="entbastyp:Money">
+        <xs:annotation>
+          <xs:documentation>Monetary amount that will be paid to a party by the enterprise or a party that will pay to the enterprise.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="settlementdate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>Issue date of a PartySettlement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="settlementnumber" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A unique identifier that enables different instances of a PartySettlement to be distinguished from each other.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="_partySettlementRole" type="entparset:PartySettlementRole" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartySettlementRole">
+    <xs:annotation>
+      <xs:documentation>PartySettlementRole captures all the roles that are included like settlement payment responsible and for example, the role of parties responsible for a) calculating or b) forwarding settlements, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="partysettlementroletype" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>An indicator that specifies the involment such as payment responsible and parties/unit responsible for calculating settlements.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="_agreement" type="entagr:Agreement" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="partyRole" type="entpar:PartyRole" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartySettlementSpecification">
+    <xs:annotation>
+      <xs:documentation>A detailed description of PartySettlement.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="partySettlement" type="entparset:PartySettlement" />
+      <xs:element name="name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A short descriptive name.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="specType" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A classification that groups PartySettlemenSpecifications that share common characteristics.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="validFor" type="entbastyp:TimePeriod">
+        <xs:annotation>
+          <xs:documentation>The period during which the PartySettlementSpecification is applicable.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="description" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A detailed description of PartySettlementSpecification.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

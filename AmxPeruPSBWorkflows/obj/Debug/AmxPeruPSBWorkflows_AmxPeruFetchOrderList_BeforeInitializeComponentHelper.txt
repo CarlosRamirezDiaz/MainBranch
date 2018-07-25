@@ -1,0 +1,2 @@
+AmxPeruFetchOrderList.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

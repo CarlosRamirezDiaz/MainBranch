@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:entcal="http://claro.com.pe/entity/CommonBusiness/Calendar/V1/" xmlns:entbastyp="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:entbusint="http://claro.com.pe/entity/CommonBusiness/BusinessInteraction/V1/" xmlns:entcus="http://claro.com.pe/entity/Customer/Customer/V1/" xmlns:entcusord="http://claro.com.pe/entity/Customer/CustomerOrder/V1/" targetNamespace="http://claro.com.pe/entity/Customer/CustomerOrder/V1/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="../CommonBusiness/Calendar_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/Calendar/V1/" />
+  <xs:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xs:import schemaLocation="Customer_V1.xsd" namespace="http://claro.com.pe/entity/Customer/Customer/V1/" />
+  <xs:import schemaLocation="../CommonBusiness/BusinessInteraction_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BusinessInteraction/V1/" />
+  <xs:complexType name="CustomerOrder">
+    <xs:annotation>
+      <xs:documentation>A CustomerOrder is a communication used to procure a Product.  There are different types of CustomerOrders, such as AccessServiceRequests (ASRs), LocalServiceRequests (LSRs), DirectoryServiceRequests (DSRs), ProductOrders (PSRs). 
+
+The abstract Order object provides a generalization of relationships.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="entbusint:Request">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="assignedpriority" type="xs:integer">
+            <xs:annotation>
+              <xs:documentation>The order’s assigned priority after review, relative to other orders in the system</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" maxOccurs="1" name="assignedresponsedate" type="xs:date">
+            <xs:annotation>
+              <xs:documentation>The target response date assigned after review.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" maxOccurs="1" name="customerordertype" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>An indicatory that specifies the kind of CustomerOrder.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" maxOccurs="1" name="duedate" type="xs:date">
+            <xs:annotation>
+              <xs:documentation>The date upon which the CustomerOrder is due for completion.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" maxOccurs="1" name="purchaseordernumber" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>A number that uniquely identifies a CustomerOrder within the ordering Customer's enterprise.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" maxOccurs="1" name="_customer" type="entcus:Customer" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="_customerOrderItem" type="entcusord:CustomerOrderItem" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="_note" type="entbastyp:Notes" />
+          <xs:element minOccurs="0" maxOccurs="1" name="_calendarEntry" type="entcal:CalendarEntry" />
+          <xs:element minOccurs="0" maxOccurs="1" name="_calendarToDo" type="entcal:CalendarToDo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CustomerOrderItem">
+    <xs:annotation>
+      <xs:documentation>The purpose for the Customer Order expressed in terms of a Product Offering or a Product (for a change order) inherited from BusinessInteractionItem.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="entbusint:BusinessInteractionItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="_parentCustomerOrderItem" type="entcusord:CustomerOrderItem" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

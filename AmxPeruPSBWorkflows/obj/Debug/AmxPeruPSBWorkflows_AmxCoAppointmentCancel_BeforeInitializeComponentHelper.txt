@@ -1,0 +1,2 @@
+AmxCoAppointmentCancel.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

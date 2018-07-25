@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.ericsson.com/esb/data/generico/CommonTypes/v2/" elementFormDefault="qualified" targetNamespace="http://www.ericsson.com/esb/data/generico/CommonTypes/v2/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ericssonFault" nillable="true" type="tns:EricssonFaultMessageType" />
+  <xs:element name="headerRequest" type="tns:HeaderRequestType">
+    <xs:annotation>
+      <xs:documentation>Todas las operaciones de los servicios implementaran esta cabecera para el envio de los datos de entrada.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="headerResponse" type="tns:HeaderResponseType">
+    <xs:annotation>
+      <xs:documentation>Todas las operaciones de los servicios implementaran esta cabecera para el envio de los datos de entrada.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="HeaderRequestType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="channel" type="xs:string" />
+      <xs:element minOccurs="0" name="idApplication" type="xs:string" />
+      <xs:element minOccurs="0" name="userApplication" type="xs:string" />
+      <xs:element minOccurs="0" name="userSession" type="xs:string" />
+      <xs:element minOccurs="0" name="idESBTransaction" type="xs:string" />
+      <xs:element minOccurs="0" name="idBusinessTransaction" type="xs:string" />
+      <xs:element minOccurs="0" name="startDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="additionalNode" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HeaderResponseType">
+    <xs:sequence>
+      <xs:element name="idESBTransaction" type="xs:string" />
+      <xs:element name="idBusinessTransaction" type="xs:string" />
+      <xs:element minOccurs="0" name="startDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="endDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="additionalNode" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EricssonFaultMessageType">
+    <xs:sequence>
+      <xs:element name="enterpriseServiceName" nillable="true" type="xs:string" />
+      <xs:element name="enterpriseServiceOperationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="originSystem" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="idAudit" type="xs:string" />
+      <xs:element name="idESBTransaction" type="xs:string" />
+      <xs:element name="idBusinessTransaction" type="xs:string" />
+      <xs:element name="errorCode" type="xs:string" />
+      <xs:element name="errorMessage" type="xs:string" />
+      <xs:element minOccurs="0" name="errorLocation" type="xs:string" />
+      <xs:element name="date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="faultSource" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

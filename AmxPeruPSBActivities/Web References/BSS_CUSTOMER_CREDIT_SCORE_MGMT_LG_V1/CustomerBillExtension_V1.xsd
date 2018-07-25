@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:entcusbilext="http://claro.com.pe/entity/Customer/CustomerBillExtension/V1/" xmlns:entcusbil="http://claro.com.pe/entity/Customer/CustomerBill/V1/" targetNamespace="http://claro.com.pe/entity/Customer/CustomerBillExtension/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="CustomerBill_V1.xsd" namespace="http://claro.com.pe/entity/Customer/CustomerBill/V1/" />
+  <xsd:complexType name="CustomerBillExtension">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="entcusbil:CustomerBill">
+        <xsd:sequence>
+          <xsd:element name="_billingAverage" type="xsd:string" />
+          <xsd:element name="_dateRenovation" type="xsd:string" />
+          <xsd:element name="_term" type="xsd:string" />
+          <xsd:element name="_representative" type="xsd:string" />
+          <xsd:element name="_previousPlan" type="xsd:string" />
+          <xsd:element name="_priceAccordingPlan" type="xsd:string" />
+          <xsd:element name="_additionalPackage" type="xsd:string" />
+          <xsd:element name="_maxConsumed" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="CustomerBillingCycleExtension">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="entcusbil:CustomerBillingCycle">
+        <xsd:sequence>
+          <xsd:element name="_creditCardIncome" type="xsd:decimal" />
+          <xsd:element name="_mortgageDebtIncome" type="xsd:decimal" />
+          <xsd:element name="_nonMortgageDebtIncome" type="xsd:decimal" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

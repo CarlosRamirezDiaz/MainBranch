@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd_2="http://claro.com.pe/entity/Service/Service/V1/" xmlns:xsd_1="http://claro.com.pe/entity/Service/TIPServiceManagement/V1/" xmlns:xsd_6="http://claro.com.pe/entity/Service/ServiceSpecification/V1/" xmlns:xsd_4="http://claro.com.pe/entity/Resource/Resource/V1/" xmlns:xsd_5="http://claro.com.pe/entity/Resource/ResourceSpecification/V1/" targetNamespace="http://claro.com.pe/entity/Service/TIPServiceManagement/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="ServiceSpecification_V1.xsd" namespace="http://claro.com.pe/entity/Service/ServiceSpecification/V1/" />
+  <xsd:import schemaLocation="../Resource/ResourceSpecification_V1.xsd" namespace="http://claro.com.pe/entity/Resource/ResourceSpecification/V1/" />
+  <xsd:import schemaLocation="../Resource/Resource_V1.xsd" namespace="http://claro.com.pe/entity/Resource/Resource/V1/" />
+  <xsd:import schemaLocation="Service_V1.xsd" namespace="http://claro.com.pe/entity/Service/Service/V1/" />
+  <xsd:complexType name="ServiceAccessPoint">
+    <xsd:annotation>
+      <xsd:documentation>Represents a set of parameters associated (directly or indirectly) with a unique (logical and/or physical) resource where the Service can be accessed.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="type" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Method to group service access points that have strongly marked and readily defined similarities. This attribute is used in the Service Definition to identify the type of SAP required at service activation time.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="serviceState" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Indicates the ability of an entity to provide service.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="operationalState" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Indicates whether the set of resources supporting the service are installed and working.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="adminState" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Represents the administrative suspension (or resumption) of traffic for a given subscriber.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_service" type="xsd_2:Service" />
+      <xsd:element name="_sapSpec" type="xsd_1:SapSpecification" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_resource" type="xsd_4:Resource" />
+      <xsd:element minOccurs="0" name="_commonServiceInfo" type="xsd_1:CommonServiceInfo" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SapSpecification">
+    <xsd:annotation>
+      <xsd:documentation>Defines a set of attributes and (optionally) associated values that may be applied to one or more service access points.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceDefinition" type="xsd_1:ServiceDefinition" />
+      <xsd:element name="type" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Method to group SAP Specifications that have strongly marked and readily defined similarities.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="_resourceSpecification" type="xsd_5:ResourceSpecification" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceAccessPoint" type="xsd_1:ServiceAccessPoint" />
+      <xsd:element maxOccurs="unbounded" name="_serviceSpecificationType" type="xsd_6:ServiceSpecificationType" />
+      <xsd:element name="applicableStateValues" type="xsd:string" />
+      <xsd:element minOccurs="0" name="_commonServiceInfo" type="xsd_1:CommonServiceInfo" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceTemplate">
+    <xsd:annotation>
+      <xsd:documentation>Represents a type of Service Specification introduced for the purposes of Service Fulfillment. It defines specific ServiceSpecCharacteristicsValues for the globally set ServiceSpecCharacteristics that can be dynamically referenced by multiple Service instances during their lifecycle span. A ServiceTemplate is checked against its associated ServiceDefinition by verifying the presence of the ServiceSpecCharacteristics and the validity of the corresponding assigned ServiceSpecCharacteristicsValues.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="stStatus" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The state of the Service Template; it may take on one of the following values: Draft, Pilot, Commercial, Retired.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="source" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Determines whether the source of the OS providing the Service Template is “external” or “internal” to a given organization.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="serviceLocation" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Gives the URL of where the service component activation OS is actually located.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_serviceDefinition" type="xsd_1:ServiceDefinition" />
+      <xsd:element name="_serviceSpecification" type="xsd_6:ServiceSpecification" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceDefinition">
+    <xsd:annotation>
+      <xsd:documentation>Represents a type of Service Specification introduced for the purposes of Service Fulfillment. It defines ALL the ServiceSpecCharacteristics (SSCs) that must be used to create corresponding Service instances. This includes the SSCs which are: 
+ globally set (the corresponding values are defined only in ServiceTemplates and are sometimes designated as “invariant”) and 
+ set per instance (since the ServiceDefinition does not contain any value for such SSCs, the corresponding values can be defined only over the Activation Interface and are sometimes designated as “variant”)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_6:ServiceSpecification">
+        <xsd:sequence>
+          <xsd:element name="sdStatus" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>The state of the Service Definition; it may take on one of the following values: Draft, Standard, or Proprietary.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="activationMode" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>Indicates whether the designed service is activated through provisioning, or is signaled.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceTemplate" type="xsd_1:ServiceTemplate" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="_saPSpec" type="xsd_1:SapSpecification" />
+          <xsd:element name="_serviceSpecification" type="xsd_6:ServiceSpecRelationship" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="CommonServiceInfo">
+    <xsd:annotation>
+      <xsd:documentation>Common Service Info is a generalization of Common Object Info. It contains common attributes associated to the following classes: Service ServiceSpecCharacteristic ServiceAccessPoint </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="description" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Textual characterization of the service object.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_service" type="xsd_2:Service" />
+      <xsd:element name="servicespeccharacteristic" type="xsd_6:ServiceSpecCharacteristic" />
+      <xsd:element name="_sapspecification" type="xsd_1:SapSpecification" />
+      <xsd:element name="_serviceaccesspoint" type="xsd_1:ServiceAccessPoint" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

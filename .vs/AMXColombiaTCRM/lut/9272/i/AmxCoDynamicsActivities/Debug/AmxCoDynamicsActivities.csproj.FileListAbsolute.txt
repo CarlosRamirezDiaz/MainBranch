@@ -1,0 +1,7 @@
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\b\AmxCoDynamicsActivities\bin\Debug\AmxDynamicsActivities.dll
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\b\AmxCoDynamicsActivities\bin\Debug\AmxDynamicsActivities.pdb
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\i\AmxCoDynamicsActivities\Debug\AmxCoDynamicsActivities.csprojResolveAssemblyReference.cache
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\i\AmxCoDynamicsActivities\Debug\AmxCoDynamicsActivities.csproj.CoreCompileInputs.cache
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\i\AmxCoDynamicsActivities\Debug\AmxCoDynamicsActivities.csproj.CopyComplete
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\i\AmxCoDynamicsActivities\Debug\AmxDynamicsActivities.dll
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\i\AmxCoDynamicsActivities\Debug\AmxDynamicsActivities.pdb

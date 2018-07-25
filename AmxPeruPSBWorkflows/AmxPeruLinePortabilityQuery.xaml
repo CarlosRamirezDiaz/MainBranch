@@ -1,0 +1,524 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="AmxPeruPSBWorkflows.AmxPeruLinePortabilityQuery"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:aal="clr-namespace:AmxPeruPSBActivities.Activities.LinePortability;assembly=AmxPeruPSBActivities"
+ xmlns:amd="clr-namespace:AmxPeruPSBActivities.Model.DirectoryNumberRead;assembly=AmxPeruPSBActivities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:ec="clr-namespace:ExternalApiActivities.Common;assembly=ExternalApiActivities"
+ xmlns:epwa="clr-namespace:Ericsson.PSB.Workflow.Activities;assembly=Ericsson.PSB.Workflow.Activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="lineNumberList" Type="InArgument(scg:List(x:String))" />
+    <x:Property Name="serviceType" Type="InArgument(x:String)" />
+    <x:Property Name="response" Type="OutArgument(scg:List(amd:ClaroDirectoryNumberConfigResponseModel))" />
+    <x:Property Name="currentCarrier" Type="InArgument(x:String)" />
+    <x:Property Name="currentPlan" Type="InArgument(x:String)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap2010:WorkflowViewState.IdRef>AmxPeruPSBWorkflows.AmxPeruLinePortabilityQuery_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>AmxPeruPSBActivities.Model.DirectoryNumberRead</x:String>
+      <x:String>AmxPeruPSBActivities.Activities.LinePortability</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Ericsson.ETELCRM.CrmCachingLibrary</AssemblyReference>
+      <AssemblyReference>Ericsson.ETELCRM.CrmFoundationLibrary</AssemblyReference>
+      <AssemblyReference>Ericsson.ETELCRM.Entities.Crm</AssemblyReference>
+      <AssemblyReference>Ericsson.PSB.Workflow.Activities</AssemblyReference>
+      <AssemblyReference>Ericsson.PSB.Workflow.Client.Core</AssemblyReference>
+      <AssemblyReference>ExternalApiActivities</AssemblyReference>
+      <AssemblyReference>ExternalApiWorkflows</AssemblyReference>
+      <AssemblyReference>Microsoft.Crm.Sdk.Proxy</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Compatibility</AssemblyReference>
+      <AssemblyReference>Microsoft.Xrm.Client</AssemblyReference>
+      <AssemblyReference>Microsoft.Xrm.Sdk</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Activities.Core.Presentation</AssemblyReference>
+      <AssemblyReference>System.Activities.Presentation</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data.Linq</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Net.Http</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>AmxPeruPSBActivities</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>AmxPeruPSBWorkflows</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart DisplayName="MainFlowChart" sap2010:WorkflowViewState.IdRef="Flowchart_2">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="x:String" Name="connectionString" />
+      <Variable x:TypeArguments="x:String" Name="endPoint" />
+      <Variable x:TypeArguments="scg:List(amd:GenericDirectoryNumberReadResponseModel)" Name="bscsResponseCollection">
+        <Variable.Default>
+          <mca:CSharpValue x:TypeArguments="scg:List(amd:GenericDirectoryNumberReadResponseModel)">new List&lt;AmxPeruPSBActivities.Model.DirectoryNumberRead.GenericDirectoryNumberReadResponseModel&gt;()</mca:CSharpValue>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="amd:GenericDirectoryNumberReadResponseModel" Name="responseModel">
+        <Variable.Default>
+          <mca:CSharpValue x:TypeArguments="amd:GenericDirectoryNumberReadResponseModel">new GenericDirectoryNumberReadResponseModel()</mca:CSharpValue>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Name="claroEndPoint" />
+      <Variable x:TypeArguments="scg:List(amd:GenericDirectoryNumberReadResponseModel)" Name="claroLineNumbers">
+        <Variable.Default>
+          <mca:CSharpValue x:TypeArguments="scg:List(amd:GenericDirectoryNumberReadResponseModel)">new List&lt;GenericDirectoryNumberReadResponseModel&gt;()</mca:CSharpValue>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="scg:List(amd:ClaroDirectoryNumberConfigResponseModel)" Name="claroServiceResponseCollection">
+        <Variable.Default>
+          <mca:CSharpValue x:TypeArguments="scg:List(amd:ClaroDirectoryNumberConfigResponseModel)">new List&lt;ClaroDirectoryNumberConfigResponseModel&gt;()</mca:CSharpValue>
+        </Variable.Default>
+      </Variable>
+    </Flowchart.Variables>
+    <Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+        <epwa:ConfigurationActivity sap2010:WorkflowViewState.IdRef="ConfigurationActivity_1" Key="connectionString">
+          <epwa:ConfigurationActivity.Value>
+            <OutArgument x:TypeArguments="x:String">
+              <mca:CSharpReference x:TypeArguments="x:String">connectionString</mca:CSharpReference>
+            </OutArgument>
+          </epwa:ConfigurationActivity.Value>
+        </epwa:ConfigurationActivity>
+        <FlowStep.Next>
+          <FlowStep x:Name="__ReferenceID7" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+            <ec:XrmAwareCompositeActivity UseServiceUser="{x:Null}" sap2010:WorkflowViewState.IdRef="XrmAwareCompositeActivity_1" IsGlobalContext="False">
+              <ec:XrmAwareCompositeActivity.Activities>
+                <Assign sap2010:WorkflowViewState.IdRef="Assign_2">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="scg:List(amd:ClaroDirectoryNumberConfigResponseModel)">
+                      <mca:CSharpReference x:TypeArguments="scg:List(amd:ClaroDirectoryNumberConfigResponseModel)">response</mca:CSharpReference>
+                    </OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="scg:List(amd:ClaroDirectoryNumberConfigResponseModel)">
+                      <mca:CSharpValue x:TypeArguments="scg:List(amd:ClaroDirectoryNumberConfigResponseModel)">new List&lt;ClaroDirectoryNumberConfigResponseModel&gt;()</mca:CSharpValue>
+                    </InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Flowchart DisplayName="FlowChartToCheckBSCS" sap2010:WorkflowViewState.IdRef="Flowchart_3">
+                  <Flowchart.StartNode>
+                    <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_8">
+                      <ec:RetrieveCrmConfigurationByName ConfigurationName="BscsApiUri" sap2010:WorkflowViewState.IdRef="RetrieveCrmConfigurationByName_1">
+                        <ec:RetrieveCrmConfigurationByName.ConfigurationValue>
+                          <OutArgument x:TypeArguments="x:String">
+                            <mca:CSharpReference x:TypeArguments="x:String">endPoint</mca:CSharpReference>
+                          </OutArgument>
+                        </ec:RetrieveCrmConfigurationByName.ConfigurationValue>
+                      </ec:RetrieveCrmConfigurationByName>
+                      <FlowStep.Next>
+                        <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_5">
+                          <ForEach x:TypeArguments="x:String" DisplayName="ForEach&lt;String&gt;" sap2010:WorkflowViewState.IdRef="ForEach`1_1">
+                            <ForEach.Values>
+                              <InArgument x:TypeArguments="scg:IEnumerable(x:String)">
+                                <mca:CSharpValue x:TypeArguments="scg:IEnumerable(x:String)">lineNumberList</mca:CSharpValue>
+                              </InArgument>
+                            </ForEach.Values>
+                            <ActivityAction x:TypeArguments="x:String">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="x:String" Name="item" />
+                              </ActivityAction.Argument>
+                              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_2">
+                                <TryCatch sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                                  <TryCatch.Try>
+                                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+                                      <aal:DirectoryNumberTypeReadActivity sap2010:WorkflowViewState.IdRef="DirectoryNumberTypeReadActivity_3">
+                                        <aal:DirectoryNumberTypeReadActivity.EndPoint>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String">endPoint</mca:CSharpValue>
+                                          </InArgument>
+                                        </aal:DirectoryNumberTypeReadActivity.EndPoint>
+                                        <aal:DirectoryNumberTypeReadActivity.LineNumber>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String">item</mca:CSharpValue>
+                                          </InArgument>
+                                        </aal:DirectoryNumberTypeReadActivity.LineNumber>
+                                        <aal:DirectoryNumberTypeReadActivity.LineNumberTypeResponse>
+                                          <OutArgument x:TypeArguments="amd:GenericDirectoryNumberReadResponseModel">
+                                            <mca:CSharpReference x:TypeArguments="amd:GenericDirectoryNumberReadResponseModel">responseModel</mca:CSharpReference>
+                                          </OutArgument>
+                                        </aal:DirectoryNumberTypeReadActivity.LineNumberTypeResponse>
+                                      </aal:DirectoryNumberTypeReadActivity>
+                                      <AddToCollection x:TypeArguments="amd:GenericDirectoryNumberReadResponseModel" DisplayName="AddToCollection&lt;GenericDirectoryNumberReadResponseModel&gt;" sap2010:WorkflowViewState.IdRef="AddToCollection`1_1">
+                                        <AddToCollection.Item>
+                                          <InArgument x:TypeArguments="amd:GenericDirectoryNumberReadResponseModel">
+                                            <mca:CSharpValue x:TypeArguments="amd:GenericDirectoryNumberReadResponseModel">responseModel</mca:CSharpValue>
+                                          </InArgument>
+                                        </AddToCollection.Item>
+                                        <InArgument x:TypeArguments="scg:ICollection(amd:GenericDirectoryNumberReadResponseModel)">
+                                          <mca:CSharpValue x:TypeArguments="scg:ICollection(amd:GenericDirectoryNumberReadResponseModel)">bscsResponseCollection</mca:CSharpValue>
+                                        </InArgument>
+                                      </AddToCollection>
+                                    </Sequence>
+                                  </TryCatch.Try>
+                                  <TryCatch.Catches>
+                                    <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                                      <ActivityAction x:TypeArguments="s:Exception">
+                                        <ActivityAction.Argument>
+                                          <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                        </ActivityAction.Argument>
+                                        <AddToCollection x:TypeArguments="amd:GenericDirectoryNumberReadResponseModel" DisplayName="AddToCollection&lt;GenericDirectoryNumberReadResponseModel&gt;" sap2010:WorkflowViewState.IdRef="AddToCollection`1_2">
+                                          <AddToCollection.Item>
+                                            <InArgument x:TypeArguments="amd:GenericDirectoryNumberReadResponseModel">
+                                              <mca:CSharpValue x:TypeArguments="amd:GenericDirectoryNumberReadResponseModel" xml:space="preserve">new GenericDirectoryNumberReadResponseModel()
+            {
+dirnum = item,
+dnStatus = "NotClaro"
+            }</mca:CSharpValue>
+                                            </InArgument>
+                                          </AddToCollection.Item>
+                                          <InArgument x:TypeArguments="scg:ICollection(amd:GenericDirectoryNumberReadResponseModel)">
+                                            <mca:CSharpValue x:TypeArguments="scg:ICollection(amd:GenericDirectoryNumberReadResponseModel)">bscsResponseCollection</mca:CSharpValue>
+                                          </InArgument>
+                                        </AddToCollection>
+                                      </ActivityAction>
+                                    </Catch>
+                                  </TryCatch.Catches>
+                                </TryCatch>
+                              </Sequence>
+                            </ActivityAction>
+                          </ForEach>
+                        </FlowStep>
+                      </FlowStep.Next>
+                    </FlowStep>
+                  </Flowchart.StartNode>
+                  <x:Reference>__ReferenceID0</x:Reference>
+                  <x:Reference>__ReferenceID1</x:Reference>
+                </Flowchart>
+                <ForEach x:TypeArguments="amd:GenericDirectoryNumberReadResponseModel" DisplayName="ForEach&lt;GenericDirectoryNumberReadResponseModel&gt;" sap2010:WorkflowViewState.IdRef="ForEach`1_2">
+                  <ForEach.Values>
+                    <InArgument x:TypeArguments="scg:IEnumerable(amd:GenericDirectoryNumberReadResponseModel)">
+                      <mca:CSharpValue x:TypeArguments="scg:IEnumerable(amd:GenericDirectoryNumberReadResponseModel)">bscsResponseCollection</mca:CSharpValue>
+                    </InArgument>
+                  </ForEach.Values>
+                  <ActivityAction x:TypeArguments="amd:GenericDirectoryNumberReadResponseModel">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="amd:GenericDirectoryNumberReadResponseModel" Name="item" />
+                    </ActivityAction.Argument>
+                    <Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_5">
+                      <Flowchart.StartNode>
+                        <FlowDecision x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+                          <FlowDecision.Condition>
+                            <mca:CSharpValue x:TypeArguments="x:Boolean">item.dnStatus.Equals("NotClaro")</mca:CSharpValue>
+                          </FlowDecision.Condition>
+                          <FlowDecision.True>
+                            <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_12">
+                              <AddToCollection x:TypeArguments="amd:ClaroDirectoryNumberConfigResponseModel" DisplayName="AddToCollection&lt;ClaroDirectoryNumberConfigResponseModel&gt;" sap2010:WorkflowViewState.IdRef="AddToCollection`1_6">
+                                <AddToCollection.Item>
+                                  <InArgument x:TypeArguments="amd:ClaroDirectoryNumberConfigResponseModel">
+                                    <mca:CSharpValue x:TypeArguments="amd:ClaroDirectoryNumberConfigResponseModel" xml:space="preserve">new ClaroDirectoryNumberConfigResponseModel()
+            {
+            PhoneNumber = item.dirnum,
+            Status = item.dnStatus,
+            Provider = "NotClaro"
+            }</mca:CSharpValue>
+                                  </InArgument>
+                                </AddToCollection.Item>
+                                <InArgument x:TypeArguments="scg:ICollection(amd:ClaroDirectoryNumberConfigResponseModel)">
+                                  <mca:CSharpValue x:TypeArguments="scg:ICollection(amd:ClaroDirectoryNumberConfigResponseModel)">response</mca:CSharpValue>
+                                </InArgument>
+                              </AddToCollection>
+                            </FlowStep>
+                          </FlowDecision.True>
+                          <FlowDecision.False>
+                            <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_13">
+                              <AddToCollection x:TypeArguments="amd:GenericDirectoryNumberReadResponseModel" DisplayName="AddToCollection&lt;GenericDirectoryNumberReadResponseModel&gt;" sap2010:WorkflowViewState.IdRef="AddToCollection`1_7">
+                                <AddToCollection.Item>
+                                  <InArgument x:TypeArguments="amd:GenericDirectoryNumberReadResponseModel">
+                                    <mca:CSharpValue x:TypeArguments="amd:GenericDirectoryNumberReadResponseModel">item</mca:CSharpValue>
+                                  </InArgument>
+                                </AddToCollection.Item>
+                                <InArgument x:TypeArguments="scg:ICollection(amd:GenericDirectoryNumberReadResponseModel)">
+                                  <mca:CSharpValue x:TypeArguments="scg:ICollection(amd:GenericDirectoryNumberReadResponseModel)">claroLineNumbers</mca:CSharpValue>
+                                </InArgument>
+                              </AddToCollection>
+                            </FlowStep>
+                          </FlowDecision.False>
+                        </FlowDecision>
+                      </Flowchart.StartNode>
+                      <x:Reference>__ReferenceID2</x:Reference>
+                      <x:Reference>__ReferenceID3</x:Reference>
+                      <x:Reference>__ReferenceID4</x:Reference>
+                    </Flowchart>
+                  </ActivityAction>
+                </ForEach>
+                <Flowchart DisplayName="FlowChartToCheckClaro" sap2010:WorkflowViewState.IdRef="Flowchart_4">
+                  <Flowchart.StartNode>
+                    <FlowStep x:Name="__ReferenceID5" sap2010:WorkflowViewState.IdRef="FlowStep_14">
+                      <aal:ClaroDirectoryNumberConfigActivity sap2010:WorkflowViewState.IdRef="ClaroDirectoryNumberConfigActivity_1">
+                        <aal:ClaroDirectoryNumberConfigActivity.CurrentCarrier>
+                          <InArgument x:TypeArguments="x:String">
+                            <mca:CSharpValue x:TypeArguments="x:String">currentCarrier</mca:CSharpValue>
+                          </InArgument>
+                        </aal:ClaroDirectoryNumberConfigActivity.CurrentCarrier>
+                        <aal:ClaroDirectoryNumberConfigActivity.CurrentPlan>
+                          <InArgument x:TypeArguments="x:String">
+                            <mca:CSharpValue x:TypeArguments="x:String">currentPlan</mca:CSharpValue>
+                          </InArgument>
+                        </aal:ClaroDirectoryNumberConfigActivity.CurrentPlan>
+                        <aal:ClaroDirectoryNumberConfigActivity.EndPoint>
+                          <InArgument x:TypeArguments="x:String">
+                            <mca:CSharpValue x:TypeArguments="x:String">claroEndPoint</mca:CSharpValue>
+                          </InArgument>
+                        </aal:ClaroDirectoryNumberConfigActivity.EndPoint>
+                        <aal:ClaroDirectoryNumberConfigActivity.LineNumberList>
+                          <InArgument x:TypeArguments="scg:List(x:String)">
+                            <mca:CSharpValue x:TypeArguments="scg:List(x:String)">claroLineNumbers.Select(i =&gt; i.dirnum).ToList()</mca:CSharpValue>
+                          </InArgument>
+                        </aal:ClaroDirectoryNumberConfigActivity.LineNumberList>
+                        <aal:ClaroDirectoryNumberConfigActivity.LineNumberTypeResponse>
+                          <OutArgument x:TypeArguments="scg:List(amd:ClaroDirectoryNumberConfigResponseModel)">
+                            <mca:CSharpReference x:TypeArguments="scg:List(amd:ClaroDirectoryNumberConfigResponseModel)">claroServiceResponseCollection</mca:CSharpReference>
+                          </OutArgument>
+                        </aal:ClaroDirectoryNumberConfigActivity.LineNumberTypeResponse>
+                        <aal:ClaroDirectoryNumberConfigActivity.ServiceType>
+                          <InArgument x:TypeArguments="x:String">
+                            <mca:CSharpValue x:TypeArguments="x:String">serviceType</mca:CSharpValue>
+                          </InArgument>
+                        </aal:ClaroDirectoryNumberConfigActivity.ServiceType>
+                      </aal:ClaroDirectoryNumberConfigActivity>
+                    </FlowStep>
+                  </Flowchart.StartNode>
+                  <x:Reference>__ReferenceID5</x:Reference>
+                </Flowchart>
+                <ForEach x:TypeArguments="amd:ClaroDirectoryNumberConfigResponseModel" DisplayName="ForEach&lt;ClaroDirectoryNumberConfigResponseModel&gt;" sap2010:WorkflowViewState.IdRef="ForEach`1_3">
+                  <ForEach.Values>
+                    <InArgument x:TypeArguments="scg:IEnumerable(amd:ClaroDirectoryNumberConfigResponseModel)">
+                      <mca:CSharpValue x:TypeArguments="scg:IEnumerable(amd:ClaroDirectoryNumberConfigResponseModel)">claroServiceResponseCollection</mca:CSharpValue>
+                    </InArgument>
+                  </ForEach.Values>
+                  <ActivityAction x:TypeArguments="amd:ClaroDirectoryNumberConfigResponseModel">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="amd:ClaroDirectoryNumberConfigResponseModel" Name="item" />
+                    </ActivityAction.Argument>
+                    <AddToCollection x:TypeArguments="amd:ClaroDirectoryNumberConfigResponseModel" DisplayName="AddToCollection&lt;ClaroDirectoryNumberConfigResponseModel&gt;" sap2010:WorkflowViewState.IdRef="AddToCollection`1_5">
+                      <AddToCollection.Item>
+                        <InArgument x:TypeArguments="amd:ClaroDirectoryNumberConfigResponseModel">
+                          <mca:CSharpValue x:TypeArguments="amd:ClaroDirectoryNumberConfigResponseModel">item</mca:CSharpValue>
+                        </InArgument>
+                      </AddToCollection.Item>
+                      <InArgument x:TypeArguments="scg:ICollection(amd:ClaroDirectoryNumberConfigResponseModel)">
+                        <mca:CSharpValue x:TypeArguments="scg:ICollection(amd:ClaroDirectoryNumberConfigResponseModel)">response</mca:CSharpValue>
+                      </InArgument>
+                    </AddToCollection>
+                  </ActivityAction>
+                </ForEach>
+              </ec:XrmAwareCompositeActivity.Activities>
+              <ec:XrmAwareCompositeActivity.ConnectionString>
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String">connectionString</mca:CSharpValue>
+                </InArgument>
+              </ec:XrmAwareCompositeActivity.ConnectionString>
+            </ec:XrmAwareCompositeActivity>
+          </FlowStep>
+        </FlowStep.Next>
+      </FlowStep>
+    </Flowchart.StartNode>
+    <x:Reference>__ReferenceID6</x:Reference>
+    <x:Reference>__ReferenceID7</x:Reference>
+    <sads:DebugSymbol.Symbol>d48BQzpcVXNlcnNcZW11c3NhaFxTb3VyY2VcV29ya3NwYWNlc1xBTVggT05FIFBlcnUgRnVsbCBTdGFja1xTcHJpbnQgMVxBbXhPbmVQZXJ1XEFNWFBlcnVUQ1JNXEFteFBlcnVQU0JXb3JrZmxvd3NcQW14UGVydUxpbmVQb3J0YWJpbGl0eVF1ZXJ5LnhhbWw4SwPbAg8CAQFRC1HeAQIBKVYLVpkBAgEcXAtcrwECAQ9hC2GvAQIBAmcJbSYDAboDcA3TAiwCATZqD2plAwG8A2djZ3UDAbsD0AIT0AJhAgE4cJMBcJoBAgE3chF9GgMBnwN+EdYBHQMBlwLXARGPAhsDAcABkAIRtgIdAgFwtwIRzAIbAgFFehd6uwEDAa0DdRd1kgEDAaADgQEXhwE7AwGQA4oBG88BJQMBmALaARfaAZ8BAwGKAuEBFY0CIQMBwQGTAheyAkACAXG6Ahe6AqcBAgFjwQIVygInAgFGgQFMgQFYAwGeA4QBHYQBawMBkQONASGNAX4DAYMDlAEfzQEqAwGZAuUBHeUBfAMB/AH8AR+FAjEDAd8B6QEf9wExAwHCAaUCHaUClwEDAbMBmwIdmwJmAwGmAZYCHZYCaQMBmQGgAh2gAmgDAYwBqgIdqgKuAQIBf68CHa8CZgIBcsgCGcgCkwECAVXEAhvEAoABAgFHlQEhzAEsAwGaAoMCI4MCpQEDAe4B/wEl/wGKAQMB4AH1ASP1AZ0BAwHRAewBJfEBIAMBwwGXASWzATADAboCuwEpyAE7AwGbApgBJ6gBTQMB2AKpASeyATkDAbsCxgEtxgG1AQMBqwK+AS/CASADAZwCoAEtoAFvAwH1ApsBLZsBcwMB5wKlAS2lAaMBAwHZArABK7ABswEDAcoCrAEtrAGbAQMBvAI=</sads:DebugSymbol.Symbol>
+  </Flowchart>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="ConfigurationActivity_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="614,62">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RetrieveCrmConfigurationByName_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="DirectoryNumberTypeReadActivity_3" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="AddToCollection`1_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="222,208">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="AddToCollection`1_2" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Catch`1_1" sap:VirtualizedContainerService.HintSize="404,21">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TryCatch_1" sap:VirtualizedContainerService.HintSize="418,435" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="440,559">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_1" sap:VirtualizedContainerService.HintSize="200,51" />
+      <sap2010:ViewStateData Id="FlowStep_5">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,194.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">190,129</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">290,151 290,181 300,181 300,194.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_3" sap:VirtualizedContainerService.HintSize="614,636">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,107.5 290,107.5 290,129</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="AddToCollection`1_6" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="FlowStep_12">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">15,280</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="AddToCollection`1_7" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="FlowStep_13">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">385,280</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowDecision_1" sap:VirtualizedContainerService.HintSize="70,87">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">265,247.5</av:Point>
+            <av:Size x:Key="ShapeSize">70,87</av:Size>
+            <av:PointCollection x:Key="TrueConnector">265,291 215,291</av:PointCollection>
+            <av:PointCollection x:Key="FalseConnector">335,291 385,291</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_5" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,247.5</av:PointCollection>
+            <x:Double x:Key="Width">610</x:Double>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_2" sap:VirtualizedContainerService.HintSize="614,210" />
+      <sap2010:ViewStateData Id="ClaroDirectoryNumberConfigActivity_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_14">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">300,127.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_4" sap:VirtualizedContainerService.HintSize="614,636">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,107.5 400,107.5 400,127.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="AddToCollection`1_5" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="ForEach`1_3" sap:VirtualizedContainerService.HintSize="287,210" />
+      <sap2010:ViewStateData Id="XrmAwareCompositeActivity_1" sap:VirtualizedContainerService.HintSize="636,1453">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">210,254.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,159</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,181 300,211 310,211 310,254.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_2" sap:VirtualizedContainerService.HintSize="614,636">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,159</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="AmxPeruPSBWorkflows.AmxPeruLinePortabilityQuery_1" sap:VirtualizedContainerService.HintSize="654,716" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

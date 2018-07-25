@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WL5G3N0:definitions xmlns:WL5G3N14="http://www.ericsson.com/esb/message/NotifyCancelWorkOrderResponse/V1/" xmlns:WL5G3N17="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:WL5G3N4="http://www.ericsson.com/esb/message/NotifyHardCloseWorkOrderRequest/V1/" xmlns:WL5G3N13="http://www.ericsson.com/esb/message/NotifyStartWorkOrderResponse/V1/" xmlns:WL5G3N16="http://www.ericsson.com/esb/service/serviceOrderV1" xmlns:WL5G3N7="http://www.ericsson.com/esb/message/NotifyCancelWorkOrderRequest/V1/" xmlns:WL5G3N1="http://www.ericsson.com/esb/data/generico/CommonTypes/v2/" xmlns:WL5G3N9="http://www.ericsson.com/esb/message/NotifySuspendWorkOrderResponse/V1/" xmlns:WL5G3N5="http://www.ericsson.com/esb/message/NotifyEmployeeAssignmentWorkOrderRequest/V1/" xmlns:WL5G3N11="http://www.ericsson.com/esb/message/NotifyHardCloseWorkOrderResponse/V1/" xmlns:WL5G3N3="http://www.ericsson.com/esb/message/NotifySoftCloseWorkOrderRequest/V1/" xmlns:WL5G3N15="http://www.ericsson.com/esb/message/NotifyCancellationAppointmentResponse/V1/" xmlns:WL5G3N6="http://www.ericsson.com/esb/message/NotifyStartWorkOrderRequest/V1/" xmlns:WL5G3N8="http://www.ericsson.com/esb/message/NotifyCancellationAppointmentRequest/V1/" xmlns:WL5G3N10="http://www.ericsson.com/esb/message/NotifySoftCloseWorkOrderResponse/V1/" xmlns:WL5G3N2="http://www.ericsson.com/esb/message/NotifySuspendWorkOrderRequest/V1/" xmlns:WL5G3N12="http://www.ericsson.com/esb/message/NotifyEmployeeAssignmentWorkOrderResponse/V1/" name="serviceOrder" targetNamespace="http://www.ericsson.com/esb/service/serviceOrderV1" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/">
+  <WL5G3N0:types>
+    <xsd:schema xmlns:ef="http://www.ericsson.com/esb/data/generico/CommonTypes/v2/" xmlns:sso="http://www.ericsson.com/esb/message/NotifyStartWorkOrderRequest/V1/" xmlns:seaores="http://www.ericsson.com/esb/message/NotifyEmployeeAssignmentWorkOrderResponse/V1/" xmlns:scaores="http://www.ericsson.com/esb/message/NotifyCancelWorkOrderResponse/V1/" xmlns:scao="http://www.ericsson.com/esb/message/NotifyCancelWorkOrderRequest/V1/" xmlns:scores="http://www.ericsson.com/esb/message/NotifySoftCloseWorkOrderResponse/V1/" xmlns:scoo="http://www.ericsson.com/esb/message/NotifyHardCloseWorkOrderRequest/V1/" xmlns:sco="http://www.ericsson.com/esb/message/NotifySoftCloseWorkOrderRequest/V1/" xmlns:swo="http://www.ericsson.com/esb/message/NotifySuspendWorkOrderRequest/V1/" xmlns:nca="http://www.ericsson.com/esb/message/NotifyCancellationAppointmentRequest/V1/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:seao="http://www.ericsson.com/esb/message/NotifyEmployeeAssignmentWorkOrderRequest/V1/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ssores="http://www.ericsson.com/esb/message/NotifyStartWorkOrderResponse/V1/" xmlns:scoores="http://www.ericsson.com/esb/message/NotifyHardCloseWorkOrderResponse/V1/" xmlns:swores="http://www.ericsson.com/esb/message/NotifySuspendWorkOrderResponse/V1/" xmlns:ncares="http://www.ericsson.com/esb/message/NotifyCancellationAppointmentResponse/V1/" xmlns:srv="http://www.ericsson.com/esb/service/serviceOrderV1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FCommonBusiness%2FCommonTypes_V2" namespace="http://www.ericsson.com/esb/data/generico/CommonTypes/v2/" />
+      <xsd:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FNotifySuspendWorkOrderRequest_V1" namespace="http://www.ericsson.com/esb/message/NotifySuspendWorkOrderRequest/V1/" />
+      <xsd:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FNotifySoftCloseWorkOrderRequest_V1" namespace="http://www.ericsson.com/esb/message/NotifySoftCloseWorkOrderRequest/V1/" />
+      <xsd:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FNotifyHardCloseWorkOrderRequest_V1" namespace="http://www.ericsson.com/esb/message/NotifyHardCloseWorkOrderRequest/V1/" />
+      <xsd:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FNotifyEmployeeAssignmentWorkOrderRequest_V1" namespace="http://www.ericsson.com/esb/message/NotifyEmployeeAssignmentWorkOrderRequest/V1/" />
+      <xsd:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FNotifyStartWorkOrderRequest_V1" namespace="http://www.ericsson.com/esb/message/NotifyStartWorkOrderRequest/V1/" />
+      <xsd:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FNotifyCancelWorkOrderRequest_V1" namespace="http://www.ericsson.com/esb/message/NotifyCancelWorkOrderRequest/V1/" />
+      <xsd:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FNotifyCancellationAppointmentRequest_V1" namespace="http://www.ericsson.com/esb/message/NotifyCancellationAppointmentRequest/V1/" />
+    </xsd:schema>
+    <xsd:schema xmlns:ef="http://www.ericsson.com/esb/data/generico/CommonTypes/v2/" xmlns:sso="http://www.ericsson.com/esb/message/NotifyStartWorkOrderRequest/V1/" xmlns:seaores="http://www.ericsson.com/esb/message/NotifyEmployeeAssignmentWorkOrderResponse/V1/" xmlns:scaores="http://www.ericsson.com/esb/message/NotifyCancelWorkOrderResponse/V1/" xmlns:scao="http://www.ericsson.com/esb/message/NotifyCancelWorkOrderRequest/V1/" xmlns:scores="http://www.ericsson.com/esb/message/NotifySoftCloseWorkOrderResponse/V1/" xmlns:scoo="http://www.ericsson.com/esb/message/NotifyHardCloseWorkOrderRequest/V1/" xmlns:sco="http://www.ericsson.com/esb/message/NotifySoftCloseWorkOrderRequest/V1/" xmlns:swo="http://www.ericsson.com/esb/message/NotifySuspendWorkOrderRequest/V1/" xmlns:nca="http://www.ericsson.com/esb/message/NotifyCancellationAppointmentRequest/V1/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:seao="http://www.ericsson.com/esb/message/NotifyEmployeeAssignmentWorkOrderRequest/V1/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ssores="http://www.ericsson.com/esb/message/NotifyStartWorkOrderResponse/V1/" xmlns:scoores="http://www.ericsson.com/esb/message/NotifyHardCloseWorkOrderResponse/V1/" xmlns:swores="http://www.ericsson.com/esb/message/NotifySuspendWorkOrderResponse/V1/" xmlns:ncares="http://www.ericsson.com/esb/message/NotifyCancellationAppointmentResponse/V1/" xmlns:srv="http://www.ericsson.com/esb/service/serviceOrderV1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FNotifySuspendWorkOrderResponse_V1" namespace="http://www.ericsson.com/esb/message/NotifySuspendWorkOrderResponse/V1/" />
+      <xsd:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FNotifySoftCloseWorkOrderResponse_V1" namespace="http://www.ericsson.com/esb/message/NotifySoftCloseWorkOrderResponse/V1/" />
+      <xsd:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FNotifyHardCloseWorkOrderResponse_V1" namespace="http://www.ericsson.com/esb/message/NotifyHardCloseWorkOrderResponse/V1/" />
+      <xsd:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FNotifyEmployeeAssignmentWorkOrderResponse_V1" namespace="http://www.ericsson.com/esb/message/NotifyEmployeeAssignmentWorkOrderResponse/V1/" />
+      <xsd:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FNotifyStartWorkOrderResponse_V1" namespace="http://www.ericsson.com/esb/message/NotifyStartWorkOrderResponse/V1/" />
+      <xsd:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FNotifyCancelWorkOrderResponse_V1" namespace="http://www.ericsson.com/esb/message/NotifyCancelWorkOrderResponse/V1/" />
+      <xsd:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FNotifyCancellationAppointmentResponse_V1" namespace="http://www.ericsson.com/esb/message/NotifyCancellationAppointmentResponse/V1/" />
+    </xsd:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="ericssonFault">
+    <WL5G3N0:part name="ericssonFault" element="WL5G3N1:ericssonFault" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="headerRequest">
+    <WL5G3N0:part name="headerRequest" element="WL5G3N1:headerRequest" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="headerResponse">
+    <WL5G3N0:part name="headerResponse" element="WL5G3N1:headerResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="notifySuspendWorkOrderRequest">
+    <WL5G3N0:part name="notifySuspendWorkOrderRequest" element="WL5G3N2:notifySuspendWorkOrderRequest" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="notifySoftCloseWorkOrderRequest">
+    <WL5G3N0:part name="notifySoftCloseWorkOrderRequest" element="WL5G3N3:notifySoftCloseWorkOrderRequest" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="notifyHardCloseWorkOrderRequest">
+    <WL5G3N0:part name="notifyHardCloseWorkOrderRequest" element="WL5G3N4:notifyHardCloseWorkOrderRequest" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="notifyEmployeeAssignmentWorkOrderRequest">
+    <WL5G3N0:part name="notifyEmployeeAssignmentWorkOrderRequest" element="WL5G3N5:notifyEmployeeAssignmentWorkOrderRequest" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="notifyStartWorkOrderRequest">
+    <WL5G3N0:part name="notifyStartWorkOrderRequest" element="WL5G3N6:notifyStartWorkOrderRequest" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="notifyCancelWorkOrderRequest">
+    <WL5G3N0:part name="notifyCancelWorkOrderRequest" element="WL5G3N7:notifyCancelWorkOrderRequest" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="notifyCancellationAppointmentRequest">
+    <WL5G3N0:part name="notifyCancellationAppointmentRequest" element="WL5G3N8:notifyCancellationAppointmentRequest" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="notifySuspendWorkOrderResponse">
+    <WL5G3N0:part name="notifySuspendWorkOrderResponse" element="WL5G3N9:notifySuspendWorkOrderResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="notifySoftCloseWorkOrderResponse">
+    <WL5G3N0:part name="notifySoftCloseWorkOrderResponse" element="WL5G3N10:notifySoftCloseWorkOrderResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="notifyHardCloseWorkOrderResponse">
+    <WL5G3N0:part name="notifyHardCloseWorkOrderResponse" element="WL5G3N11:notifyHardCloseWorkOrderResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="notifyEmployeeAssignmentWorkOrderResponse">
+    <WL5G3N0:part name="notifyEmployeeAssignmentWorkOrderResponse" element="WL5G3N12:notifyEmployeeAssignmentWorkOrderResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="notifyStartWorkOrderResponse">
+    <WL5G3N0:part name="notifyStartWorkOrderResponse" element="WL5G3N13:notifyStartWorkOrderResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="notifyCancelWorkOrderResponse">
+    <WL5G3N0:part name="notifyCancelWorkOrderResponse" element="WL5G3N14:notifyCancelWorkOrderResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:message name="notifyCancellationAppointmentResponse">
+    <WL5G3N0:part name="notifyCancellationAppointmentResponse" element="WL5G3N15:notifyCancellationAppointmentResponse" />
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="serviceOrderPortType">
+    <WL5G3N0:operation name="notifySuspendWorkOrder">
+      <WL5G3N0:input message="WL5G3N16:notifySuspendWorkOrderRequest" />
+      <WL5G3N0:output message="WL5G3N16:notifySuspendWorkOrderResponse" />
+      <WL5G3N0:fault name="ericssonFault" message="WL5G3N16:ericssonFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="notifyEmployeeAssignmentWorkOrder">
+      <WL5G3N0:input message="WL5G3N16:notifyEmployeeAssignmentWorkOrderRequest" />
+      <WL5G3N0:output message="WL5G3N16:notifyEmployeeAssignmentWorkOrderResponse" />
+      <WL5G3N0:fault name="ericssonFault" message="WL5G3N16:ericssonFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="notifyStartWorkOrder">
+      <WL5G3N0:input message="WL5G3N16:notifyStartWorkOrderRequest" />
+      <WL5G3N0:output message="WL5G3N16:notifyStartWorkOrderResponse" />
+      <WL5G3N0:fault name="ericssonFault" message="WL5G3N16:ericssonFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="notifyCancelWorkOrder">
+      <WL5G3N0:input message="WL5G3N16:notifyCancelWorkOrderRequest" />
+      <WL5G3N0:output message="WL5G3N16:notifyCancelWorkOrderResponse" />
+      <WL5G3N0:fault name="ericssonFault" message="WL5G3N16:ericssonFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="notifyHardCloseWorkOrder">
+      <WL5G3N0:input message="WL5G3N16:notifyHardCloseWorkOrderRequest" />
+      <WL5G3N0:output message="WL5G3N16:notifyHardCloseWorkOrderResponse" />
+      <WL5G3N0:fault name="ericssonFault" message="WL5G3N16:ericssonFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="notifySoftCloseWorkOrder">
+      <WL5G3N0:input message="WL5G3N16:notifySoftCloseWorkOrderRequest" />
+      <WL5G3N0:output message="WL5G3N16:notifySoftCloseWorkOrderResponse" />
+      <WL5G3N0:fault name="ericssonFault" message="WL5G3N16:ericssonFault" />
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="notifyCancellationAppointment">
+      <WL5G3N0:input message="WL5G3N16:notifyCancellationAppointmentRequest" />
+      <WL5G3N0:output message="WL5G3N16:notifyCancellationAppointmentResponse" />
+      <WL5G3N0:fault name="ericssonFault" message="WL5G3N16:ericssonFault" />
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="serviceOrderBindingType" type="WL5G3N16:serviceOrderPortType">
+    <WL5G3N17:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <WL5G3N0:operation name="notifySuspendWorkOrder">
+      <WL5G3N17:operation soapAction="http://www.ericsson.com/esb/message/NotifySuspendWorkOrderRequest/V1/" />
+      <WL5G3N0:input>
+        <WL5G3N17:body use="literal" />
+        <WL5G3N17:header message="WL5G3N16:headerRequest" part="headerRequest" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N17:body use="literal" />
+        <WL5G3N17:header message="WL5G3N16:headerResponse" part="headerResponse" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="ericssonFault">
+        <WL5G3N17:fault use="literal" name="ericssonFault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="notifyEmployeeAssignmentWorkOrder">
+      <WL5G3N17:operation soapAction="http://www.ericsson.com/esb/message/NotifyEmployeeAssignmentWorkOrderRequest/V1/" />
+      <WL5G3N0:input>
+        <WL5G3N17:body use="literal" />
+        <WL5G3N17:header message="WL5G3N16:headerRequest" part="headerRequest" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N17:body use="literal" />
+        <WL5G3N17:header message="WL5G3N16:headerResponse" part="headerResponse" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="ericssonFault">
+        <WL5G3N17:fault use="literal" name="ericssonFault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="notifySoftCloseWorkOrder">
+      <WL5G3N17:operation soapAction="http://www.ericsson.com/esb/message/NotifySoftCloseWorkOrderRequest/V1/" />
+      <WL5G3N0:input>
+        <WL5G3N17:body use="literal" />
+        <WL5G3N17:header message="WL5G3N16:headerRequest" part="headerRequest" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N17:body use="literal" />
+        <WL5G3N17:header message="WL5G3N16:headerResponse" part="headerResponse" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="ericssonFault">
+        <WL5G3N17:fault use="literal" name="ericssonFault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="notifyHardCloseWorkOrder">
+      <WL5G3N17:operation soapAction="http://www.ericsson.com/esb/message/NotifyHardCloseWorkOrderRequest/V1/" />
+      <WL5G3N0:input>
+        <WL5G3N17:body use="literal" />
+        <WL5G3N17:header message="WL5G3N16:headerRequest" part="headerRequest" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N17:body use="literal" />
+        <WL5G3N17:header message="WL5G3N16:headerResponse" part="headerResponse" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="ericssonFault">
+        <WL5G3N17:fault use="literal" name="ericssonFault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="notifyStartWorkOrder">
+      <WL5G3N17:operation soapAction="http://www.ericsson.com/esb/message/NotifyStartWorkOrderRequest/V1/" />
+      <WL5G3N0:input>
+        <WL5G3N17:body use="literal" />
+        <WL5G3N17:header message="WL5G3N16:headerRequest" part="headerRequest" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N17:body use="literal" />
+        <WL5G3N17:header message="WL5G3N16:headerResponse" part="headerResponse" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="ericssonFault">
+        <WL5G3N17:fault use="literal" name="ericssonFault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="notifyCancelWorkOrder">
+      <WL5G3N17:operation soapAction="http://www.ericsson.com/esb/message/NotifyCancelWorkOrderRequest/V1/" />
+      <WL5G3N0:input>
+        <WL5G3N17:body use="literal" />
+        <WL5G3N17:header message="WL5G3N16:headerRequest" part="headerRequest" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N17:body use="literal" />
+        <WL5G3N17:header message="WL5G3N16:headerResponse" part="headerResponse" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="ericssonFault">
+        <WL5G3N17:fault use="literal" name="ericssonFault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="notifyCancellationAppointment">
+      <WL5G3N17:operation soapAction="http://www.ericsson.com/esb/message/NotifyCancellationAppointmentV1" />
+      <WL5G3N0:input>
+        <WL5G3N17:body use="literal" />
+        <WL5G3N17:header message="WL5G3N16:headerRequest" part="headerRequest" use="literal" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N17:body use="literal" />
+        <WL5G3N17:header message="WL5G3N16:headerResponse" part="headerResponse" use="literal" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="ericssonFault">
+        <WL5G3N17:fault use="literal" name="ericssonFault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="serviceOrderService">
+    <WL5G3N0:documentation>OSB Service</WL5G3N0:documentation>
+    <WL5G3N0:port name="serviceOrderPortType" binding="WL5G3N16:serviceOrderBindingType">
+      <WL5G3N17:address location="http://localhost:50124/esb/Service/BssServiceOrder/v1/" />
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>

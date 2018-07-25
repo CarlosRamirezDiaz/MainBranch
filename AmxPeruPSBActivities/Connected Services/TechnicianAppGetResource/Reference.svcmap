@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ebd0d860-90bb-4571-bfbc-2f0188f2bd1e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="C:\Users\enaggot\Desktop\GetTechndata.wsdl" Protocol="file" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="GetTechndata.wsdl" MetadataType="Wsdl" ID="46e214a0-9b16-4038-9bbe-1a0ecd5de92c" SourceId="1" SourceUrl="file:///C:/Users/enaggot/Desktop/GetTechndata.wsdl" />
+    <MetadataFile FileName="V1.xsd" MetadataType="Schema" ID="b40b42bc-2bca-4d87-b1cf-681b7216bf61" SourceId="1" SourceUrl="http://localhost:50123/ConsultTechnician/V1.0?SCHEMA%2FUT_DataModel%2FEntities%2FCommonBusiness%2FClaroFault_V1" />
+    <MetadataFile FileName="V11.xsd" MetadataType="Schema" ID="7e94862a-7238-4682-9f1f-47794afe2612" SourceId="1" SourceUrl="http://localhost:50123/ConsultTechnician/V1.0?SCHEMA%2FEXP_ConsultTechnician%2FResources%2FSchemas%2FGetResourceV1.0" />
+    <MetadataFile FileName="V12.xsd" MetadataType="Schema" ID="965b487f-4706-4984-8c3c-7cd1b9007a86" SourceId="1" SourceUrl="http://localhost:50123/ConsultTechnician/V1.0?SCHEMA%2FUT_DataModel%2FEntities%2FCommonBusiness%2FClaroHeaders" />
+    <MetadataFile FileName="V13.xsd" MetadataType="Schema" ID="e3dd0399-03d9-4728-80d6-8785e8e647b2" SourceId="1" SourceUrl="http://localhost:50123/ConsultTechnician/V1.0?SCHEMA%2FUT_DataModel%2FEntities%2FBaseTypesABE" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

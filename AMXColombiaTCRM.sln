@@ -1,0 +1,270 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{9ECC347F-B57F-49A8-A257-738AC25D9AA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmxPeruPlugins", "AmxPeruPlugins\AmxPeruPlugins.csproj", "{EE47A141-49D7-404F-A995-889CFEB75F27}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrmDLLs", "CrmDLLs", "{F0631063-E92D-4CF3-8F72-E885647C1A4F}"
+	ProjectSection(SolutionItems) = preProject
+		CrmDLLs\CacheManager.Core.dll = CrmDLLs\CacheManager.Core.dll
+		CrmDLLs\CacheManager.Serialization.DataContract.dll = CrmDLLs\CacheManager.Serialization.DataContract.dll
+		CrmDLLs\CacheManager.Serialization.Json.dll = CrmDLLs\CacheManager.Serialization.Json.dll
+		CrmDLLs\CacheManager.Serialization.Migrant.dll = CrmDLLs\CacheManager.Serialization.Migrant.dll
+		CrmDLLs\CacheManager.StackExchange.Redis.dll = CrmDLLs\CacheManager.StackExchange.Redis.dll
+		CrmDLLs\CacheManager.SystemRuntimeCaching.dll = CrmDLLs\CacheManager.SystemRuntimeCaching.dll
+		CrmDLLs\Ericsson.ETELCRM.AutoNumber.IdentityRepositories.dll = CrmDLLs\Ericsson.ETELCRM.AutoNumber.IdentityRepositories.dll
+		CrmDLLs\Ericsson.ETELCRM.Business.dll = CrmDLLs\Ericsson.ETELCRM.Business.dll
+		CrmDLLs\Ericsson.ETELCRM.CommonServiceLibrary.dll = CrmDLLs\Ericsson.ETELCRM.CommonServiceLibrary.dll
+		CrmDLLs\Ericsson.ETELCRM.CrmCachingLibrary.dll = CrmDLLs\Ericsson.ETELCRM.CrmCachingLibrary.dll
+		CrmDLLs\Ericsson.ETELCRM.CrmFoundationLibrary.dll = CrmDLLs\Ericsson.ETELCRM.CrmFoundationLibrary.dll
+		CrmDLLs\Ericsson.ETELCRM.Entities.Crm.dll = CrmDLLs\Ericsson.ETELCRM.Entities.Crm.dll
+		CrmDLLs\Ericsson.ETELCRM.Integration.dll = CrmDLLs\Ericsson.ETELCRM.Integration.dll
+		CrmDLLs\Ericsson.ETELCRM.LoggingService.dll = CrmDLLs\Ericsson.ETELCRM.LoggingService.dll
+		CrmDLLs\Ericsson.ETELCRM.Plugins.dll = CrmDLLs\Ericsson.ETELCRM.Plugins.dll
+		CrmDLLs\Ericsson.ETELCRM.Pos.Business.dll = CrmDLLs\Ericsson.ETELCRM.Pos.Business.dll
+		CrmDLLs\Ericsson.ETELCRM.Repository.dll = CrmDLLs\Ericsson.ETELCRM.Repository.dll
+		CrmDLLs\Ericsson.PSB.Model.dll = CrmDLLs\Ericsson.PSB.Model.dll
+		CrmDLLs\Ericsson.PSB.Publisher.Client.Core.dll = CrmDLLs\Ericsson.PSB.Publisher.Client.Core.dll
+		CrmDLLs\Ericsson.PSB.Workflow.Activities.dll = CrmDLLs\Ericsson.PSB.Workflow.Activities.dll
+		CrmDLLs\Ericsson.PSB.Workflow.Client.Core.dll = CrmDLLs\Ericsson.PSB.Workflow.Client.Core.dll
+		CrmDLLs\Esent.Collections.dll = CrmDLLs\Esent.Collections.dll
+		CrmDLLs\Esent.Interop.dll = CrmDLLs\Esent.Interop.dll
+		CrmDLLs\Esent.Isam.dll = CrmDLLs\Esent.Isam.dll
+		CrmDLLs\ExternalApiActivities.dll = CrmDLLs\ExternalApiActivities.dll
+		CrmDLLs\ExternalApiWorkflows.dll = CrmDLLs\ExternalApiWorkflows.dll
+		CrmDLLs\log4net.dll = CrmDLLs\log4net.dll
+		CrmDLLs\Microsoft.Crm.Sdk.Proxy.dll = CrmDLLs\Microsoft.Crm.Sdk.Proxy.dll
+		CrmDLLs\Microsoft.IdentityModel.Clients.ActiveDirectory.dll = CrmDLLs\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+		CrmDLLs\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll = CrmDLLs\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll
+		CrmDLLs\Microsoft.IdentityModel.dll = CrmDLLs\Microsoft.IdentityModel.dll
+		CrmDLLs\Microsoft.IdentityModel.Logging.dll = CrmDLLs\Microsoft.IdentityModel.Logging.dll
+		CrmDLLs\Microsoft.IdentityModel.Logging.xml = CrmDLLs\Microsoft.IdentityModel.Logging.xml
+		CrmDLLs\Microsoft.IdentityModel.Tokens.dll = CrmDLLs\Microsoft.IdentityModel.Tokens.dll
+		CrmDLLs\Microsoft.IdentityModel.Tokens.xml = CrmDLLs\Microsoft.IdentityModel.Tokens.xml
+		CrmDLLs\Microsoft.Xrm.Client.dll = CrmDLLs\Microsoft.Xrm.Client.dll
+		CrmDLLs\Microsoft.Xrm.Sdk.Deployment.dll = CrmDLLs\Microsoft.Xrm.Sdk.Deployment.dll
+		CrmDLLs\Microsoft.Xrm.Sdk.dll = CrmDLLs\Microsoft.Xrm.Sdk.dll
+		CrmDLLs\microsoft.xrm.sdk.workflow.dll = CrmDLLs\microsoft.xrm.sdk.workflow.dll
+		CrmDLLs\Microsoft.Xrm.Tooling.Connector.dll = CrmDLLs\Microsoft.Xrm.Tooling.Connector.dll
+		CrmDLLs\Microsoft.Xrm.Tooling.Connector.xml = CrmDLLs\Microsoft.Xrm.Tooling.Connector.xml
+		CrmDLLs\Microsoft.Xrm.Tooling.CrmConnectControl.dll = CrmDLLs\Microsoft.Xrm.Tooling.CrmConnectControl.dll
+		CrmDLLs\Microsoft.Xrm.Tooling.CrmConnectControl.xml = CrmDLLs\Microsoft.Xrm.Tooling.CrmConnectControl.xml
+		CrmDLLs\Microsoft.Xrm.Tooling.CrmConnector.Powershell.dll = CrmDLLs\Microsoft.Xrm.Tooling.CrmConnector.Powershell.dll
+		CrmDLLs\Microsoft.Xrm.Tooling.CrmConnector.Powershell.dll-Help.xml = CrmDLLs\Microsoft.Xrm.Tooling.CrmConnector.Powershell.dll-Help.xml
+		CrmDLLs\Microsoft.Xrm.Tooling.CrmConnector.Powershell.XML = CrmDLLs\Microsoft.Xrm.Tooling.CrmConnector.Powershell.XML
+		CrmDLLs\Microsoft.Xrm.Tooling.PackageDeployment.Powershell.dll = CrmDLLs\Microsoft.Xrm.Tooling.PackageDeployment.Powershell.dll
+		CrmDLLs\Microsoft.Xrm.Tooling.PackageDeployment.PowerShell.dll-Help.xml = CrmDLLs\Microsoft.Xrm.Tooling.PackageDeployment.PowerShell.dll-Help.xml
+		CrmDLLs\Microsoft.Xrm.Tooling.Ui.Styles.dll = CrmDLLs\Microsoft.Xrm.Tooling.Ui.Styles.dll
+		CrmDLLs\Microsoft.Xrm.Tooling.WebResourceUtility.dll = CrmDLLs\Microsoft.Xrm.Tooling.WebResourceUtility.dll
+		CrmDLLs\Microsoft.Xrm.Tooling.WebResourceUtility.XML = CrmDLLs\Microsoft.Xrm.Tooling.WebResourceUtility.XML
+		CrmDLLs\Migrant.dll = CrmDLLs\Migrant.dll
+		CrmDLLs\Moq.dll = CrmDLLs\Moq.dll
+		CrmDLLs\Newtonsoft.Json.dll = CrmDLLs\Newtonsoft.Json.dll
+		CrmDLLs\RazorEngine.dll = CrmDLLs\RazorEngine.dll
+		CrmDLLs\SerializePluginContext.dll = CrmDLLs\SerializePluginContext.dll
+		CrmDLLs\StackExchange.Redis.dll = CrmDLLs\StackExchange.Redis.dll
+		CrmDLLs\StackExchange.Redis.StrongName.dll = CrmDLLs\StackExchange.Redis.StrongName.dll
+		CrmDLLs\System.IdentityModel.Tokens.Jwt.dll = CrmDLLs\System.IdentityModel.Tokens.Jwt.dll
+		CrmDLLs\System.IdentityModel.Tokens.Jwt.xml = CrmDLLs\System.IdentityModel.Tokens.Jwt.xml
+		CrmDLLs\System.Net.Http.Formatting.dll = CrmDLLs\System.Net.Http.Formatting.dll
+		CrmDLLs\System.Web.Razor.dll = CrmDLLs\System.Web.Razor.dll
+		CrmDLLs\TestPlugin.dll = CrmDLLs\TestPlugin.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebResources", "WebResources", "{A9636EAB-B428-47CB-8A50-04C30C87A383}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmxPeruWebResources", "AmxPeruWebResources\AmxPeruWebResources.csproj", "{6C23BA45-CBEE-4DE6-B005-1436D4BF659F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PSB", "PSB", "{8CBDCD8B-D439-4D59-B7B1-A42DED6B6F71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmxPeruPSBActivities", "AmxPeruPSBActivities\AmxPeruPSBActivities.csproj", "{33D7BD10-FB66-4CFE-9DA5-D428823C87D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmxPeruPSBWorkflows", "AmxPeruPSBWorkflows\AmxPeruPSBWorkflows.csproj", "{A2094498-4C7C-47F4-98BB-45DD396FC63B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmxPeruPSBTest", "AmxPeruPSBTest\AmxPeruPSBTest.csproj", "{AFF7222E-B632-4013-AE8D-F7AF239F0492}"
+	ProjectSection(ProjectDependencies) = postProject
+		{33D7BD10-FB66-4CFE-9DA5-D428823C87D2} = {33D7BD10-FB66-4CFE-9DA5-D428823C87D2}
+		{A2094498-4C7C-47F4-98BB-45DD396FC63B} = {A2094498-4C7C-47F4-98BB-45DD396FC63B}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmxPeruPluginsPatch", "AmxPeruPluginsPatch\AmxPeruPluginsPatch.csproj", "{33249B0C-292E-42A0-AC2C-C7E8D2569639}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmxPeruCommonLibrary", "AmxPeruCommonLibrary\AmxPeruCommonLibrary.csproj", "{8C071151-AC56-4B9F-8849-832B5518E554}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmxCoWebResources", "AmxCoWebResources\AmxCoWebResources.csproj", "{8E9AA4D5-E054-4EBF-B7FB-F84C58078880}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AMXCommon", "AMXCommon", "{41D55268-9643-4B32-A2BA-2C5518CFE5F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMXCommon", "AMXCommon\AMXCommon.csproj", "{5A153D91-2264-4D92-A110-A281C771218D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmxWorkflowPlugin", "AmxWorkflowPlugin\AmxWorkflowPlugin.csproj", "{EC4C623A-F422-493D-8A5A-0D951FC01FD9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dynamics", "Dynamics", "{F2077FFB-76C1-4B87-A7B4-D5C29AFFC9EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmxCoDynamicsActivities", "AmxCoDynamicsActivities\AmxCoDynamicsActivities.csproj", "{C9A95F1C-F05C-47B4-A1A8-D0705F606F0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmxCoDynamicsServices", "AmxCoDynamicsServices\AmxCoDynamicsServices.csproj", "{5B6B5B68-0FE0-429E-A74E-53C846CB1533}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Console", "Console", "{2BD6DA2F-AFE0-4844-BE6B-8D72831CD47E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmxColombia.Console.PurgeData", "AmxColombia.Console.PurgeData\AmxColombia.Console.PurgeData.csproj", "{4FF09598-3E14-4008-AC1A-0A69E1E111B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmxSoapServicesActivities", "AmxBSCSActivities\AmxSoapServicesActivities.csproj", "{EE5C5A19-2CD4-4E8C-9CA0-487B1C51CE2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmxSoapServicesWorkflows", "AmxBSCSWorkflows\AmxSoapServicesWorkflows.csproj", "{56D0E4B6-6BFE-4153-9387-60F63E33DB07}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EE5C5A19-2CD4-4E8C-9CA0-487B1C51CE2E} = {EE5C5A19-2CD4-4E8C-9CA0-487B1C51CE2E}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE47A141-49D7-404F-A995-889CFEB75F27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE47A141-49D7-404F-A995-889CFEB75F27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE47A141-49D7-404F-A995-889CFEB75F27}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE47A141-49D7-404F-A995-889CFEB75F27}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{6C23BA45-CBEE-4DE6-B005-1436D4BF659F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C23BA45-CBEE-4DE6-B005-1436D4BF659F}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{33D7BD10-FB66-4CFE-9DA5-D428823C87D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33D7BD10-FB66-4CFE-9DA5-D428823C87D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33D7BD10-FB66-4CFE-9DA5-D428823C87D2}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{33D7BD10-FB66-4CFE-9DA5-D428823C87D2}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{A2094498-4C7C-47F4-98BB-45DD396FC63B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2094498-4C7C-47F4-98BB-45DD396FC63B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2094498-4C7C-47F4-98BB-45DD396FC63B}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2094498-4C7C-47F4-98BB-45DD396FC63B}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{AFF7222E-B632-4013-AE8D-F7AF239F0492}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFF7222E-B632-4013-AE8D-F7AF239F0492}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFF7222E-B632-4013-AE8D-F7AF239F0492}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFF7222E-B632-4013-AE8D-F7AF239F0492}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{33249B0C-292E-42A0-AC2C-C7E8D2569639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33249B0C-292E-42A0-AC2C-C7E8D2569639}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33249B0C-292E-42A0-AC2C-C7E8D2569639}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{33249B0C-292E-42A0-AC2C-C7E8D2569639}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{8C071151-AC56-4B9F-8849-832B5518E554}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C071151-AC56-4B9F-8849-832B5518E554}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C071151-AC56-4B9F-8849-832B5518E554}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C071151-AC56-4B9F-8849-832B5518E554}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{8E9AA4D5-E054-4EBF-B7FB-F84C58078880}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E9AA4D5-E054-4EBF-B7FB-F84C58078880}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A153D91-2264-4D92-A110-A281C771218D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A153D91-2264-4D92-A110-A281C771218D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A153D91-2264-4D92-A110-A281C771218D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A153D91-2264-4D92-A110-A281C771218D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC4C623A-F422-493D-8A5A-0D951FC01FD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC4C623A-F422-493D-8A5A-0D951FC01FD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC4C623A-F422-493D-8A5A-0D951FC01FD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC4C623A-F422-493D-8A5A-0D951FC01FD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9A95F1C-F05C-47B4-A1A8-D0705F606F0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9A95F1C-F05C-47B4-A1A8-D0705F606F0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9A95F1C-F05C-47B4-A1A8-D0705F606F0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9A95F1C-F05C-47B4-A1A8-D0705F606F0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B6B5B68-0FE0-429E-A74E-53C846CB1533}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B6B5B68-0FE0-429E-A74E-53C846CB1533}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B6B5B68-0FE0-429E-A74E-53C846CB1533}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B6B5B68-0FE0-429E-A74E-53C846CB1533}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FF09598-3E14-4008-AC1A-0A69E1E111B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FF09598-3E14-4008-AC1A-0A69E1E111B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FF09598-3E14-4008-AC1A-0A69E1E111B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FF09598-3E14-4008-AC1A-0A69E1E111B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE5C5A19-2CD4-4E8C-9CA0-487B1C51CE2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE5C5A19-2CD4-4E8C-9CA0-487B1C51CE2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE5C5A19-2CD4-4E8C-9CA0-487B1C51CE2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE5C5A19-2CD4-4E8C-9CA0-487B1C51CE2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56D0E4B6-6BFE-4153-9387-60F63E33DB07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56D0E4B6-6BFE-4153-9387-60F63E33DB07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56D0E4B6-6BFE-4153-9387-60F63E33DB07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56D0E4B6-6BFE-4153-9387-60F63E33DB07}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EE47A141-49D7-404F-A995-889CFEB75F27} = {9ECC347F-B57F-49A8-A257-738AC25D9AA7}
+		{6C23BA45-CBEE-4DE6-B005-1436D4BF659F} = {A9636EAB-B428-47CB-8A50-04C30C87A383}
+		{33D7BD10-FB66-4CFE-9DA5-D428823C87D2} = {8CBDCD8B-D439-4D59-B7B1-A42DED6B6F71}
+		{A2094498-4C7C-47F4-98BB-45DD396FC63B} = {8CBDCD8B-D439-4D59-B7B1-A42DED6B6F71}
+		{33249B0C-292E-42A0-AC2C-C7E8D2569639} = {9ECC347F-B57F-49A8-A257-738AC25D9AA7}
+		{8E9AA4D5-E054-4EBF-B7FB-F84C58078880} = {A9636EAB-B428-47CB-8A50-04C30C87A383}
+		{5A153D91-2264-4D92-A110-A281C771218D} = {41D55268-9643-4B32-A2BA-2C5518CFE5F1}
+		{EC4C623A-F422-493D-8A5A-0D951FC01FD9} = {9ECC347F-B57F-49A8-A257-738AC25D9AA7}
+		{C9A95F1C-F05C-47B4-A1A8-D0705F606F0A} = {2BD6DA2F-AFE0-4844-BE6B-8D72831CD47E}
+		{5B6B5B68-0FE0-429E-A74E-53C846CB1533} = {F2077FFB-76C1-4B87-A7B4-D5C29AFFC9EA}
+		{4FF09598-3E14-4008-AC1A-0A69E1E111B6} = {2BD6DA2F-AFE0-4844-BE6B-8D72831CD47E}
+		{EE5C5A19-2CD4-4E8C-9CA0-487B1C51CE2E} = {8CBDCD8B-D439-4D59-B7B1-A42DED6B6F71}
+		{56D0E4B6-6BFE-4153-9387-60F63E33DB07} = {8CBDCD8B-D439-4D59-B7B1-A42DED6B6F71}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A0DFBB98-66D3-4D2A-9FA3-D58FFCF4EEF6}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 16
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://amxcolombia.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = AmxPeruPlugins\\AmxPeruPlugins.csproj
+		SccProjectTopLevelParentUniqueName1 = AMXColombiaTCRM.sln
+		SccProjectName1 = AmxPeruPlugins
+		SccLocalPath1 = AmxPeruPlugins
+		SccProjectUniqueName2 = AmxPeruWebResources\\AmxPeruWebResources.csproj
+		SccProjectTopLevelParentUniqueName2 = AMXColombiaTCRM.sln
+		SccProjectName2 = AmxPeruWebResources
+		SccLocalPath2 = AmxPeruWebResources
+		SccProjectUniqueName3 = AmxPeruPSBActivities\\AmxPeruPSBActivities.csproj
+		SccProjectTopLevelParentUniqueName3 = AMXColombiaTCRM.sln
+		SccProjectName3 = AmxPeruPSBActivities
+		SccLocalPath3 = AmxPeruPSBActivities
+		SccProjectUniqueName4 = AmxPeruPSBWorkflows\\AmxPeruPSBWorkflows.csproj
+		SccProjectTopLevelParentUniqueName4 = AMXColombiaTCRM.sln
+		SccProjectName4 = AmxPeruPSBWorkflows
+		SccLocalPath4 = AmxPeruPSBWorkflows
+		SccProjectUniqueName5 = AmxPeruPSBTest\\AmxPeruPSBTest.csproj
+		SccProjectName5 = AmxPeruPSBTest
+		SccLocalPath5 = AmxPeruPSBTest
+		SccProjectUniqueName6 = AmxPeruPluginsPatch\\AmxPeruPluginsPatch.csproj
+		SccProjectTopLevelParentUniqueName6 = AMXColombiaTCRM.sln
+		SccProjectName6 = AmxPeruPluginsPatch
+		SccLocalPath6 = AmxPeruPluginsPatch
+		SccProjectUniqueName7 = AmxPeruCommonLibrary\\AmxPeruCommonLibrary.csproj
+		SccProjectName7 = AmxPeruCommonLibrary
+		SccLocalPath7 = AmxPeruCommonLibrary
+		SccProjectUniqueName8 = AmxCoWebResources\\AmxCoWebResources.csproj
+		SccProjectTopLevelParentUniqueName8 = AMXColombiaTCRM.sln
+		SccProjectName8 = AmxCoWebResources
+		SccLocalPath8 = AmxCoWebResources
+		SccProjectUniqueName9 = AMXCommon\\AMXCommon.csproj
+		SccProjectTopLevelParentUniqueName9 = AMXColombiaTCRM.sln
+		SccProjectName9 = AMXCommon
+		SccLocalPath9 = AMXCommon
+		SccProjectUniqueName10 = AmxWorkflowPlugin\\AmxWorkflowPlugin.csproj
+		SccProjectTopLevelParentUniqueName10 = AMXColombiaTCRM.sln
+		SccProjectName10 = AmxWorkflowPlugin
+		SccLocalPath10 = AmxWorkflowPlugin
+		SccProjectUniqueName11 = AmxCoDynamicsActivities\\AmxCoDynamicsActivities.csproj
+		SccProjectTopLevelParentUniqueName11 = AMXColombiaTCRM.sln
+		SccProjectName11 = AmxCoDynamicsActivities
+		SccLocalPath11 = AmxCoDynamicsActivities
+		SccProjectUniqueName12 = AmxCoDynamicsServices\\AmxCoDynamicsServices.csproj
+		SccProjectTopLevelParentUniqueName12 = AMXColombiaTCRM.sln
+		SccProjectName12 = AmxCoDynamicsServices
+		SccLocalPath12 = AmxCoDynamicsServices
+		SccProjectUniqueName13 = AmxColombia.Console.PurgeData\\AmxColombia.Console.PurgeData.csproj
+		SccProjectTopLevelParentUniqueName13 = AMXColombiaTCRM.sln
+		SccProjectName13 = AmxColombia.Console.PurgeData
+		SccLocalPath13 = AmxColombia.Console.PurgeData
+		SccProjectUniqueName14 = AmxBSCSActivities\\AmxSoapServicesActivities.csproj
+		SccProjectTopLevelParentUniqueName14 = AMXColombiaTCRM.sln
+		SccProjectName14 = AmxBSCSActivities
+		SccLocalPath14 = AmxBSCSActivities
+		SccProjectUniqueName15 = AmxBSCSWorkflows\\AmxSoapServicesWorkflows.csproj
+		SccProjectTopLevelParentUniqueName15 = AMXColombiaTCRM.sln
+		SccProjectName15 = AmxBSCSWorkflows
+		SccLocalPath15 = AmxBSCSWorkflows
+	EndGlobalSection
+EndGlobal

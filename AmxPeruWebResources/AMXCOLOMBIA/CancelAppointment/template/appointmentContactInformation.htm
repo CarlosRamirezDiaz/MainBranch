@@ -1,0 +1,301 @@
+﻿<html>
+<head>
+    <meta charset="utf-8">
+</head>
+<body ng-app="appointmentContactInformation">
+    ﻿
+
+    <script src="../../../ClientGlobalContext.js.aspx" type="text/javascript"></script>
+    <script src="../../../etel_/common/scripts/angular.min.js" type="text/javascript"></script>
+    <script src="../../../etel_/common/scripts/jquery.min.js" type="text/javascript"></script>
+    <!--<link href="../../../amx_bootstrap.min.css" rel="stylesheet" type="text/css" />-->
+    <link href="../../../amx_jquery.ui.css" rel="stylesheet" type="text/css">
+    <script src="../../../amx_jquery.ui.custom.js" type="text/javascript"></script>
+    <script src="../../../amx_/appointmentContactInformationController/html/appointmentContactInformationController.js" type="text/javascript"></script>
+    <script src="../../../etel_jscripttranslationhandler.js" type="text/javascript"></script>
+    <script src="../../../etel_htmltranslate.js" type="text/javascript"></script>
+
+
+
+    <style>
+        body {
+            padding-top: 2%;
+            padding-left: 2%;
+        }
+
+        h3 {
+            background-color: white;
+            text-align: left;
+        }
+
+        input[type=number], select {
+            width: 100%;
+            padding: 3px 5px;
+            margin: 2px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            box-sizing: border-box;
+        }
+
+        input[type=text], select {
+            width: 100%;
+            padding: 3px 5px;
+            margin: 2px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            box-sizing: border-box;
+        }
+
+        input::-webkit-input-placeholder {
+            font-size: 12px;
+            line-height: 3;
+        }
+
+        .button {
+            height: 6%;
+            background-color: #1e96ae;
+            border: 1px solid;
+            border-radius: 8px;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 2px 2px;
+            cursor: pointer;
+        }
+
+        #btn_cancel {
+            background-color: white;
+            color: #1e96ae;
+            border: 1px solid #1e96ae;
+        }
+
+        .button span {
+            line-height: 30%;
+            font-size: 13px;
+        }
+
+        .customAutoComplete {
+            font-size: 12px !important;
+            font-family: "Segoe UI",Arial,Sans-Serif !important;
+        }
+
+        .labels {
+            font-size: 14px;
+        }
+    </style>
+
+
+
+    <h3>Formulario Informacion de Contacto Terceros</h3>
+
+    <div>
+        <div ng-controller="appointmentContactInformationController" rtl-dir="{{direct}}">
+            <p>A Continuacion diligencie la informacion de contacto de la persona que estara disponible para la entrega</p>
+            <br>
+            <span class="labels">First name:</span>
+            <input name="firstname" id="firstname" onkeypress="return onlyAlphabets(event);" type="text" placeholder="  Your First name" value="">
+            <br>
+            <label id="lblfirstname" style="color: red;"></label>
+            <br>
+            <span class="labels">Phone number1:</span>
+            <input name="Telephone1" id="phonenumber1" onkeypress="return validatePhone1(event)" type="text" placeholder="  Your Phone number1" value="">
+            <br>
+            <label id="lblphonenumber1" style="color: red;"></label>
+            <br>
+            <span class="labels">Phone number2:</span>
+            <input name="Telephone2" id="phonenumber2" onkeypress="return validatePhone2(event)" type="text" placeholder="  Your Phone number2" value="">
+            <br>
+            <label id="lblphonenumber2" style="color: red;"></label>
+            <br>
+            <span class="labels">Email1:</span>
+            <input name="Email1" id="email1" onkeypress="return validateEmail1()" type="text" placeholder=" Your Email1" value="" autocomplete="true">
+            <br>
+            <label id="lblemail1" style="color: red;"></label>
+            <br>
+            <span class="labels">Email2:</span>
+            <input name="Email2" id="email2" onkeypress="return validateEmail2()" type="text" placeholder=" Your Email2" value="" autocomplete="true">
+            <br>
+            <label id="lblemail2" style="color: red;"></label>
+            <br>
+            <br>
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    //alert("test");
+                });
+                function validatePhone1(key) {
+
+                    var mobile = document.getElementById("phonenumber1").value;
+                    var phoneno = /^\d*$/;
+
+                    //if (!phoneno.test(mobile)) {
+                    //    document.getElementById("lblphonenumber1").textContent = "It is not valid mobile number.input only digits";
+                    //    return false;
+                    //}
+
+                    //getting key code of pressed key
+                    var keycode = (key.which) ? key.which : key.keyCode;
+
+                    //comparing pressed keycodes
+                    if ((keycode < 48 || keycode > 57)) {
+                        return false;
+                    }
+                    if (mobile.length > 9) {
+                        //document.getElementById("lblphonenumber1").textContent = "It is not valid mobile number.input 10 digits number only";
+                        return false;
+                    }
+                    else {
+                        return true;
+                        // document.getElementById("lblphonenumber1").textContent = "";
+                    }
+
+                }
+                function validatePhone2(key) {
+
+                    var mobile = document.getElementById("phonenumber2").value;
+                    var phoneno = /^\d*$/;
+
+                    //if (!phoneno.test(mobile)) {
+                    //    document.getElementById("lblphonenumber1").textContent = "It is not valid mobile number.input only digits";
+                    //    return false;
+                    //}
+                    //getting key code of pressed key
+                    var keycode = (key.which) ? key.which : key.keyCode;
+
+                    //comparing pressed keycodes
+                    if ((keycode < 48 || keycode > 57)) {
+                        return false;
+                    }
+                    if (mobile.length > 9) {
+                        //document.getElementById("lblphonenumber1").textContent = "It is not valid mobile number.input 10 digits number only";
+                        return false;
+                    }
+                    else {
+                        return true;
+                        // document.getElementById("lblphonenumber1").textContent = "";
+                    }
+                }
+
+                function validateEmail2() {
+
+                    var domains = [];
+                    domains.push("@" + "gmail.com");
+                    domains.push("@" + "ericsson.com");
+                    domains.push("@" + "hotmail.com");
+                    var autoCompleteId = "#email2";
+                    $(autoCompleteId).autocomplete({
+                        //source: availableDomains
+                        classes: {
+                            "ui-autocomplete": "customAutoComplete",
+                        },
+                        source: function (request, response) {
+                            var originalValue = $(autoCompleteId).val();
+                            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+                            var data = $.grep(domains, function (value) {
+                                return value.substring(0, request.term.length).toLowerCase() == request.term.toLowerCase();
+                            });
+                            response(autoCompleteId, data);
+                            // response($.grep(availableDomains,function(item){
+                            // return matcher.test(item);
+                            // }));
+                        },
+                        select: function (event, ui) {
+                            $(autoCompleteId).val(ui.item.value);
+                            ui.item.value = ui.item.value;
+                        },
+                        change: function (event, ui) {
+                            var emailAddress1 = $(autoCompleteId).val();
+                            emailAddress1 = emailAddress1.substring(emailAddress1.indexOf("@") + 1, emailAddress1.length);
+                            if (emailAddress1.indexOf(".") < 0) {
+                                //alert("Please enter valid email");
+                                //alert(AMX.IndividualForm.TData.tValidateEmail)
+                            }
+                        }
+                    });
+                };
+                //function validateName() {
+
+                //    var Name = document.getElementById("firstname").value;
+                //    var alphabet = /^[a-zA-Z ]*$/;
+
+                //    if (!alphabet.test(Name)) {
+                //        document.getElementById("lblfirstname").textContent = "*Valid characters: Alphabets and space.";
+                //        return false;
+
+                //    }
+                //    else {
+                //        document.getElementById("lblfirstname").textContent = "";
+                //    }
+
+
+                //}
+                function onlyAlphabets(evt) {
+                    var charCode;
+                    if (window.event)
+                        charCode = window.event.keyCode;  //for IE
+                    else
+                        charCode = evt.which;  //for firefox
+                    if (charCode == 32) //for &lt;space&gt; symbol
+                        return true;
+                    if (charCode > 31 && charCode < 65) //for characters before 'A' in ASCII Table
+                        return false;
+                    if (charCode > 90 && charCode < 97) //for characters between 'Z' and 'a' in ASCII Table
+                        return false;
+                    if (charCode > 122) //for characters beyond 'z' in ASCII Table
+                        return false;
+                    return true;
+                }
+                function validateEmail1() {
+                    var domains = [];
+                    domains.push("@" + "gmail.com");
+                    domains.push("@" + "ericsson.com");
+                    domains.push("@" + "hotmail.com");
+                    var autoCompleteId = "#email1";
+                    $(autoCompleteId).autocomplete({
+                        //source: availableDomains
+                        classes: {
+                            "ui-autocomplete": "customAutoComplete",
+                        },
+                        source: function (request, response) {
+                            var originalValue = $(autoCompleteId).val();
+                            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+                            var data = $.grep(domains, function (value) {
+                                return value.substring(0, request.term.length).toLowerCase() == request.term.toLowerCase();
+                            });
+                            response(autoCompleteId, data);
+                            // response($.grep(availableDomains,function(item){
+                            // return matcher.test(item);
+                            // }));
+                        },
+                        select: function (event, ui) {
+                            $(autoCompleteId).val(ui.item.value);
+                            ui.item.value = ui.item.value;
+                        },
+                        change: function (event, ui) {
+                            var emailAddress1 = $(autoCompleteId).val();
+                            emailAddress1 = emailAddress1.substring(emailAddress1.indexOf("@") + 1, emailAddress1.length);
+                            if (emailAddress1.indexOf(".") < 0) {
+                                //alert("Please enter valid email");
+                                //alert(AMX.IndividualForm.TData.tValidateEmail)
+                            }
+                        }
+                    });
+                };
+
+            </script>
+            <div style="text-align: center;">
+                <button name="Cancel" class="button" id="btn_cancel" ng-click="closeWindow()"><span>Cancel</span></button>
+                <button name="Submit" class="button" ng-click="saveData()"><span>Save</span></button>
+
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

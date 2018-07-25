@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd_14="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:xsd_15="http://claro.com.pe/entity/Product/Product/V1/ " xmlns:xsd_16="http://claro.com.pe/entity/Resource/Resource/V1/" xmlns:xsd_3="http://claro.com.pe/entity/Service/TIPServiceManagement/V1/" xmlns:xsd_2="http://claro.com.pe/entity/CommonBusiness/RootBusinessEntities/V1/" xmlns:xsd_1="http://claro.com.pe/entity/Service/Service/V1/" xmlns:ns1="http://claro.com.pe/entity/EngagedParty/Party/V1/" targetNamespace="http://claro.com.pe/entity/Service/Service/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:import schemaLocation="../EngagedParty/Party_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/Party/V1/" />
+  <xsd:import schemaLocation="../CommonBusiness/RootBusinessEntities_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/RootBusinessEntities/V1/" />
+  <xsd:import schemaLocation="TIPServiceManagement_V1.xsd" namespace="http://claro.com.pe/entity/Service/TIPServiceManagement/V1/" />
+  <xsd:complexType name="Service" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>This is an abstract base class for defining the Service hierarchy. All Services are characterized as either being possibly visible and usable by a Customer or not. This gives rise to the two subclasses of Service: CustomerFacingService and ResourceFacingService.
+
+ 
+
+Services are defined as being tightly bound to Products. A Product defines the context of the Service, Service and its related entities (e.g., ServiceSpecification, ServiceRole, and so forth) are related to entities in the Resource, Product, and other domains through a set of relationships.
+
+ 
+
+A Service represents the object that will be instantiated. Each Service instance can be different; therefore, Service is limited to owning just the changeable attributes, methods, relationships, and constraints that can be instantiated. The invariant attributes, methods, relationships, and constraints that can be instantiated are defined by a ServiceSpecification.
+
+ 
+
+The purpose of this entity is twofold. First, it is used to define attributes, methods, and relationships that are common to all Services. Second, it provides a convenient point to define how Services interact with other parts business entities.
+
+ 
+
+Service is a first-class entity, inheriting directly from ManagedEntity. It is therefore a sibling with Resource, Product, and other first-class entities. Note that the CIM models Service as a subclass of LogicalElement, which is a subclass of ManagedSystemElement, which is a subclass of ManagedElement (which is equivalent to ManagedEntity).</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element default="false" name="isServiceEnabled" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>This is a Boolean attribute that, if TRUE, signifies that this Service has been enabled for use. If the value of this attribute is FALSE, then this means that this particular Service has NOT been enabled for use.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="hasStarted" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>This is a Boolean attribute that, if TRUE, signifies that this Service has already been started. If the value of this attribute is FALSE, then this signifies that this Service has NOT been Started.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="isMandatory" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>This is a Boolean attribute that, if TRUE, signifies that this Service is mandatory (i.e., this Service must be running when the managed environment is in a non-failed state). If the value of this attribute is FALSE, then this means that this Service is not required to run.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="startMode" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>This attribute is an enumerated integer that indicates how the Service is started. Values include:
+
+ 0: Unknown
+ 1: Automatically by the managed environment
+ 2: Automatically by the owning device
+ 3: Manually by the Provider of the Service
+ 4: Manually by a Customer of the Provider
+ 5: Any of the above
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="isStateful" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>This is a Boolean attribute that, if TRUE, means that this Service can be changed without affecting any other services.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceRole" type="xsd_1:ServiceRole" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceCharacteristicValue" type="xsd_1:ServiceCharacteristicValue" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_valueNetworkRole" type="ns1:PartyRole" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_place" type="xsd_1:ServicePlaceDetails" />
+      <xsd:element name="_partyRole" type="ns1:PartyRole" />
+      <xsd:element name="_commonServiceInfo" type="xsd_3:CommonServiceInfo" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceInvolvementRole" type="xsd_1:ServiceInvolvementRole" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:annotation>
+    <xsd:documentation>This is an associationClass defined in the DEN-ng Service model. It represents the semantics (e.g., exists, uses, and other relationships) that exist when a PhysicalResource is used to help supply or support a particular ResourceFacingService.
+
+Please see the DEN-ng Service model for more details.
+This aggregation defines the set of PhysicalResources that are required for this particular ResourceFacingService to function correctly. This includes as a minimum the set of PhysicalResources that are required to host this particular ResourceFacingService.
+
+The PhysicalResourcesHostRFS aggregation describes a hosting relationship, which is essentially passive in nature - the PhysicalResources exist so that the LogicalResources can be hosted on it.
+
+The cardinality of the LogicalResourcesImplementRFS and PhysicalResourcesHostRFS aggregations are both 0..n on the aggregate side, because PhysicalResources can be installed which use LogicalResources before a ResourceFacingService is actually implemented. However, a ResourceFacingService can have one or more PhysicalResources for it to be instantiated. Hence, the aggregations has a 1..n cardinality on its component end.
+</xsd:documentation>
+  </xsd:annotation>
+  <xsd:annotation>
+    <xsd:documentation>This is an associationClass defined in the DEN-ng Service model. It represents the semantics (e.g., exists, uses, and other relationships) that exist when a LogicalResource is used to help supply or support a particular ResourceFacingService.
+
+Please see the DEN-ng Service model for more details.
+This aggregation defines the set of LogicalResources that are required for this particular ResourceFacingService to function correctly.
+
+The LogicalResourcesImplementRFS aggregation is active in nature - it signifies an active whole-part relationship between a set of LogicalResources and a ResourceFacingService. Put another way, this latter aggregation is used to identify the LogicalResources that are used so that a ResourceFacingService can function.
+
+The cardinality of the LogicalResourcesImplementRFS aggregation is 0..n on the aggregate side, because PhysicalResources can be installed which use LogicalResources before a ResourceFacingService is actually implemented. AResourceFacingService can have zero or more PhysicalResources and LogicalResources for it to be instantiated. Hence, the aggregations has a 1..n cardinality on its component end.
+</xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="ServiceBusinessActor">
+    <xsd:annotation>
+      <xsd:documentation>This is an associationClass defined in the DEN-ng Service model. It represents the semantics (e.g., owns, uses, and other relationships) of a BusinessActor using a particular Service.
+
+A Service is a realization of a Product in terms of operational capabilities.
+
+Please see the DEN-ng Service model for more details.
+</xsd:documentation>
+    </xsd:annotation>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceUtilizationDetails">
+    <xsd:annotation>
+      <xsd:documentation>This is an associationClass defined in the DEN-ng Service model. It represents the semantics (e.g., exists, uses, and other relationships) that exist when a PhysicalResource is used to help supply or support a particular Service.
+
+			</xsd:documentation>
+    </xsd:annotation>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceRole" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>This is an abstract base class that defines a Service in terms of a set of roles. The roles are then used to characterize the functionality of the Service, regardless of whether it is a resource- or a customer-facing service.
+
+ServiceRoles represent the functionality of a Service, and as such are a mix of the invariant and changeable characteristics and behavior of a Service. Representing a Service in terms of ServiceRoles enables the functionality of the Service to be defined independently of BusinessActor, PhysicalResource, LogicalResource, or other Services.
+
+Please see the DEN-ng Service model for more details.
+</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="_service" type="xsd_1:Service" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceRole" type="xsd_1:ServiceRole" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceRole1" type="xsd_1:ServiceRole" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceCharacteristicValue">
+    <xsd:annotation>
+      <xsd:documentation>A ServiceCharacteristicValue object is used to define a set of attributes, each of which can be assigned to a corresponding set of attributes in a ServiceCharacteristic object. The values of the attributes in the ServiceCharacteristicValue object describe the values of the attributes that a corresponding ServiceCharacteristic object can take on.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="value" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A fact that describes an entity.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_14:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period for which the characteristic value is applicable.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_service" type="xsd_1:Service" />
+      <xsd:element minOccurs="0" name="_serviceCharacteristicValue" type="xsd_1:ServiceCharacteristicValue" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_serviceCharacteristicValue2" type="xsd_1:ServiceCharacteristicValue" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServicePlaceDetails">
+    <xsd:sequence>
+      <xsd:element name="installedTimeStamp" type="xsd:anyType" />
+      <xsd:element name="isLocatedAt" type="xsd:boolean" />
+      <xsd:element name="toBeInstalledTimeStamp" type="xsd:anyType" />
+      <xsd:element name="toBeLocatedAt" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceInvolvementRole">
+    <xsd:annotation>
+      <xsd:documentation>A role a business entity (such as PartyRole, ResourceRole or CustomerAccount) plays in the relationship for a Resource. For example: user, owner, and so forth.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_service" type="xsd_1:Service" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd_2="http://claro.com.pe/entity/EngagedParty/Party/V1/" xmlns:xsd_1="http://claro.com.pe/entity/EngagedParty/Identification/V1/" xmlns:xsd_3="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" targetNamespace="http://claro.com.pe/entity/EngagedParty/Identification/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:import schemaLocation="Party_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/Party/V1/" />
+  <xsd:annotation>
+    <xsd:documentation>The various forms of identification used by individuals and organizations, collectively called parties.</xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="BirthCertificateIdentification">
+    <xsd:annotation>
+      <xsd:documentation>An official document issued to record a person's birth, including such identifying data as name, gender, date of birth, place of birth, and parentage.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:IndividualIdentification">
+        <xsd:sequence>
+          <xsd:element name="certificateNr" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>A number assigned birth certificate used to identify it.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ContractorIdentification">
+    <xsd:annotation>
+      <xsd:documentation>A document used to identify a contractor.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:IndividualIdentification">
+        <xsd:sequence>
+          <xsd:element name="contractorNr" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>A number assigned to a contractor used to identify it.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="DriversLicenseIdentification">
+    <xsd:annotation>
+      <xsd:documentation>A permit, such as one issued by a state's motor vehicle bureau, that allows the holder to drive a motor vehicle on public roads.
+</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:IndividualIdentification">
+        <xsd:sequence>
+          <xsd:element name="licenseNr" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>A number assigned to a driver's license used to identify it.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="EmployeeIdentification">
+    <xsd:annotation>
+      <xsd:documentation>A medium, such as a card or document, used to identify an employee.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:IndividualIdentification">
+        <xsd:sequence>
+          <xsd:element name="photo" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>A picture or likeness obtained by photography. </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="employeeNr" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>A number assigned to a employee used to identify the individual.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="NationalIdentityCardIdentification">
+    <xsd:annotation>
+      <xsd:documentation>A portable document, typically a plasticized card with digitally-embedded information, that someone is required or encouraged to carry as a means of confirming their identity. </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:IndividualIdentification">
+        <xsd:sequence>
+          <xsd:element name="cardNr" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>A number assigned to a NationalIdentityCard used to identify it.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="OrganizationIdentification" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>Organization Identification represents our registration of information used as proof of identity by an Organization</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:PartyIdentification" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="IndividualIdentification" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>Individual Identification represents our registration of information used as proof of identity by an Individual</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:PartyIdentification">
+        <xsd:sequence>
+          <xsd:element name="_individual" type="xsd_2:Individual" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="CompanyRegistration">
+    <xsd:annotation>
+      <xsd:documentation>A registration statement with the a government agency, such as the United States Securities and Exchange Commission in connection with a public offering of securities and must therefore comply with SEC Disclosure requirements. </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:OrganizationIdentification" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="PartyIdentification" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>Party Identification represents our registration of information used as proof of identity by a Party</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="issueDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>The date that the identification was produced / printed</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_3:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The time period that the Party Identification is valid for
+Note:
+The validitity start date may not necessarily equal the issue date (e.g. credit cards are only valid some time after thay are issued)
+
+Permitted Values:
+Refer Time Period class
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="scan" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A scan of the identification paper
+
+Note:
+May be used to get a copy of the photo to help in identification</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SocialSecurityNrIdentification">
+    <xsd:annotation>
+      <xsd:documentation>A document that serves of proof of registration with the United States Social Security Administration.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:IndividualIdentification">
+        <xsd:sequence>
+          <xsd:element name="socialSecurityNr" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>A nine-digit number issued to U.S. citizens, permanent residents, and temporary (working) residents.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="PassportIdentification">
+    <xsd:annotation>
+      <xsd:documentation>Passport information used to Identify an Individual</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:IndividualIdentification">
+        <xsd:sequence>
+          <xsd:element name="passportType" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>The type of Passport. e.g. Personal, Consular</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="passportNr" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>The unique identifier per passport issuer</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="issuingCountry" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>The country issuing the passport.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="DigitalIdentification">
+    <xsd:annotation>
+      <xsd:documentation>A document that serves of proof of registration with the United States Social Security Administration.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:IndividualIdentification">
+        <xsd:sequence>
+          <xsd:element name="socialSecurityNr" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>A nine-digit number issued to U.S. citizens, permanent residents, and temporary (working) residents.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="_biometricFingerprint" type="xsd_1:BiometricFingerprint" />
+          <xsd:element name="_photo" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="BiometricFingerprint">
+    <xsd:sequence>
+      <xsd:element name="_fingerprintId" type="xsd:string" />
+      <xsd:element name="_fingerprintFormat" type="xsd:string" />
+      <xsd:element name="_fingerprintImage" type="xsd:string" />
+      <xsd:element name="_fingerprintTemplate" type="xsd:string" />
+      <xsd:element name="_fingerprintQuality" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

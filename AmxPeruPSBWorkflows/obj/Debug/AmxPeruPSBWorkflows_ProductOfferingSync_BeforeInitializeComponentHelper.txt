@@ -1,0 +1,2 @@
+ProductOfferingSync.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

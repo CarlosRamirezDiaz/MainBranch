@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:sercofmg="http://claro.pe/esb/Service/BssServiceConfigMgmtLg/v1/" xmlns:comexc="http://claro.com.pe/eai/ebs/xsd/CommonsException" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:sheaderdp="http://claro.com.pe/generic/messageFormat/v1.0/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:serconmg="http://claro.pe/esb/message/BssServiceConfigMgmtLg/v1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:hd="http://claro.com.pe/esb/data/generico/claroGenericHeader/v1/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://claro.pe/esb/Service/BssServiceConfigMgmtLg/v1/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified">
+      <xsd:import schemaLocation="../XSD/BssServiceConfigMgmtLg_v1.xsd" namespace="http://claro.pe/esb/message/BssServiceConfigMgmtLg/v1/" />
+      <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/ClaroGenericHeaders_V1.xsd" namespace="http://claro.com.pe/esb/data/generico/claroGenericHeader/v1/" />
+      <xsd:import schemaLocation="../../../../framework/servicios/esquemas/HeaderGeneric_v1.0.xsd" namespace="http://claro.com.pe/generic/messageFormat/v1.0/" />
+      <xsd:import schemaLocation="../../../../framework/servicios/esquemas/CommonsException.xsd" namespace="http://claro.com.pe/eai/ebs/xsd/CommonsException" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getPortabilityDebtAccreditationRequestMessage">
+    <wsdl:part name="getPortabilityDebtAccreditationReq" element="serconmg:getPortabilityDebtAccreditationRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="getPortabilityDebtAccreditationResponseMessage">
+    <wsdl:part name="getPortabilityDebtAccreditationRes" element="serconmg:getPortabilityDebtAccreditationResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="headerRequest">
+    <wsdl:part name="headerReq" element="hd:headerRequest" />
+  </wsdl:message>
+  <wsdl:message name="headerResponse">
+    <wsdl:part name="headerRes" element="hd:headerResponse" />
+  </wsdl:message>
+  <wsdl:message name="headerRequestDP">
+    <wsdl:part name="headerReqDP" element="sheaderdp:HeaderRequest" />
+  </wsdl:message>
+  <wsdl:message name="headerResponseDP">
+    <wsdl:part name="headerRespDP" element="sheaderdp:HeaderResponse" />
+  </wsdl:message>
+  <wsdl:message name="claroFault">
+    <wsdl:part name="claroFault" element="comexc:IntegrationError" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceConfigMgmtLgPort">
+    <wsdl:operation name="getPortabilityDebtAccreditation">
+      <wsdl:input message="sercofmg:getPortabilityDebtAccreditationRequestMessage" />
+      <wsdl:output message="sercofmg:getPortabilityDebtAccreditationResponseMessage" />
+      <wsdl:fault name="claroFault" message="sercofmg:claroFault" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BssServiceConfigMgmtLgSoapBinding" type="sercofmg:ServiceConfigMgmtLgPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getPortabilityDebtAccreditation">
+      <soap:operation soapAction="http://www.claro.pe/esb/bss/service/BSS_SERVICE_CONFIG_MGMT_LG/V1/getPortabilityDebtAccreditation" style="document" />
+      <wsdl:input>
+        <soap:header message="sercofmg:headerRequest" part="headerReq" use="literal" />
+        <soap:header message="sercofmg:headerRequestDP" part="headerReqDP" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:header message="sercofmg:headerResponse" part="headerRes" use="literal" />
+        <soap:header message="sercofmg:headerResponseDP" part="headerRespDP" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="claroFault">
+        <soap:fault use="literal" name="claroFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BssServiceConfigMgmtLg">
+    <wsdl:port name="BssServiceConfigMgmtLgSOAP" binding="sercofmg:BssServiceConfigMgmtLgSoapBinding">
+      <soap:address location="http://www.example.com" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

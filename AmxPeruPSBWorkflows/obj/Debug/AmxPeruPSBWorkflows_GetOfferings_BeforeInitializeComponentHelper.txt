@@ -1,0 +1,2 @@
+GetOfferings.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

@@ -1,0 +1,2 @@
+ParadigmaGetIFrameUrl.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

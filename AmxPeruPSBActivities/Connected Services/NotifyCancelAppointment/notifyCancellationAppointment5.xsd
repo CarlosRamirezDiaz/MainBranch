@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns:tnsoff="http://www.ericsson.com/entity/Product/ProductOffering/V1/" xmlns:tns="http://www.ericsson.com/entity/CommonBusiness/Project/V1/" xmlns:entbastyp="http://www.ericsson.com/entity/CommonBusiness/BaseTypes/V1/" xmlns:entresspe="http://www.ericsson.com/entity/Resource/ResourceSpecification/V1/" xmlns:entpar="http://www.ericsson.com/entity/EngagedParty/Party/V1/" xmlns:tnsele="http://www.ericsson.com/entity/CommonBusiness/ProjectElement/V1/" xmlns="http://www.ericsson.com/entity/CommonBusiness/Project/V1/" targetNamespace="http://www.ericsson.com/entity/CommonBusiness/Project/V1/" vc:minVersion="1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FCommonBusiness%2FBaseTypes_V1" namespace="http://www.ericsson.com/entity/CommonBusiness/BaseTypes/V1/" />
+  <xs:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FEngagedParty%2FParty_V1" namespace="http://www.ericsson.com/entity/EngagedParty/Party/V1/" />
+  <xs:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FCommonBusiness%2FBaseTypes_V1" namespace="http://www.ericsson.com/entity/CommonBusiness/BaseTypes/V1/" />
+  <xs:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FEngagedParty%2FParty_V1" namespace="http://www.ericsson.com/entity/EngagedParty/Party/V1/" />
+  <xs:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FCommonBusiness%2FProjectElement_V1" namespace="http://www.ericsson.com/entity/CommonBusiness/ProjectElement/V1/" />
+  <xs:annotation>
+    <xs:documentation>A Project achieves a business goal and is a discrete unit of work</xs:documentation>
+  </xs:annotation>
+  <xs:element name="InvestmentDriver" type="tns:InvestmentDriver" />
+  <xs:element name="Cost" type="tns:Cost" />
+  <xs:element name="ProjectResourceUsage" type="tns:ProjectResourceUsage" />
+  <xs:element name="BusinessDeliverable" type="tns:BusinessDeliverable" />
+  <xs:element name="PerformanceMeasure" type="tns:PerformanceMeasure" />
+  <xs:element name="ProjectRisk" type="tns:ProjectRisk" />
+  <xs:element name="Plan" type="tns:Plan" />
+  <xs:element name="ProductSpecResourceSpecUsage" type="tns:ProductSpecResourceSpecUsage" />
+  <xs:element name="AtomicProjectDeliverable" type="tns:AtomicProjectDeliverable" />
+  <xs:element name="SimpleProject" type="tns:SimpleProject" />
+  <xs:element name="CompositeProjectDeliverable" type="tns:CompositeProjectDeliverable" />
+  <xs:element name="Material" type="tns:Material" />
+  <xs:element name="ProductActivityUsage" type="tns:ProductActivityUsage" />
+  <xs:element name="ProductResourceUsage" type="tns:ProductResourceUsage" />
+  <xs:element name="ProductSpecActivitySpecParamUsage" type="tns:ProductSpecActivitySpecParamUsage" />
+  <xs:element name="ProjectSpec" type="tns:ProjectSpec" />
+  <xs:element name="Action" type="tns:Action" />
+  <xs:element name="ProductSpecActivitySpecAllocation" type="tns:ProductSpecActivitySpecAllocation" />
+  <xs:element name="CompoundProject" type="tns:CompoundProject" />
+  <xs:element name="ProjectScope" type="tns:ProjectScope" />
+  <xs:element name="Milestone" type="tns:Milestone" />
+  <xs:element name="SimpleWorksProgram" type="tns:SimpleWorksProgram" />
+  <xs:element name="ProjectDeliverable" type="tns:ProjectDeliverable" />
+  <xs:element name="Vision" type="tns:Vision" />
+  <xs:element name="CompositeVision" type="tns:CompositeVision" />
+  <xs:element name="AtomicVision" type="tns:AtomicVision" />
+  <xs:element name="Project" type="tns:Project" />
+  <xs:element name="PartyResource" type="tns:PartyResource" />
+  <xs:element name="ProjectDeliverableVersion" type="tns:ProjectDeliverableVersion" />
+  <xs:element name="WorksProgram" type="tns:WorksProgram" />
+  <xs:element name="CompoundWorksProgram" type="tns:CompoundWorksProgram" />
+  <xs:element name="Motivation" type="tns:Motivation" />
+  <xs:complexType name="InvestmentDriver">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Motivation">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Cost">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="directcost" type="entbastyp:Money" />
+      <xs:element minOccurs="1" maxOccurs="1" name="indirectcost" type="entbastyp:Money" />
+      <xs:element minOccurs="1" maxOccurs="1" name="overheadcost" type="entbastyp:Money" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProjectResourceUsage">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="actualduration" type="entbastyp:TimePeriod" />
+      <xs:element minOccurs="1" maxOccurs="1" name="actualqty" type="entbastyp:Quantity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BusinessDeliverable">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PerformanceMeasure">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="name" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="qty" type="entbastyp:Quantity" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PerformanceMeasure">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="ProjectRisk">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="contingencies" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="minimalisationstrategies" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="name" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="probability" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="severity" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="type" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Plan">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="ProductSpecResourceSpecUsage">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="percentallocation" type="xs:integer" />
+      <xs:element minOccurs="1" maxOccurs="1" name="qty" type="entbastyp:Quantity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AtomicProjectDeliverable">
+    <xs:annotation>
+      <xs:documentation>A type of ProjectDeliverable that does not have any subordinate ProjectDeliverables, that is, an Atomic ProjectDeliverable is a leaf-level ProjectDeliverable.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ProjectDeliverable">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SimpleProject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Project">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CompositeProjectDeliverable">
+    <xs:annotation>
+      <xs:documentation>A type of ProjectDeliverable that is formed by aggregating other ProjectDeliverables, which may be composite or atomic ProjectDeliverables.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ProjectDeliverable">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="projectDeliverable" type="tns:ProjectDeliverable" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Material">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="ProductActivityUsage">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="qty" type="entbastyp:Quantity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProductResourceUsage">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="qty" type="entbastyp:Quantity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProductSpecActivitySpecParamUsage">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="percentallocation" type="xs:integer" />
+      <xs:element minOccurs="1" maxOccurs="1" name="qty" type="entbastyp:Quantity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProjectSpec">
+    <xs:annotation>
+      <xs:documentation>Specifies characteristics that apply to types of Projects</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tnsele:ProjectElementSpec">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="specversionnr" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="_project" type="tns:Project" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Action">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="ProductSpecActivitySpecAllocation">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="qty" type="entbastyp:Quantity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProjectScope">
+    <xs:annotation>
+      <xs:documentation>The ProjectScope defines the "functional area" impacted by a project that can be expressed by eTOM process elements, SID entities and/or TAM application which might be effected by the project. In a multi-project environment (or a program) the scopes of those projects might be structured in a (composite) hierarchy.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="CompoundProject">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Project">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="_subProjects" type="tns:Project" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Milestone">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="isoncriticalpath" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>indicates if the Activity is on the Project critical path
+Indicates if the Activity is on the Project critical path</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="1" maxOccurs="1" name="percentcomplete" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>Indicates how much work has been completed for the Activity
+
+
+
+Permitted Values: 0-100</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="1" maxOccurs="1" name="isoncriticalpath" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>indicates if the Activity is on the Project critical path
+Indicates if the Activity is on the Project critical path</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="1" maxOccurs="1" name="percentcomplete" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>Indicates how much work has been completed for the Activity
+
+
+
+Permitted Values: 0-100</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SimpleWorksProgram">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:WorksProgram">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ProjectDeliverable">
+    <xs:annotation>
+      <xs:documentation>A ProjectDeliverable is the agreed output of a project. A ProjectDeliverable enables Service-, Ressource- and ProductSpecifications or ProductOfferings.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="projectDeliverableVersion" type="tns:ProjectDeliverableVersion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Vision">
+    <xs:annotation>
+      <xs:documentation>The Vision is the common understanding of all parties involved in a project (either directly or as a stakeholder) about the goals of a project, the key success criteria, timeline and impact of not doing the project. The Vision is associated to a business objective.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="_project" type="tns:Project" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CompositeVision">
+    <xs:annotation>
+      <xs:documentation>A type of Vision that is formed by aggregating other Visions, which may be composite or atomic Visions.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Vision">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="projectScope" type="tns:Vision" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AtomicVision">
+    <xs:annotation>
+      <xs:documentation>A type of Vision that does not have any subordinate Vision, that is, an Atomic Vision is a leaf-level Vision.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Vision">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Project" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A Project achieves a business goal and is a discrete unit of work</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tnsele:ProjectElement">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="assumptions" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Assumptions made when defining the Project (especially assumptions for success)</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" maxOccurs="1" name="constraints" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Constraints that may affect Project success</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" maxOccurs="1" name="exclusions" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>specific exclusions that may have been reasonably expected to be included in the Project</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" maxOccurs="1" name="inclusions" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>items that the Project covers that are not obvious</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" maxOccurs="1" name="projectnr" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>a unique identifier for the Project</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" maxOccurs="1" name="title" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>a short description of the Project</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" maxOccurs="1" name="type" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>A category of projects having common characteristics.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" maxOccurs="1" name="versionnr" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>allows us to keep track of updates to the Project</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" maxOccurs="1" name="_worksProgram" type="tns:WorksProgram" />
+          <xs:element minOccurs="1" maxOccurs="unbounded" name="projectDeliverable" type="tns:ProjectDeliverable" />
+          <xs:element minOccurs="1" maxOccurs="1" name="_projectRisk" type="tns:ProjectRisk" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PartyResource">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="cost" type="entbastyp:Money" />
+      <xs:element minOccurs="1" maxOccurs="1" name="skills" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="_partyRole" type="entpar:PartyRole" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProjectDeliverableVersion">
+    <xs:annotation>
+      <xs:documentation>A ProjectDeliverableVersion is the recorded version of a ProjectDeliverable</xs:documentation>
+    </xs:annotation>
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="WorksProgram" abstract="true">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="budget" type="entbastyp:Money" />
+      <xs:element minOccurs="1" maxOccurs="1" name="desc" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="duration" type="entbastyp:TimePeriod" />
+      <xs:element minOccurs="1" maxOccurs="1" name="name" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CompoundWorksProgram">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:WorksProgram">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="_worksSubprograms" type="tns:WorksProgram" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Motivation">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="_project" type="tns:Project" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

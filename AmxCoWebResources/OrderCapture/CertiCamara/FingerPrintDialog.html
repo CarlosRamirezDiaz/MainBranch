@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Finger Print Dialog</title>
+
+        <script src="../../../etel_/common/scripts/jquery.min.js" type="text/javascript"></script>
+        <script src="../../../etel_CrmRestKit" type="text/javascript"></script>
+        <script src="../../../etel_jscripttranslationhandler.js" type="text/javascript"></script>
+        <script src="../../../etel_htmltranslate.js" type="text/javascript"></script>
+        <script src="../../../etel_optionSetHandler" type="text/javascript"></script>
+        <script src="FingerPrintDialog.js" type="text/javascript"></script>
+    </head>
+<body onload="fingerprintdialog.load_Token();">
+
+<div align="center">
+
+    <p id="progressMessage">wait, launching HClient</p>
+
+    <p id="error"></p>
+    <br/>
+    <p id="wait"></p>
+    <br/>
+    <input id="btnRequestReponse" style="display: none;" type="button" value="Retrieve response from HClient" onclick="fingerprintdialog.requestResponseFromHClient();" />
+</div>
+
+</body>
+</html>

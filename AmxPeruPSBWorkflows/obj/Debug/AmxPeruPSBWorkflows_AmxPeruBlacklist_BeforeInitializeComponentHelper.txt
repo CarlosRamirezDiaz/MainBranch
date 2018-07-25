@@ -1,0 +1,2 @@
+AmxPeruBlacklist.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

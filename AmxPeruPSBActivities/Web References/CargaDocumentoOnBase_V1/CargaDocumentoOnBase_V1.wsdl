@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:oper="http://claro.com.pe/esb/enterprise/CargaDocumentoOnBase/v1/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:comtyp="http://ericsson.com/esb/data/generico/CommonTypes/v1/" xmlns:scomex="http://claro.com.pe/eai/ebs/xsd/CommonsException" xmlns:custmanf="http://claro.com.pe/esb/message/CargaDocumentoOnBase/cargarDocumentoOnBase/v1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:sheader="http://claro.com.pe/generic/messageFormat/v1.0/" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap11/" targetNamespace="http://claro.com.pe/esb/enterprise/CargaDocumentoOnBase/v1/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://claro.com.pe/esb/enterprise/CargaDocumentoOnBase/v1/types">
+      <xsd:import schemaLocation="../esquemas/CargaDocumentoOnBase_V1.xsd" namespace="http://claro.com.pe/esb/message/CargaDocumentoOnBase/cargarDocumentoOnBase/v1/" />
+      <xsd:import schemaLocation="../../../../framework/servicios/esquemas/HeaderGeneric_v1.0.xsd" namespace="http://claro.com.pe/generic/messageFormat/v1.0/" />
+      <xsd:import schemaLocation="../../../../framework/servicios/esquemas/CommonsException.xsd" namespace="http://claro.com.pe/eai/ebs/xsd/CommonsException" />
+    </xsd:schema>
+  </types>
+  <message name="cargarDocumentoOnBaseRequestMessage">
+    <part name="HeaderRequest" element="sheader:HeaderRequest" />
+    <part name="cargarDocumentoOnBaseRequest" element="custmanf:cargarDocumentoOnBaseRequestMessageType" />
+  </message>
+  <message name="cargarDocumentoOnBaseResponseMessage">
+    <part name="HeaderResponse" element="sheader:HeaderResponse" />
+    <part name="cargarDocumentoOnBaseResponse" element="custmanf:cargarDocumentoOnBaseResponseMessageType" />
+  </message>
+  <message name="IntegrationException">
+    <part name="fault" element="scomex:IntegrationError" />
+  </message>
+  <message name="headerRequest">
+    <part name="headerRequest" element="sheader:HeaderRequest" />
+  </message>
+  <message name="headerResponse">
+    <part name="headerResponse" element="sheader:HeaderResponse" />
+  </message>
+  <portType name="CargaDocumentoOnBasePort">
+    <operation name="cargarDocumentoOnBase">
+      <input message="oper:cargarDocumentoOnBaseRequestMessage" />
+      <output message="oper:cargarDocumentoOnBaseResponseMessage" />
+      <fault name="claroFault" message="oper:IntegrationException" />
+    </operation>
+  </portType>
+  <binding name="CargaDocumentoOnBasePortSOAP11Binding" type="oper:CargaDocumentoOnBasePort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="cargarDocumentoOnBase">
+      <soap:operation soapAction="http://claro.com.pe/esb/resource/enterprise/CargaDocumentoOnBase/v1/" style="document" />
+      <input>
+        <soap:header message="oper:headerRequest" part="headerRequest" use="literal" />
+        <soap:body use="literal" parts="cargarDocumentoOnBaseRequest" />
+      </input>
+      <output>
+        <soap:header message="oper:headerResponse" part="headerResponse" use="literal" />
+        <soap:body use="literal" parts="cargarDocumentoOnBaseResponse" />
+      </output>
+      <fault name="claroFault">
+        <soap:fault use="literal" name="claroFault" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="CargaDocumentoOnBase">
+    <port name="CargaDocumentoOnBaseSB11" binding="oper:CargaDocumentoOnBasePortSOAP11Binding">
+      <soap:address location="http://www.example.org/" />
+    </port>
+  </service>
+</definitions>

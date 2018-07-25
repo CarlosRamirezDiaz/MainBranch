@@ -1,0 +1,2 @@
+AmxCoGetCapacity.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

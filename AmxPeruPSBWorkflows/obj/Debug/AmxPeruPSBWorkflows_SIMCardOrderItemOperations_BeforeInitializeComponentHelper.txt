@@ -1,0 +1,2 @@
+SIMCardOrderItemOperations.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

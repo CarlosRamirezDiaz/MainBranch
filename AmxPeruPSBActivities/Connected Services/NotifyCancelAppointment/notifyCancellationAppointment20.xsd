@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:entparrolprooff="http://www.ericsson.com/entity/EngagedParty/PartyRoleProductOffering/V1/" xmlns:entpar="http://www.ericsson.com/entity/EngagedParty/Party/V1/" xmlns:entbastyp="http://www.ericsson.com/entity/CommonBusiness/BaseTypes/V1/" targetNamespace="http://www.ericsson.com/entity/EngagedParty/Party/V1/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FCommonBusiness%2FBaseTypes_V1" namespace="http://www.ericsson.com/entity/CommonBusiness/BaseTypes/V1/" />
+  <xs:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FEngagedParty%2FPartyRoleProductOffering_V1" namespace="http://www.ericsson.com/entity/EngagedParty/PartyRoleProductOffering/V1/" />
+  <xs:complexType name="Party">
+    <xs:annotation>
+      <xs:documentation>Represents an  individual, organization or organization unit.Party is an abstract concept that should be used in places where the business says something can be an organization , organization unit or an individual</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="partyid" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Unique identifier for Party</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="validfor" type="entbastyp:TimePeriod">
+        <xs:annotation>
+          <xs:documentation>The time period that the Party is valid for</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartyRole">
+    <xs:annotation>
+      <xs:documentation>The part played by a party in a given context with any characteristics, such as expected pattern of behavior, attributes, and/or associations that it entails.PartyRole is an abstract concept that should be used in places where the business refers to a Party playing a Role</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A word, term, or phrase by which the PartyRole is known and distinguished from other PartyRoles.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="code" type="xs:string">
+        <xs:annotation>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="partyroleid" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Unique identifier for PartyRoles</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="status" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Used to track the lifecycle status, e.g. existing, prospective or former customers.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="validfor" type="entbastyp:TimePeriod">
+        <xs:annotation>
+          <xs:documentation>The time period that the PartyRole is valid for</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="_party" type="entpar:Party" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="_partyRoleCategory" type="entpar:PartyRoleCategory" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="_partyRoleProductOffering" type="entparrolprooff:PartyRoleProductOffering" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartyRoleCategory">
+    <xs:annotation>
+      <xs:documentation>This is an entity that can be used to provide simple grouping or categorization of PartyRoles. In some cases this is done in a more specific manner (e.g. Customer demographics).</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="categoryname" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The name of the category</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="reference" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Individual">
+    <xs:annotation>
+      <xs:documentation>Represents a single human being (a man, woman or child).
+The individual could be a customer, an employee or any other person that the organization needs to store information about. An Individual is a type of Party.
+</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="entpar:Party">
+        <xs:sequence>
+          <xs:element name="gender" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>A socially constructed role that implies behaviours, activities, and attributes.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="placeOfBirth" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Note:
+Pointer to a Location object
+City, town name etc.
+</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="nationality" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Note:
+Pointer to a country object</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="maritalStatus" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Permitted Values: married, never married, divorced, widowed</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="skills" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Note:
+Probably only used for employees, but is really role independent
+This should be modeled as a separate entity but is shown as an attribute for brevity
+</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="disabilities" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Notes:  Used for legal requirements (special billing, special products, special contact media, such as Braille). This should be modeled as a separate entity but is shown as an attribute for brevity.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="aliveDuring" type="entbastyp:TimePeriod">
+            <xs:annotation>
+              <xs:documentation>Birth date and death date.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PartyRoleAssociation">
+    <xs:sequence>
+      <xs:element name="associationtype" type="xs:string" />
+      <xs:element name="status" type="xs:string" />
+      <xs:element name="validfor" type="entbastyp:TimePeriod" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Language">
+    <xs:sequence>
+      <xs:element name="alphabetname" type="xs:string" />
+      <xs:element name="dialectname" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PlacePartyRoleAssoc">
+    <xs:sequence>
+      <xs:element name="relativemodifier" type="xs:string" />
+      <xs:element name="placerole" type="entbastyp:AttributeValuePair" />
+      <xs:element name="validfor" type="entbastyp:TimePeriod" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,2 @@
+AmxPeruNewSubscription.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

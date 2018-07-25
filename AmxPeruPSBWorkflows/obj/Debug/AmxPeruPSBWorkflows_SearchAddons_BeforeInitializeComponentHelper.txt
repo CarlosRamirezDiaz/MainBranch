@@ -1,0 +1,2 @@
+SearchAddons.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:entbastyp="http://www.ericsson.com/entity/CommonBusiness/BaseTypes/V1/" xmlns:entpro="http://www.ericsson.com/entity/CommonBusiness/Project/V1/" xmlns="http://www.ericsson.com/entity/CommonBusiness/Location/V1/" xmlns:entproele="http://www.ericsson.com/entity/CommonBusiness/ProjectElement/V1/" xmlns:entloc="http://www.ericsson.com/entity/CommonBusiness/Location/V1/" targetNamespace="http://www.ericsson.com/entity/CommonBusiness/Location/V1/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FCommonBusiness%2FBaseTypes_V1" namespace="http://www.ericsson.com/entity/CommonBusiness/BaseTypes/V1/" />
+  <xs:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FCommonBusiness%2FProject_V1" namespace="http://www.ericsson.com/entity/CommonBusiness/Project/V1/" />
+  <xs:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FCommonBusiness%2FProjectElement_V1" namespace="http://www.ericsson.com/entity/CommonBusiness/ProjectElement/V1/" />
+  <xs:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FCommonBusiness%2FProjectElement_V1" namespace="http://www.ericsson.com/entity/CommonBusiness/ProjectElement/V1/" />
+  <xs:annotation>
+    <xs:documentation>The Location ABE represents the site or position of something, such as a customer’s address, the site
+                   of equipment where there is a fault and where is the nearest person who could repair the equipment,
+                   and so forth. Locations can take the form of coordinates and/or addresses and/or physical
+                   representations.</xs:documentation>
+  </xs:annotation>
+  <xs:annotation>
+    <xs:documentation>The Location ABE represents the site or position of something, such as a customer’s address, the site of equipment where there is a fault and where is the nearest person who could repair the equipment, and so forth.  Locations can take the form of coordinates and/or addresses and/or physical representations.</xs:documentation>
+  </xs:annotation>
+  <xs:element name="AddressContactMediumRole" type="entloc:AddressContactMediumRole" />
+  <xs:element name="PlacePhysicalResourceAssoc" type="entloc:PlacePhysicalResourceAssoc" />
+  <xs:complexType name="AddressContactMediumRole">
+    <xs:annotation>
+      <xs:documentation>A ContactMedium, such as a telephone number or fax number, associated with an address.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="timeperiod" type="entbastyp:TimePeriod">
+        <xs:annotation>
+          <xs:documentation>The period of time for which the ContactMedium is applicable for the address.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PlacePhysicalResourceAssoc">
+    <xs:annotation>
+      <xs:documentation>The association between a PhysicalResource and a Place (Location).</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="modifier" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A limitation or qualification of the association.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="1" maxOccurs="1" name="placerole" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The role the Place (Location) plays in the association.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="1" maxOccurs="1" name="validfor" type="entbastyp:TimePeriod">
+        <xs:annotation>
+          <xs:documentation>The period of time for which the association is applicable.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Place" type="entloc:Place" />
+  <xs:complexType name="Place" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Place answers the question "where ?"It is an abstract modeling concept that provides a linking point to other parts of the SID model.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="id" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Unique identifier for Place.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="1" maxOccurs="1" name="validfor" type="entbastyp:TimePeriod">
+        <xs:annotation>
+          <xs:documentation>The time period that the Place is valid for Permitted Values:  Refer Time Period class</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="_projectElement" type="entproele:ProjectElement" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

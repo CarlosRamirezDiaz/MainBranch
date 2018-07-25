@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:entpar="http://claro.com.pe/entity/EngagedParty/Party/V1/" xmlns:entcusbill="http://claro.com.pe/entity/Customer/CustomerBill/V1/" xmlns:entbastyp="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:doc="http://claro.com.pe/entity/CommonBusiness/Documents/V1/" xmlns:entsercat="http://claro.com.pe/entity/Service/ServiceCatalog/V1/" xmlns:entserv="http://claro.com.pe/entity/Service/Service/V1/" targetNamespace="http://claro.com.pe/entity/CommonBusiness/Documents/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="../../../UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:import schemaLocation="../../../UT_MODELO_ONTOLOGICO/Entidades/Service/ServiceCatalog_V1.xsd" namespace="http://claro.com.pe/entity/Service/ServiceCatalog/V1/" />
+  <xsd:import schemaLocation="../Service/Service_V1.xsd" namespace="http://claro.com.pe/entity/Service/Service/V1/" />
+  <xsd:import schemaLocation="../../../UT_MODELO_ONTOLOGICO/Entidades/EngagedParty/Party_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/Party/V1/" />
+  <xsd:import schemaLocation="../Customer/CustomerBill_V1.xsd" namespace="http://claro.com.pe/entity/Customer/CustomerBill/V1/" />
+  <xsd:complexType name="Documents">
+    <xsd:sequence>
+      <xsd:element name="_documentId" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_documentNumber" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_documentName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_validFor" type="entbastyp:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_description" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_status" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_reference" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_responseStatus" type="entbastyp:ResponseStatus">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_adjustmentDocuments" type="doc:adjustmentDocuments">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_serviceDocuments" type="doc:serviceDocuments">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_Url" type="entbastyp:URL" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="adjustmentDocuments">
+    <xsd:sequence>
+      <xsd:element name="documentId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="description" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="documentNumber" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="reference" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="status" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="documentName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_receivableAccountsDocumentId" type="doc:Documents">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Money" type="doc:_Money">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="entbastyp:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ResponseStatus" type="entbastyp:ResponseStatus">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="serviceDocuments">
+    <xsd:sequence>
+      <xsd:element name="_Documents" type="doc:Documents">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_amount" type="doc:_amountType">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="_amountType">
+    <xsd:sequence>
+      <xsd:element name="_owingAmount" type="doc:_Amount">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_billingAmount" type="doc:_Amount">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_payingAmount" type="doc:_Amount">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_originalAmount" type="doc:_Amount">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_nullAmount" type="doc:_Amount">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="_Money">
+    <xsd:sequence>
+      <xsd:element name="amountApplied" type="entbastyp:Money">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="amountToBeApplied" type="entbastyp:Money">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="_Amount">
+    <xsd:sequence>
+      <xsd:element name="_Amount" type="entbastyp:Money">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_Amounting" type="doc:_Amounting">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="_Amounting">
+    <xsd:sequence>
+      <xsd:element name="_responseStatus" type="entbastyp:ResponseStatus">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_Money" type="entbastyp:Money">
+        <xsd:annotation>
+          <xsd:documentation>A sample element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

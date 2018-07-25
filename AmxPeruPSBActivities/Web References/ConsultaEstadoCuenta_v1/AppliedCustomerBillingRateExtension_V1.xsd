@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:entappcusbilratext="http://claro.com.pe/entity/Customer/AppliedCustomerBillingRateExtension/V1/" xmlns:entappcusbilrat="http://claro.com.pe/entity/Customer/AppliedCustomerBillingRate/V1/" targetNamespace="http://claro.com.pe/entity/Customer/AppliedCustomerBillingRateExtension/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="AppliedCustomerBillingRate_V1.xsd" namespace="http://claro.com.pe/entity/Customer/AppliedCustomerBillingRate/V1/" />
+  <xsd:complexType name="FinancialChargeExtension">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="entappcusbilrat:FinancialCharge">
+        <xsd:sequence>
+          <xsd:element name="_financialId" type="xsd:integer" />
+          <xsd:element name="_quotaNumber" type="xsd:decimal" />
+          <xsd:element name="_financialCost" type="xsd:decimal" />
+          <xsd:element name="_statusLine" type="xsd:decimal" />
+          <xsd:element name="_reasonStatusLine" type="xsd:decimal" />
+          <xsd:element name="_condonationFlag" type="xsd:integer" />
+          <xsd:element name="_condonationAmount" type="xsd:decimal" />
+          <xsd:element name="_quotaReversion" type="xsd:integer" />
+          <xsd:element name="_roamingFlag" type="xsd:integer" />
+          <xsd:element name="_modificationDate" type="xsd:date" />
+          <xsd:element name="_registerDate" type="xsd:date" />
+          <xsd:element name="_percentageQuotas" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ProductFinancialAccountRelationshipExtension">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="entappcusbilrat:ProductFinancialAccountRelationship">
+        <xsd:sequence>
+          <xsd:element name="_processId" type="xsd:integer" />
+          <xsd:element name="_expirationDays" type="xsd:integer" />
+          <xsd:element name="_recordsProcess" type="xsd:integer" />
+          <xsd:element name="_recordsProcessTotal" type="xsd:integer" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

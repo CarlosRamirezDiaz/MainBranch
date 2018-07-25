@@ -1,0 +1,157 @@
+<html ng-app="listPSBConfiguration">
+<head>
+    <title>PSB Configuration</title>
+    <script src="../../etel_/common/scripts/angular.min.js"></script>
+    <script src="../../ClientGlobalContext.js.aspx" type="text/javascript"></script>
+    <script>
+        var app = angular.module('listPSBConfiguration', []);
+        app.controller("listPSBConfigurationCtrl", function ($scope, $http, $filter) {
+            $scope.listPSBConfiguration = "";
+            $scope.message = "Wait...";
+
+            $scope.propertyName = 'Name';
+            $scope.reverse = false;
+
+            sortingData = function (data) {
+                $scope.listPSBConfiguration = $filter('orderBy')(data, $scope.propertyName, $scope.reverse);
+            }
+
+            $scope.sortBy = function (propertyName) {
+                $scope.reverse = $scope.propertyName === propertyName ? !$scope.reverse : false;
+                $scope.propertyName = propertyName;
+                $scope.listPSBConfiguration = $filter('orderBy')($scope.listPSBConfiguration, $scope.propertyName, $scope.reverse);
+            }; 
+
+            listPSBConfiguration = function ($http) {
+
+                var workflowUrlName = Xrm.Page.context.getClientUrlForInteractioncentricDashboard() + ":6005/api/v1/definitions/configurations/";
+
+                try {
+                    $http.get(workflowUrlName)
+                        .then(function (result) {
+                            if (result) {
+                                $scope.message = "";
+                                sortingData(result.data);
+                            }
+                        },
+                        function errorCallback(response) {
+                            // called asynchronously if an error occurs
+                            // or server returns response with an error status.
+                            $scope.message = "ListPSBConfiguration: [" + response.config.url + "] " + response.xhrStatus + "-" + response.statusText;
+                        });
+                }
+                catch (err) {
+                    $scope.message = "ListPSBConfiguration: [" + workflowUrlName + "] " + err.message;
+                }
+            };
+
+            listPSBConfiguration($http);
+
+
+
+        });
+
+    </script>
+    <style>
+
+        #data {
+            font-family: 'Segoe UI';
+            font-size: 12px;
+            text-align: center;
+            border: none;
+            margin:auto;
+        }
+        #data, th, td {
+            border-collapse: collapse;
+            padding: 0px;
+        }
+
+            #data thead {
+                border: 1px solid #ddd;
+                
+            }
+
+            #data tbody::before {
+                content: "-";
+                line-height: 3px;
+                display: table-caption;
+                color: transparent;
+            }
+
+            #data th {
+                font-size: 13px;
+                padding: 7px 5px;
+            }
+
+            #data td {
+                padding: 4px 5px;
+            }
+
+            #data > thead > tr {
+                background: linear-gradient(white, rgb(240, 240, 240) 100%);
+            }
+
+            #data > tbody > tr:nth-child(odd) {
+                background-color: #EFEFEF;
+            }
+
+            #data > tbody > tr:nth-child(even) {
+                background-color: #FAFAFA;
+            }
+
+            #data > tbody > tr > td, th {
+                border-left: 1px dotted #ddd;
+                border-right: 1px dotted #ddd;
+                border-top: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+            }
+        /*Icon */
+        .sortorder:after {
+            content: '\25b2'; /* BLACK UP-POINTING TRIANGLE*/
+        }
+
+        .sortorder.reverse:after {
+            content: '\25bc'; /* BLACK DOWN-POINTING TRIANGLE*/
+        }
+    </style>
+</head>
+<body>
+	<div ng-controller="listPSBConfigurationCtrl">
+		<table id="data">
+            <colgroup>
+                <col style="width: auto" />
+                <col style="width: 110px" />
+                <col style="width: auto" />
+                <col style="width: 110px" />
+            </colgroup>
+			<thead>
+				<tr>
+                    <th ng-click="sortBy('Name');">
+                        Name<span class="sortorder" ng-show="propertyName === 'Name'" ng-class="{reverse: reverse}"></span>
+                    </th>
+					<th ng-click="sortBy('WorkflowName');">
+                        WorkflowName<span class="sortorder" ng-show="propertyName === 'WorkflowName'" ng-class="{reverse: reverse}"></span>
+                    </th>
+					<th ng-click="sortBy('Value');">
+                        Value<span class="sortorder" ng-show="propertyName === 'Value'" ng-class="{reverse: reverse}"></span>
+                    </th>
+					<th ng-click="sortBy('Definition');">
+                        Definition <span class="sortorder" ng-show="propertyName === 'Definition'" ng-class="{reverse: reverse}"></span>
+                    </th>
+				</tr>
+			</thead>
+			<tbody>
+                <tr ng-repeat="item in listPSBConfiguration">                    
+                    <td>{{item.Name}}</td>
+                    <td>{{item.WorkflowName}}</td>
+                    <td>{{item.Value}}</td>
+                    <td>{{item.Definition}}</td>
+                </tr>
+			</tbody>
+		</table>
+		<div id="messageId">
+			<p>{{message}}</p>
+		</div>
+	</div>
+	</body>
+</html>

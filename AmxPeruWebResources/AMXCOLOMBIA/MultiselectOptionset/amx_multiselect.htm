@@ -1,0 +1,37 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Multiselect</title>
+    <meta name="description" content="Multiselect Control">
+    <meta name="author" content="Ericsson Partners">
+    <script src="etel_jscripttranslationhandler.js" type="text/javascript"></script>
+    <script src="etel_htmltranslate.js" type="text/javascript"></script>
+    <script src="etel_/customersearch/scripts/script.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var translationMultiSelect = {
+            data: null,
+            GetData: function () {
+                var formId = "CustomerAddressMGL";
+                if (translationMultiSelect.data == null) {
+                    translationMultiSelect.data = GetTranslationData(formId);
+                }
+                return translationMultiSelect.data;
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="amx_multiselect.css">
+    <style>
+        html, body {
+            font-size: 12px;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="multiselect"></div>
+    <script src="amx_multiselect.js"></script>
+</body>
+</html>

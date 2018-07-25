@@ -1,0 +1,2 @@
+AmxperuSendNotification.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

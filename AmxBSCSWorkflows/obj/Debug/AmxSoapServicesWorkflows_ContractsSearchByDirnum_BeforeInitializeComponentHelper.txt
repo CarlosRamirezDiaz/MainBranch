@@ -1,0 +1,2 @@
+ContractsSearchByDirnum.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

@@ -1,0 +1,2 @@
+AmxPeruValidationBeforeChangeResource.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

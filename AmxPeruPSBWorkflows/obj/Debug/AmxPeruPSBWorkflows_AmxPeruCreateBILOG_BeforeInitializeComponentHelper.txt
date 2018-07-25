@@ -1,0 +1,2 @@
+AmxPeruCreateBILOG.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

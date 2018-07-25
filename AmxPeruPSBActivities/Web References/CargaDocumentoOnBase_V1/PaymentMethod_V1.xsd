@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd_2="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:xsd_1="http://claro.com.pe/entity/EngagedParty/PaymentMethod/V1/" xmlns:xsd_7="http://claro.com.pe/entity/Customer/CustomerAccountBalance/V1/" xmlns:xsd_4="http://claro.com.pe/entity/EngagedParty/PartyPayment/V1/" xmlns:xsd_5="http://claro.com.pe/entity/EngagedParty/Party/V1/" xmlns:xsd_8="http://claro.com.pe/entity/EngagedParty/Bank/V1/" targetNamespace="http://claro.com.pe/entity/EngagedParty/PaymentMethod/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="Bank_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/Bank/V1/" />
+  <xsd:import schemaLocation="../Customer/CustomerAccountBalance_V1.xsd" namespace="http://claro.com.pe/entity/Customer/CustomerAccountBalance/V1/" />
+  <xsd:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:complexType name="PaymentMethodSpecification">
+    <xsd:annotation>
+      <xsd:documentation>A PaymentMethodSpecification defines characteristics that mighnt be used to describe a PaymentMethod.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Unique identifier </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Name given to the PaymentMethondSpecification (type of PaymentMethod).</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="description" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Description given to the PaymentMethondSpecification (type of PaymentMethod).</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_2:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>Valid period for the PaymentMethodSpecification.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="paymentMethod" type="xsd_1:PaymentMethod" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PaymentMethod">
+    <xsd:annotation>
+      <xsd:documentation>PaymentMethod is the way in which party provides payment, for example cash ,credit,transfer.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Unique identifier </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Name that can be given to the PaymentMethod by the owner.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="description" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Descriptionthat can be given to the PaymentMethod by the owner.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_2:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>Valid period for the PaymentMethod.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="paymentMethodSpecification" type="xsd_1:PaymentMethodSpecification" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AccountBalancePM">
+    <xsd:annotation>
+      <xsd:documentation>AccountBalancePM defines possible payment method using CustomerAccountBalance as payment source.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:PaymentMethod">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="customeraccountbalance" type="xsd_7:CustomerAccountBalance" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="BankCardPM">
+    <xsd:annotation>
+      <xsd:documentation>PaymentMethod used to pay with a bank card.
+
+</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:PaymentMethod">
+        <xsd:sequence>
+          <xsd:element name="cardNumber" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>The identification number of a bank card.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="nameOnCard" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>The name of the person who owns the card.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="bankCardType" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>The type of the BankCard, such as VISA, MasterCard, UnionPay.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="expirationDate" type="xsd:date">
+            <xsd:annotation>
+              <xsd:documentation>The date of card expiration. </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="CVV" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>The CVV(Card Verification Value) of the bank card. </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="bankAccount" type="xsd_8:BankAccount" />
+          <xsd:element minOccurs="0" name="bank" type="xsd_8:Bank" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="CashPM">
+    <xsd:annotation>
+      <xsd:documentation>CashPM is an example of  payment method, through which payment can be made by cash.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:PaymentMethod">
+        <xsd:sequence>
+          <xsd:element name="cashierInfo" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>A description of the employee who received the cash for payment</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="CheckPM">
+    <xsd:annotation>
+      <xsd:documentation>Pay with a check.
+</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:PaymentMethod">
+        <xsd:sequence>
+          <xsd:element name="checkID" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>The identification number of a check.
+</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="bank" type="xsd_8:Bank" />
+          <xsd:element minOccurs="0" name="bankAccount" type="xsd_8:BankAccount" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="CreditCardPM">
+    <xsd:annotation>
+      <xsd:documentation>CreditCardPM is an example of  payment method, using which payment can be made by credit card.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:BankCardPM" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="DebitCardPM">
+    <xsd:annotation>
+      <xsd:documentation>Pay with a debit card issued by a bank.
+</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:BankCardPM" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="LoyaltyBurnPM">
+    <xsd:annotation>
+      <xsd:documentation>A payment method that uses loyalty points to make a payment.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:PaymentMethod">
+        <xsd:sequence />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ThirdPartyCollectionPM">
+    <xsd:annotation>
+      <xsd:documentation>ThirdPartyCollectionPM is an example of  payment method, using which payment can be made through the third party,such as bank transfer, payment tool(like PayPal, Alipay).</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:PaymentMethod">
+        <xsd:sequence>
+          <xsd:element name="thirdPartyType" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>A classification of  the third party which collects the money for service provider, such as bank transfer, payment tool.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="accountNameInThirdParty" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>The account, which is used in the third party, used to pay. If bank transfer is used here,  paymentAccountinThirdParty is BankAccount. If paymet tool (such as PayPal) is used here, paymentAccountInThirdPart is the payment tool (such as PayPal) account.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="DigitalWalletPM">
+    <xsd:annotation>
+      <xsd:documentation>A DigitalWalletPM enables debit on a digital wallet.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:PaymentMethod" />
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:entbastyp="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:entmktcam="http://claro.com.pe/entity/MarketSales/MarketingCampaignExtension/V1/" xmlns:entdocext="http://claro.com.pe/entity/CommonBusiness/DocumentsExtension/V1/" xmlns:entbusint="http://claro.com.pe/entity/CommonBusiness/BusinessInteraction/V1/" xmlns:ressta="http://claro.com.pe/esb/data/generico/responseStatus/v1/" xmlns:notmgm="http://claro.com.pe/esb/message/BssCbNotificationMgmtLG/v1/" xmlns:entprooff="http://claro.com.pe/entity/Product/ProductOffering/V1/" elementFormDefault="qualified" targetNamespace="http://claro.com.pe/esb/message/BssCbNotificationMgmtLG/v1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/ResponseStatus_V1.xsd" namespace="http://claro.com.pe/esb/data/generico/responseStatus/v1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/BusinessInteraction_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BusinessInteraction/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/Product/ProductOffering_V1.xsd" namespace="http://claro.com.pe/entity/Product/ProductOffering/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/MarketSales/MarketingCampaignExtension_V1.xsd" namespace="http://claro.com.pe/entity/MarketSales/MarketingCampaignExtension/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/DocumentsExtension_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/DocumentsExtension/V1/" />
+  <xsd:complexType name="sendNotificationRequestType">
+    <xsd:sequence>
+      <xsd:element name="Notification" type="entbusint:Notification" />
+      <xsd:element name="MarketingCampaignExtension" type="entmktcam:MarketingCampaignExtension" />
+      <xsd:element name="ProductOffering" type="entprooff:ProductOffering" />
+      <xsd:element name="UtilityFields" type="entbastyp:UtilityFields" />
+      <xsd:element name="ListaArchivosAdjuntos" type="notmgm:ListaArchivosType" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="listaRequestOpcional" type="entbastyp:AttributeValuePair" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="sendNotificationResponseType">
+    <xsd:sequence>
+      <xsd:element name="ResponseStatus" type="ressta:ResponseStatus" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="listaResponseOpcional" type="entbastyp:AttributeValuePair" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="sendNotificationRequest" type="notmgm:sendNotificationRequestType" />
+  <xsd:element name="sendNotificationResponse" type="notmgm:sendNotificationResponseType" />
+  <xsd:complexType name="ListaArchivosType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Archivo" type="entdocext:DocumentsExtension" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

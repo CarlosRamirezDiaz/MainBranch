@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://ericsson.com/esb/data/generico/CommonTypes/v1/" elementFormDefault="qualified" targetNamespace="http://ericsson.com/esb/data/generico/CommonTypes/v1/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ESBFault" nillable="true" type="tns:CustomFaultMessageType" />
+  <xs:element name="headerRequest" type="tns:HeaderRequestType">
+    <xs:annotation>
+      <xs:documentation>Todas las operaciones de los servicios implementaran esta cabecera para el envio de los datos de entrada.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="headerResponse" type="tns:HeaderResponseType">
+    <xs:annotation>
+      <xs:documentation>Todas las operaciones de los servicios implementaran esta cabecera para el envio de los datos de entrada.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="HeaderRequestType">
+    <xs:sequence>
+      <xs:element name="canal" type="xs:string" />
+      <xs:element minOccurs="0" name="idAplicacion" type="xs:long" />
+      <xs:element minOccurs="0" name="usuarioAplicacion" type="xs:string" />
+      <xs:element minOccurs="0" name="usuarioSesion" type="xs:string" />
+      <xs:element minOccurs="0" name="idTransaccionESB" type="xs:string" />
+      <xs:element name="idTransaccionNegocio" type="xs:string" />
+      <xs:element minOccurs="0" name="fechaInicio" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="nodoAdicional" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HeaderResponseType">
+    <xs:sequence>
+      <xs:element name="idTransaccionESB" type="xs:string" />
+      <xs:element name="idTransaccionNegocio" type="xs:string" />
+      <xs:element name="fechaInicio" type="xs:dateTime" />
+      <xs:element name="fechaFin" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="nodoAdicional" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CustomFaultMessageType">
+    <xs:sequence>
+      <xs:element name="enterpriseServiceName" nillable="true" type="xs:string" />
+      <xs:element name="enterpriseServiceOperationName" nillable="true" type="xs:string" />
+      <xs:element name="originSystem" nillable="true" type="xs:string" />
+      <xs:element name="idAuditoria" type="xs:string" />
+      <xs:element name="idTransaccionESB" type="xs:string" />
+      <xs:element name="idTransaccionNegocio" type="xs:string" />
+      <xs:element name="errorCode" type="xs:string" />
+      <xs:element name="errorMessage" type="xs:string" />
+      <xs:element minOccurs="0" name="errorLocation" type="xs:string" />
+      <xs:element name="date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="faultSource" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

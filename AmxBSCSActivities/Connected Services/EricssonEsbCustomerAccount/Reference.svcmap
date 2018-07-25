@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c42b5017-e249-4405-ba1f-a64622baa9fd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="D:\Projects\AmxColombiaTCRM\MainBranch\AmxBSCSActivities\Wsdl\getBalance_wasdl.xml" Protocol="file" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="getBalance.xsd" MetadataType="Schema" ID="aff777ff-8ed5-4b01-94a2-ed9cd2810e93" SourceId="1" SourceUrl="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FGetSubscriberPackagesResponse_V1.0" />
+    <MetadataFile FileName="getBalance1.xsd" MetadataType="Schema" ID="b62bcb85-ced7-4f30-92f9-5a82a169d3cf" SourceId="1" SourceUrl="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FGetCustomerAgreementRequest_V1.0" />
+    <MetadataFile FileName="getBalance2.xsd" MetadataType="Schema" ID="463f7aa7-9d08-4172-95c1-d813a98bbbe7" SourceId="1" SourceUrl="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FGetTariffChangeRequest_V1.0" />
+    <MetadataFile FileName="getBalance_wasdl.wsdl" MetadataType="Wsdl" ID="f8cbc4b5-3e98-46ac-95c4-66221f909bc8" SourceId="1" SourceUrl="file:///D:/Projects/AmxColombiaTCRM/MainBranch/AmxBSCSActivities/Wsdl/getBalance_wasdl.xml" />
+    <MetadataFile FileName="getBalance3.xsd" MetadataType="Schema" ID="08e0326c-045d-413a-8d15-f57928325dd9" SourceId="1" SourceUrl="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FGetBalanceRequest_V1.0" />
+    <MetadataFile FileName="getBalance4.xsd" MetadataType="Schema" ID="05f0f311-ad7f-4357-ada2-03f260ddb326" SourceId="1" SourceUrl="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FGetSubscriberPackagesRequest_V1.0" />
+    <MetadataFile FileName="getBalance5.xsd" MetadataType="Schema" ID="33772291-f328-4b83-a2ec-bdf173c9f8a1" SourceId="1" SourceUrl="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FPaymentCustomerBillResponse_V1.0" />
+    <MetadataFile FileName="getBalance6.xsd" MetadataType="Schema" ID="80434769-9091-4b7f-aca8-adf47bac8261" SourceId="1" SourceUrl="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FChangeTariffResponse_V1.0" />
+    <MetadataFile FileName="getBalance7.xsd" MetadataType="Schema" ID="c69652b5-813b-403f-ba2e-af702a6aa4e7" SourceId="1" SourceUrl="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FPaymentCustomerBillRequest_V1.0" />
+    <MetadataFile FileName="getBalance8.xsd" MetadataType="Schema" ID="0ef751f8-dbbd-4407-a574-6eb75edb6c19" SourceId="1" SourceUrl="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FGetTariffChangeResponse_V1.0" />
+    <MetadataFile FileName="getBalance9.xsd" MetadataType="Schema" ID="2bc659ab-faa0-4cb8-a95c-dbc1b9aaf2e7" SourceId="1" SourceUrl="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FGetCustomerAgreementResponse_V1.0" />
+    <MetadataFile FileName="getBalance10.xsd" MetadataType="Schema" ID="11ede346-a85c-420b-9fec-9232838fda35" SourceId="1" SourceUrl="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FCommonBusiness%2FCommonTypes_V2" />
+    <MetadataFile FileName="getBalance11.xsd" MetadataType="Schema" ID="66969a79-20b5-41f8-9cd0-7638711872f7" SourceId="1" SourceUrl="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FChangeTariffRequest_V1.0" />
+    <MetadataFile FileName="getBalance12.xsd" MetadataType="Schema" ID="01a35114-6194-48ee-b82a-40cc2769a2b2" SourceId="1" SourceUrl="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FCommonBusiness%2FBaseTypes_V1" />
+    <MetadataFile FileName="getBalance13.xsd" MetadataType="Schema" ID="0e6706fa-b5fa-4b8f-a594-12fd88ed50c8" SourceId="1" SourceUrl="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FGetBalanceResponse_V1.0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,2 @@
+RedirectActivity.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

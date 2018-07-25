@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8E9AA4D5-E054-4EBF-B7FB-F84C58078880}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AmxCoWebResources</RootNamespace>
+    <AssemblyName>AmxCoWebResources</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Bureau\" />
+    <Folder Include="NewFolder1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="360View\accountsummarytabbedview\accountsummarytabbedview.htm" />
+    <Content Include="360View\amx_warningDoBValidation.js" />
+    <Content Include="360View\amx_warningDoIvalidation.js" />
+    <Content Include="360View\OrderCapture\ordercapturewithuigrid\ordercapturelistController.js" />
+    <Content Include="BI_Header\bi_header.html" />
+    <Content Include="Cases\incident.js" />
+    <Content Include="Cases\ProductsInCase\productsInCase.htm" />
+    <Content Include="Cases\ProductsInCase\productsInCase.js" />
+    <Content Include="common\components\ngDialog\ngDialog-custom-width.css" />
+    <Content Include="common\components\ngDialog\ngDialog-theme-default.css" />
+    <Content Include="common\components\ngDialog\ngDialog-theme-default.min.css" />
+    <Content Include="common\components\ngDialog\ngDialog-theme-plain.css" />
+    <Content Include="common\components\ngDialog\ngDialog-theme-plain.min.css" />
+    <Content Include="common\components\ngDialog\ngDialog.css" />
+    <Content Include="common\components\ngDialog\ngDialog.js" />
+    <Content Include="common\components\ngDialog\ngDialog.min.css" />
+    <Content Include="common\components\ngDialog\ngDialog.min.js" />
+    <Content Include="common\JS\commonfunctions.js" />
+    <Content Include="Configuration\itemConfiguration.html" />
+    <Content Include="Configuration\itemConfigurationController.js" />
+    <Content Include="CTI\amxco_ctiCustomerSearch.html" />
+    <Content Include="CTI\Script\amxco_ctiCustomerSearch.js" />
+    <Content Include="CustomerSearch\amx_CustomerSearch.html" />
+    <Content Include="CustomerSearch\amx_CustomerSearch.js" />
+    <Content Include="CustomerSearch\OnLoad.js" />
+    <Content Include="CustomerSearch\Script.js" />
+    <Content Include="CustomerSearch\Templates\AccountNumber.html" />
+    <Content Include="CustomerSearch\Templates\AccountNumber.js" />
+    <Content Include="CustomerSearch\Templates\ContactPhone.html" />
+    <Content Include="CustomerSearch\Templates\ContactPhone.js" />
+    <Content Include="CustomerSearch\Templates\Document.html" />
+    <Content Include="CustomerSearch\Templates\Document.js" />
+    <Content Include="CustomerSearch\Templates\Email.html" />
+    <Content Include="CustomerSearch\Templates\Email.js" />
+    <Content Include="CustomerSearch\Templates\IndividualSearch Advanced.html" />
+    <Content Include="CustomerSearch\Templates\IndividualSearch Advanced.js" />
+    <Content Include="CustomerSearch\Templates\Name.html" />
+    <Content Include="CustomerSearch\Templates\Name.js" />
+    <Content Include="CustomerSearch\Templates\SimpleSearch.html" />
+    <Content Include="CustomerSearch\Templates\SimpleSearch.js" />
+    <Content Include="Evidente\amxco_EvidenteQuestionnaireLaunchPage.html" />
+    <Content Include="Evidente\amxco_EvidenteQuestionnaire.css" />
+    <Content Include="Evidente\amxco_EvidenteQuestionnaire.html" />
+    <Content Include="Evidente\amxco_EvidenteQuestionnaire.js" />
+    <Content Include="IncludeAndExcludeAccounts\includeandexcludebillingaccount.js" />
+    <Content Include="Individual\individual.js" />
+    <Content Include="OrderCapture\CertiCamara\FingerPrintDialog.html" />
+    <Content Include="OrderCapture\CertiCamara\FingerPrintDialog.js" />
+    <Content Include="InvoiceClarification\js\invoiceclarification.js" />
+    <Content Include="OrderCapture\OrderCaptureCancelDialog.html" />
+    <Content Include="OrderCapture\OrderCapturePostponeDialog.html" />
+    <Content Include="OrderCapture\OrderCaptureRibbonButton.js" />
+    <Content Include="OrderCapture\OrderCaptureAssociateBiHeader.js" />
+    <Content Include="DocumentManager\documentManagerController.js" />
+    <Content Include="DocumentManager\documentManager.html" />
+    <Content Include="PSBDefinition\PSBActivities.html" />
+    <Content Include="PSBDefinition\PSBAssemblies.html" />
+    <Content Include="PSBDefinition\PSBConfiguration.html" />
+    <Content Include="Sarglaft\amxco_SarglaftConsultLists.js" />
+    <Content Include="Stratumchange\js\stratumchange.js" />
+    <Content Include="Translation\etel_jscripttranslationhandler.js" />
+    <Content Include="UpdateCustomer\amx_updateCustomer.js" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

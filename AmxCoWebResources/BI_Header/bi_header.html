@@ -1,0 +1,945 @@
+﻿<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <title>Memo</title>
+    </head>
+<body style="word-wrap: break-word;">﻿
+
+<script src="ClientGlobalContext.js.aspx" type="text/javascript"></script>
+<script src="etel_jQuery" type="text/javascript"></script>
+<script src="etel_/common/scripts/showModalWindowPolyfill.js" type="text/javascript"></script>
+<script src="etel_SDK.REST.js" type="text/javascript"></script>
+<script src="etel_CrmRestKit" type="text/javascript"></script>
+<script src="etel_jscripttranslationhandler" type="text/javascript"></script>
+<script src="etel_utilities" type="text/javascript"></script>
+<script src="etel_/common/exceptionhandling.js" type="text/javascript"></script>
+<script src="etel_BIHeader" type="text/javascript"></script>
+<script src="etel_htmltranslate.js" type="text/javascript"></script>
+<script src="etel_optionSetHandler" type="text/javascript"></script>
+<script src="etel_/orderprocess/scripts/xrmservicetoolkit.js" type="text/javascript"></script>
+
+<link href="etel_/processapp/styles/global.css" rel="stylesheet" type="text/css">
+<link href="etel_/processapp/styles/fonts.css" rel="stylesheet" type="text/css">
+<style>
+body {
+margin: 0;
+}
+
+#bi-header .formContainer {
+float: left;
+width: 100%;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-top: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+#bi-header .formBlock {
+float: left;
+	padding-right: 40px;
+	box-sizing: border-box;
+}
+
+#bi-header .formBlock.fields {
+width: 30%;
+}
+
+#bi-header .formBlock.notes {
+width: 40%;
+}
+
+#bi-header .formBlock.buttons {
+width: 30%;
+}
+
+#bi-header .formContainer .formBlock:last-child {
+	padding-right: 10px;
+}
+
+#bi-header .formFieldLabel {
+float: left;
+width: 40%;
+	text-align: left;
+	padding-left: 30px;
+	padding-right: 10px;
+	box-sizing: border-box;
+}
+
+#bi-header .formFieldValue {
+	margin-left: 0;
+float: left;
+width: 60%;
+}
+
+#bi-header .formFieldValue textArea {
+	padding-left: 6px;
+	margin-top: 0;
+}
+
+#bi-header #bi-header-content #biHeaderTitle, #bi-header #bi-header-content div.buttonsWithBackground {
+width: 100%;
+	max-width: inherit;
+	box-sizing: border-box;
+}
+
+/* Arabic Language */
+#bi-header.rtl .formBlock {
+float: right;
+	padding-left: 40px;
+	padding-right: 0;
+}
+
+#bi-header.rtl .formFieldLabel {
+float: right;
+	text-align: right;
+	padding-left: 0;
+	padding-right: 30px;
+}
+
+#bi-header.rtl .formFieldValue {
+float: right;
+}
+
+#bi-header.rtl .formContainer .formBlock:last-child {
+	padding-right: 0;
+	padding-left: 10px;
+}
+
+#bi-header.rtl .formFieldValue textArea {
+	padding-right: 6px;
+	padding-left: 0;
+	text-align: right;
+}
+
+#bi-header.rtl .floatRightButtonGroup {
+float: left;
+	padding-left: 10px;
+}
+
+#bi-header.rtl button.dialogButton {
+float: left;
+}
+
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+
+	#bi-header .formFieldLabel {
+width: 50%;
+		padding-left: 0;
+	}
+
+	#bi-header .formFieldValue {
+width: 50%;
+	}
+
+	#bi-header .formBlock.notes {
+width: 30%;
+	}
+
+	#bi-header .formBlock.buttons {
+width: 40%;
+	}
+}
+</style>
+<script>
+    function connectionBind() {
+
+        var connectionfetch = "<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false'>" +
+        "<entity name='connection'>" +
+        " <attribute name='record2id' />" +
+        " <attribute name='record2roleid' />" +
+        " <attribute name='connectionid' />" +
+        "<attribute name='name' />" +
+        " <order attribute='record2id' descending='false' />" +
+        "</entity>" +
+        "</fetch>"
+        var connectionfetchvalue = XrmServiceToolkit.Soap.Fetch(connectionfetch);
+        if (connectionfetchvalue.length > 0) {
+            for (var eachconnectionfetchvalue = 0; eachconnectionfetchvalue < connectionfetchvalue.length; eachconnectionfetchvalue++) {
+                if ((connectionfetchvalue[eachconnectionfetchvalue] != null) && (connectionfetchvalue[eachconnectionfetchvalue].attributes != null)) {
+                    var option = document.createElement("option");
+                    option.value = ((connectionfetchvalue[eachconnectionfetchvalue].id) != null) ? connectionfetchvalue[eachconnectionfetchvalue].id : "";
+                    option.text = ((connectionfetchvalue[eachconnectionfetchvalue].attributes.name) != null) ? connectionfetchvalue[eachconnectionfetchvalue].attributes.name.value : "";
+                    option.id = ((connectionfetchvalue[eachconnectionfetchvalue].id) != null) ? connectionfetchvalue[eachconnectionfetchvalue].id : "";
+                }
+                var select = document.getElementById("ConnectionSelect");
+                select.appendChild(option);
+            }
+        }
+        var connectionCheckName = null;
+        var entityName = parent.Xrm.Page.data.entity.getEntityName();
+        if (entityName == "amxperu_biconnectionmapping") {
+            connectionCheckName = parent.Xrm.Page.getAttribute("amxperu_connectionguid").getValue();
+            if (connectionCheckName != null) {
+                document.getElementById("ConnectionSelect").options.namedItem(connectionCheckName).selected = true;
+            }
+        }
+
+    }
+    function pushtoattribute() {
+        var connectionselect = document.getElementById("ConnectionSelect");
+        var strUser = connectionselect.options[connectionselect.selectedIndex].value;
+        // parent.Xrm.Page.getAttribute("amxperu_selectedconnectionvalue").setValue(strUser);
+    }
+
+    function onChangeConnectionType(shouldCheckForEnabling) {
+        if (parent.Xrm.Page.data.entity.getEntityName() == "contact") {
+            if (shouldCheckForEnabling) {
+                document.getElementById("ConnectionSelect").disabled = false;
+                document.getElementById("connectionTypeSelect").disabled = false;
+            }
+            var connectionTypeSelectValueindi = document.getElementById("connectionTypeSelect").value;
+
+            if ((connectionTypeSelectValueindi != "") && connectionTypeSelectValueindi == "Connected") {
+
+            } else {
+                document.getElementById("ConnectionSelect").disabled = true;
+
+                var elementsindi = document.getElementById("ConnectionSelect").options;
+
+                for (var eachelementsindi = 0; eachelementsindi < elementsindi.length; eachelementsindi++) {
+                    elementsindi[eachelementsindi].selected = false;
+                }
+            }
+        }
+
+        if (parent.Xrm.Page.data.entity.getEntityName() == "account") {
+            if (window.currentHeader != null && window.currentHeader.etel_customeridtext != null) {
+                if (window.parent.Xrm.Page.data.entity.getId().toLowerCase() != "{" + window.currentHeader.etel_customeridtext.toLowerCase() + "}") {
+                    document.getElementById("ConnectionSelect").disabled = true;
+                    document.getElementById("connectionTypeSelect").disabled = true;
+                }
+            }
+            else {
+                document.getElementById("ConnectionSelect").disabled = false;
+                document.getElementById("connectionTypeSelect").disabled = false;
+            }
+
+            if (shouldCheckForEnabling) {
+                document.getElementById("ConnectionSelect").disabled = false;
+                document.getElementById("connectionTypeSelect").disabled = false;
+
+            }
+            var connectionTypeSelectValue = document.getElementById("connectionTypeSelect").value;
+
+            if ((connectionTypeSelectValue != "") && connectionTypeSelectValue == "Connected") {
+
+            } else {
+                document.getElementById("ConnectionSelect").disabled = true;
+
+                var elements = document.getElementById("ConnectionSelect").options;
+
+                for (var i = 0; i < elements.length; i++) {
+                    elements[i].selected = false;
+                }
+            }
+
+        }
+    }
+    function additionOfUserTypeConnectionUserRoles(header) {
+
+        var UserTypeSelectValue = document.getElementById("connectionTypeSelect").value;
+        if ((UserTypeSelectValue != "") && UserTypeSelectValue == "Connected") {
+            header.amxperu_usertypeheader = { Value: 2 };
+            var ConnectedRoleselect = document.getElementById("ConnectionSelect");
+            var ConnectedRoleValue = ConnectedRoleselect.options[ConnectedRoleselect.selectedIndex].value;
+            var ConnectedRoleName = ConnectedRoleselect.options[ConnectedRoleselect.selectedIndex].text;
+            if (ConnectedRoleValue != null && ConnectedRoleValue != "") {
+                header.amxperu_connecteduserroleheader = ConnectedRoleValue;
+                header.amxperu_connectedusername = ConnectedRoleName;
+            }
+        }
+        if ((UserTypeSelectValue != "") && UserTypeSelectValue == "Owner") {
+            header.amxperu_usertypeheader = { Value: 1 };
+        }
+
+        return header;
+    }
+    function retrievalOfUserTypeConnectionUserRoles(header) {
+
+        if (header.amxperu_usertypeheader != null) {
+            if (header.amxperu_usertypeheader.Value == 1) {
+                document.getElementById("connectionTypeSelect").value = "Owner";
+
+            }
+            if (header.amxperu_usertypeheader.Value == 2) {
+                document.getElementById("connectionTypeSelect").value = "Connected";
+                if (header.amxperu_connecteduserroleheader != null) {
+                    document.getElementById("ConnectionSelect").value = header.amxperu_connecteduserroleheader;
+                }
+            }
+
+        }
+
+    }
+
+
+</script>
+
+<div id="bi-header">
+	<div class="alert" id="alert-div" style="width: 300px; display: none;">
+		<span class="tAlert" data-translate="tAlert">ALERT!</span>br&gt;
+		<div><span class="tBIHeaderCheck" data-translate="tBIHeaderCheck">You have already an open activity. Please close it first to start a new one.</span></div>
+	</div>
+	<div id="bi-header-content">
+		<div class="formSection newlineSection" style="height: auto;">
+			<!--<div class="dataGridTitleText dataGridTitleTextUnderlined" id="biHeaderTitle" style="height: 24px; margin-right: 0px;">
+<div id="callTypeLabel">
+
+</div>
+<div style="margin-right: 2px;color: #000;text-transform: capitalize;"><span class="tInteractionInfo" data-translate="tInteractionInfo">Interaction Info</span></div>
+</div>-->
+			<div class="formContainer">
+				<div class="formBlock fields">
+					<div title="Call Reason" class="formFieldLabel">
+						<span class="tCallReason" data-translate="tCallReason">Call Reason</span>
+						<div class="inlineGradientMask"></div>
+					</div>
+					<div class="formFieldValue" id="call-reason-content">
+						<select name="callReasonOptions" id="callReasonSelect">
+							<option value="Sales">Sales</option>
+						</select>
+					</div>
+					<div title="Customer Mood" class="formFieldLabel" style="padding-top: 5px;">
+						<span class="tCustomerMood" data-translate="tCustomerMood">Customer Mood</span>
+						<div class="inlineGradientMask"></div>
+					</div>
+					<div class="formFieldValue" style="padding-top: 5px;">
+						<select name="customerMoodOptions" id="moodSelect"></select>
+					</div>
+					<div title="Interaction Id" class="formFieldLabel"">
+						<span class="tInteractionId" data-translate="tInteractionId">Digiturno Id</span>
+						<div class="inlineGradientMask"></div>
+					</div>
+					<div class="formFieldValue" style="padding-top: 5px;">
+						<textarea name="InteractionIdTextArea" id="InteractionId" maxlength="40" placeholder="--" rows="1">--</textarea>
+					</div>
+				</div>
+				<!--For Connection-->
+				<div class="formBlock fields">
+					<div title="Connection Type" class="formFieldLabel">
+						<span class="tConnectionType">Connection Type</span>
+						<div class="inlineGradientMask"></div>
+					</div>
+					<div class="formFieldValue" id="connection-type-content">
+						<select name="connectionTypeOptions" id="connectionTypeSelect" onchange="onChangeConnectionType(true)">
+							<option value="Blank"></option>
+							<option value="Owner">Owner</option>
+							<option value="Connected">Connected</option>
+						</select>
+					</div>
+					<div title="Connections" class="formFieldLabel">
+						<span class="tConnections">Connections</span>
+						<div class="inlineGradientMask"></div>
+					</div>
+					<div class="formFieldValue" id="connections-content">
+						<select name="connectionsOptions" id="ConnectionSelect" onchange="pushtoattribute()">
+							<option value="blank"></option>
+						</select>
+					</div>
+				</div>
+				<!--For Connection-->
+				<div class="formBlock notes">
+					<div title="Notes" class="formFieldLabel" style="width: 20%;">
+						<span class="tNotes" data-translate="tNotes">Notes</span>
+						<div class="inlineGradientMask"></div>
+					</div>
+					<div class="formFieldValue" style="width: 80%;">
+						<textarea name="notesTextArea" id="notes" maxlength="1000" placeholder="--" rows="1">--</textarea>
+					</div>
+				</div>
+				<div class="formBlock buttons">
+					<div class="newlineSection formSection" style="padding-top: 8px; padding-bottom: 0px;">
+						<div class="floatRightButtonGroup">
+							<button class="tStartCall dialogButton" id="startcall" type="button" data-translate="tStartCall">START CALL</button>
+							<button class="tClear dialogButton" id="clear" type="button" data-translate="tClear">CLEAR</button>
+							<button class="tStop dialogButton" id="stop" type="button" data-translate="tStop">STOP</button>
+							<button class="tStart dialogButton" id="start" type="button" data-translate="tStart">START</button>
+							<button class="tSave dialogButton" id="save" style="display: none;" type="button" data-translate="tSave">SAVE</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    </div>
+
+
+<script>
+    connectionBind();
+</script>
+
+<script>
+    var FormIdBIHeader = "BIHEADER";
+    var validationPopup = null;
+
+    var LanguageId = GetUserLanguageCode();
+    getTranslate(FormIdBIHeader, LanguageId);
+
+    var translationScope_BIHEADER = {
+        CurrentUserLanguageCode: LanguageId,
+        data: null,
+        GetData: function () {
+            if (translationScope_BIHEADER.data !== null) {
+                return;
+            }
+
+            translationScope_BIHEADER.data = GetTranslationData(FormIdBIHeader);
+        }
+    };
+
+    translationScope_BIHEADER.GetData(FormIdBIHeader);
+
+    if (IsRTL()) {
+        $("#bi-header").addClass("rtl");
+    }
+
+    (function ($, window) {
+        "use strict";
+        $ = $ || jQuery;
+        var methods = {
+            moods: {
+                Happy: "Happy"
+            },
+            buttons: {
+                '$saveButton': function () {
+                    return $("#save");
+                },
+                '$startButton': function () {
+                    return $('#start');
+                },
+                '$stopButton': function () {
+                    return $("#stop");
+                },
+                '$clearButton': function () {
+                    return $('#clear');
+                },
+                '$startcallButton': function () {
+                    return $('#startcall');
+                }
+            },
+            inputs: {
+                '$customerName': function () {
+                    return $("#customerName");
+                },
+                '$moodList': function () {
+                    return $("#moodSelect");
+                },
+                '$callResult': function () {
+                    return $("#callResultTextArea");
+                },
+                '$callReason': function () {
+                    return $("#callReasonSelect");
+                },
+                '$notes': function () {
+                    return $("#notes");
+                },
+                '$interactionId': function () {
+                    return $("#InteractionId");
+                }
+            },
+            elements: {
+                '$alert': function () {
+                    return $("#alert-div");
+                }
+            },
+
+            validateSelection: function (callback) {
+                var isValid = methods.inputs.$moodList().val() !== "none";
+                if (!isValid) {
+                    alert(translationScope_BIHEADER.data.tMoodAlert);
+                } else if (typeof callback === "function") {
+                    callback();
+                }
+            },
+            hasHeaderStarted: function (option) {
+                if (typeof option === "undefined") {
+                    return window.hasHeaderStarted || false;
+                }
+                window.hasHeaderStarted = option;
+                if (option) { //if has started.
+                    this.buttons.$saveButton().show();
+                    this.buttons.$clearButton().show();
+                    this.buttons.$stopButton().show();
+                    this.buttons.$startButton().hide();
+                    this.buttons.$startcallButton().show();
+                    //this.elements.$alert().hide();
+                    window.parent.Xrm.Page.ui.clearFormNotification("BIHeaderRequired");
+                } else { //if not started.
+                    this.buttons.$saveButton().hide();
+                    this.buttons.$clearButton().hide();
+                    this.buttons.$startButton().show();
+                    this.buttons.$stopButton().hide();
+                    this.buttons.$startcallButton().hide();
+                    //this.elements.$alert().hide();
+                    window.parent.Xrm.Page.ui.clearFormNotification("BIHeaderRequired");
+                }
+                $("input").prop('disabled', !option);
+                $("textarea").prop('disabled', !option);
+                methods.inputs.$moodList().prop('disabled', !option);
+                return option;
+            },
+            getMoods: function ($moodCombo) {
+                var result = Util.getBiMoods();
+                if (!result || !result.length) {
+                    return;
+                }
+                var count = result.length;
+                $moodCombo.find("option").remove();
+                var createOption = function (value, text) {
+                    var $option = $("<option />");
+                    $option.attr("value", value);
+                    $option.text(text);
+                    return $option;
+                };
+                //$moodCombo.append(createOption("none", "--"));
+
+                $.each(result, function (index, value) {
+                    if (index !== "__metadata") {
+                        $('#moodSelect').append($('<option>', { value: result[index]['ID'], text: translateDataText(result[index]['Name']) }));
+                    }
+                });
+
+                methods.changeToMood(methods.moods.Happy);
+            },
+            displayNewSessionAlert: function () {
+                window.parent.Xrm.Page.ui.setFormNotification(translationScope_BIHEADER.data.tNewSessionAlert, "WARNING", "BIHeaderRequired");
+            },
+            changeToMood: function (mood) {
+                $('select[name="customerMoodOptions"]').find('option:contains("' + mood + '")').prop("selected", true);
+
+            },
+            getUserId: function () {
+                if (typeof window.Xrm !== "undefined") {
+                    var userId = window.Xrm.Page.context.getUserId();
+                    return userId.substr(1, userId.length - 2);
+                } else {
+                    //TODO: throw error the current context does not have the definition for Xrm object.
+                    return "{9E9B5055-F768-E311-9CFA-B8CA3A62A025}";
+                }
+            },
+            buildHeader: function () {
+                var value = methods.inputs.$moodList().val();
+                var header = {
+                    OwnerId:
+                                    {
+                                        Id: methods.getUserId(),
+                                        LogicalName: "systemuser"
+                                    },
+                    etel_csrid: methods.getUserId(),
+                    etel_moodid: {
+                        Id: value,
+                        LogicalName: "etel_bimood"
+                    },
+                    etel_notes: methods.inputs.$notes().val(),
+                    etel_reason: methods.inputs.$callReason().val(),
+                    etel_callresult: methods.inputs.$callResult().val(),
+                    etel_headerstatus: true,
+                    etel_biheaderstarttime: new Date()
+                };
+                header = additionOfUserTypeConnectionUserRoles(header);
+                if (value === "none") {
+                    delete header.etel_moodid;
+                }
+
+
+                var customer = methods.getCustomer();
+
+                if (!(customer.LogicalName) || !customer.Id) {
+                    return header;
+                } else {
+
+                    if (customer.LogicalName === "account") {
+                        header.etel_accountid = customer;
+                        CrmRestKit.Retrieve('Account', customer.Id, ['Name'], false)
+                        .done(function (data) {
+                            if (data.d.Name) {
+                                header.etel_customername = data.d.Name;
+                            }
+                        });
+                    } else {
+                        header.etel_individualcustomerid = customer;
+                        CrmRestKit.Retrieve('Contact', customer.Id, ['FullName'], false)
+                        .done(function (data) {
+                            if (data.d.FullName) {
+                                header.etel_customername = data.d.FullName;
+                            }
+                        });
+                    }
+                    header.etel_customeridtext = customer.Id;
+                }
+                return header;
+            },
+            fillBiHeader: function (header) {
+                if (typeof header === "undefined" || !header) {
+                    return;
+                }
+                window.currentHeader = header;
+                methods.inputs.$customerName().val(header.etel_customername);
+                methods.inputs.$callReason().val(header.etel_reason);
+                methods.inputs.$callResult().val(header.etel_callresult);
+                methods.inputs.$notes().val(header.etel_notes);
+                methods.inputs.$moodList().val(header.etel_moodid.Id);
+
+                if (header.etel_channelinteractionid != undefined)
+                {
+                    console.log(header.etel_channelinteractionid);
+                    methods.inputs.$interactionId().val(header.etel_channelinteractionid);
+                }
+                else
+                {
+                    console.log("header.etel_channelinteractionid empty");
+                }
+                    
+
+                retrievalOfUserTypeConnectionUserRoles(header);
+            },
+            getCustomer: function () {
+                var typeName = methods.getParameterFromRequest("typename");
+                if (typeName == "") {
+                    typeName = window.parent.Xrm.Page.data.entity.getEntityName();
+                }
+
+                var idWithParantheses = "";
+                if (typeName == "etel_subscription") {
+                    var corporate = window.parent.Xrm.Page.getAttribute('etel_corporatecustomerid').getValue();
+
+                    if (corporate == null) {
+                        idWithParantheses = window.parent.Xrm.Page.getAttribute('etel_individualcustomerid').getValue()[0].id;
+                        typeName = "contact";
+                    } else {
+                        idWithParantheses = window.parent.Xrm.Page.getAttribute('etel_corporatecustomerid').getValue()[0].id;
+                        typeName = "account";
+                    }
+                } else {
+
+                    idWithParantheses = decodeURIComponent(methods.getParameterFromRequest("id"));
+                    if (idWithParantheses == "") {
+                        idWithParantheses = window.parent.Xrm.Page.data.entity.getId();
+                    }
+
+                }
+
+                var id = idWithParantheses.substr(1);
+                id = id.substr(0, id.length - 1);
+
+                return {
+                    Id: id,
+                    LogicalName: typeName
+                };
+            },
+            getBIHeader: function () {
+                var userId = this.getUserId();
+                var self = this;
+                SDK.REST.retrieveMultipleRecords("etel_bi_header", "$filter=OwnerId/Id eq guid'" + userId + "' and etel_headerstatus eq true and StateCode/Value eq 0", function (result) {
+                    var hasBiHeader = result && result.length;
+                    if (result.lenght > 0) {
+                        methods.changeToMood(result[0].etel_moodid.Name);
+                    }
+
+                    var idParam = decodeURIComponent(methods.getParameterFromRequest("id"));
+                    var id = idParam.substr(1);
+                    if (id.indexOf('}') > 0) {
+                        id = id.substr(0, id.length - 1).toLowerCase();
+                    }
+                    var typeName = methods.getParameterFromRequest("typename");
+
+                    if (hasBiHeader) {
+                        self.hasHeaderStarted(true);
+                    }
+                    if (id && hasBiHeader) {
+                        var check;
+                        if (typeName === "account") {
+                            check = function (header) {
+                                if (header.etel_accountid.Id !== null)
+                                    return header.etel_accountid.Id.toLowerCase() === id;
+                            };
+                        } else {
+                            check = function (header) {
+                                if (header.etel_individualcustomerid.Id !== null)
+                                    return header.etel_individualcustomerid.Id.toLowerCase() === id;
+                            };
+                        }
+                        var r = check(result[0]);
+                        if (!r) {
+                            methods.displayNewSessionAlert();
+                        }
+                    }
+                    if (hasBiHeader) {
+                        self.fillBiHeader(result[0]);
+                    } else {
+                        self.hasHeaderStarted(false);
+                    }
+                }, this.errorHandler, this.onRequestComplete);
+            },
+            getParameterFromRequest: function (parameterName) {
+                // TODO: cache for performance.
+                var parameters = window.location.href.split('?');
+                if (!parameters || parameters.length < 2) {
+                    return "";
+                }
+                var args = parameters[1].split('&');
+                var count = args.length;
+                for (var i = 0; i < count; i += 1) {
+                    var subparam = args[i].split('=');
+                    if (subparam[0].toLowerCase() === parameterName.toLowerCase()) {
+                        return subparam[1];
+                    }
+                }
+                return "";
+            },
+
+            //button events
+            onBiHeaderSaved: function () {
+                var biheader = window.currentHeader;
+                biheader.etel_reason = methods.inputs.$callReason().val();
+                biheader.etel_notes = methods.inputs.$notes().val();
+                biheader.etel_callresult = methods.inputs.$callResult().val();
+                biheader.etel_moodid.Id = methods.inputs.$moodList().val();
+                biheader = additionOfUserTypeConnectionUserRoles(biheader);
+                return biheader;
+            },
+            saveClicked: function () {
+                var saveAction = function () {
+                    var biheader = methods.onBiHeaderSaved();
+                    window.parent.Xrm.Page.ui.clearFormNotification("BIHeaderNotification");
+                    var subject = null;
+                    CrmRestKit.ByQuery("etel_bi_header", ["Subject"], "ActivityId eq (guid'" + biheader.ActivityId + "')", false)
+                    .fail(function (xhr, status, ethrow) {
+                        alert(translationScope_BIHEADER.data.tError + status + ': ' + xhr.statusText + '.');
+                    })
+                    .done(function (header) {
+                        subject = header.d.results[0].Subject;
+                        biheader.Subject = subject;
+                    });
+                    SDK.REST.updateRecord(biheader.ActivityId, biheader, "etel_bi_header", function () {
+                    }, methods.errorHandler);
+                };
+                methods.validateSelection(saveAction);
+            },
+            onClear: function () {
+                $("textarea").val('');
+                $("#customerName").val('');
+                /*var $moodlist = methods.inputs.$moodList();
+                        $moodlist.val($moodlist.find("option")[0].value);*/
+                methods.changeToMood(methods.moods.Happy);
+
+            },
+            clearClicked: function () {
+                var result = confirm(translationScope_BIHEADER.data.tConfirmAlert);
+                if (result) {
+                    methods.onClear();
+                }
+            },
+            startClicked: function () {
+                var configurations = GetConfigData();
+                var isCustomerValidation = null;
+                var isCustomerValidationApproveLogEnabled = null;
+                var isCustomerValidationRejectLogEnabled = null;
+                var isMobileClient = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+                if (configurations[0] != undefined) {
+                    var isCustomerValidation = configurations[0].Customer_Validation;
+                    var isCustomerValidationApproveLogEnabled = configurations[0].Customer_Validation_Approve_Log;
+                    var isCustomerValidationRejectLogEnabled = configurations[0].Customer_Validation_Reject_Log;
+                }
+
+                else {
+                    var isCustomerValidation = configurations.Customer_Validation;
+                    var isCustomerValidationApproveLogEnabled = configurations.Customer_Validation_Approve_Log;
+                    var isCustomerValidationRejectLogEnabled = configurations.Customer_Validation_Reject_Log;
+                }
+
+                var html = '';
+
+                methods.getBIHeader();
+                if (!methods.hasHeaderStarted()) {
+                    if (isCustomerValidation == "1" && !isMobileClient) {
+                        if (validationPopup == null || validationPopup.closed) {
+                            var left = Number((screen.width / 2) - (700 / 2));
+                            var top = Number((screen.height / 2) - (500 / 2));
+                            var id = decodeURIComponent(methods.getParameterFromRequest("id"));
+
+                            var versionNumber = Util.getCrmWebResourceVersion();
+                            var windowFeatures = 'channelmode=0,directories=0,fullscreen=0,location=0,menubar=0,resizable=0,scrollbars=0,status=0,width=700,height=500,top=' + top + ',left=' + left;
+                            var clientUrl = Xrm.Page.context.getClientUrl();
+                            validationPopup = window.open(clientUrl + "/" + versionNumber + "/WebResources/etel_/customervalidation/questionPopup.htm", 'ValidationPopup' + id, windowFeatures);
+                            return;
+                        }
+                        else {
+                            validationPopup.focus();
+                        }
+                    }
+                    else {
+                        window.parent.Xrm.Page.ui.clearFormNotification("BIHeaderNotification");
+                        var biheader = methods.buildHeader();
+                        SDK.REST.createRecord(biheader, "etel_bi_header", function (result) {
+                            methods.hasHeaderStarted(true);
+                            methods.fillBiHeader(result);
+                        }, methods.errorHandler);
+                    }
+
+
+                }
+            },
+            stopClicked: function () {
+                //sendSurvey();
+                methods.getBIHeader();
+                if (methods.hasHeaderStarted()) {
+                    window.parent.Xrm.Page.ui.clearFormNotification("BIHeaderNotification");
+                    var biheader = methods.onBiHeaderSaved();
+                    var subject = null;
+                    CrmRestKit.ByQuery("etel_bi_header", ["Subject"], "ActivityId eq (guid'" + biheader.ActivityId + "')", false)
+                    .fail(function (xhr, status, ethrow) {
+                        alert(translationScope_BIHEADER.data.tError + status + ': ' + xhr.statusText + '.');
+                    })
+                    .done(function (header) {
+                        subject = header.d.results[0].Subject;
+                        biheader.Subject = subject;
+                    });
+
+                    biheader.etel_headerstatus = false;
+                    biheader.etel_biheaderendtime = new Date();
+                    SDK.REST.updateRecord(biheader.ActivityId, biheader, "etel_bi_header", function () {
+                        delete window.currentHeader;
+                        methods.hasHeaderStarted(false);
+                        methods.onClear();
+                        if (typeof methods.onStop === "function") {
+                            methods.onStop();
+                        }
+                    }, methods.errorHandler);
+                }
+
+                methods.changeToMood(methods.moods.Happy);
+                
+
+            },
+            startcallClicked: function () {
+
+                var customer = methods.getCustomer();
+
+                if (customer.Id.toLowerCase() === window.currentHeader.etel_customeridtext.toLowerCase()) {
+                    var passArguments = new Object();
+                    passArguments.XRMPage = window.parent.Xrm.Page;
+                    passArguments.currentHeader = window.currentHeader;
+                    window.showModalDialog("etel_BIHeaderStartCall.htm", passArguments, 'dialogHeight=150px;dialogWidth=450px');
+                }
+                else {
+                    alert(translationScope_BIHEADER.data.tStartCallAlert1)
+                }
+            },
+            errorHandler: function (error) {
+                alert(error); //TODO: replace alert with error.
+                //throw error;
+            },
+            onRequestComplete: function () {
+
+            },
+
+            init: function () {
+                this.getMoods($("#moodSelect"));
+                this.getBIHeader();
+                this.buttons.$saveButton().click(this.saveClicked);
+                this.buttons.$clearButton().click(this.clearClicked);
+                this.buttons.$startButton().click(this.startClicked);
+                this.buttons.$stopButton().click(this.stopClicked);
+                this.buttons.$startcallButton().click(this.startcallClicked);
+                methods.onStop = function () {
+                    if (window.parent && window.parent.Xrm) {
+
+                        window.parent.Xrm.Page.ui.clearFormNotification("BIHeaderNotification");
+
+                        runWorkflowToCompleteBIHeaderActivity();
+                    }
+                };
+
+                initilizeOptionSetValues("callReasonSelect", "etel_chcallreason");
+
+                if (window.currentHeader !== undefined && window.currentHeader.etel_reason !== undefined) {
+                    methods.inputs.$callReason().val(window.currentHeader.etel_reason);
+                }
+                methods.CTIOptionSelection();
+            },
+
+            CTIOptionSelection: function () {
+                var param = parent.parent.Xrm.Page.context.getQueryStringParameters();
+                param.parameter_cti_option = 5;
+                if (param.parameter_cti_option == 'undefined' || param.parameter_cti_option == null)
+                    return;
+
+                if (param.parameter_cti_option == 5) {
+                    $("callReasonSelect").value = "Sales";                    
+                    methods.startClicked();
+                }
+            }
+
+        };
+        methods.init();
+
+    })(jQuery, window);
+
+    function translateDataText(dataText) {
+        var temp = translationScope_BIHEADER.data;
+        var translated = "";
+        $.each(temp, function (index, value) {
+            if (index === dataText) {
+                translated = temp[index];
+                return;
+            }
+        });
+        return translated;
+    }
+
+    function sendSurvey() {
+
+        var request = {
+            'SendSurveyRequest': {
+                '$type': 'AmxPeruPSBActivities.Model.Individual.AmxCoSendSurveyRequest, AmxPeruPSBActivities',
+                'contactid': window.parent.Xrm.Page.data.entity.getId(),
+            }
+        };
+
+        jQuery.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            datatype: "json",
+            data: JSON.stringify(request),
+            async: false,
+            cache: false,
+            url: 'http://172.18.88.70:6004/api/v1/workflow/AmxCoSendSurvey',
+            xhrFields: {
+                withCredentials: true
+            },
+            beforeSend: function (XMLHttpRequest) {
+                XMLHttpRequest.setRequestHeader("Accept", "application/json");
+            },
+            success: function (data, textStatus, XmlHttpRequest) {
+                console.log(data);
+                if (data) {
+
+                    if (data.Output.SendSurveyResponse.Error == false) {
+
+                        alert("Aqui inicia el proceso de envío de encuesta.");
+                    }
+                    else {
+
+                        if (data.Output.SendSurveyResponse.ErrorDetail) {
+                            console.log(data.Output.SendSurveyResponse.ErrorDetail[0]);
+                        }
+                    }
+                }
+            },
+            error: function (XmlHttpRequest, textStatus, errorThrown) {
+                console.log(data);
+                console.log("Se presento un error al enviar la encuesta")
+            }
+        });
+
+    }
+
+   
+</script>
+
+</body>
+</html>

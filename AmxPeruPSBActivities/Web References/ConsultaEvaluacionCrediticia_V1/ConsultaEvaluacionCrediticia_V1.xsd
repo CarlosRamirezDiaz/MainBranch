@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:entbss="http://claro.com.pe/entity/CommonBusiness/BusinessInteraction/V1/" xmlns:cuscus="http://claro.com.pe/entity/Customer/Customer/V1/" xmlns:entparset="http://claro.com.pe/entity/EngagedPartyDomain/PartyRevenueABE/PartySettlement_V1/" xmlns:prodext="http://claro.com.pe/entity/Product/ProductExtension/V1/" xmlns:entgeogr="http://claro.com.pe/entity/CommonBusiness/GeographicAddress/V1/" xmlns:entparty="http://claro.com.pe/entity/EngagedParty/PartyPayment/V1/" xmlns:workOrdExt="http://claro.com.pe/entity/CommonBusiness/WorkOrderExtension/V1/" xmlns:workOrd="http://claro.com.pe/entity/CommonBusiness/WorkOrder/V1/" xmlns:marksalext="http://claro.com.pe/entity/MarketSales/MarketingCampaignExtension/V1/" xmlns:marksal="http://claro.com.pe/entity/MarketSales/MarketingCampaign/V1/" xmlns:combas="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:entdoc="http://claro.com.pe/entity/CommonBusiness/Documents/V1/" xmlns:bilis="http://claro.com.pe/esb/data/consultaEvaluacionCrediticia/consultarEvaluacionCrediticia/v1/" xmlns:entparbill="http://claro.com.pe/entity/EngagedParty/PartyBill/V1/" elementFormDefault="qualified" targetNamespace="http://claro.com.pe/esb/data/consultaEvaluacionCrediticia/consultarEvaluacionCrediticia/v1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/Customer/Customer_V1.xsd" namespace="http://claro.com.pe/entity/Customer/Customer/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/EngagedParty/PartyPayment_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/PartyPayment/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/Documents_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/Documents/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/GeographicAddress_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/GeographicAddress/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/BusinessInteraction_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BusinessInteraction/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/EngagedParty/PartyBill_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/PartyBill/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/EngagedPartyDomain/PartyRevenueABE/PartySettlementABE/PartySettlementABE.xsd" namespace="http://claro.com.pe/entity/EngagedPartyDomain/PartyRevenueABE/PartySettlement_V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/MarketSales/MarketingCampaign_V1.xsd" namespace="http://claro.com.pe/entity/MarketSales/MarketingCampaign/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/MarketSales/MarketingCampaignExtension_V1.xsd" namespace="http://claro.com.pe/entity/MarketSales/MarketingCampaignExtension/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/Product/ProductExtension_V1.xsd" namespace="http://claro.com.pe/entity/Product/ProductExtension/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/WorkOrder_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/WorkOrder/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/WorkOrderExtension_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/WorkOrderExtension/V1/" />
+  <xsd:complexType name="consultaEvaluacionCrediticiaRequestType">
+    <xsd:sequence>
+      <xsd:element name="decisionID" type="entbss:BusinessInteraction" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="solicitudType" type="bilis:SolicitudType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SolicitudType">
+    <xsd:sequence>
+      <xsd:element name="utilityFields" type="combas:UtilityFields" />
+      <xsd:element name="workOrder" type="workOrd:WorkOrder" />
+      <xsd:element name="workOrderItemExtension" type="workOrdExt:WorkOrderItemExtension" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="clienteType" type="bilis:ClienteType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="equipoType" type="bilis:EquipoType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ofertaType" type="bilis:OfertaType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="puntoDeVentaType" type="bilis:PuntodeVentaType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ClienteType">
+    <xsd:sequence>
+      <xsd:element name="utilityFields" type="combas:UtilityFields" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="customerSpec" type="cuscus:CustomerSpec" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="customerCreditProfile" type="cuscus:CustomerCreditProfile" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="direccionType" type="bilis:DireccionType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="documentoType" type="bilis:DocumentoType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="representanteLegalType" type="bilis:RepresentanteLegalType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="EquipoType">
+    <xsd:sequence>
+      <xsd:element name="utilityFields" type="combas:UtilityFields" />
+      <xsd:element name="partyPayment" type="entparty:PartyPayment" />
+      <xsd:element name="paymentPlan" type="entparty:PaymentPlan" />
+      <xsd:element name="productExtension" type="prodext:ProductExtension" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OfertaType">
+    <xsd:sequence>
+      <xsd:element name="utilityFields" type="combas:UtilityFields" />
+      <xsd:element name="paymentPlan" type="entparty:PaymentPlan" />
+      <xsd:element name="marketingCampaignCharacteristic" type="marksal:MarketingCampaignCharacteristic" />
+      <xsd:element name="marketingCampaignExtension" type="marksalext:MarketingCampaignExtension" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="campanaType" type="bilis:CampanaType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="planActualType" type="bilis:PlanActualType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="planSolicitadoType" type="bilis:PlanSolicitadoType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DireccionType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="geographicAddress" type="entgeogr:GeographicAddress" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DocumentoType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="adjustmentDocuments" type="entdoc:adjustmentDocuments" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RepresentanteLegalType">
+    <xsd:sequence>
+      <xsd:element name="utilityFields" type="combas:UtilityFields" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="documentoType" type="bilis:DocumentoType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CampanaType">
+    <xsd:sequence>
+      <xsd:element name="businessInteractionType" type="entbss:BusinessInteractionType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PlanActualType">
+    <xsd:sequence>
+      <xsd:element name="partyPayment" type="entparty:PartyPayment" />
+      <xsd:element name="utilityFields" type="combas:UtilityFields" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PlanSolicitadoType">
+    <xsd:sequence>
+      <xsd:element name="partyPayment" type="entparty:PartyPayment" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="servicioType" type="bilis:ServicioType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServicioType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="businessInteractionType" type="entbss:BusinessInteractionType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PuntodeVentaType">
+    <xsd:sequence>
+      <xsd:element name="utilityFields" type="combas:UtilityFields" />
+      <xsd:element name="businessInteraction" type="entbss:BusinessInteraction" />
+      <xsd:element name="businessInteractionType" type="entbss:BusinessInteractionType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="direccionType" type="bilis:DireccionType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="consultaEvaluacionCrediticiaResponseType">
+    <xsd:sequence>
+      <xsd:element name="decisionID" type="entbss:BusinessInteraction" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ofrecimientoType" type="bilis:OfrecimientoType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OfrecimientoType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="autonomiaType" type="bilis:AutonomiaType" />
+      <xsd:element name="utilityFields" type="combas:UtilityFields" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="cuoutaType" type="bilis:CuoutaType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="garantiaType" type="bilis:GarantiaType" />
+      <xsd:element name="partyPayment" type="entparty:PartyPayment" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="opcionDeCuotasType" type="bilis:OpcionDeCuotasType" />
+      <xsd:element name="businessInteraction" type="entbss:BusinessInteraction" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="resultadosAdicionalesType" type="bilis:ResultadosAdicionalesType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AutonomiaType">
+    <xsd:sequence>
+      <xsd:element name="utilityFields" type="combas:UtilityFields" />
+      <xsd:element name="partyBill" type="entparbill:PartyBill" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CuoutaType">
+    <xsd:sequence>
+      <xsd:element name="partyBillingCycleSpecification" type="entparbill:PartyBillingCycleSpecification" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GarantiaType">
+    <xsd:sequence>
+      <xsd:element name="partyBillingCycleSpecification" type="entparbill:PartyBillingCycleSpecification" />
+      <xsd:element name="partySettlementSpecification" type="entparset:PartySettlementSpecification" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OpcionDeCuotasType">
+    <xsd:sequence>
+      <xsd:element name="customerCreditProfile" type="cuscus:CustomerCreditProfile" />
+      <xsd:element name="utilityFields" type="combas:UtilityFields" />
+      <xsd:element name="paymentPlan" type="entparty:PaymentPlan" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResultadosAdicionalesType">
+    <xsd:sequence>
+      <xsd:element name="customerCreditProfile" type="cuscus:CustomerCreditProfile" />
+      <xsd:element name="partyPayment" type="entparty:PartyPayment" />
+      <xsd:element name="utilityFields" type="combas:UtilityFields" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="consultaEvaluacionCrediticiaRequestMessageType" type="bilis:consultaEvaluacionCrediticiaRequestType" />
+  <xsd:element name="consultaEvaluacionCrediticiaResponseMessageType" type="bilis:consultaEvaluacionCrediticiaResponseType" />
+</xsd:schema>

@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Customer Address Details</title>
+    <script src="ClientGlobalContext.js.aspx" type="text/javascript"></script>
+    <script src="etel_/common/scripts/jquery.min.js" type="text/javascript"></script>
+    <script src="etel_/common/scripts/angular.min.js" type="text/javascript"></script>
+    <script src="etel_/common/scripts/ng_grid.js" type="text/javascript"></script>
+    <script src="etel/common/scripts/bzmdatepicker.js" type="text/javascript"></script>
+    <script src="etel_/common/scripts/angularuirouter.js" type="text/javascript"></script>
+    <script src="etel_/common/scripts/cookies.js" type="text/javascript"></script>
+    <script src="etel_/common/components/uigrid/scripts/angular_touch.js" type="text/javascript"></script>
+    <script src="etel_/common/components/uigrid/scripts/csv.js" type="text/javascript"></script>
+    <script src="etel_/common/components/uigrid/scripts/pdf_make.js" type="text/javascript"></script>
+    <script src="etel_/common/components/uigrid/scripts/vfs_fonts.js" type="text/javascript"></script>
+    <script src="etel_/common/components/uigrid/scripts/ui_grid.js" type="text/javascript"></script>
+    <script src="etel_/common/components/components.js" type="text/javascript"></script>
+    <script src="etel_json2" type="text/javascript"></script>
+    <script src="etel_jscripttranslationhandler.js" type="text/javascript"></script>
+    <script src="etel_htmltranslate.js" type="text/javascript"></script>
+    <script src="etel_/customersearch/scripts/script.js" type="text/javascript"></script>
+
+    <link href="etel_/billingoverview/styles/themes/gray/spinner.css" rel="stylesheet" type="text/css" />
+    <link href="etel_/psb/styles/global.css" rel="stylesheet" type="text/css">
+    <link href="etel_/common/components/uigrid/styles/ui_grid.css" rel="stylesheet" type="text/css">
+    <link href="etel_/common/components/uigrid/styles/uigridcustom.css" rel="stylesheet" type="text/css">
+    <script src="etel_/orderprocess/scripts/xrmservicetoolkit.js" type="text/javascript"></script>
+    <script src="amx_common.js" type="text/javascript"></script>
+    <script src="amx_customeraddress_angular.js" type="text/javascript"></script>
+    <link href="amx_/css/alert.css" rel="stylesheet" type="text/css">
+    <script src="amx_/js/alert.js" type="text/javascript"></script>
+    <style>
+        .grid .ui-grid-header-cell { 
+            height: 0px !important;
+        }
+        .ui-grid-cell-contents, .ngCellText {
+            margin-left: 0px !important;
+            padding-left: 0px !important;
+        }
+        .ui-grid-top-panel {
+            height: 5px !important;
+        }
+        .ui-grid-render-container-body .ui-grid-viewport {
+            height: 285px !important;
+        }
+        .btn {
+            height: 30px;
+            width: 42%;
+            vertical-align: middle;
+            background: #1E97AE;
+            background-image: -webkit-linear-gradient(top, #1E97AE, #1E97AE);
+            background-image: -moz-linear-gradient(top, #1E97AE, #1E97AE);
+            background-image: -ms-linear-gradient(top, #1E97AE, #1E97AE);
+            background-image: -o-linear-gradient(top, #1E97AE, #1E97AE);
+            background-image: linear-gradient(to bottom, #1E97AE, #1E97AE);
+            -webkit-border-radius: 7px;
+            -moz-border-radius: 7px;
+            border-radius: 7px;
+            font-family: Arial;
+            color: #ffffff;
+            font-size: 12px;
+            padding: 7px 15px 10px 15px;
+            text-decoration: none;
+        }
+
+            .btn:hover {
+                background: #1E97AE;
+                background-image: -webkit-linear-gradient(top, #1E97AE, #1E97AE);
+                background-image: -moz-linear-gradient(top, #1E97AE, #1E97AE);
+                background-image: -ms-linear-gradient(top, #1E97AE, #1E97AE);
+                background-image: -o-linear-gradient(top, #1E97AE, #1E97AE);
+                background-image: linear-gradient(to bottom, #1E97AE, #1E97AE);
+                text-decoration: none;
+            }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            setTranslation(TranslationCustomerAddress.GetData());
+        });        
+    </script>
+</head>
+<body ng-app="customeraddress">
+    <div id="amxCustomerAddressId" ng-controller="amxCustomerAddress">
+        <div style="width:100%;min-width:auto"  ng-class="{'formSection newlineSection doubleWidthSection':!isRTL,'rtlformSection newlineSection doubleWidthSection':isRTL}">
+            <div class="floatLeftButtonGroup" style="height:45px;">
+                <button class="btn" ng-click="scopeData.searchCustomerAddress()"><span data-translate="tShowAddress" class="tShowAddress"> Show Address </span></button>
+                <button class="btn" ng-click="scopeData.confirmCustomerAddress()"><span data-translate="tConfirmAddress" class="tConfirmAddress"> Confirm Address </span></button>
+            </div>
+            <div class="main-container" dir="{{direct}}" style="width:100%;margin-top:-20px; height:45px;">
+                <div style="clear:both"></div>
+                <br>
+                <div id="amxCustomerAddressGridId" style="width:100%" dir="{{direct}}" ui-grid="amxCustomerAddressGrid" ui-grid-selection ui-grid-auto-resize ui-grid-pagination="" class="grid">
+                    <div class="grid-msg-overlay" ng-hide="!loading">
+                        <div class="msg">
+                            <span data-translate="tLoading" class="tLoading">
+                                Loading records
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="grid-msg-overlay" ng-hide="loading || amxCustomerAddressGrid.data.length">
+                        <div class="msg" style="left: 12% !important;">
+                            <span data-translate="tNoCustomerRecord" class="tNoCustomerRecord">No customer address records </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="ui-grid-pager">
+                    <div class="ui-grid-pager-count-container">
+                        {{ amxCustomerAddressGridApi.pagination.getPage()}} Of {{ amxCustomerAddressGridApi.pagination.getTotalPages() }}
+                    </div>
+                    <div class="ui-grid-pager-container">
+                        <a ng-click="amxCustomerAddressGridApi.pagination.seek(1)">
+                            <img title="" align="absmiddle" ng-disabled="amxCustomerAddressGridApi.pagination.getPage()==1" ng-class="{'etelPagingFirst-active' : amxCustomerAddressGridApi.pagination.getPage() > 1, 'etelPagingFirst-passive' : amxCustomerAddressGridApi.pagination.getPage() <= 1}" id="page_FL0" alt="Load First Page" src="../images/imagestrips/transparent_spacer.gif" temptooltip="Load First Page" class="etelPagingFirst-passive" disabled="disabled">
+                        </a>
+                        <a ng-click="amxCustomerAddressGridApi.pagination.previousPage()">
+                            <img title="" align="absmiddle" ng-disabled="amxCustomerAddressGridApi.pagination.getPage()==1" ng-class="{'etelPagingPrevious-active' : amxCustomerAddressGridApi.pagination.getPage() > 1, 'etelPagingPrevious-passive' : amxCustomerAddressGridApi.pagination.getPage() <= 1}" id="page_FL0" alt="Load Previous Page" src="../images/imagestrips/transparent_spacer.gif" temptooltip="Load Previous Page" class="etelPagingPrevious-passive" disabled="disabled">
+                        </a>
+                        <span>Page {{ amxCustomerAddressGridApi.pagination.getPage() }} </span>
+                        <a ng-click="amxCustomerAddressGridApi.pagination.nextPage()">
+                            <img title="" align="absmiddle" ng-class="{'etelPagingNext-active' : amxCustomerAddressGridApi.pagination.getPage() < amxCustomerAddressGridApi.pagination.getTotalPages(), 'etelPagingNext-passive' : amxCustomerAddressGridApi.pagination.getPage() >= amxCustomerAddressGridApi.pagination.getTotalPages()}" id="page_FL0" alt="Load Next Page" src="../images/imagestrips/transparent_spacer.gif" temptooltip="Load Next Page" class="etelPagingNext-passive" disabled="disabled">
+                        </a>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

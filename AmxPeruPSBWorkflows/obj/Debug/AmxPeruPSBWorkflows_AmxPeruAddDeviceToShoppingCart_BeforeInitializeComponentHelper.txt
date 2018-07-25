@@ -1,0 +1,2 @@
+AmxPeruAddDeviceToShoppingCart.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

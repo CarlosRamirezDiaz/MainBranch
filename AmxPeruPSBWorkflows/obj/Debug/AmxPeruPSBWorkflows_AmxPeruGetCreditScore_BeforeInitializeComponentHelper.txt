@@ -1,0 +1,2 @@
+AmxPeruGetCreditScore.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

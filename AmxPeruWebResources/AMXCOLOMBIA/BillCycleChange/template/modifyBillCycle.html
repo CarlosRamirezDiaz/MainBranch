@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>Bill Cycle Change</title>
+</head>
+<body onload="onLoadModifyBillCycle()" style="font-family: Segoe UI; font-size: 13px; word-wrap: break-word;">
+    <script src="../../ClientGlobalContext.js.aspx" type="text/javascript"></script>
+    <script src="../../../../../WebResources/etel_/Content/scripts/jquery.min.js" type="text/javascript"></script>
+    <script src="../../../../WebResources/amx_/BillCycleChange/controller/ModifyBillCycle.js" type="text/javascript"></script>
+    <script src="../../../../../../WebResources/amx_common.js" type="text/javascript"></script>
+    <table style="font-size:12px;">
+        <tbody>
+            <tr>
+                <td>
+                    <label>Current Bill Cycle</label>
+                </td>
+                <td style="width:220px;">
+                    <input type="text" name="" id="currentbillcycle" style="width: 167px;border: 1px solid rgb(204, 204, 204);font-size: 11px;font-weight: 600;padding: 7px 0px 3px 5px;">
+                </td>
+                <td>
+                    <label>Select New Bill Cycle</label>
+                </td>
+                <td>
+                    <select id="selectbillcycle" onchange="onChangeSelectBillCycle(this);" style="width: 167px;border: 1px solid rgb(204, 204, 204);font-size: 11px;font-weight: 600;padding: 6px 0px 3px 5px;"></select><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Current Bill Cycle Details</label>
+                </td>
+                <td>
+                    <input type="text" name="" id="currentbillcycledetails" style="width: 167px;border: 1px solid rgb(204, 204, 204);font-size: 11px;font-weight: 600;padding: 7px 0px 3px 5px;">
+                </td>
+                <td>
+                    <label>Selected Bill Cycle Details</label>
+                </td>
+                <td>
+                    <input type="text" name="bcdetails" id="billcycledetails" style="width: 167px;border: 1px solid rgb(204, 204, 204);font-size: 11px;font-weight: 600;padding: 7px 0px 3px 5px;">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <input type="button" value="Modify Bill Cycle" name="submitbillcycle" id="modifybillcycle" onclick="modifyBillCycle()" style="margin-top: 10px;font-size: 11px;font-weight: 600;padding: 4px 2px 5px 2px;float:right">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

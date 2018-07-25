@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd_4="http://www.ericsson.com/entity/CommonBusiness/ProjectElement/V1/" xmlns:xsd_2="http://www.ericsson.com/entity/CommonBusiness/BusinessInteraction/V1/" xmlns:xsd_1="http://www.ericsson.com/entity/CommonBusiness/WorkOrder/V1/" xmlns:xsd_3="http://www.ericsson.com/entity/EngagedParty/Party/V1/" targetNamespace="http://www.ericsson.com/entity/CommonBusiness/WorkOrder/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FCommonBusiness%2FProjectElement_V1" namespace="http://www.ericsson.com/entity/CommonBusiness/ProjectElement/V1/" />
+  <xsd:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FEngagedParty%2FParty_V1" namespace="http://www.ericsson.com/entity/EngagedParty/Party/V1/" />
+  <xsd:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FCommonBusiness%2FBusinessInteraction_V1" namespace="http://www.ericsson.com/entity/CommonBusiness/BusinessInteraction/V1/" />
+  <xsd:complexType name="WorkOrder">
+    <xsd:annotation>
+      <xsd:documentation>A formal signed document to authorize the usage of Products, Services, and Resources.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_2:Request">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="_partyRole" type="xsd_3:PartyRole" />
+          <xsd:element name="requestedDeliveryDate" type="xsd:date">
+            <xsd:annotation>
+              <xsd:documentation>The date upon which the WorkOrder is desired to be completed.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="possibleDeliveryDate" type="xsd:date">
+            <xsd:annotation>
+              <xsd:documentation>The date upon which the WorkOrder may be completed.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="_workOrderItem" type="xsd_1:WorkOrderItem" />
+          <xsd:element minOccurs="0" name="_projectElement" type="xsd_4:ProjectElement" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="WorkOrderItem">
+    <xsd:annotation>
+      <xsd:documentation>The purpose for the WorkOrder expressed in terms of a ProductSpecification, ProductOffering, ServiceSpecification or ResourceSpecification or may refer to a Product, Service, or Resource.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_2:BusinessInteractionItem">
+        <xsd:sequence>
+          <xsd:element name="_workOrder" type="xsd_1:WorkOrder" />
+          <xsd:element minOccurs="0" name="_projectElement" type="xsd_4:ProjectElement" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="workOrderFulfillment" type="xsd_1:WorkOrderFulfillment" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="workOrderFulfillment2" type="xsd_1:WorkOrderFulfillment" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="GeneralWOFufillment">
+    <xsd:sequence />
+  </xsd:complexType>
+  <xsd:complexType name="SpecificWOFufillment">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:WorkOrderFulfillment" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="SpecificWOConsumptionFufillment">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:SpecificWOFufillment">
+        <xsd:sequence />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="SpecificWOUsageFufillment">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:SpecificWOFufillment">
+        <xsd:sequence />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="WorkOrderFulfillment">
+    <xsd:sequence>
+      <xsd:element name="workOrderItem" type="xsd_1:WorkOrderItem" />
+      <xsd:element name="workOrderItem2" type="xsd_1:WorkOrderItem" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

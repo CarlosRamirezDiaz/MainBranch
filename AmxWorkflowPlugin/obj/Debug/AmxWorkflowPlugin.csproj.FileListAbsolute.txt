@@ -1,0 +1,12 @@
+D:\CarlosRamirez\Desktop\MainBranch\AmxWorkflowPlugin\bin\Debug\AmxWorkflowPlugin.dll.config
+D:\CarlosRamirez\Desktop\MainBranch\AmxWorkflowPlugin\bin\Debug\AmxWorkflowPlugin.dll
+D:\CarlosRamirez\Desktop\MainBranch\AmxWorkflowPlugin\bin\Debug\AmxWorkflowPlugin.pdb
+D:\CarlosRamirez\Desktop\MainBranch\AmxWorkflowPlugin\bin\Debug\AMXCommon.dll
+D:\CarlosRamirez\Desktop\MainBranch\AmxWorkflowPlugin\bin\Debug\Microsoft.Xrm.Sdk.dll
+D:\CarlosRamirez\Desktop\MainBranch\AmxWorkflowPlugin\bin\Debug\microsoft.xrm.sdk.workflow.dll
+D:\CarlosRamirez\Desktop\MainBranch\AmxWorkflowPlugin\bin\Debug\AMXCommon.pdb
+D:\CarlosRamirez\Desktop\MainBranch\AmxWorkflowPlugin\obj\Debug\AmxWorkflowPlugin.csprojResolveAssemblyReference.cache
+D:\CarlosRamirez\Desktop\MainBranch\AmxWorkflowPlugin\obj\Debug\AmxWorkflowPlugin.csproj.CoreCompileInputs.cache
+D:\CarlosRamirez\Desktop\MainBranch\AmxWorkflowPlugin\obj\Debug\AmxWorkflowPlugin.dll
+D:\CarlosRamirez\Desktop\MainBranch\AmxWorkflowPlugin\obj\Debug\AmxWorkflowPlugin.pdb
+D:\CarlosRamirez\Desktop\MainBranch\AmxWorkflowPlugin\obj\Debug\AmxWorkflowPlugin.csproj.CopyComplete

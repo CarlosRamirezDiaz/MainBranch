@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:entdocext="http://claro.com.pe/entity/CommonBusiness/DocumentsExtension/V1/" xmlns:doc="http://claro.com.pe/entity/CommonBusiness/Documents/V1/" xmlns:entbastyp="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:consdoc="http://claro.com.pe/esb/message/consultaDocumentoOnBase/consultarDocumentoOnBase/v1/" targetNamespace="http://claro.com.pe/esb/message/consultaDocumentoOnBase/consultarDocumentoOnBase/v1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/Documents_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/Documents/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/DocumentsExtension_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/DocumentsExtension/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:complexType name="consultarDocumentoOnBaseRequestType">
+    <xsd:sequence>
+      <xsd:element name="adjustmentDocuments" type="doc:adjustmentDocuments" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="consultarDocumentoOnBaseResponseType">
+    <xsd:sequence>
+      <xsd:element name="documentsExtension" type="entdocext:DocumentsExtension" />
+      <xsd:element name="responseStatus" type="entbastyp:ResponseStatus" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="consultarDocumentoOnBaseRequestMessageType" type="consdoc:consultarDocumentoOnBaseRequestType" />
+  <xsd:element name="consultarDocumentoOnBaseResponseMessageType" type="consdoc:consultarDocumentoOnBaseResponseType" />
+</xsd:schema>

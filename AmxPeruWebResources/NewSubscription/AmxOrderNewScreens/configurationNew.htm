@@ -1,0 +1,395 @@
+﻿<div style="border-bottom-color: #cd9835; border-bottom-style: solid; border-bottom-width: 2px">
+    <table>
+        <tr>
+            <td style="padding-left: 20px; text-align: left; border-right-color: none; border-right-width: 0px; border-right-style: none;">
+                <div class="processStepCompleteIconDiv">
+                    <img title="Completed" class="processStepCompleteIcon completedStep" alt="Completed" src="images/imagestrips/transparent_spacer.gif">
+                </div>
+                <span>Address Selected</span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">
+                <span>
+                    <b>Yes</b>
+                </span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: none; border-right-width: 0px; border-right-style: none;">
+                <div class="processStepCompleteIconDiv">
+                    <img title="Completed" class="processStepCompleteIcon completedStep" alt="Completed" src="images/imagestrips/transparent_spacer.gif">
+                </div>
+                <span>Product Selected</span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">
+                <span>
+
+                </span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: none; border-right-width: 0px; border-right-style: none;">
+                <div class="processStepCompleteIconDiv">
+                    <img title="Completed" class="processStepCompleteIcon completedStep" alt="Completed" src="images/imagestrips/transparent_spacer.gif">
+                </div>
+                <span>CreditCheck Performed</span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">
+                <span>
+
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left: 20px; text-align: left; border-right-color: none; border-right-width: 0px; border-right-style: none;">
+                <div class="processStepCompleteIconDiv">
+                    <img title="Completed" class="processStepCompleteIcon completedStep" alt="Completed" src="images/imagestrips/transparent_spacer.gif">
+                </div>
+                <span>Portability</span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">
+                <span>
+
+                </span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: none; border-right-width: 0px; border-right-style: none;">
+                <div class="processStepCompleteIconDiv">
+                    <img title="Completed" class="processStepCompleteIcon completedStep" alt="Completed" src="images/imagestrips/transparent_spacer.gif">
+                </div>
+                <span>Product Configured</span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">
+                <span>
+
+                </span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: none; border-right-width: 0px; border-right-style: none;">
+                <div class="processStepCompleteIconDiv">
+                    <img title="Completed" class="processStepCompleteIcon completedStep" alt="Completed" src="images/imagestrips/transparent_spacer.gif">
+                </div>
+                <span>Documents Uploaded</span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">
+                <span>
+
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left: 20px; text-align: left; border-right-color: none; border-right-width: 0px; border-right-style: none;">
+                <div class="processStepCompleteIconDiv">
+                    <img title="Completed" class="processStepCompleteIcon completedStep" alt="Completed" src="images/imagestrips/transparent_spacer.gif">
+                </div>
+                <span>Portability Verified</span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">
+                <span>
+
+                </span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: none; border-right-width: 0px; border-right-style: none;">
+                <div class="processStepCompleteIconDiv">
+                    <img title="Completed" class="processStepCompleteIcon completedStep" alt="Completed" src="images/imagestrips/transparent_spacer.gif">
+                </div>
+                <span>Resources Reserved</span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">
+                <span>
+
+                </span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: none; border-right-width: 0px; border-right-style: none;">
+                <div class="processStepCompleteIconDiv">
+                    <img title="Completed" class="processStepCompleteIcon completedStep" alt="Completed" src="images/imagestrips/transparent_spacer.gif">
+                </div>
+                <span></span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">
+                <span>
+
+                </span>
+            </td>
+        </tr>
+    </table>
+    <br />
+</div>
+﻿<div id="container" ng-controller="configurationController" rtl-dir="{{direct}}">
+    <div class="formContent" disable-contents="!rootScopeData.currentStage.isActive">
+        <table border="0" style="width: 100%">
+            <tbody>
+                <tr>
+                    <td valign="top" style="width: 50%;">
+                        <div id="configureProdCharSection" ng-class="{'formSection newlineSection':!isRTL,'rtlformSection newlineSection':isRTL}" style="width: 100%">
+                            <div class="dataGridTitleText dataGridTitleTextUnderlined"><span>Configure Resources</span></div>
+                            <table class="formSectionTable" style="width: 100%;">
+                                <tbody>
+                                    <tr ng-repeat="oItem in scopeData.AvailableResources.OrderItems">
+                                        <td>
+                                            <table class="formSectionTable" style="width: 100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <div class="dataGridTitleText dataGridTitleTextUnderlined" style="width: 200px;"><span>{{oItem.OfferingName}}</span></div>
+                                                            <div class="dataGridWrapper" style="border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;"></div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="formField" ng-repeat="resource in oItem.ResourcePossibleValues">
+                                                        <td>
+                                                            <div title="{{resource.ResourceType}}" class="formFieldLabel">
+                                                                <span>{{resource.ResourceType}}</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="formFieldValue">
+                                                                <select ng-options="item.serialNumber for item in resource.Values track by item.serialNumber" ng-model="selectedItem" ng-change="scopeData.SetSelected(selectedItem,resource.ResourceType)">
+                                                                    <option value="">--Select--</option>
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="formFieldValue">
+                                                                <button style="margin: 0px 0px 0px 0px;" ng-click="scopeData.reserveResource()">Reserve</button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                    <td valign="top" style="width: 50%;" rowspan="3">
+                        <div class="dataGridTitleText dataGridTitleTextUnderlined"><span>Order Basket</span></div>
+                        <div class="dataGridWrapper" style="min-width: 0px;">
+                            <table style='width: 100%; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; font-size: 11px; border-collapse: collapse;'>
+                                <colgroup>
+                                    <col style="width: 100px;">
+                                    <col style="width: 80px;">
+                                    <col style="width: 80px;">
+                                    <col style="width: 80px;">
+                                    <col style="width: 80px;">
+                                    <col style="width: 80px;">
+                                    <col style="width: 80px;">
+                                    <col style="width: 80px;">
+                                    <col style="width: 80px;">
+                                </colgroup>
+                                <thead>
+                                    <tr style="border-top-color: rgb(204, 204, 204); border-bottom-color: rgb(204, 204, 204); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid;">
+                                        <th style="text-align: center; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">Offerings & Characteristics</th>
+                                        <th style="text-align: center; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">Char Values</th>
+                                        <th style="text-align: center; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">MSISDN</th>
+                                        <th style="text-align: center; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">SIM</th>
+                                        <th style="text-align: center; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">One Time Price</th>
+                                        <th style="text-align: center; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">Deposit Price</th>
+                                        <th style="text-align: center; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">Recurring Price</th>
+                                        <th style="text-align: center; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">Period</th>
+                                        <th style="text-align: center; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: none;">Checkout Price</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <table style="font-size: 11px;">
+                                <colgroup>
+                                    <col style="width: 100px;">
+                                    <col style="width: 80px;">
+                                    <col style="width: 80px;">
+                                    <col style="width: 80px;">
+                                    <col style="width: 80px;">
+                                    <col style="width: 80px;">
+                                    <col style="width: 80px;">
+                                    <col style="width: 80px;">
+                                    <col style="width: 80px;">
+                                </colgroup>
+
+                                <tbody>
+                                    <tr class="dataGridBodyRow" ng-class="{ selectedRow : OrderItem.IsSelected }" ng-repeat-start="OrderItem in scopeData.OrderItems track by $index">
+                                        <td align="left">
+                                            <div class="dataGridCellContent">
+                                                <span>{{OrderItem.OfferingName}}</span>
+                                            </div>
+                                        </td>
+                                        <td align="center">
+                                            <div class="dataGridCellContent">
+                                                <span>{{OrderItem.charValues}}</span>
+                                            </div>
+                                        </td>
+                                        <td align="center">
+                                            <div class="dataGridCellContent">
+                                                <span>{{OrderItem.ResourceMSISDN}}</span>
+                                            </div>
+                                        </td>
+                                        <td align="center">
+                                            <div class="dataGridCellContent">
+                                                <span>{{OrderItem.ResourceSIM}}</span>
+                                            </div>
+                                        </td>
+                                        <td align="center">
+                                            <div class="dataGridCellContent">
+                                                <span>{{OrderItem.OneTimeCharge}}</span>
+                                            </div>
+                                        </td>
+                                        <td align="center">
+                                            <div class="dataGridCellContent">
+                                                <span>{{OrderItem.Deposit}}</span>
+                                            </div>
+                                        </td>
+                                        <td align="center">
+                                            <div class="dataGridCellContent">
+                                                <span>{{OrderItem.RecurringCharge}}</span>
+                                            </div>
+                                        </td>
+                                        <td align="center">
+                                            <div class="dataGridCellContent">
+                                                <span>{{OrderItem.Period}}</span>
+                                            </div>
+                                        </td>
+                                        <td align="center">
+                                            <div class="dataGridCellContent">
+                                                <span>{{OrderItem.CheckOutPrice}}</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="dataGridBodyRow" style="text-align: center; font-size: 11px;" ng-repeat="char in OrderItem.CharacteristicList track by $index">
+                                        <td align="left" style="padding-left: 15px;">
+                                            <div class="dataGridCellContent">
+                                                <span>{{char.CharacteristicName}}</span>
+                                            </div>
+                                        </td>
+                                        <td align="left">
+                                            <div class="dataGridCellContent">
+                                                <span>{{char.ValueList[0].ValueText}}</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr ng-repeat-end=""></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" style="width: 50%;">
+                        <div id="configureProdCharSection" ng-class="{'formSection newlineSection':!isRTL,'rtlformSection newlineSection':isRTL}" style="width: 100%">
+                            <div class="dataGridTitleText dataGridTitleTextUnderlined"><span>Configure Characteristics</span></div>
+                            <div class="floatLeftButtonGroup">
+                                <button class="formButton" ng-click="refreshOrderBasket()">Refresh Basket </button>
+                            </div>
+                            <div class="dataGridWrapper">
+                                <div style="height: 200px; overflow: auto;">
+                                    <table style='width: 100%; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; font-size: 11px; border-collapse: collapse;'>
+                                        <colgroup>
+                                            <col style="width: 150px;">
+                                            <col style="width: 100px;">
+                                        </colgroup>
+                                        <thead>
+                                            <tr style="border-top-color: rgb(204, 204, 204); border-bottom-color: rgb(204, 204, 204); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid;">
+                                                <th style="text-align: center; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">Items</th>
+                                                <th style="text-align: center; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: none;">Char Values</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                    <table style="font-size: 11px;">
+                                        <colgroup>
+                                            <col style="width: 150px;">
+                                            <col style="width: 100px;">
+                                        </colgroup>
+                                        <tbody>
+                                            <tr class="dataGridBodyRow" ng-class="{ selectedRow : OrderItem.IsSelected }" ng-repeat-start="OrderItem in scopeData.ProdCharItems track by $index">
+                                                <td align="left">
+                                                    <div class="dataGridCellContent">
+                                                        <span>{{OrderItem.name}}</span>
+                                                    </div>
+                                                </td>
+                                                <td align="center">
+                                                    <div class="dataGridCellContent">
+                                                        <span>{{OrderItem.charValues}}</span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="dataGridBodyRow" style="text-align: center; font-size: 11px;" ng-repeat="char in OrderItem.listProdChar track by $index">
+                                                <td align="left" style="padding-left: 15px;">
+                                                    <div class="dataGridCellContent">
+                                                        <span>{{char.name}}</span>
+                                                    </div>
+                                                </td>
+                                                <td align="left">
+                                                    <div class="dataGridCellContent">
+                                                        <input ng-model="char.inputValue" type="text" ng-show="{{char.dataType}} == '831260000'" ng-disabled="{{char.editable}} == false" />
+                                                        <select ng-model="char.inputValue" ng-show="{{char.dataType}} == '831260003'" ng-options="it.Value for it in char.ProdCharValues">
+                                                            <option value="">--Select--</option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr ng-repeat-end=""></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td valign="top" style="width: 50%;"></td>
+                </tr>
+                <tr>
+                    <td valign="top" style="width: 50%;">
+                        <div id="configureProdCharSection" ng-class="{'formSection newlineSection':!isRTL,'rtlformSection newlineSection':isRTL}" style="width: 100%">
+                            <div class="dataGridTitleText dataGridTitleTextUnderlined"><span>Configure Devices</span></div>
+                            <div class="floatLeftButtonGroup">
+                                <button class="formButton" ng-click="scopeData.AddDeviceToShoppingCart()">Add To Basket</button>
+                            </div>
+                            <table class="formSectionTable">
+                                <colgroup>
+                                    <col style="width: 115px;">
+                                    <col>
+                                </colgroup>
+                                <tbody>
+                                    <tr class="formField formFieldTextArea">
+                                        <td>
+                                            <div title="Address Name" class="formFieldLabel">
+                                                <span>Device Name</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <select ng-options="item as item.Value for item in scopeData.Devices track by item.Id" ng-model="deviceSelected" ng-change="FilterGrid()"></select>
+
+                                        </td>
+                                        <td>
+                                            <div title="Address Name" class="formFieldLabel">
+                                                <span>Color</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <select ng-options="item as item.Value for item in scopeData.Colors track by item.Id" ng-model="colorSelected" ng-change="FilterGrid()"></select>
+
+                                        </td>
+                                        <td>
+                                            <div title="Address Name" class="formFieldLabel">
+                                                <span>Storage</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <select ng-options="item as item.Value for item in scopeData.Storages track by item.Id" ng-model="storageSelected" ng-change="FilterGrid()"></select>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div id="availableoffersgrid" dir="{{direct}}" ui-grid="gridOptions" ui-grid-pagination ui-grid-expandable ui-grid-edit ui-grid-resize-columns ui-grid-pinning ui-grid-selection ui-grid-move-columns ui-grid-auto-resize class="grid">
+                                <div class="grid-msg-overlay" ng-hide="!loading">
+                                    <div class="msg">
+                                        <span>
+                                            LoadingData
+                                            <i class="fa fa-spinner fa-spin"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="grid-msg-overlay" ng-hide="loading || gridOptions.data.length">
+                                    <div class="msg">
+                                        <span>NoData</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td valign="top" style="width: 50%;"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

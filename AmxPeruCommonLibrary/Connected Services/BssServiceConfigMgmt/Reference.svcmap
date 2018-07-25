@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="cb461250-3694-4022-afce-b49cbd7d4d74" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="C:\Users\emussah\Source\Mustafa\Sprint_1\09_14092017\f1\f2\WSDL\BSS_SERVICE_CONFIG_MGMT_LG_v1.wsdl" Protocol="file" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Service_V1.xsd" MetadataType="Schema" ID="aac8294e-c04d-4812-a729-f2ebb1f3edea" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/Service/Service_V1.xsd" />
+    <MetadataFile FileName="ServiceSpecification_V1.xsd" MetadataType="Schema" ID="923fe027-8705-43a8-bb3c-91da98397f99" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/Service/ServiceSpecification_V1.xsd" />
+    <MetadataFile FileName="BssServiceConfigMgmtLg_v1.xsd" MetadataType="Schema" ID="28ecbbcd-8d78-4a1f-bc08-1d0a30b83faa" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/09_14092017/f1/f2/XSD/BssServiceConfigMgmtLg_v1.xsd" />
+    <MetadataFile FileName="RootBusinessEntities_V1.xsd" MetadataType="Schema" ID="90077a49-7e91-42e0-9df5-c71e7a274f8f" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/RootBusinessEntities_V1.xsd" />
+    <MetadataFile FileName="Product_V1.xsd" MetadataType="Schema" ID="92bb8847-ec7b-40fe-bf36-4f59bcd5c80a" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/Product/Product_V1.xsd" />
+    <MetadataFile FileName="AppliedCustomerBillingRate_V1.xsd" MetadataType="Schema" ID="04d8f048-ce11-4e19-8032-626f178d1b2d" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/Customer/AppliedCustomerBillingRate_V1.xsd" />
+    <MetadataFile FileName="Resource_V1.xsd" MetadataType="Schema" ID="c44d5766-a73d-49c1-bf56-680c693425b8" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/Resource/Resource_V1.xsd" />
+    <MetadataFile FileName="Capacity_V1.xsd" MetadataType="Schema" ID="19126102-9ce9-401b-85e6-282495ad13fe" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/Capacity_V1.xsd" />
+    <MetadataFile FileName="ServiceOrder_V1.xsd" MetadataType="Schema" ID="9e5f60aa-35be-42fe-af52-e337fa317988" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/Service/ServiceOrder_V1.xsd" />
+    <MetadataFile FileName="ProductOffering_V1.xsd" MetadataType="Schema" ID="39a7def5-a4be-4305-bce2-108659796d61" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/Product/ProductOffering_V1.xsd" />
+    <MetadataFile FileName="AdditionalPartyEntities_V1.xsd" MetadataType="Schema" ID="03166122-9e15-44cd-b867-a688b19ab7fd" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/EngagedParty/AdditionalPartyEntities_V1.xsd" />
+    <MetadataFile FileName="ResourceCatalog_V1.xsd" MetadataType="Schema" ID="970e8918-f3db-4082-b54c-791b28f871af" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/Resource/ResourceCatalog_V1.xsd" />
+    <MetadataFile FileName="CustomerAccountBalance_V1.xsd" MetadataType="Schema" ID="a5c08f35-d28e-49f2-862a-7d17bbe23699" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/Customer/CustomerAccountBalance_V1.xsd" />
+    <MetadataFile FileName="PhysicalResource_V1.xsd" MetadataType="Schema" ID="aca9a7d1-bf7e-40ae-9988-2ca7f61cffd6" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/Resource/PhysicalResource_V1.xsd" />
+    <MetadataFile FileName="CustomerAccountBalanceType_V1.xsd" MetadataType="Schema" ID="27104ba6-e82b-4978-aa18-c3f4376b0407" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/Customer/CustomerAccountBalanceType_V1.xsd" />
+    <MetadataFile FileName="Customer_V1.xsd" MetadataType="Schema" ID="c8ccdc10-9147-4e86-9cf3-2032122a9577" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/Customer/Customer_V1.xsd" />
+    <MetadataFile FileName="Documents_V1.xsd" MetadataType="Schema" ID="5d3ab59b-0457-4b9e-b46b-684cce7c146f" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/Documents_V1.xsd" />
+    <MetadataFile FileName="ServiceLevelSpec_V1.xsd" MetadataType="Schema" ID="4063b688-9ef8-4057-b383-ed07672a40d8" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/Service/ServiceLevelSpec_V1.xsd" />
+    <MetadataFile FileName="ProductSpecification_V1.xsd" MetadataType="Schema" ID="600593d3-b184-4d2d-ba9b-679a3d9039c3" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/Product/ProductSpecification_V1.xsd" />
+    <MetadataFile FileName="TIPServiceManagement_V1.xsd" MetadataType="Schema" ID="34f40401-26ed-4827-ac6e-9bace42b8e13" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/Service/TIPServiceManagement_V1.xsd" />
+    <MetadataFile FileName="ResourceSpecification_V1.xsd" MetadataType="Schema" ID="f0910f78-fd40-4d3a-8e94-7a8f7a7fa94b" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/Resource/ResourceSpecification_V1.xsd" />
+    <MetadataFile FileName="Party_V1.xsd" MetadataType="Schema" ID="1dab6841-0e37-4588-a99a-bc84c3ab314b" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/EngagedParty/Party_V1.xsd" />
+    <MetadataFile FileName="PartySettlement_V1.xsd" MetadataType="Schema" ID="9806ea29-3639-4d1c-9d6c-3d63c7e2e519" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/EngagedParty/PartySettlement_V1.xsd" />
+    <MetadataFile FileName="Dunning_V1.xsd" MetadataType="Schema" ID="b7f1d618-593f-4fe1-ab8e-c39277a57e73" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/Customer/Dunning_V1.xsd" />
+    <MetadataFile FileName="HeaderGeneric_v1.xsd" MetadataType="Schema" ID="acee4a22-dcd3-4d6f-a549-28c5b2e30417" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/servicios/esquemas/HeaderGeneric_v1.0.xsd" />
+    <MetadataFile FileName="ServiceCatalog_V1.xsd" MetadataType="Schema" ID="139f547d-0b29-478a-959c-eb5d0fcdd0ca" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/Service/ServiceCatalog_V1.xsd" />
+    <MetadataFile FileName="PartyRoleProductOffering_V1.xsd" MetadataType="Schema" ID="4bf5c70b-74bb-4ba1-838e-167c7ebbe933" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/EngagedParty/PartyRoleProductOffering_V1.xsd" />
+    <MetadataFile FileName="CustomerBill_V1.xsd" MetadataType="Schema" ID="697b649e-918b-46b0-8c0c-4a2e4a032057" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/Customer/CustomerBill_V1.xsd" />
+    <MetadataFile FileName="BaseTypes_V1.xsd" MetadataType="Schema" ID="12fe78ed-8c41-49ea-beb8-dfd3cb0ce70d" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/BaseTypes_V1.xsd" />
+    <MetadataFile FileName="CustomerOrder_V1.xsd" MetadataType="Schema" ID="b8ff94b0-9e6a-4964-9fb8-d5bce816ac56" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/Customer/CustomerOrder_V1.xsd" />
+    <MetadataFile FileName="ProductPrice_V1.xsd" MetadataType="Schema" ID="1b23294a-a178-453d-b9be-52a7416bf68b" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/Product/ProductPrice_V1.xsd" />
+    <MetadataFile FileName="Calendar_V1.xsd" MetadataType="Schema" ID="61093593-7f10-48a1-b2e5-c66d8c271dd3" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/Calendar_V1.xsd" />
+    <MetadataFile FileName="ClaroGenericHeaders_V1.xsd" MetadataType="Schema" ID="a823db5e-0e5b-4dc2-86d9-7b21cca2d7b8" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/ClaroGenericHeaders_V1.xsd" />
+    <MetadataFile FileName="ResponseStatus_V1.xsd" MetadataType="Schema" ID="4c506cea-d632-4923-8561-70624ebc7e6c" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/ResponseStatus_V1.xsd" />
+    <MetadataFile FileName="BSS_SERVICE_CONFIG_MGMT_LG_v1.wsdl" MetadataType="Wsdl" ID="3f69674e-23b7-4f6c-9d6a-4d1b2d084b9d" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/09_14092017/f1/f2/WSDL/BSS_SERVICE_CONFIG_MGMT_LG_v1.wsdl" />
+    <MetadataFile FileName="GeographicAddress_V1.xsd" MetadataType="Schema" ID="ad489471-6a6d-42cf-8694-9e8b7fe796e4" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/GeographicAddress_V1.xsd" />
+    <MetadataFile FileName="BusinessInteraction_V1.xsd" MetadataType="Schema" ID="fe9dd14c-7388-4c6b-9ac9-52a2a7838af3" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/BusinessInteraction_V1.xsd" />
+    <MetadataFile FileName="Agreement_V1.xsd" MetadataType="Schema" ID="960d8b84-550d-43e2-845c-6b29b3da265d" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/UT_MODELO_ONTOLOGICO/Entidades/EngagedParty/Agreement_V1.xsd" />
+    <MetadataFile FileName="CommonsException.xsd" MetadataType="Schema" ID="b45857cc-1143-44ee-b0ac-a07d931b8d92" SourceId="1" SourceUrl="file:///C:/Users/emussah/Source/Mustafa/Sprint_1/framework/servicios/esquemas/CommonsException.xsd" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

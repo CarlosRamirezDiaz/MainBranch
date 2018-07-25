@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:sch1="http://lhsgroup.com/lhsws/svlany" xmlns:tns="http://ericsson.com/services/ws_CIL_7" xmlns:sch0="http://lhsgroup.com/lhsws/money" xmlns:sch3="http://ericsson.com/services/ws_CIL_7/storagemediumread" xmlns:sch2="http://ericsson.com/services/ws_CIL_7/sessionchange" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope" targetNamespace="http://ericsson.com/services/ws_CIL_7" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns:lhsws="http://lhsgroup.com/lhsws/money" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://lhsgroup.com/lhsws/money" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="money">
+        <xs:sequence>
+          <xs:element name="amount" type="xs:double" />
+          <xs:element name="currency" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:lhsws="http://lhsgroup.com/lhsws/svlany" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://lhsgroup.com/lhsws/svlany" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="svlany">
+        <xs:sequence>
+          <xs:element name="content" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:ericsson="http://ericsson.com/schemas" xmlns:wsi="http://ericsson.com/services/ws_CIL_7/sessionchange" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ericsson.com/services/ws_CIL_7/sessionchange" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="sessionChangeResponse" />
+      <xs:complexType name="valuesListpartRequest">
+        <xs:all>
+          <xs:element name="key" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt; Name of the value that shall be changed. See release dependent documentation for supported keys&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="value" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;New value for a named value.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:all>
+      </xs:complexType>
+      <xs:complexType name="valuesRequest">
+        <xs:annotation>
+          <xs:documentation>&lt;p&gt;A list of all named values that shall be changed with this command.&lt;/p&gt;</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="item" type="wsi:valuesListpartRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="sessionChangeRequest">
+        <xs:annotation>
+          <xs:documentation>&lt;p&gt;
+					
+					&lt;/p&gt;</xs:documentation>
+        </xs:annotation>
+        <xs:all>
+          <xs:element minOccurs="0" name="values" type="wsi:valuesRequest" />
+        </xs:all>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:ericsson="http://ericsson.com/schemas" xmlns:wsi="http://ericsson.com/services/ws_CIL_7/storagemediumread" xmlns:sessionchange="http://ericsson.com/services/ws_CIL_7/sessionchange" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ericsson.com/services/ws_CIL_7/storagemediumread" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://ericsson.com/services/ws_CIL_7/sessionchange" />
+      <xs:element name="storageMediumReadRequest" type="wsi:storageMediumReadRequest" />
+      <xs:element name="storageMediumReadResponse" type="wsi:storageMediumReadResponse" />
+      <xs:complexType name="storageMediumReadOutputDTO">
+        <xs:all>
+          <xs:element minOccurs="0" name="serialNumber" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;SERIAL NUM, SIS, CODE OF THE DEALER, CODE OF HLR, NUMBERING PLAN OF PORT, TEMPLATE
+										
+										&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="myTemplate" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt; STORAGE MEDIUM CLASS&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="dealer" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt; Dealer Id&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="hlCode" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt; Physical HLR code&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="npCode" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt; Port Numbering Plan Code&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="state" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt; State of the StorageMedium e.g. f(free),r(reserved)..&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="id" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Primary key for this Storage medium Number.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="number" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Id of the directory number linked to this storage medium.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="portNumber" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Port number linked to this storage medium.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="pin" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;The first PIN number of the StorageMedium. To be used only if license of feature LHS_BSCS_PC15336 is switched on.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="pin2" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;The second PIN number of the StorageMedium. To be used only if license of feature LHS_BSCS_PC15336 is switched on.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="puk" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;The first PUK number of the StorageMedium. To be used only if license of feature LHS_BSCS_PC15336 is switched on.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="puk2" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;The second PUK number of the StorageMedium. To be used only if license of feature LHS_BSCS_PC15336 is switched on.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="authenticationKey" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;The authentication Key of linked Port. To be used only if license of feature LHS_BSCS_PC15336 is switched on.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="portId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;The primary Key of linked Port. To be used only if license of feature LHS_BSCS_PC15336 is switched on.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="portStatus" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;The status of linked Port. To be used only if license of feature LHS_BSCS_PC15336 is switched on.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:all>
+      </xs:complexType>
+      <xs:complexType name="storageMediumReadResponse">
+        <xs:all>
+          <xs:element minOccurs="0" name="storageMediumReadOutputDTO" type="wsi:storageMediumReadOutputDTO" />
+        </xs:all>
+      </xs:complexType>
+      <xs:complexType name="storageMediumReadInputDTO">
+        <xs:all>
+          <xs:element name="id" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Primary key for this Storage medium Number.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:all>
+      </xs:complexType>
+      <xs:complexType name="inputAttributes">
+        <xs:all>
+          <xs:element minOccurs="0" name="storageMediumReadInputDTO" type="wsi:storageMediumReadInputDTO" />
+        </xs:all>
+      </xs:complexType>
+      <xs:complexType name="storageMediumReadRequest">
+        <xs:all>
+          <xs:element minOccurs="0" name="inputAttributes" type="wsi:inputAttributes" />
+          <xs:element minOccurs="0" name="sessionChangeRequest" type="sessionchange:sessionChangeRequest" />
+        </xs:all>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="storageMediumReadResponse">
+    <wsdl:part name="storageMediumReadResponse" element="sch3:storageMediumReadResponse" />
+  </wsdl:message>
+  <wsdl:message name="storageMediumReadRequest">
+    <wsdl:part name="storageMediumReadRequest" element="sch3:storageMediumReadRequest" />
+  </wsdl:message>
+  <wsdl:portType name="StorageMediumReadService">
+    <wsdl:operation name="storageMediumRead">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;![CDATA[&lt;p&gt;Read the storage medium and the linked port related to a SM_ID.&lt;/p&gt;]]&gt;</wsdl:documentation>
+      <wsdl:input name="storageMediumReadRequest" message="tns:storageMediumReadRequest" />
+      <wsdl:output name="storageMediumReadResponse" message="tns:storageMediumReadResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="StorageMediumReadServiceSoap11" type="tns:StorageMediumReadService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="storageMediumRead">
+      <soap:operation soapAction="" />
+      <wsdl:input name="storageMediumReadRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="storageMediumReadResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="StorageMediumReadService">
+    <wsdl:port name="StorageMediumReadServiceSoap11" binding="tns:StorageMediumReadServiceSoap11">
+      <soap:address location="http://100.126.0.10:9090/wsi/services" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

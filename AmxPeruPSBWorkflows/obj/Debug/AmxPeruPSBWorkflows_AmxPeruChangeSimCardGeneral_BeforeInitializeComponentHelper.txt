@@ -1,0 +1,2 @@
+AmxPeruChangeSimCardGeneral.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EE47A141-49D7-404F-A995-889CFEB75F27}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AmxPeruPlugins</RootNamespace>
+    <AssemblyName>AmxPeruPlugins</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>AmxOnePeru.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ericsson.ETELCRM.Business, Version=2.2.0.0, Culture=neutral, PublicKeyToken=414bcafa77a5a2a0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CrmDLLs\Ericsson.ETELCRM.Business.dll</HintPath>
+    </Reference>
+    <Reference Include="Ericsson.ETELCRM.CrmCachingLibrary, Version=1.0.0.5, Culture=neutral, PublicKeyToken=414bcafa77a5a2a0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CrmDLLs\Ericsson.ETELCRM.CrmCachingLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Ericsson.ETELCRM.CrmFoundationLibrary">
+      <HintPath>..\CrmDLLs\Ericsson.ETELCRM.CrmFoundationLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Ericsson.ETELCRM.Integration">
+      <HintPath>..\CrmDLLs\Ericsson.ETELCRM.Integration.dll</HintPath>
+    </Reference>
+    <Reference Include="Ericsson.ETELCRM.Plugins">
+      <HintPath>..\CrmDLLs\Ericsson.ETELCRM.Plugins.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Crm.Sdk.Proxy">
+      <HintPath>..\CrmDLLs\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Client, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CrmDLLs\Microsoft.Xrm.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk">
+      <HintPath>..\CrmDLLs\Microsoft.Xrm.Sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk.Workflow, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CrmDLLs\microsoft.xrm.sdk.workflow.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CrmDLLs\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AMXColPlugins\AddMandatoryPO.cs" />
+    <Compile Include="AMXColPlugins\Individual\AMXContactPostCreatePlugin.cs" />
+    <Compile Include="BIAffiliateDiaffiliateBlacklistServicePlugIn.cs" />
+    <Compile Include="BIAffiliateDiaffiliateDataProtectionPlugIn.cs" />
+    <Compile Include="AmxPeruModifyIndividualDemographic.cs" />
+    <Compile Include="AssociateRoleBI.cs" />
+    <Compile Include="AssociateSubRoleBI.cs" />
+    <Compile Include="AssociateUpdatedSubscription.cs" />
+    <Compile Include="BIAffiliateDisaffiliatetoWhitePagePlugIn.cs" />
+    <Compile Include="common.cs" />
+    <Compile Include="Common\TraslationManage.cs" />
+    <Compile Include="Connected Services\BILCustomerService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="constants.cs" />
+    <Compile Include="CustomerAddressCreateBI.cs" />
+    <Compile Include="AmxCustomerAddressUpdatePlugIn.cs" />
+    <Compile Include="CustomerAddressUpdate.cs" />
+    <Compile Include="CustomerAddressUpdateBI.cs" />
+    <Compile Include="CustomPostOrderItem.cs" />
+    <Compile Include="Events\AmxCustomerAddressUpdate.cs" />
+    <Compile Include="IncidentResolverPlugincs.cs" />
+    <Compile Include="IncidentWithCompleteAnswerPlugin.cs" />
+    <Compile Include="Model\InfoModel.cs" />
+    <Compile Include="Model\ProductOfferingRequest.cs" />
+    <Compile Include="Model\ReadInfoTableDataVersion.cs" />
+    <Compile Include="Model\ReadInfoTableRowVersion.cs" />
+    <Compile Include="Model\SearchInfoTableDataVersion.cs" />
+    <Compile Include="Model\SearchInfoTableRowVersion.cs" />
+    <Compile Include="PostCompleteTask.cs" />
+    <Compile Include="PostCreateCaseAutomaticRouting.cs" />
+    <Compile Include="PostCreateCustomerDocument.cs" />
+    <Compile Include="PostCreateIndividualCreation.cs" />
+    <Compile Include="PostCreateOrderItemNewResource.cs" />
+    <Compile Include="PostCreateSMSTemplateBinding.cs" />
+    <Compile Include="PostUpdateCaseBPF.cs" />
+    <Compile Include="PostUpdateCaseType.cs" />
+    <Compile Include="PostUpdateTaskRegardingField.cs" />
+    <Compile Include="PreResolveCaseNotifyAdvisor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="schema.cs" />
+    <Compile Include="SendEmailCommon.cs" />
+    <Compile Include="Workflow\Bulk_Import\BulkBlacklistWorkflow.cs" />
+    <Compile Include="Workflow\Bulk_Import\BulkImport.cs" />
+    <Compile Include="Workflow\Bulk_Import\BulkImportParsingBase.cs" />
+    <Compile Include="Workflow\Bulk_Import\IndividualCustomerImport.cs" />
+    <Compile Include="Workflow\ProductOfferingOperations\ECMInfoTableImport.cs" />
+    <Compile Include="Workflow\ProductOfferingOperations\ProductOfferingImport.cs" />
+    <Compile Include="Workflow\ProductOfferingOperations\ProductOfferingSync.cs" />
+    <Compile Include="Workflow\ProductOfferingOperations\ProductVersionHandler.cs" />
+    <Compile Include="Workflow\ScheduleApplication.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AmxOnePeru.snk" />
+    <None Include="app.config" />
+    <None Include="Connected Services\BILCustomerService\AmxPeruPlugins.BILCustomerService.createCustomerResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BILCustomerService\AmxPeruPlugins.BILCustomerService.Customer.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BILCustomerService\AmxPeruPlugins.BILCustomerService.updateCustomerResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BILCustomerService\CustomerServices.wsdl" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\BILCustomerService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BILCustomerService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BILCustomerService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BILCustomerService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AMXCommon\AMXCommon.csproj">
+      <Project>{5a153d91-2264-4d92-a110-a281c771218d}</Project>
+      <Name>AMXCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AmxPeruCommonLibrary\AmxPeruCommonLibrary.csproj">
+      <Project>{8c071151-ac56-4b9f-8849-832b5518e554}</Project>
+      <Name>AmxPeruCommonLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

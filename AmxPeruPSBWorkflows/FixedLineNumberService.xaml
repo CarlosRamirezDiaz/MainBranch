@@ -1,0 +1,324 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="AmxPeruPSBWorkflows.FixedLineNumberService"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:aal="clr-namespace:AmxPeruPSBActivities.Activities.LinePortability;assembly=AmxPeruPSBActivities"
+ xmlns:ac="clr-namespace:AmxPeruPSBActivities.Common;assembly=AmxPeruPSBActivities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:ec="clr-namespace:ExternalApiActivities.Common;assembly=ExternalApiActivities"
+ xmlns:epwa="clr-namespace:Ericsson.PSB.Workflow.Activities;assembly=Ericsson.PSB.Workflow.Activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="addressId" Type="InArgument(x:String)" />
+    <x:Property Name="customerId" Type="InArgument(x:String)" />
+    <x:Property Name="numberList" Type="OutArgument(scg:List(x:String))" />
+    <x:Property Name="result" Type="OutArgument(x:String)" />
+    <x:Property Name="serviceType" Type="InArgument(x:String)" />
+    <x:Property Name="numberToBeReserved" Type="InArgument(x:String)" />
+    <x:Property Name="numberToBeReleased" Type="InArgument(x:String)" />
+    <x:Property Name="orderItemId" Type="InArgument(x:String)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap2010:WorkflowViewState.IdRef>AmxPeruPSBWorkflows.FixedLineNumberService_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Ericsson.ETELCRM.CrmCachingLibrary</AssemblyReference>
+      <AssemblyReference>Ericsson.ETELCRM.CrmFoundationLibrary</AssemblyReference>
+      <AssemblyReference>Ericsson.ETELCRM.Entities.Crm</AssemblyReference>
+      <AssemblyReference>Ericsson.PSB.Workflow.Activities</AssemblyReference>
+      <AssemblyReference>Ericsson.PSB.Workflow.Client.Core</AssemblyReference>
+      <AssemblyReference>ExternalApiActivities</AssemblyReference>
+      <AssemblyReference>ExternalApiWorkflows</AssemblyReference>
+      <AssemblyReference>Microsoft.Crm.Sdk.Proxy</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Compatibility</AssemblyReference>
+      <AssemblyReference>Microsoft.Xrm.Client</AssemblyReference>
+      <AssemblyReference>Microsoft.Xrm.Sdk</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Activities.Core.Presentation</AssemblyReference>
+      <AssemblyReference>System.Activities.Presentation</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data.Linq</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Net.Http</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>AmxSoapServicesActivities</AssemblyReference>
+      <AssemblyReference>AmxDynamicsActivities</AssemblyReference>
+      <AssemblyReference>AmxPeruPSBActivities</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>AmxPeruPSBWorkflows</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_3">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="x:String" Name="connectionString" />
+    </Flowchart.Variables>
+    <Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+        <epwa:ConfigurationActivity sap2010:WorkflowViewState.IdRef="ConfigurationActivity_1" Key="connectionString">
+          <epwa:ConfigurationActivity.Value>
+            <OutArgument x:TypeArguments="x:String">
+              <mca:CSharpReference x:TypeArguments="x:String">connectionString</mca:CSharpReference>
+            </OutArgument>
+          </epwa:ConfigurationActivity.Value>
+        </epwa:ConfigurationActivity>
+        <FlowStep.Next>
+          <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+            <ec:XrmAwareCompositeActivity sap2010:WorkflowViewState.IdRef="XrmAwareCompositeActivity_1" IsGlobalContext="False" UseServiceUser="True">
+              <ec:XrmAwareCompositeActivity.Activities>
+                <Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_2">
+                  <Flowchart.Variables>
+                    <Variable x:TypeArguments="x:String" Name="endPoint" />
+                  </Flowchart.Variables>
+                  <Flowchart.StartNode>
+                    <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_8">
+                      <ec:RetrieveCrmConfigurationByName ConfigurationName="NetCracker_URL" sap2010:WorkflowViewState.IdRef="RetrieveCrmConfigurationByName_1">
+                        <ec:RetrieveCrmConfigurationByName.ConfigurationValue>
+                          <OutArgument x:TypeArguments="x:String">
+                            <mca:CSharpReference x:TypeArguments="x:String">endPoint</mca:CSharpReference>
+                          </OutArgument>
+                        </ec:RetrieveCrmConfigurationByName.ConfigurationValue>
+                      </ec:RetrieveCrmConfigurationByName>
+                      <FlowStep.Next>
+                        <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_7">
+                          <Switch x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+                            <Switch.Default>
+                              <ac:DebugIt EntityId="{x:Null}" EntityName="{x:Null}" sap2010:WorkflowViewState.IdRef="DebugIt_2">
+                                <ac:DebugIt.Value>
+                                  <InArgument x:TypeArguments="x:Object">
+                                    <mca:CSharpValue x:TypeArguments="x:Object">"default"</mca:CSharpValue>
+                                  </InArgument>
+                                </ac:DebugIt.Value>
+                              </ac:DebugIt>
+                            </Switch.Default>
+                            <Switch.Expression>
+                              <InArgument x:TypeArguments="x:String">
+                                <mca:CSharpValue x:TypeArguments="x:String">serviceType</mca:CSharpValue>
+                              </InArgument>
+                            </Switch.Expression>
+                            <aal:RetrievePhoneNumberActivity x:Key="getNumbers" sap2010:WorkflowViewState.IdRef="RetrievePhoneNumberActivity_5">
+                              <aal:RetrievePhoneNumberActivity.AddressId>
+                                <InArgument x:TypeArguments="x:String">
+                                  <mca:CSharpValue x:TypeArguments="x:String">addressId</mca:CSharpValue>
+                                </InArgument>
+                              </aal:RetrievePhoneNumberActivity.AddressId>
+                              <aal:RetrievePhoneNumberActivity.CustomerId>
+                                <InArgument x:TypeArguments="x:String">
+                                  <mca:CSharpValue x:TypeArguments="x:String">customerId</mca:CSharpValue>
+                                </InArgument>
+                              </aal:RetrievePhoneNumberActivity.CustomerId>
+                              <aal:RetrievePhoneNumberActivity.EndPoint>
+                                <InArgument x:TypeArguments="x:String">
+                                  <mca:CSharpValue x:TypeArguments="x:String">endPoint</mca:CSharpValue>
+                                </InArgument>
+                              </aal:RetrievePhoneNumberActivity.EndPoint>
+                              <aal:RetrievePhoneNumberActivity.NumberList>
+                                <OutArgument x:TypeArguments="scg:List(x:String)">
+                                  <mca:CSharpReference x:TypeArguments="scg:List(x:String)">numberList</mca:CSharpReference>
+                                </OutArgument>
+                              </aal:RetrievePhoneNumberActivity.NumberList>
+                              <aal:RetrievePhoneNumberActivity.OrderItemId>
+                                <InArgument x:TypeArguments="x:String">
+                                  <mca:CSharpValue x:TypeArguments="x:String">orderItemId</mca:CSharpValue>
+                                </InArgument>
+                              </aal:RetrievePhoneNumberActivity.OrderItemId>
+                              <aal:RetrievePhoneNumberActivity.Result>
+                                <OutArgument x:TypeArguments="x:String">
+                                  <mca:CSharpReference x:TypeArguments="x:String">result</mca:CSharpReference>
+                                </OutArgument>
+                              </aal:RetrievePhoneNumberActivity.Result>
+                            </aal:RetrievePhoneNumberActivity>
+                            <aal:ReservePhoneNumberActivity x:Key="reserveNumbers" sap2010:WorkflowViewState.IdRef="ReservePhoneNumberActivity_2">
+                              <aal:ReservePhoneNumberActivity.AddressId>
+                                <InArgument x:TypeArguments="x:String">
+                                  <mca:CSharpValue x:TypeArguments="x:String">addressId</mca:CSharpValue>
+                                </InArgument>
+                              </aal:ReservePhoneNumberActivity.AddressId>
+                              <aal:ReservePhoneNumberActivity.CustomerId>
+                                <InArgument x:TypeArguments="x:String">
+                                  <mca:CSharpValue x:TypeArguments="x:String">customerId</mca:CSharpValue>
+                                </InArgument>
+                              </aal:ReservePhoneNumberActivity.CustomerId>
+                              <aal:ReservePhoneNumberActivity.EndPoint>
+                                <InArgument x:TypeArguments="x:String">
+                                  <mca:CSharpValue x:TypeArguments="x:String">endPoint</mca:CSharpValue>
+                                </InArgument>
+                              </aal:ReservePhoneNumberActivity.EndPoint>
+                              <aal:ReservePhoneNumberActivity.NumberList>
+                                <OutArgument x:TypeArguments="scg:List(x:String)">
+                                  <mca:CSharpReference x:TypeArguments="scg:List(x:String)">numberList</mca:CSharpReference>
+                                </OutArgument>
+                              </aal:ReservePhoneNumberActivity.NumberList>
+                              <aal:ReservePhoneNumberActivity.NumberToBeReleased>
+                                <InArgument x:TypeArguments="x:String">
+                                  <mca:CSharpValue x:TypeArguments="x:String">numberToBeReleased</mca:CSharpValue>
+                                </InArgument>
+                              </aal:ReservePhoneNumberActivity.NumberToBeReleased>
+                              <aal:ReservePhoneNumberActivity.NumberToBeReserved>
+                                <InArgument x:TypeArguments="x:String">
+                                  <mca:CSharpValue x:TypeArguments="x:String">numberToBeReserved</mca:CSharpValue>
+                                </InArgument>
+                              </aal:ReservePhoneNumberActivity.NumberToBeReserved>
+                              <aal:ReservePhoneNumberActivity.OrderItemId>
+                                <InArgument x:TypeArguments="x:String">
+                                  <mca:CSharpValue x:TypeArguments="x:String">orderItemId</mca:CSharpValue>
+                                </InArgument>
+                              </aal:ReservePhoneNumberActivity.OrderItemId>
+                              <aal:ReservePhoneNumberActivity.Result>
+                                <OutArgument x:TypeArguments="x:String">
+                                  <mca:CSharpReference x:TypeArguments="x:String">result</mca:CSharpReference>
+                                </OutArgument>
+                              </aal:ReservePhoneNumberActivity.Result>
+                            </aal:ReservePhoneNumberActivity>
+                          </Switch>
+                        </FlowStep>
+                      </FlowStep.Next>
+                    </FlowStep>
+                  </Flowchart.StartNode>
+                  <x:Reference>__ReferenceID0</x:Reference>
+                  <x:Reference>__ReferenceID1</x:Reference>
+                </Flowchart>
+              </ec:XrmAwareCompositeActivity.Activities>
+              <ec:XrmAwareCompositeActivity.ConnectionString>
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String">connectionString</mca:CSharpValue>
+                </InArgument>
+              </ec:XrmAwareCompositeActivity.ConnectionString>
+            </ec:XrmAwareCompositeActivity>
+          </FlowStep>
+        </FlowStep.Next>
+      </FlowStep>
+    </Flowchart.StartNode>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <x:Reference>__ReferenceID3</x:Reference>
+    <sads:DebugSymbol.Symbol>d2BDOlxBbXggUHJvamVjdHNcQ2xvdWRcQW14Q29sb21iaWFUQ1JNXE1haW5CcmFuY2hcQW14UGVydVBTQldvcmtmbG93c1xGaXhlZExpbmVOdW1iZXJTZXJ2aWNlLnhhbWwgTQPcAQ8CAQFTCVkmAwHRAVwN1AEsAgECVg9WZQMB0wFTY1N1AwHSAdEBE9EBYQIBBVx5XIABAgEEXJABXJYBAgEDXhHNAR0CAQ9kF2o7AwHEAW0bxgEkAgEQZExkXAMB0AFnHWdrAwHFAXkheWoCARF8HZsBPwMBgQGcAR3FAT4CAShvH3UsAgEchAEjhAFrAwG5AX8jf2oDAa4BkwEjkwFsAwGjAZgBI5gBbwMBmAGJASOJAWkDAY0BjgEjjgF9AwGCAaQBI6QBawIBdp8BI58BagIBa70BI70BbAIBYMIBI8IBbwIBVakBI6kBaQIBSq4BI64BfQIBP7MBI7MBcwIBNLgBI7gBcwIBKXIlcmwCAR0=</sads:DebugSymbol.Symbol>
+  </Flowchart>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="ConfigurationActivity_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RetrieveCrmConfigurationByName_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="DebugIt_2" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RetrievePhoneNumberActivity_5" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ReservePhoneNumberActivity_2" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Switch`1_1" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_7">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,199.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,127.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,149.5 300,199.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_2" sap:VirtualizedContainerService.HintSize="614,636">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,127.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="XrmAwareCompositeActivity_1" sap:VirtualizedContainerService.HintSize="222,175">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,221</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,149</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,171 300,221</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_3" sap:VirtualizedContainerService.HintSize="618,636">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,149</av:PointCollection>
+            <x:Double x:Key="Width">604</x:Double>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="AmxPeruPSBWorkflows.FixedLineNumberService_1" sap:VirtualizedContainerService.HintSize="658,716" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:cuspaybilreq="http://www.ericsson.com/esb/message/customer/PaymentCustomerBillRequest/v1.0" targetNamespace="http://www.ericsson.com/esb/message/customer/PaymentCustomerBillRequest/v1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="paymentCustomerBillRequest" type="cuspaybilreq:paymentCustomerBillRequestType" />
+  <xsd:complexType name="paymentCustomerBillRequestType">
+    <xsd:sequence>
+      <xsd:element name="paymentCustomerBill" type="cuspaybilreq:CustomerBill" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CustomerBill">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="autenticacion" type="cuspaybilreq:CustomerAuthentication" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="aplicacionConsumidora" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="idTransaccionConsumidora" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="msisdn" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="importe" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="tariffIdSRS" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ProId" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="codigoExternalOrigen" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="external_origen" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CustomerAuthentication">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="ipCliente" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="usuario" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="clave" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="codigoServicioEAI" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="capacidadServicioEAI" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

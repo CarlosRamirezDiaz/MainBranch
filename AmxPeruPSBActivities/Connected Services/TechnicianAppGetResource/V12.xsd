@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:clhe="http://www.amx.com/CO/Schema/ClaroHeaders/v1" elementFormDefault="qualified" targetNamespace="http://www.amx.com/CO/Schema/ClaroHeaders/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:annotation>
+    <xsd:documentation>
+        Author: Lesmen Garcia
+        email: lesmen.garcia.ext@claro.com.co
+        Date: 06/09/2017
+        Version: 1.0
+        Purpose: Estructura headers que utilizaran todos los servicios a exponer
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:element name="headerRequest" type="clhe:HeaderRequest" />
+  <xsd:element name="headerResponse" type="clhe:HeaderResponse" />
+  <xsd:complexType name="HeaderRequest">
+    <xsd:sequence>
+      <xsd:element maxOccurs="1" name="transactionId" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="system" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="user" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="password" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="requestDate" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ipApplication" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="traceabilityId" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="HeaderResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="responseDate" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="traceabilityId" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

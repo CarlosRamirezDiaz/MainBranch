@@ -1,0 +1,51 @@
+﻿<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="../../../etel_/common/scripts/angular.min.js" type="text/javascript"></script>
+    <script src="../../../etel_/psb/Wizard/wizardController.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../../../amx_/Configuration/itemConfigurationController.js" type="text/javascript"></script>
+    <script src="../../../amx_/common/components/ngDialog/ngDialog.min.js" type="text/javascript"></script>
+    <script src="../../../amx_/common/components/ngDialog/ngDialog.js" type="text/javascript"></script>
+    <link href="../../../amx_/common/components/ngDialog/ngDialog.css" rel="stylesheet" type="text/css">
+    <link href="../../../amx_/common/components/ngDialog/ngDialog.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../amx_/common/components/ngDialog/ngDialog_theme_default.css" rel="stylesheet" type="text/css">
+    <link href="../../../amx_/common/components/ngDialog/ngDialog_theme_default.min.css" rel="stylesheet" type="text/css">
+    <meta>
+    <meta>
+</head>
+<body style="word-wrap: break-word;">
+    <div id="itemConfigurationPage" ng-controller="itemConfigurationController">
+        <div class="dataGridWrapper">
+            <div ng-repeat="ProductResource in scopeData.currentOfferFull.ProductSpecification.ProductResourceSpecList track by $index">
+                <form name="myForm">
+                    <table style="font-size: 11px;">
+                        <colgroup>
+                            <col style="width: 50px;">
+                            <col style="width: 80px;">
+                        </colgroup>
+
+                        <tr class="dataGridBodyRow" ng-repeat="ProductResourceChar in ProductResource.resourceCharList track by $index" ng-class="{ selectedRow : OrderItem.IsSelected }">
+                            <td align="center">
+                                <div class="dataGridCellContent">
+                                    <span>{{ProductResourceChar.name}}</span>
+                                </div>
+                            </td>
+                            <td align="center">
+                                <div class="dataGridCellContent">
+                                    <span><input type="text" id="input" required ng-trim="false" ng-model="ProductResourceChar.value"></span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr ng-repeat-end=""></tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <button style="border-radius:4px;padding-right:10px;padding-left:10px" ng-click="scopeData.SaveResourceChar()" class="dataGridTitleText">Confirm</button>
+        <button style="border-radius:4px;padding-right:10px;padding-left:10px" ng-click="scopeData.CloseDialog()" class="dataGridTitleText">Cancel</button>
+    </div>
+</body>
+</html>

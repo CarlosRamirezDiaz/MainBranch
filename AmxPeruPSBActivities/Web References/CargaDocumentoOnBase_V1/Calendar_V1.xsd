@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:entcal="http://claro.com.pe/entity/CommonBusiness/Calendar/V1/" targetNamespace="http://claro.com.pe/entity/CommonBusiness/Calendar/V1/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="CalendarEntry">
+    <xs:annotation>
+      <xs:documentation>An entry in a calendar. This is an abstract entity.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="accessclassification" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>the access intended for this entry
+
+
+
+Permitted Values:
+
+PUBLIC, PRIVATE or CONFIDENTIAL</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="comment" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Comment text about the entry
+
+Note:
+
+COMMENT [iCalendar]</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="creationdate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>The DateTime (in UTC time) that the entry was created
+
+note:
+
+CREATED [iCalendar]</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="description" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A complete description of the entry:
+
+
+
+Notes:
+
+DESCRIPTION [iCalendar]</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="id" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Unique identifier
+
+Note:
+
+UID [iCalendar]</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="isrvsprequested" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>If an RSVP is expected
+
+Notes:
+
+RVSP [iCalendar]
+
+
+
+Permitted Values:
+
+True, False</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="lastmodifieddate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>The DateTime (in UTC time) that the entry was lastModifier
+
+Note:
+
+LAST-MODIFIED [iCalendar]</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="status" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The status of the Event, toDo or Journal entry
+
+Note:
+
+STATUS [iCalendar]
+
+Permitted Value:
+
+refer [iCalendar]</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="summary" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A summarized description or subject of the entry</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="versionnr" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A sequence number, showing the version of the entry. It is incremented whenever the entry is modified and saved.
+
+Note:
+
+SEQUENCE [iCalendar]
+
+
+
+Permitted Values:
+
+&gt;0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CalendarToDo">
+    <xs:annotation>
+      <xs:documentation>This represents 'an action-item or assignment. For example, it can be used to represent an item of work assigned to an individual; such as "turn in travel expense today".'</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="actionitem" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="actualcompletiondate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>The date the toDo was actually completed
+
+Notes:
+
+COMPLETED [iCalendar]</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="duedate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>The DateTime the toDo is expected to be completed
+
+Notes:
+
+DUE [iCalendar]</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="percentcomplete" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>Shows progress from 0 (not started to 100 (complete)
+
+Notes:
+
+PERCENT-COMPLETE  [iCalendar]</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:custarchareq="http://www.ericsson.com/esb/message/customer/GetTariffChangeRequest/v1.0" targetNamespace="http://www.ericsson.com/esb/message/customer/GetTariffChangeRequest/v1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="getTariffChangeRequest" type="custarchareq:getTariffChangeRequestType" />
+  <xsd:complexType name="getTariffChangeRequestType">
+    <xsd:sequence>
+      <xsd:element name="getTariffChange" type="custarchareq:CustomerTariffChange" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CustomerTariffChange">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="loginName" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="externalReference" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="eventSource" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="entityType" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="entityId" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="oldTariffId" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="newTariffId" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="discountMultiplier" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ipChargeExponent" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="walletDetails" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

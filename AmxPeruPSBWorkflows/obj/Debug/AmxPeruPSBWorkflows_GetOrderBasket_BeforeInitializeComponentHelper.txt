@@ -1,0 +1,2 @@
+GetOrderBasket.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

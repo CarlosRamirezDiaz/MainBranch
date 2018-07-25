@@ -1,0 +1,2 @@
+SubmitOrderCapture.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:opehpd="http://claro.com.pe/esb/enterprise/generaIncidencia/v1/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:datopehpd="http://claro.com.pe/esb/message/generaIncidencia/generarIncidencia/v1/" xmlns:comexcep="http://claro.com.pe/eai/ebs/xsd/CommonsException" xmlns:comtyp="http://claro.com.pe/generic/messageFormat/v1.0/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap11/" targetNamespace="http://claro.com.pe/esb/enterprise/generaIncidencia/v1/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://claro.com.pe/esb/enterprise/generaIncidencia/v1/types">
+      <xsd:import schemaLocation="../esquemas/GeneraIncidencia_V1.xsd" namespace="http://claro.com.pe/esb/message/generaIncidencia/generarIncidencia/v1/" />
+      <xsd:import schemaLocation="../../../../framework/servicios/esquemas/HeaderGeneric_v1.0.xsd" namespace="http://claro.com.pe/generic/messageFormat/v1.0/" />
+      <xsd:import schemaLocation="../../../../framework/servicios/esquemas/CommonsException.xsd" namespace="http://claro.com.pe/eai/ebs/xsd/CommonsException" />
+    </xsd:schema>
+  </types>
+  <message name="generarIncidenciaRequestMessage">
+    <part name="generarIncidenciaRequest" element="datopehpd:generarIncidenciaRequestMessageType" />
+  </message>
+  <message name="generarIncidenciaResponseMessage">
+    <part name="generarIncidenciaResponse" element="datopehpd:generarIncidenciaResponseMessageType" />
+  </message>
+  <message name="claroFault">
+    <part name="claroFault" element="comexcep:IntegrationError" />
+  </message>
+  <message name="headerRequest">
+    <part name="headerReq" element="comtyp:HeaderRequest" />
+  </message>
+  <message name="headerResponse">
+    <part name="headerResp" element="comtyp:HeaderResponse" />
+  </message>
+  <portType name="GeneraIncidenciaPort">
+    <operation name="generarIncidencia">
+      <input message="opehpd:generarIncidenciaRequestMessage" />
+      <output message="opehpd:generarIncidenciaResponseMessage" />
+      <fault name="claroFault" message="opehpd:claroFault" />
+    </operation>
+  </portType>
+  <binding name="GeneraIncidenciaWSBinding" type="opehpd:GeneraIncidenciaPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="generarIncidencia">
+      <soap:operation soapAction="http://claro.com.pe/esb/resource/enterprise/generaIncidencia/v1/" style="document" />
+      <input>
+        <soap:header message="opehpd:headerRequest" part="headerReq" use="literal" />
+        <soap:body use="literal" parts="generarIncidenciaRequest" />
+      </input>
+      <output>
+        <soap:header message="opehpd:headerResponse" part="headerResp" use="literal" />
+        <soap:body use="literal" parts="generarIncidenciaResponse" />
+      </output>
+      <fault name="claroFault">
+        <soap:fault use="literal" name="claroFault" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="GeneraIncidencia">
+    <port name="GeneraIncidenciaPort" binding="opehpd:GeneraIncidenciaWSBinding">
+      <soap:address location="http://www.example.org/" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:opehpd="http://claro.com.pe/esb/message/generaIncidencia/generarIncidencia/v1/" xmlns:entcombase="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:entcom="http://claro.com.pe/entity/CommonBusiness/BusinessInteraction/V1/" xmlns:entcusdom="http://claro.com.pe/entity/Customer/CustomerProblem/V1/" xmlns:entcus="http://claro.com.pe/entity/Customer/Customer/V1/" xmlns:datgencla="http://claro.com.pe/esb/data/generico/claroGenericHeader/v1/" xmlns:entcuspro="http://claro.com.pe/entity/Customer/CustomerProblemExtension/V1/" xmlns:entbusint="http://claro.com.pe/entity/CommonBusiness/BusinessInteraction/V1/" elementFormDefault="qualified" targetNamespace="http://claro.com.pe/esb/message/generaIncidencia/generarIncidencia/v1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/ClaroGenericHeaders_V1.xsd" namespace="http://claro.com.pe/esb/data/generico/claroGenericHeader/v1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/Customer/Customer_V1.xsd" namespace="http://claro.com.pe/entity/Customer/Customer/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/Customer/CustomerProblem_V1.xsd" namespace="http://claro.com.pe/entity/Customer/CustomerProblem/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/BusinessInteraction_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BusinessInteraction/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/Customer/CustomerProblemExtension_V1.xsd" namespace="http://claro.com.pe/entity/Customer/CustomerProblemExtension/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/BusinessInteraction_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BusinessInteraction/V1/" />
+  <xsd:complexType name="generarIncidenciaRequestType">
+    <xsd:sequence>
+      <xsd:element name="customerSpec" type="entcus:CustomerSpec" />
+      <xsd:element name="knownProblemDescription" type="entcusdom:KnownProblemDescription" />
+      <xsd:element name="businessInteractionItem" type="entbusint:BusinessInteractionItem" />
+      <xsd:element name="customerProblemExtension" type="entcuspro:CustomerProblemExtension" />
+      <xsd:element name="customerProblem" type="entcusdom:CustomerProblem" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="generarIncidenciaResponseType">
+    <xsd:sequence>
+      <xsd:element name="customerProblemExtension" type="entcuspro:CustomerProblemExtension" />
+      <xsd:element name="responseStatus" type="entcombase:ResponseStatus" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="generarIncidenciaRequestMessageType" type="opehpd:generarIncidenciaRequestType" />
+  <xsd:element name="generarIncidenciaResponseMessageType" type="opehpd:generarIncidenciaResponseType" />
+</xsd:schema>

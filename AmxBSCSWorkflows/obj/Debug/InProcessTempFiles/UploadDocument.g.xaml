@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<a:UploadDocument xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:a="clr-namespace:AmxSoapServicesWorkflows;assembly=AmxSoapServicesWorkflows" xmlns:aa="clr-namespace:AmxSoapServicesActivities.Activities;assembly=AmxSoapServicesActivities" xmlns:ad="clr-namespace:AmxSoapServicesActivities.DocumentManagerService;assembly=AmxSoapServicesActivities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:ec="clr-namespace:ExternalApiActivities.Common;assembly=ExternalApiActivities" xmlns:epwa="clr-namespace:Ericsson.PSB.Workflow.Activities;assembly=Ericsson.PSB.Workflow.Activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>AmxSoapServicesActivities.DocumentManagerService</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>AmxSoapServicesActivities</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <a:UploadDocument.Implementation>
+    <Flowchart>
+      <Flowchart.Variables>
+        <Variable x:TypeArguments="x:String" Name="connectionString" />
+        <Variable x:TypeArguments="x:String" Name="retrieveDirectoryNumberUrl" />
+      </Flowchart.Variables>
+      <Flowchart.StartNode>
+        <FlowStep x:Name="__ReferenceID0">
+          <epwa:ConfigurationActivity Key="connectionString">
+            <epwa:ConfigurationActivity.Value>
+              <OutArgument x:TypeArguments="x:String">
+                <mca:CSharpReference x:TypeArguments="x:String">connectionString</mca:CSharpReference>
+              </OutArgument>
+            </epwa:ConfigurationActivity.Value>
+          </epwa:ConfigurationActivity>
+          <FlowStep.Next>
+            <FlowStep x:Name="__ReferenceID1">
+              <ec:XrmAwareCompositeActivity UseServiceUser="{x:Null}" IsGlobalContext="False">
+                <ec:XrmAwareCompositeActivity.Activities>
+                  <aa:UploadDocumentActivity uploadDocumentRequest="{x:Null}" uploadDocumentResponse="{x:Null}" />
+                </ec:XrmAwareCompositeActivity.Activities>
+                <ec:XrmAwareCompositeActivity.ConnectionString>
+                  <InArgument x:TypeArguments="x:String">
+                    <mca:CSharpValue x:TypeArguments="x:String">connectionString</mca:CSharpValue>
+                  </InArgument>
+                </ec:XrmAwareCompositeActivity.ConnectionString>
+              </ec:XrmAwareCompositeActivity>
+            </FlowStep>
+          </FlowStep.Next>
+        </FlowStep>
+      </Flowchart.StartNode>
+      <x:Reference>__ReferenceID0</x:Reference>
+      <x:Reference>__ReferenceID1</x:Reference>
+      <sads:DebugSymbol.Symbol>d0hEOlxDYXJsb3NSYW1pcmV6XERlc2t0b3BcTWFpbkJyYW5jaFxBbXhCU0NTV29ya2Zsb3dzXFVwbG9hZERvY3VtZW50LnhhbWwIKwNMDwIBATIJOCYCAQo7DUQsAgECNQ81ZQIBDDJjMnUCAQtBE0FhAgEEO5MBO5oBAgEDPRE9rAECAQk=</sads:DebugSymbol.Symbol>
+    </Flowchart>
+  </a:UploadDocument.Implementation>
+</a:UploadDocument>

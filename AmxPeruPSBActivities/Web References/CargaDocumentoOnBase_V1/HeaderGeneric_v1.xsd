@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://claro.com.pe/generic/messageFormat/v1.0/" elementFormDefault="unqualified" targetNamespace="http://claro.com.pe/generic/messageFormat/v1.0/" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="HeaderRequest" type="tns:HeaderRequestType" />
+  <element name="HeaderResponse" type="tns:HeaderResponseType" />
+  <complexType name="HeaderRequestType">
+    <sequence>
+      <element minOccurs="1" maxOccurs="1" name="country" type="string">
+        <annotation>
+          <documentation>Identifica el pa??s del consumidor
+    				</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="1" maxOccurs="1" name="language" type="string">
+        <annotation>
+          <documentation>Idioma del payload del mensaje
+    				</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="1" maxOccurs="1" name="consumer" type="string">
+        <annotation>
+          <documentation>Id del consumidor
+    				</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="1" maxOccurs="1" name="system" type="string">
+        <annotation>
+          <documentation>Sistema que realizado la invocaci??n
+    				</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="1" maxOccurs="1" name="modulo" type="string">
+        <annotation>
+          <documentation>Modulo del sistema que realizo la invocaci??n 
+    				</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="1" maxOccurs="1" name="pid" type="string">
+        <annotation>
+          <documentation>Identificador ??nico de la transacci??n por el lado del consumidor
+    				</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="1" maxOccurs="1" name="userId" type="string">
+        <annotation>
+          <documentation>identificador del usuario del sistema y/o subsistema que inicia la invocaci??n.
+    				</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="1" maxOccurs="1" name="dispositivo" type="string">
+        <annotation>
+          <documentation>Id del dispositivo desde donde se origino la invocaci??n
+    				</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="1" maxOccurs="1" name="wsIp" type="string">
+        <annotation>
+          <documentation>IP del dispositivo desde se origin?? la invocaci??n
+    				</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="1" maxOccurs="1" name="operation" type="string">
+        <annotation>
+          <documentation>Este coincidir con el informado en la cabecera HTTP SOAPAction en SOAP 1.1 o podr?? estar formado por un identificador del servicio invocado
+    				</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="1" maxOccurs="1" name="timestamp" type="dateTime">
+        <annotation>
+          <documentation>El timestamp del consumidor. Este valor incluir??a la fecha, la hora con precisi??n de milisegundos y la zona horaria siguiendo el est??ndar de tiempo UTC y la especificaci??n ISO 8601.
+    				</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="1" maxOccurs="1" name="msgType" type="string">
+        <annotation>
+          <documentation>Tipo de mensaje enviado, podr??a tener los siguientes valores: Request, Response, Reply, Notificacion, Error.  Usado para fines de auditoria.
+    				</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" maxOccurs="1" name="VarArg" type="tns:VarArgType" />
+    </sequence>
+  </complexType>
+  <complexType name="VarArgType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Arg" type="tns:ArgType" />
+    </sequence>
+  </complexType>
+  <complexType name="ArgType">
+    <sequence>
+      <element minOccurs="1" maxOccurs="1" name="key" type="string" />
+      <element minOccurs="1" maxOccurs="1" name="value" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="HeaderResponseType">
+    <sequence>
+      <element minOccurs="1" maxOccurs="1" name="consumer" type="string">
+        <annotation>
+          <documentation>Consumidor del servicio
+    				</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="1" maxOccurs="1" name="pid" type="string">
+        <annotation>
+          <documentation>Identificador ??nico generado por el consumidor
+    				</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" maxOccurs="1" name="timestamp" type="dateTime">
+        <annotation>
+          <documentation>Timestamp del datapower
+    				</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" maxOccurs="1" name="VarArg" type="tns:VarArgType" />
+      <element minOccurs="0" maxOccurs="1" name="Status" type="tns:StatusType" />
+    </sequence>
+  </complexType>
+  <complexType name="StatusType">
+    <sequence>
+      <element minOccurs="1" maxOccurs="1" name="type" type="string">
+        <annotation>
+          <documentation>Tipo de respuesta.. Puede ser: 0,10, 20, 30, 40</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="1" maxOccurs="1" name="code" type="string">
+        <annotation>
+          <documentation>C??digo de respuesta del Datapower
+    				</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="1" maxOccurs="1" name="message" type="string">
+        <annotation>
+          <documentation>Desccripci??n de respuesta del Datapower
+    				</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" maxOccurs="1" name="msgid" type="string">
+        <annotation>
+          <documentation>Identificador ??nico generado por el Datapower 
+    				</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+</schema>

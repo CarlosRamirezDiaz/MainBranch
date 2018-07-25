@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:entres="http://claro.com.pe/entity/Resource/Resource/V1/" xmlns:entbastyp="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:entresspe="http://claro.com.pe/entity/Resource/ResourceSpecification/V1/" xmlns:entphyres="http://claro.com.pe/entity/Resource/PhysicalResource/V1/" targetNamespace="http://claro.com.pe/entity/Resource/Resource/V1/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xs:import schemaLocation="PhysicalResource_V1.xsd" namespace="http://claro.com.pe/entity/Resource/PhysicalResource/V1/" />
+  <xs:import schemaLocation="ResourceSpecification_V1.xsd" namespace="http://claro.com.pe/entity/Resource/ResourceSpecification/V1/" />
+  <xs:complexType name="Resource">
+    <xs:annotation>
+      <xs:documentation>This object class defines the attributes that are common to all resource objects.
+
+See R_TMF518_NRB_I_0001.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="id" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="isCompound" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="isLogical" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="parentId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="resourceType" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="usagestate" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>This is an enumerated integer that defines the current usage of the object. It includes the following values:
+
+ 0: Unknown
+ 1: Not Installed
+ 2: Installed
+ 3: Inactive
+ 4: Idle
+ 5: Active, but able to communicate
+ 6: Busy (Active and unable to communicate)
+
+Value 2 means that the object is installed (or otherwise activated) but no other information about its state is available. Values 3-6 imply that the object is Installed, and provide further information as to its state.
+
+This is an optional attribute.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="_resourceCharacteristicsValue" type="entres:ResourceCharacteristicValue" />
+      <xs:element minOccurs="0" maxOccurs="1" name="_resourceSpecification" type="entresspe:ResourceSpecification" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="_physicalResource" type="entphyres:PhysicalResource" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ResourceCharacteristicValue">
+    <xs:annotation>
+      <xs:documentation>A value of a ResourceSpecCharacteristic chosen for a Resource that further defines what the Resource is.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="validfor" type="entbastyp:TimePeriod">
+        <xs:annotation>
+          <xs:documentation>The period for which the characteristic value is applicable.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="value" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A fact that describes an entity.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

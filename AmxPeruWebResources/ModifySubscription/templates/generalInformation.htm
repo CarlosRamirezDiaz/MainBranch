@@ -1,0 +1,66 @@
+﻿<html>
+<head>
+</head>
+<body>
+    ﻿<div id="container" rtl-dir="{{direct}}" ng-controller="subscriptionGeneralInformationController">
+        <h4>General Information</h4>
+        <!--<table class="formSectionTable"></table>
+        <input ng-model="scopeData.yName"/>
+        <button ng-click="setName()">Set Name</button>-->
+        <div class="column">
+            <table>
+                <colgroup class="formSectionTable">
+                    <col style="width: 115px;">
+
+
+                </colgroup>
+                <tbody>
+                    <tr class="formField">
+                        <td>
+                            <div title="Category" class="formFieldLabel">
+                                <span>Type</span>
+                                <div class="inlineGradientMask"></div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="formFieldValue">
+                                <select ng-options="itemServiceType.serviceType for itemServiceType in scopeData.Selection.ServiceTypes" ng-model="itemServiceType">
+                                    <!--<option value="">{{scopeData.planning.translations.tSelect}}</option>-->
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="formField">
+                        <td>
+                            <div title="Current Sim" class="formFieldLabel">
+                                <span>Curernt Sim</span>
+                                <div class="inlineGradientMask"></div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="formFieldValue">
+                                <input class="ng-pristine ng-valid ng-touched" id="CurrentSim" ng-model="CurerntSim" ng-disabled="true">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="formField">
+                        <td>
+                            <div title="Current Sim" class="formFieldLabel">
+                                <span>Change Reason</span>
+                                <div class="inlineGradientMask"></div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="formFieldValue">
+                                <select ng-options="item.Value as item.Text for item in ChangeReasonList" ng-model="ChangeReason">
+                                    <!--<option value="">{{scopeData.planning.translations.tSelect}}</option>-->
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

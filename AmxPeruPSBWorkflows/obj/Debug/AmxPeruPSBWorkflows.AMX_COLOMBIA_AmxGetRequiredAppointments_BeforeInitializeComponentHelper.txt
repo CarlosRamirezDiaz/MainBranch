@@ -1,0 +1,2 @@
+AmxGetRequiredAppointments.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

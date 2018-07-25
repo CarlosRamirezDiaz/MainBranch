@@ -1,0 +1,2 @@
+AmxPeruGeneraIncidencia.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

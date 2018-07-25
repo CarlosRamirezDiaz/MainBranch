@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd_2="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:xsd_3="http://claro.com.pe/entity/Product/ProductPrice/V1/" xmlns:xsd_1="http://claro.com.pe/entity/Product/ProductCatalog/V1/" xmlns:xsd_6="http://claro.com.pe/entity/CommonBusiness/GeographicPlace/V1/" xmlns:xsd_7="http://claro.com.pe/entity/MarketSales/MarketingCampaign/V1/" xmlns:xsd_4="http://claro.com.pe/entity/Product/ProductOffering/V1/" xmlns:xsd_5="http://claro.com.pe/entity/CommonBusiness/Catalog/V1/" xmlns:xsd_8="http://claro.com.pe/entity/MarketSales/SalesChannel/V1/" targetNamespace="http://claro.com.pe/entity/Product/ProductCatalog/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="../MarketSales/SalesChannel_V1.xsd" namespace="http://claro.com.pe/entity/MarketSales/SalesChannel/V1/" />
+  <xsd:import schemaLocation="../MarketSales/MarketingCampaign_V1.xsd" namespace="http://claro.com.pe/entity/MarketSales/MarketingCampaign/V1/" />
+  <xsd:import schemaLocation="../CommonBusiness/Catalog_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/Catalog/V1/" />
+  <xsd:import schemaLocation="ProductOffering_V1.xsd" namespace="http://claro.com.pe/entity/Product/ProductOffering/V1/" />
+  <xsd:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:annotation>
+    <xsd:documentation>A collection of entities that represent the specification of ProductCatalogs and catalogs described by them that contain ProductOfferings and their associated ProductOfferingPrices.</xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="ProdCatProdOffer">
+    <xsd:sequence>
+      <xsd:element name="validFor" type="xsd_2:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period during which the ProductOffering appears in the ProductCatalog.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="productCatalog" type="xsd_1:ProductCatalog" />
+      <xsd:element name="productOffering" type="xsd_4:ProductOffering" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ProductCatalogSpecification">
+    <xsd:annotation>
+      <xsd:documentation>A ProductCatalogSpecification defines the invariant characteristics of a ProductCatalog.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_5:CatalogSpecification">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="_marketingCampaign" type="xsd_7:MarketingCampaign" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="_salesChannel" type="xsd_8:SalesChannel" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="_productCatalog" type="xsd_1:ProductCatalog" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ProductCatalog">
+    <xsd:annotation>
+      <xsd:documentation>A list of ProductOfferings for sale, with prices and illustrations, for example in book form or on the web. ProductCatalogs can be used by Customers during a self-care ordering process and may be used across one or more DistributionChannels.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_5:Catalog">
+        <xsd:sequence>
+          <xsd:element name="_productCatalogSpecification" type="xsd_1:ProductCatalogSpecification" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="prodCatProdOffer" type="xsd_1:ProdCatProdOffer" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

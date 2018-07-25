@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5A153D91-2264-4D92-A110-A281C771218D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AMXCommon</RootNamespace>
+    <AssemblyName>AMXCommon</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>AmxCommon.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ericsson.ETELCRM.Business">
+      <HintPath>..\CrmDLLs\Ericsson.ETELCRM.Business.dll</HintPath>
+    </Reference>
+    <Reference Include="Ericsson.ETELCRM.CrmCachingLibrary">
+      <HintPath>..\CrmDLLs\Ericsson.ETELCRM.CrmCachingLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Ericsson.ETELCRM.CrmFoundationLibrary">
+      <HintPath>..\CrmDLLs\Ericsson.ETELCRM.CrmFoundationLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Ericsson.ETELCRM.Integration">
+      <HintPath>..\CrmDLLs\Ericsson.ETELCRM.Integration.dll</HintPath>
+    </Reference>
+    <Reference Include="Ericsson.ETELCRM.Plugins">
+      <HintPath>..\CrmDLLs\Ericsson.ETELCRM.Plugins.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Client">
+      <HintPath>..\CrmDLLs\Microsoft.Xrm.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk">
+      <HintPath>..\CrmDLLs\Microsoft.Xrm.Sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="microsoft.xrm.sdk.workflow">
+      <HintPath>..\CrmDLLs\microsoft.xrm.sdk.workflow.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\AmxWorkflowPlugin\Connected Services\VP_POMAgentAPIService\Reference.cs">
+      <Link>Business\AppointmentLog\Reference.cs</Link>
+    </Compile>
+    <Compile Include="Business\AppointmentLog\AMXGetAppointmentDetailsBusiness.cs" />
+    <Compile Include="Business\AppointmentLog\IVR\AMXGetAppointmentStatusBusiness.cs" />
+    <Compile Include="Business\AppointmentLog\IVR\AMXSaveContactToListBusiness.cs" />
+    <Compile Include="Business\AppointmentLog\IVR\AMXUpdateAppointmentStatusBusiness.cs" />
+    <Compile Include="Business\Individual\AMXIndividualCustomerBusiness.cs" />
+    <Compile Include="Common.cs" />
+    <Compile Include="Model\AppointmentLog\AMXGetAppointmentDetailsRequestModel.cs" />
+    <Compile Include="Model\AppointmentLog\AMXGetAppointmentDetailsResponseModel.cs" />
+    <Compile Include="Model\AppointmentLog\IVR\AMXAddContactFromListToJobModel.cs" />
+    <Compile Include="Model\AppointmentLog\IVR\AMXSaveContactToListRequestModel.cs" />
+    <Compile Include="Model\AppointmentLog\IVR\AMXSaveContactToListResponseModel.cs" />
+    <Compile Include="Model\AppointmentLog\IVR\AMXUpdateAppointmentStatusModel.cs" />
+    <Compile Include="Model\BiHeader\BiHeaderModel.cs" />
+    <Compile Include="Model\Individual\AMXIndividualCustomerModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AppointmentLog\AMXGetAppointmentDetailsRepository.cs" />
+    <Compile Include="Repository\AppointmentLog\IVR\AMXGetAppointmentStatusRepository.cs" />
+    <Compile Include="Repository\AppointmentLog\IVR\AMXSaveContactToListRepository.cs" />
+    <Compile Include="Repository\AppointmentLog\IVR\AMXUpdateAppointmentStatusRepository.cs" />
+    <Compile Include="Repository\Individual\AMXIndividualCustomerRepository.cs" />
+    <Compile Include="Repository\BiHeader\BiHeaderRepository.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="AmxCommon.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

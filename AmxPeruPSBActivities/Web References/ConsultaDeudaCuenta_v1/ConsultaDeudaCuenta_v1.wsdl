@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:oper="http://claro.com.pe/esb/enterprise/ConsultaDeudaCuenta/v1/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:comtyp="http://ericsson.com/esb/data/generico/CommonTypes/v1/" xmlns:scomex="http://claro.com.pe/eai/ebs/xsd/CommonsException" xmlns:custmanf="http://claro.com.pe/esb/message/ConsultaDeudaCuenta/consultarDeudaCuenta/v1/" xmlns:sheader="http://claro.com.pe/generic/messageFormat/v1.0/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap11/" targetNamespace="http://claro.com.pe/esb/enterprise/ConsultaDeudaCuenta/v1/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://claro.com.pe/esb/enterprise/ConsultaDeudaCuenta/v1/types">
+      <xsd:import schemaLocation="../esquemas/ConsultaDeudaCuenta_v1.xsd" namespace="http://claro.com.pe/esb/message/ConsultaDeudaCuenta/consultarDeudaCuenta/v1/" />
+      <xsd:import schemaLocation="../../../../framework/servicios/esquemas/HeaderGeneric_v1.0.xsd" namespace="http://claro.com.pe/generic/messageFormat/v1.0/" />
+      <xsd:import schemaLocation="../../../../framework/servicios/esquemas/CommonsException.xsd" namespace="http://claro.com.pe/eai/ebs/xsd/CommonsException" />
+    </xsd:schema>
+  </types>
+  <message name="consultarDeudaCuentaRequestMessage">
+    <part name="HeaderRequest" element="sheader:HeaderRequest" />
+    <part name="consultarDeudaCuentaRequest" element="custmanf:consultarDeudaCuentaRequestMessageType" />
+  </message>
+  <message name="consultarDeudaCuentaResponseMessage">
+    <part name="HeaderResponse" element="sheader:HeaderResponse" />
+    <part name="consultarDeudaCuentaResponse" element="custmanf:consultarDeudaCuentaResponseMessageType" />
+  </message>
+  <message name="IntegrationException">
+    <part name="fault" element="scomex:IntegrationError" />
+  </message>
+  <message name="headerRequest">
+    <part name="headerRequest" element="sheader:HeaderRequest" />
+  </message>
+  <message name="headerResponse">
+    <part name="headerResponse" element="sheader:HeaderResponse" />
+  </message>
+  <portType name="ConsultaDeudaCuentaPort">
+    <operation name="consultarDeudaCuenta">
+      <input message="oper:consultarDeudaCuentaRequestMessage" />
+      <output message="oper:consultarDeudaCuentaResponseMessage" />
+      <fault name="claroFault" message="oper:IntegrationException" />
+    </operation>
+  </portType>
+  <binding name="ConsultaDeudaCuentaPortSOAP11Binding" type="oper:ConsultaDeudaCuentaPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="consultarDeudaCuenta">
+      <soap:operation soapAction="http://claro.com.pe/esb/resource/enterprise/ConsultaDeudaCuenta/v1/" style="document" />
+      <input>
+        <soap:header message="oper:headerRequest" part="headerRequest" use="literal" />
+        <soap:body use="literal" parts="consultarDeudaCuentaRequest" />
+      </input>
+      <output>
+        <soap:header message="oper:headerResponse" part="headerResponse" use="literal" />
+        <soap:body use="literal" parts="consultarDeudaCuentaResponse" />
+      </output>
+      <fault name="claroFault">
+        <soap:fault use="literal" name="claroFault" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="ConsultaDeudaCuenta">
+    <port name="ConsultaDeudaCuentaSB11" binding="oper:ConsultaDeudaCuentaPortSOAP11Binding">
+      <soap:address location="http://www.example.org/" />
+    </port>
+  </service>
+</definitions>

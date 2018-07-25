@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:WL5G3N1="http://claro.com.pe/esb/message/BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG/getCreditScore/V1/" xmlns:comexc="http://claro.com.pe/eai/ebs/xsd/CommonsException" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:WL5G3N2="http://claro.com.pe/esb/ventas/BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG/V1/" xmlns:sheaderDP="http://claro.com.pe/generic/messageFormat/v1.0/" xmlns:sheader="http://claro.com.pe/esb/data/generico/claroGenericHeader/v1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap11/" targetNamespace="http://claro.com.pe/esb/ventas/BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG/V1/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://claro.com.pe/esb/enterprise/BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG/V1/types">
+      <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/ClaroGenericHeaders_V1.xsd" namespace="http://claro.com.pe/esb/data/generico/claroGenericHeader/v1/" />
+      <xsd:import schemaLocation="../esquemas/BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG_V1.xsd" namespace="http://claro.com.pe/esb/message/BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG/getCreditScore/V1/" />
+      <xsd:import schemaLocation="../../../../framework/servicios/esquemas/HeaderGeneric_v1.0.xsd" namespace="http://claro.com.pe/generic/messageFormat/v1.0/" />
+      <xsd:import schemaLocation="../../../../framework/servicios/esquemas/CommonsException.xsd" namespace="http://claro.com.pe/eai/ebs/xsd/CommonsException" />
+    </xsd:schema>
+  </types>
+  <message name="getCreditScoreRequestMessage">
+    <part name="getCreditScoreRequest" element="WL5G3N1:getCreditScoreRequestMessageType" />
+  </message>
+  <message name="getCreditScoreResponseMessage">
+    <part name="getCreditScoreResponse" element="WL5G3N1:getCreditScoreResponseMessageType" />
+  </message>
+  <message name="claroFault">
+    <part name="claroFault" element="comexc:IntegrationError" />
+  </message>
+  <message name="headerRequest">
+    <part name="headerReq" element="sheader:headerRequest" />
+  </message>
+  <message name="headerResponse">
+    <part name="headerResp" element="sheader:headerResponse" />
+  </message>
+  <message name="headerRequestDP">
+    <part name="headerReqDP" element="sheaderDP:HeaderRequest" />
+  </message>
+  <message name="headerResponseDP">
+    <part name="headerRespDP" element="sheaderDP:HeaderResponse" />
+  </message>
+  <portType name="BSS_CUSTOMER_CREDIT_SCORE_MGMT_LGPort">
+    <operation name="getCreditScore">
+      <input message="WL5G3N2:getCreditScoreRequestMessage" />
+      <output message="WL5G3N2:getCreditScoreResponseMessage" />
+      <fault name="claroFault" message="WL5G3N2:claroFault" />
+    </operation>
+  </portType>
+  <binding name="BSS_CUSTOMER_CREDIT_SCORE_MGMT_LGSOAP11Binding" type="WL5G3N2:BSS_CUSTOMER_CREDIT_SCORE_MGMT_LGPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="getCreditScore">
+      <soap:operation soapAction="http://claro.com.pe/esb/resource/BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG/getCreditScore/V1/" style="document" />
+      <input>
+        <soap:header message="WL5G3N2:headerRequest" part="headerReq" use="literal" />
+        <soap:header message="WL5G3N2:headerRequestDP" part="headerReqDP" use="literal" />
+        <soap:body use="literal" parts="getCreditScoreRequest" />
+      </input>
+      <output>
+        <soap:header message="WL5G3N2:headerResponse" part="headerResp" use="literal" />
+        <soap:header message="WL5G3N2:headerResponseDP" part="headerRespDP" use="literal" />
+        <soap:body use="literal" parts="getCreditScoreResponse" />
+      </output>
+      <fault name="claroFault">
+        <soap:fault use="literal" name="claroFault" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="BSS_CUSTOMER_CREDIT_SCORE_MGMT_LG">
+    <port name="BSS_CUSTOMER_CREDIT_SCORE_MGMT_LGPort" binding="WL5G3N2:BSS_CUSTOMER_CREDIT_SCORE_MGMT_LGSOAP11Binding">
+      <soap:address location="http://www.example.org/" />
+    </port>
+  </service>
+</definitions>

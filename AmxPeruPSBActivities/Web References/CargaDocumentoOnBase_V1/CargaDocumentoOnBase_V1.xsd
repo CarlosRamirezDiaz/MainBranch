@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:entrespst="http://claro.com.pe/esb/data/generico/responseStatus/v1/" xmlns:entbty="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:entcommtyp="http://ericsson.com/esb/data/generico/CommonTypes/v1/" xmlns:entcust="http://claro.com.pe/entity/Customer/Customer/V1/" xmlns:entdocex="http://claro.com.pe/entity/CommonBusiness/DocumentsExtension/V1/" xmlns:entdoc="http://claro.com.pe/entity/CommonBusiness/Documents/V1/" xmlns:entheader="http://claro.com.pe/generic/messageFormat/v1.0/" xmlns:entclaroh="http://claro.com.pe/esb/data/generico/claroGenericHeader/v1/" xmlns:cargardoc="http://claro.com.pe/esb/message/CargaDocumentoOnBase/cargarDocumentoOnBase/v1/" elementFormDefault="qualified" targetNamespace="http://claro.com.pe/esb/message/CargaDocumentoOnBase/cargarDocumentoOnBase/v1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/CommonTypes_V1.xsd" namespace="http://ericsson.com/esb/data/generico/CommonTypes/v1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/Documents_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/Documents/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/DocumentsExtension_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/DocumentsExtension/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/Customer/Customer_V1.xsd" namespace="http://claro.com.pe/entity/Customer/Customer/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/ResponseStatus_V1.xsd" namespace="http://claro.com.pe/esb/data/generico/responseStatus/v1/" />
+  <xsd:import schemaLocation="../../../../framework/UT_MODELO_ONTOLOGICO/Entidades/CommonBusiness/ClaroGenericHeaders_V1.xsd" namespace="http://claro.com.pe/esb/data/generico/claroGenericHeader/v1/" />
+  <xsd:complexType name="CargarDocumentoOnBaseRequestType">
+    <xsd:sequence>
+      <xsd:element name="listaDocumentos" type="cargardoc:ListaDocumentosRequestType" />
+      <xsd:element name="notes" type="entbty:Notes" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CargarDocumentoOnBaseResponseType">
+    <xsd:sequence>
+      <xsd:element name="documento" type="cargardoc:DocumentoResponseType" />
+      <xsd:element name="responseStatus" type="entrespst:ResponseStatus" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ListaDocumentosRequestType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="documento" type="cargardoc:DocumentoRequestType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DocumentoRequestType">
+    <xsd:sequence>
+      <xsd:element name="documents" type="entdoc:Documents" />
+      <xsd:element name="documentsExtension" type="entdocex:DocumentsExtension" />
+      <xsd:element name="metadatos" type="cargardoc:ListaMetadatosRequestType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ListaMetadatosRequestType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="attributeValuePair" type="entbty:AttributeValuePair" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DocumentoResponseType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="documents" type="entdoc:Documents" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="cargarDocumentoOnBaseRequestMessageType" type="cargardoc:CargarDocumentoOnBaseRequestType" />
+  <xsd:element name="cargarDocumentoOnBaseResponseMessageType" type="cargardoc:CargarDocumentoOnBaseResponseType" />
+</xsd:schema>

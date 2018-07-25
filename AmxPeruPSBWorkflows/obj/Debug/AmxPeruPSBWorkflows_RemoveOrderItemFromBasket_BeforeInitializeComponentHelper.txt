@@ -1,0 +1,2 @@
+RemoveOrderItemFromBasket.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

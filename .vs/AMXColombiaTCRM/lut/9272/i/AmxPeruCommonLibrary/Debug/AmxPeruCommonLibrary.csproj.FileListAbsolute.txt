@@ -1,0 +1,8 @@
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\b\AmxPeruCommonLibrary\bin\Debug\AmxPeruCommonLibrary.dll.config
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\b\AmxPeruCommonLibrary\bin\Debug\AmxPeruCommonLibrary.dll
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\b\AmxPeruCommonLibrary\bin\Debug\AmxPeruCommonLibrary.pdb
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\i\AmxPeruCommonLibrary\Debug\AmxPeruCommonLibrary.csprojResolveAssemblyReference.cache
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\i\AmxPeruCommonLibrary\Debug\AmxPeruCommonLibrary.csproj.CoreCompileInputs.cache
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\i\AmxPeruCommonLibrary\Debug\AmxPeruCommonLibrary.csproj.CopyComplete
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\i\AmxPeruCommonLibrary\Debug\AmxPeruCommonLibrary.dll
+D:\CarlosRamirez\Desktop\MainBranch\.vs\AMXColombiaTCRM\lut\0\i\AmxPeruCommonLibrary\Debug\AmxPeruCommonLibrary.pdb

@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
+    <script type="text/javascript">
+        debugger;
+        function psbCall() {
+            debugger;
+            var psbUri = "http://10.103.27.154:6004/api/v1/workflow/GetProductCharacteristics";
+            var inputJson = "{'orderGuid': '4DCF57BA-8582-E711-8126-00505601173A'}";
+            $.ajax({
+                type: "POST",
+                url: psbUri,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: inputJson,
+                processData: false,
+                xhrFields: {
+                    withCredentials: true
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) { debugger; var x = 10; },
+                success: function (xml) { debugger; var data = xml; }
+            });
+        }    
+
+
+        function testcall(searchrequest) {
+            var offerNameData = [];
+            var serviceUrl = "http://10.103.27.154:6004//api/v1/workflow/DocumentUploadOnBaseActivity";
+           
+            $.ajax({
+
+                type: "POST",
+                url: serviceUrl,
+                dataType: "json",
+                data: JSON.stringify(searchrequest),
+                contentType: "application/json; charset=utf-8",
+                async: false,
+                cache: false,
+                crossDomain: true,
+                xhrFields: {
+                    withCredentials: true
+                },
+                success: function (data) {
+                    debugger;
+                    if (data) {
+
+                        console.log(data);
+
+
+                    }
+                },
+
+                error: function (data) {
+                    debugger;
+                    alert("No Data Found");
+                }
+            });
+        }
+
+        function onSearchClick() {
+            debugger;
+
+
+            var docuploadrequest =
+
+                {
+                    "docuploadrequest":
+                    {
+                        "$type": "AmxPeruPSBActivities.Model.DocumentUpload.DocumentUploadRequest, AmxPeruPSBActivities",
+
+                        "CustomerType": 1,
+                        "Users": "owner",
+                        "DocumentList": {
+                            "Documents": [
+                                {
+                                    "CustomerID": 99899,
+                                    "TypeDocument": "New",
+                                    "DocumentName": "Registration card",
+                                    "FileDocument": 127,
+                                    "ListofMetadta": [
+                                        {
+                                            "Country": 100,
+                                            "Value": "Claro Peru"
+                                        },
+                                        {
+                                            "Country": 101,
+                                            "Value": "Claro Columbia"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "CustomerID": 99899,
+                                    "TypeDocument": "New",
+                                    "DocumentName": "Registration card",
+                                    "FileDocument": 127,
+                                    "ListofMetadta": [
+                                        {
+                                            "Country": 100,
+                                            "Value": "Claro Peru"
+                                        },
+                                        {
+                                            "Country": 101,
+                                            "Value": "Claro Columbia"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+
+                    }
+                }
+
+            var req = {
+                "docuploadrequest": docuploadrequest
+            }
+
+
+
+
+            testcall(docuploadrequest);
+        }
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+    <input type="button" value="PSB Call" onclick="psbCall()" />
+    <input type="button" value="test Call" onclick="onSearchClick()" />
+</body>
+</html>

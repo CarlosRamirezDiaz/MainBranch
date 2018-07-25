@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.ericsson.com/entity/CommonBusiness/Local/V1/" xmlns:entbastyp="http://www.ericsson.com/entity/CommonBusiness/BaseTypes/V1/" xmlns:entloc="http://www.ericsson.com/entity/CommonBusiness/Location/V1/" xmlns:entlocal="http://www.ericsson.com/entity/CommonBusiness/Local/V1/" targetNamespace="http://www.ericsson.com/entity/CommonBusiness/Local/V1/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FCommonBusiness%2FBaseTypes_V1" namespace="http://www.ericsson.com/entity/CommonBusiness/BaseTypes/V1/" />
+  <xs:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FCommonBusiness%2FLocation_V1" namespace="http://www.ericsson.com/entity/CommonBusiness/Location/V1/" />
+  <xs:element name="BoundingVolumeRepresentation" type="entlocal:BoundingVolumeRepresentation" />
+  <xs:complexType name="BoundingVolumeRepresentation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="entlocal:Representation">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AbsoluteLocalLocation" type="entlocal:AbsoluteLocalLocation" />
+  <xs:complexType name="AbsoluteLocalLocation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="entlocal:LocalContinuativeLocation">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="x" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="y" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="z" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LocalAddress" type="entlocal:LocalAddress" />
+  <xs:complexType name="LocalAddress" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="entlocal:LocalPlace">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="fullAddress" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="positionNr" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="type" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LocalCoordinateSystem" type="entlocal:LocalCoordinateSystem" />
+  <xs:complexType name="LocalCoordinateSystem" abstract="true">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="localOrientation" type="entlocal:AbsoluteLocalOrientation" />
+      <xs:element minOccurs="1" maxOccurs="1" name="xUnits" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="yUnits" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="zUnits" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LocalGeometry" type="entlocal:LocalGeometry" />
+  <xs:complexType name="LocalGeometry" abstract="true">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="LocalGridCoordinateSystem" type="entlocal:LocalGridCoordinateSystem" />
+  <xs:complexType name="LocalGridCoordinateSystem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="entlocal:LocalCoordinateSystem">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LocalPoint" type="entlocal:LocalPoint" />
+  <xs:complexType name="LocalPoint">
+    <xs:complexContent mixed="false">
+      <xs:extension base="entlocal:LocalGeometry">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LocalPolygon" type="entlocal:LocalPolygon" />
+  <xs:complexType name="LocalPolygon">
+    <xs:complexContent mixed="false">
+      <xs:extension base="entlocal:LocalGeometry">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TelstraInternalAddress" type="entlocal:TelstraInternalAddress" />
+  <xs:complexType name="TelstraInternalAddress">
+    <xs:complexContent mixed="false">
+      <xs:extension base="entlocal:LocalAddress">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SimpleLocalAddress" type="entlocal:SimpleLocalAddress" />
+  <xs:complexType name="SimpleLocalAddress">
+    <xs:complexContent mixed="false">
+      <xs:extension base="entlocal:LocalAddress">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RelativeLocalLocation" type="entlocal:RelativeLocalLocation" />
+  <xs:complexType name="RelativeLocalLocation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="entlocal:LocalContinuativeLocation">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="dX" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="dY" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="dZ" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GridLocalLocation" type="entlocal:GridLocalLocation" />
+  <xs:complexType name="GridLocalLocation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="entlocal:LocalLocation">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="gridX" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="gridY" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="gridZ" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LinearReferenceSystem" type="entlocal:LinearReferenceSystem" />
+  <xs:complexType name="LinearReferenceSystem">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="Representation" type="entlocal:Representation" />
+  <xs:complexType name="Representation" abstract="true">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="SolidRepresentation" type="entlocal:SolidRepresentation" />
+  <xs:complexType name="SolidRepresentation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="entlocal:Representation">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AbsoluteLocalOrientation" type="entlocal:AbsoluteLocalOrientation" />
+  <xs:complexType name="AbsoluteLocalOrientation">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="pi" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="psi" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="theta" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompoundInternalLocation" type="entlocal:CompoundInternalLocation" />
+  <xs:complexType name="CompoundInternalLocation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="entlocal:LocalGeometry">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CompoundLocalAddress" type="entlocal:CompoundLocalAddress" />
+  <xs:complexType name="CompoundLocalAddress">
+    <xs:complexContent mixed="false">
+      <xs:extension base="entlocal:LocalAddress">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BTInternalAddress" type="entlocal:BTInternalAddress" />
+  <xs:complexType name="BTInternalAddress">
+    <xs:complexContent mixed="false">
+      <xs:extension base="entlocal:LocalAddress">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LocalLineString" type="entlocal:LocalLineString" />
+  <xs:complexType name="LocalLineString">
+    <xs:complexContent mixed="false">
+      <xs:extension base="entlocal:LocalGeometry">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LocalLocation" type="entlocal:LocalLocation" />
+  <xs:complexType name="LocalLocation" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="entlocal:LocalPlace">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="orientation" type="entlocal:AbsoluteLocalOrientation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LocalLocationRelationship" type="entlocal:LocalLocationRelationship" />
+  <xs:complexType name="LocalLocationRelationship">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="interactionType" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="role" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="validFor" type="entbastyp:TimePeriod" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LocalPlace" type="entlocal:LocalPlace" />
+  <xs:complexType name="LocalPlace" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="entloc:Place">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="WireFrameRepresentation" type="entlocal:WireFrameRepresentation" />
+  <xs:complexType name="WireFrameRepresentation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="entlocal:Representation">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LocalContinuativeLocation" type="entlocal:LocalContinuativeLocation" />
+  <xs:complexType name="LocalContinuativeLocation" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="entlocal:LocalLocation">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LocalContinuativeCoordSystem" type="entlocal:LocalContinuativeCoordSystem" />
+  <xs:complexType name="LocalContinuativeCoordSystem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="entlocal:LocalCoordinateSystem">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

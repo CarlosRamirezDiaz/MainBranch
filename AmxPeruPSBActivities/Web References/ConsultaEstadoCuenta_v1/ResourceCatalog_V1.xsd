@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:entsercat="http://claro.com.pe/entity/Service/ServiceCatalog/V1/" xmlns:entbastyp="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:entrescat="http://claro.com.pe/entity/Resource/ResourceCatalog/V1/" targetNamespace="http://claro.com.pe/entity/Resource/ResourceCatalog/V1/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xs:import schemaLocation="../Service/ServiceCatalog_V1.xsd" namespace="http://claro.com.pe/entity/Service/ServiceCatalog/V1/" />
+  <xs:complexType name="ResourceCandidate">
+    <xs:annotation>
+      <xs:documentation>A ResourceCandidate is an entity that enables the ResourceSpecifications to a catalog. A ResourceCandidate and its ResourceSpecification may be “published” – made visible – in any number of ResourceCatalogs, or in none.  One ResourceSpecification can be composed of other ResourceSpecifications.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="description" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A narrative that explains the ResourceCandidate.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="id" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>A unique identifier for the ResourceCandidate.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The word or phrase by which a ResourceCandidate is known and distinguished from other ResourceCandidate.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="status" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The condition in which the ResourceCandidate exists such as Planned, Active or Obsolete.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="validfor" type="entbastyp:TimePeriod">
+        <xs:annotation>
+          <xs:documentation>The period of time during which the ResourceCandidate is applicable.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="_serviceCandidate" type="entsercat:ServiceCandidate" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

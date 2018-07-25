@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:cuschatarreq="http://www.ericsson.com/esb/message/customer/changeTariffRequest/v1.0" targetNamespace="http://www.ericsson.com/esb/message/customer/changeTariffRequest/v1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="changeTariffRequest" type="cuschatarreq:changeTariffRequestType" />
+  <xsd:complexType name="changeTariffRequestType">
+    <xsd:sequence>
+      <xsd:element name="changeTariff" type="cuschatarreq:CustomerTariff" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CustomerTariff">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="entityType" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="entityId" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="tariffId" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="chargeExponent" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="oldTariffId" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="referenceNumber" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="eventSource" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

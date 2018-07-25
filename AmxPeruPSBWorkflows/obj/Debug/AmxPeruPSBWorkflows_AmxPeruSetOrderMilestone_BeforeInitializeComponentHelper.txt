@@ -1,0 +1,2 @@
+AmxPeruSetOrderMilestone.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

@@ -1,0 +1,870 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:sch1="http://lhsgroup.com/lhsws/svlany" xmlns:tns="http://ericsson.com/services/ws_CIL_6" xmlns:sch0="http://lhsgroup.com/lhsws/money" xmlns:sch3="http://ericsson.com/services/ws_CIL_6/contractssearch" xmlns:sch2="http://ericsson.com/services/ws_CIL_6/sessionchange" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope" targetNamespace="http://ericsson.com/services/ws_CIL_6" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns:lhsws="http://lhsgroup.com/lhsws/money" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://lhsgroup.com/lhsws/money" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="money">
+        <xs:sequence>
+          <xs:element name="amount" type="xs:double" />
+          <xs:element name="currency" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:lhsws="http://lhsgroup.com/lhsws/svlany" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://lhsgroup.com/lhsws/svlany" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="svlany">
+        <xs:sequence>
+          <xs:element name="content" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:ericsson="http://ericsson.com/schemas" xmlns:wsi="http://ericsson.com/services/ws_CIL_6/sessionchange" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ericsson.com/services/ws_CIL_6/sessionchange" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="sessionChangeResponse" />
+      <xs:complexType name="valuesListpartRequest">
+        <xs:all>
+          <xs:element name="key" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt; Name of the value that shall be changed. See release dependent documentation for supported keys&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="value" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;New value for a named value.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:all>
+      </xs:complexType>
+      <xs:complexType name="valuesRequest">
+        <xs:annotation>
+          <xs:documentation>&lt;p&gt;A list of all named values that shall be changed with this command.&lt;/p&gt;</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="item" type="wsi:valuesListpartRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="sessionChangeRequest">
+        <xs:annotation>
+          <xs:documentation>&lt;p&gt;
+					
+					&lt;/p&gt;</xs:documentation>
+        </xs:annotation>
+        <xs:all>
+          <xs:element minOccurs="0" name="values" type="wsi:valuesRequest" />
+        </xs:all>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:ericsson="http://ericsson.com/schemas" xmlns:wsi="http://ericsson.com/services/ws_CIL_6/contractssearch" xmlns:sessionchange="http://ericsson.com/services/ws_CIL_6/sessionchange" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ericsson.com/services/ws_CIL_6/contractssearch" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://ericsson.com/services/ws_CIL_6/sessionchange" />
+      <xs:element name="contractsSearchRequest" type="wsi:contractsSearchRequest" />
+      <xs:element name="contractsSearchResponse" type="wsi:contractsSearchResponse" />
+      <xs:complexType name="salesChannelsResponse">
+        <xs:annotation>
+          <xs:documentation>&lt;p&gt;Sales channel (check input parameter SALES_CHANNEL description for details).&lt;/p&gt;</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="salesChannel" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="dirnumBlocksListpartResponse">
+        <xs:all>
+          <xs:element minOccurs="0" name="lowerExt" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Lower extension of directory number block&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="upperExt" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Upper extension of directory number block&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:all>
+      </xs:complexType>
+      <xs:complexType name="dirnumBlocksResponse">
+        <xs:annotation>
+          <xs:documentation>&lt;p&gt;List of directory number blocks if DIRNUM is a block number and thus a constant part.&lt;/p&gt;</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="item" type="wsi:dirnumBlocksListpartResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="contractsListpartResponse">
+        <xs:all>
+          <xs:element minOccurs="0" name="contractTypeId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Contract type id.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="foreignPlcode" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Foreign network code&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="homeBidGroupId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Home BIG group id&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="foreignBidGroupId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Foreign BIG group id&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="lecCoId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Local exchange carrier contract id&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="lecCoIdPub" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Public key of the external carrier contract&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="buId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Identifier of the business unit assigned to the contract&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="coStatus" type="xs:integer">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Contract status&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="csCode" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Customer code of the contract holder&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="dirnum" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Directory number&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="dirnumBlocks" type="wsi:dirnumBlocksResponse" />
+          <xs:element minOccurs="0" name="adrFname" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;First name as defined in the bill/installation address, depending on the &lt;code&gt;USE_INSTALLATION_ADDRESS&lt;/code&gt; input parameter.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="adrLname" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Last name as defined in the bill/installation address, depending on the &lt;code&gt;USE_INSTALLATION_ADDRESS&lt;/code&gt; input parameter.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="adrName" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Company name&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="adrStreet" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;street of the bill/installation address, depending on the &lt;code&gt;USE_INSTALLATION_ADDRESS&lt;/code&gt; input parameter.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="adrStreetno" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;street no of the bill/installation address, depending on the &lt;code&gt;USE_INSTALLATION_ADDRESS&lt;/code&gt; input parameter.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="adrZip" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Zip code of the bill/installation address, depending on the &lt;code&gt;USE_INSTALLATION_ADDRESS&lt;/code&gt; input parameter.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="adrCity" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;City of the bill/installation address, depending on the &lt;code&gt;USE_INSTALLATION_ADDRESS&lt;/code&gt; input parameter.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="submId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;TechnologyFlavour (SubMarket code)&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="plcode" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;NetworkId&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="coType" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Type of the contract:
+													&lt;ul&gt;&lt;li&gt;M = Main contract&lt;/li&gt;&lt;li&gt;R = Related contract&lt;/li&gt;&lt;li&gt;null = Regular contract&lt;/li&gt;&lt;/ul&gt; &lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="vpnId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;The VPN id&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="externalind" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;This flag indicates whether the contract's rateplan used by external systems does the call rating or not&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="rpcode" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;TMCODE&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="coActivated" type="xs:date">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Activation date of Contract&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="portNum" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Port number of service&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="smNum" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Serial number of the storage medium&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="devPortNum" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Port number of the contract device&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="hlcode" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Code of the HLR&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="coId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Contract id &lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="coIdPub" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Public key of the contract&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="mainCoId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Id of main contract &lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="mainCoIdPub" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Public key of the main contract&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="csId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Customer Id&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="csIdPub" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Customers public key&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="description" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Description of the contract.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="currentDn" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Indicates TRUE if the DN is currently assigned to this contract, else FALSE.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="dnPending" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Indicates TRUE if there is a pending directory number change request DN for the directory number DIRNUM; otherwise FALSE.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="markedForRerating" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Indicates whether the contract is marked as a candidate for re-rating&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="csDealerid" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Id of a dealer assigned to the contract. Only delivered for the &lt;code&gt;PrepaidContractTemplates&lt;/code&gt; searcher.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="paymentResp" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;payment responsibility&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="csContrResp" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;contract responsibility&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="paymentMethodInd" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Payment method of the corresponding rateplan
+													&lt;ul&gt;&lt;li&gt;P : Postpaid&lt;/li&gt;&lt;li&gt;A : Prepaid&lt;/li&gt;&lt;li&gt;H : Hybrid&lt;/li&gt;&lt;/ul&gt;
+													&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="coTemplateId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Template id from which the contract was created&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="coTemplateIdPub" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Public key of the template from which the contract was created&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="salesChannels" type="wsi:salesChannelsResponse" />
+        </xs:all>
+      </xs:complexType>
+      <xs:complexType name="contractsResponse">
+        <xs:annotation>
+          <xs:documentation>&lt;p&gt;&lt;/p&gt;</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="item" type="wsi:contractsListpartResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="contractsSearchResponse">
+        <xs:annotation>
+          <xs:documentation>&lt;p&gt;A list of all contracts that match with the criteria specified in the in-parameters.&lt;/p&gt;</xs:documentation>
+        </xs:annotation>
+        <xs:all>
+          <xs:element minOccurs="0" name="contracts" type="wsi:contractsResponse" />
+          <xs:element minOccurs="0" name="searchIsComplete" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;flag indicating if search was completed.&lt;/p&gt;&lt;p&gt;This flag will be set to false if more rows than specified in Srch_Count are available in the database&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:all>
+      </xs:complexType>
+      <xs:complexType name="parameterValuesRequest">
+        <xs:annotation>
+          <xs:documentation>&lt;p&gt;Parameter's new  value.
+								&lt;ul&gt;&lt;li&gt; In case of ListBox type, should be the sequence number of the desired value, returned by PARAMETER.READ.&lt;/li&gt;&lt;li&gt; In case the value string represents a date value, the following format should be used : dd/MM/yyyy HH:mm:ss&lt;/li&gt;&lt;/ul&gt;
+								&lt;/p&gt;</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="value" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="typesRequest">
+        <xs:annotation>
+          <xs:documentation>&lt;p&gt;id&lt;/p&gt;</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="contractTypeId" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="inputAttributes">
+        <xs:annotation>
+          <xs:documentation>&lt;p&gt;Criteria used to search for contracts.&lt;/p&gt;</xs:documentation>
+        </xs:annotation>
+        <xs:all>
+          <xs:element minOccurs="0" name="partyType" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;party type identifier. &lt;ul&gt;&lt;li&gt;"C" : cusotmer&lt;/li&gt;&lt;li&gt;"B" : business partner&lt;/li&gt;&lt;li&gt;"O" : operator&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="contractTypeId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Contract type id.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="types" type="wsi:typesRequest" />
+          <xs:element minOccurs="0" name="excludeSubscriberContracts" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;If this flag is set to true, then contracts of type "S" should be excluded from the search result.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="foreignPlcode" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Foreign network code&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="foreignPlcodePub" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Public key of the network&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="lecCoId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Local exchange carrier contract id&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="lecCoIdPub" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Public key of the external carrier contract&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="ignoreBuInd" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt; Flag determines if result contains only contracts with the current business unit or all business units valid for the user&lt;/p&gt;&lt;p&gt; The login business unit is ingnored if value is true, default false&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="searcher" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;This argument will be used if the client wants to use/create another searcher in the registry for searching for contracts.&lt;/p&gt;&lt;p&gt;The default searcher is "Contract Search" which  finds the contracts with services and directory numbers assigned.&lt;/p&gt;&lt;p&gt;If you want to use another scenario, you must specified it in the &lt;code&gt;Registry_CMS_Contract.xml&lt;/code&gt;, and call this command with the new created searcher name
+							as the value for this argument.&lt;/p&gt;&lt;p&gt;For example, new searchers are defined in the &lt;code&gt;Registry_CMS_Contract.xml&lt;/code&gt;:
+							&lt;ul&gt;&lt;li&gt;"SimpleContractSearch"&lt;/li&gt;&lt;li&gt;"SearchContractsEvenWithoutServicesAndDN"&lt;/li&gt;&lt;li&gt;"SearchContractsEvenWithoutDN"&lt;/li&gt;&lt;li&gt;"SearchContractsEvenWithoutServices"&lt;/li&gt;&lt;li&gt;"ContentProviderContractSearch"&lt;/li&gt;&lt;li&gt;"ContractSearchWithoutHistory"&lt;/li&gt;&lt;li&gt;"ContractSearchWithHistory"&lt;/li&gt;&lt;li&gt;"SearchLastContractForDnPorting"&lt;/li&gt;&lt;li&gt;"CustomerAndOptionalContractSearch"&lt;/li&gt;&lt;li&gt;"PrepaidContractTemplates"&lt;/li&gt;&lt;li&gt;"SearchContractsEvenWithoutServicesWithoutDealerRestriction"&lt;/li&gt;&lt;li&gt;"PendingRatePlanContractSearch"&lt;/li&gt;&lt;li&gt;"SearchContractsByResource"&lt;/li&gt;&lt;/ul&gt;
+							&lt;/p&gt;&lt;p&gt;For using one of these searchers, the client  must call the command passing as value for &lt;code&gt;SEARCHER&lt;/code&gt; one of these
+							strings. The difference is in the way the contracts are searched.&lt;/p&gt;&lt;p&gt;Using any of  these searcher, the searching operation might be slower than the default one.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="coUser" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;The user that last has made the modification&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="coStatus" type="xs:integer">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Contract status&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="csCode" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Customer code of the contract holder&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="csStatus" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;customer status&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="csDealerid" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Id of a dealer assigned to the contract&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="csDealeridPub" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Dealers public key&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="smNum" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Serial number of the storage medium, in GSM this is the SIM number. Only if the SIM number is specified as input it is available in the output as well.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="related" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Flag for searching related and main contracts.
+							&lt;ul&gt;&lt;li&gt;R - only related contracts are returned.&lt;/li&gt;&lt;li&gt;M - only main contracts are returned.&lt;/li&gt;&lt;li&gt;N - only not related contracts are returned. That are main and regular contracts.&lt;/li&gt;&lt;li&gt;C - only contracts that are neither related nor main are returned.&lt;/li&gt;&lt;li&gt;not set - type related or main is not considered as search criteria&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="portNum" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Port number of service, only used in service driven markets.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="devPortNum" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Port number of the contract device, in GSM this is the IMSI.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="sncode" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Service code (ProductElement)&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="sncodePub" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Public key of the service&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="coPofu" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Pooled free units (POFU) contract&lt;/p&gt;&lt;p&gt;This criteria indicates if the search must consider the contracts with free unit services or contract without
+							free unit services dependent on the value of &lt;code&gt;CO_POFU&lt;/code&gt;.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="rpcode" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Composite product (Rate plan code)&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="rpcodePub" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Public key of the rateplan&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="paymentMethodInd" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Filter criteria payment method, if not given then contracts returned regardless of payment method of the rateplan
+							&lt;ul&gt;&lt;li&gt;P : Postpaid&lt;/li&gt;&lt;li&gt;A : Prepaid&lt;/li&gt;&lt;li&gt;H : Hybrid&lt;/li&gt;&lt;/ul&gt;
+							&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="sccode" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Technology (Market code)&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="sccodePub" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Public key of the market&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="dirnum" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Directory number&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="mainDirnum" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Main directory number&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="billNo" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Bill number&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="useInstallationAddress" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;If this input parameter is set to true, all the address parameters (both input and output) represent informaion regarding the installation address.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="adrName" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Name as defined in the bill/installation address, depending on the &lt;code&gt;USE_INSTALLATION_ADDRESS&lt;/code&gt; input parameter.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="adrFname" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;First name as defined in the bill/installation address, depending on the &lt;code&gt;USE_INSTALLATION_ADDRESS&lt;/code&gt; input parameter.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="adrLname" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Last name as defined in the bill/installation address, depending on the &lt;code&gt;USE_INSTALLATION_ADDRESS&lt;/code&gt; input parameter.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="adrStreet" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;street of the bill/installation address, depending on the &lt;code&gt;USE_INSTALLATION_ADDRESS&lt;/code&gt; input parameter.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="adrStreetno" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;street no of the bill/installation address, depending on the &lt;code&gt;USE_INSTALLATION_ADDRESS&lt;/code&gt; input parameter.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="adrZip" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Zip code of the bill/installation address, depending on the &lt;code&gt;USE_INSTALLATION_ADDRESS&lt;/code&gt; input parameter.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="adrCity" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;City of the bill/installation address, depending on the &lt;code&gt;USE_INSTALLATION_ADDRESS&lt;/code&gt; input parameter.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="adrEmail" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;email address&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="adrBirthdt" type="xs:date">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;birth date&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="adrSocialseno" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;social security number&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="adrDrivelicence" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;driving licence number&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="adrPassportno" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;identification document number&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="adrCompno" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;company registration number&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="adrTaxno" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;tax registration number&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="adrState" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt; state of the postal address &lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="countryId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt; country id of the postal address &lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="countryIdPub" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Public key of the country&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="submId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;TechnologyFlavour (SubMarket code)&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="submIdPub" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Public key of the submarket&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="plcode" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;NetworkId&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="plcodePub" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Public key of the network&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="lowerExt" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Lower extension of directory number block&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="upperExt" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Upper extension of directory number block&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="srchCount" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Size of result set&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="linkedPublicDirnum" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Linked Public Directory Number (MSISDN) &lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="vpnId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;VPN code&lt;/p&gt;&lt;p&gt;The VPN code is used when searching for VPN Contracts:
+							&lt;ul&gt;&lt;li&gt;If the criteria &lt;code&gt;VPN_SUBSCRIBER&lt;/code&gt; has the value true, the data for the VPN Subscriber Contract is returned&lt;/li&gt;&lt;li&gt;If &lt;code&gt;VPN_SUBSCRIBER&lt;/code&gt; = false or not specified, the Contracts representing internal or external membership to the VPN are returned. Only Private Directory Numbers are returned&lt;/li&gt;&lt;/ul&gt;
+							&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="vpnIdPub" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Public key of the VPN&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="vpnSubscriber" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;This criteria indicates if the search must consider&lt;/p&gt;&lt;p&gt;only the VPN Subscriber contract. If it is "True", the VPN_ID is mandatory&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="externalind" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;This search criteria indicates whether or not the contracts with the rateplan are returned which is used by external systems to do the call rating&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="laMemberContract" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;If the criteria is set, it indicates whether the search returns contracts belonging (True) or not belonging (False) to LA members.&lt;/p&gt;&lt;p&gt;No indication is considered in case of Unset.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="flagCase" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;case sensitive search.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="flagMatchcode" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;If set to true a matchcode search for the lastname will be executed.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="description" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Just evaluated in case of searching for contract templates&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="coId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Contract id&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="coIdPub" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Public key of the contract&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="csId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Customer Id&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="csIdPub" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Customers public key&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="startIndex" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Specifies how many entries in the output should be skipped. Together with the &lt;code&gt;SRCH_COUNT&lt;/code&gt; parameter it provides a
+							paging in the result set of a search. E.g. if the parameter is set to 50 and &lt;code&gt;SRCH_COUNT&lt;/code&gt; is set to 20, this command provides the entries 51 to 70 of the query.
+							If not passed the command provides the search result 1 up to &lt;code&gt;SRCH_COUNT&lt;/code&gt;.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="nonPendingOnly" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Used to indicate that no contracts with pending requests in MDSRRTAB should be returned.&lt;/p&gt;&lt;p&gt;This is currently only supported for the following searchers:&lt;ul&gt;&lt;li&gt;SearchContractsEvenWithoutServices&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="callDetail" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Indicates if individual calls should be displayed on call detail statement.
+							&lt;ul&gt;&lt;li&gt;P = call detail statement is created on request only.&lt;/li&gt;&lt;li&gt;R = in addition to P periodically within billing cycle related call detail statement generation requests&lt;/li&gt;&lt;li&gt;A = all contracts, that have either value P or R set.&lt;/li&gt;&lt;li&gt;null = no call detail statement can be created
+							&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="markedForRerating" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Indicates contracts to search:
+							&lt;ul&gt;&lt;li&gt;unset - all contracts&lt;/li&gt;&lt;li&gt;TRUE - contracts that are marked as candidates for re-rating&lt;/li&gt;&lt;li&gt;FALSE - contracts that are not marked as candidates for re-rating &lt;/li&gt;&lt;/ul&gt;
+							&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="bscsContract" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Indicates contracts to search:
+							&lt;ul&gt;&lt;li&gt;unset - all contracts&lt;/li&gt;&lt;li&gt;TRUE - Exclude CS contracts&lt;/li&gt;&lt;li&gt;FALSE - all customers&lt;/li&gt;&lt;/ul&gt;
+							&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="familyId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Family id of the customer the contract belongs to. This parameter is used for retrieving contributed contracts.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="csLevelCode" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;customer level (Use the '!' sign for logical 'NOT')  e.g. 0,1,2,!1,...&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="paymentResp" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;enable Payment Responsible search&lt;/p&gt;&lt;p&gt;If set to true then only payment responsible customers are searched and if set to false then only not payment responsible customers searched. No restriction in case of Unset &lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="csContrResp" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;enable Contract Responsible search&lt;/p&gt;&lt;p&gt;If set to true then only Contract responsible customers are searched and if set to false then only not Contract responsible customers searched. No restriction in case of Unset &lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="rootCsId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Id of a LA structure root&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="rootCsIdPub" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;LA structure root public key&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="fuPackId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Free Unit package code, if the code is given, only this free unit package is selected&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="fuPackIdPub" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Public key of the free unit package&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="fuCoId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Contract id&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="fuCoIdPub" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Public key of the contract&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="fuSncode" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Service code&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="fuSncodePub" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Public key of the service&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="snStatus" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Status of the service. Domain:  A (active), D (deactivate), S (suspended in a contract), O (initial value, on-hold status). &lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="notInServiceCriteria" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;If true, excludes contracts that satisfies given service criteria (SNCODE and SN_STATUS). &lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="prmId" type="xs:long">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Parameter identifier.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="parameterValues" type="wsi:parameterValuesRequest" />
+          <xs:element minOccurs="0" name="salesChannel" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;For contract template search, optional sales channel filter.&lt;/p&gt;&lt;p&gt;Values are:
+							&lt;ul&gt;&lt;li&gt;ADMX - Subscription installation (batch)&lt;/li&gt;&lt;li&gt;SX - SX&lt;/li&gt;&lt;li&gt;LA - Large accounts&lt;/li&gt;&lt;li&gt;RapidAct - Rapid activation&lt;/li&gt;&lt;li&gt;CRM - Ericsson Telecom CRM&lt;/li&gt;&lt;/ul&gt;
+							&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:all>
+      </xs:complexType>
+      <xs:complexType name="contractsSearchRequest">
+        <xs:all>
+          <xs:element minOccurs="0" name="inputAttributes" type="wsi:inputAttributes" />
+          <xs:element minOccurs="0" name="sessionChangeRequest" type="sessionchange:sessionChangeRequest" />
+        </xs:all>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="contractsSearchRequest">
+    <wsdl:part name="contractsSearchRequest" element="sch3:contractsSearchRequest" />
+  </wsdl:message>
+  <wsdl:message name="contractsSearchResponse">
+    <wsdl:part name="contractsSearchResponse" element="sch3:contractsSearchResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ContractsSearchService">
+    <wsdl:operation name="contractsSearch">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;![CDATA[&lt;p&gt;Search for contracts using the passed criteria.&lt;/p&gt;&lt;p&gt;This command is also used to search for Prepaid Contract Templates.&lt;/p&gt;&lt;p&gt;In order to search for Prepaid Contract Templates&lt;ul&gt;&lt;li&gt;- the &lt;code&gt;SEARCHER&lt;/code&gt; attribute is
+     set to "&lt;code&gt;PrepaidContractTemplates&lt;/code&gt;"&lt;/li&gt;&lt;li&gt;- the user must have the permission
+     for Prepaid Contract Templates.&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;]]&gt;</wsdl:documentation>
+      <wsdl:input name="contractsSearchRequest" message="tns:contractsSearchRequest" />
+      <wsdl:output name="contractsSearchResponse" message="tns:contractsSearchResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ContractsSearchServiceSoap11" type="tns:ContractsSearchService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="contractsSearch">
+      <soap:operation soapAction="" />
+      <wsdl:input name="contractsSearchRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="contractsSearchResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ContractsSearchService">
+    <wsdl:port name="ContractsSearchServiceSoap11" binding="tns:ContractsSearchServiceSoap11">
+      <soap:address location="http://localhost:9090/wsi/services" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

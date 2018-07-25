@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd_2="http://claro.com.pe/entity/CommonBusiness/BusinessInteraction/V1/" xmlns:xsd_3="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:xsd_1="http://claro.com.pe/entity/EngagedParty/Dunning/V1/" xmlns:xsd_6="http://claro.com.pe/entity/EngagedParty/PartyBill/V1/" xmlns:xsd_7="http://claro.com.pe/entity/EngagedPartyDomain/PartyOrder_V1/" xmlns:xsd_4="http://claro.com.pe/entity/EngagedParty/AdditionalPartyEntities/V1/" xmlns:xsd_8="http://claro.com.pe/entity/EngagedParty/AppliedPartyBillingRate/V1/" targetNamespace="http://claro.com.pe/entity/EngagedParty/Dunning/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="AppliedPartyBillingRate_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/AppliedPartyBillingRate/V1/" />
+  <xsd:import schemaLocation="PartyBill_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/PartyBill/V1/" />
+  <xsd:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:import schemaLocation="../CommonBusiness/BusinessInteraction_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BusinessInteraction/V1/" />
+  <xsd:complexType name="DunningNotification">
+    <xsd:annotation>
+      <xsd:documentation>A DunningNotification is a communication or joint activity from the Telecommunication Operator to the party to ask for a PartyPayment or negotiate a PaymentPlan.
+The relation resulting from a DunningCaseRule might be 
+•	either only from the telecommunication operator to the party (Ex: send a SMS) 
+•	or in both ways (Ex: a CSR call the party to negotiate a PaymentPlan). </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_2:Notification">
+        <xsd:sequence>
+          <xsd:element name="dunningCaseRule" type="xsd_1:DunningCaseRule" />
+          <xsd:element name="date" type="xsd:dateTime">
+            <xsd:annotation>
+              <xsd:documentation>The date represents the date at which the notification is done.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="DunningWriteOff">
+    <xsd:annotation>
+      <xsd:documentation>A PartyAccount may be written off for two main reasons:
+      • When the dunning procedures failed to recover the debt, the bad debt must be written off and reported as such to the General Ledger
+      • When a contract terminates with a “minimal” credit or debit balance (smaller than a threshold reflecting the cost of the collection process).
+The DunningWriteOff corresponds, in a dunning context, to a credit to definitively balance the PartyAccount before being able to close it.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="dunningCaseRule" type="xsd_1:DunningCaseRule" />
+      <xsd:element name="amount" type="xsd_3:Money">
+        <xsd:annotation>
+          <xsd:documentation>The amount written-off.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DunningScenario">
+    <xsd:annotation>
+      <xsd:documentation>A dunning scenario describes the company’s dunning strategy. It must be easily configurable to describe the dunning rules to apply to a case, the order in which applying them, the events that trigger dunning rules evaluation, the actions that must be done…
+If a DunningScenario is assigned to a PartyAcount, the DunningCase will follow this DunningScenario in case of debt; else it will follow a default DunningScenario.
+DunningScenario is assigned to a PartyAccount, depending on the Holder quality.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A unique identifier.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="name" type="xsd:string" />
+      <xsd:element name="isDefault" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>If true, indicates that the DunningScenario is the one to use by default if no specific DunningScenario is specified for the PartyAccount.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" name="dunningCaseRule" type="xsd_1:DunningRule" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="dunningCase" type="xsd_1:DunningCase" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DunningCase">
+    <xsd:annotation>
+      <xsd:documentation>The DunningCase represents a type of cases open for a party. Whenever a party enters the dunning process, a dunning case is linked to his party account debt and it contains all details pertaining to the debt, such as dunning case rules, interactions… The status of a dunning case evolves according to internal or external events (payments made by the party, payment schedule granted…).</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="dunningScenario" type="xsd_1:DunningScenario" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="dunningCaseRule" type="xsd_1:DunningCaseRule" />
+      <xsd:element name="ID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A unique identifier.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="startingDate" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>As soon as an event triggering a DunningRule occurs on a PartyAccount, a DunningCase is created according to the DunningScenario assigned to the PartyAccount. This date corresponds to the startingDate</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DunningRule">
+    <xsd:annotation>
+      <xsd:documentation>A DunningRule is a type of PolicyRule.
+It represents rules to apply to a dunning case: the events that trigger dunning rules evaluation, the conditions to evaluate and the actions that must be done (Ex: SMS, letters, outbound calls, barring/unbarring actions, late fees, penalties…)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="dunningScenario" type="xsd_1:DunningScenario" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="dunningCaseRule" type="xsd_1:DunningCaseRule" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DunningCaseRule">
+    <xsd:annotation>
+      <xsd:documentation>The DunningCaseRule represents an action performed by the company (or on its behalf) to recover a debt.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="dunningCase" type="xsd_1:DunningCase" />
+      <xsd:element name="dunningRule" type="xsd_1:DunningRule" />
+      <xsd:element minOccurs="0" name="writeOff" type="xsd_1:DunningWriteOff" />
+      <xsd:element minOccurs="0" name="partyBill" type="xsd_6:PartyBill" />
+      <xsd:element minOccurs="0" name="appliedPenaltyCharge" type="xsd_8:AppliedPartyPenaltyCharge" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="partyInteraction" type="xsd_1:DunningNotification" />
+      <xsd:element name="ID" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A unique identifier.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="outbreakDate" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>The outbreakDate represents the date at which the condition of the DunningRule has been verified, triggering the outbreak of the DunningCaseRule.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SoftDunning">
+    <xsd:annotation>
+      <xsd:documentation>The SoftDunning is a type of DunningCase. It represents all actions performed to recover the partys’ debt from the due date until the contract termination</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:DunningCase" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="HardDunning">
+    <xsd:annotation>
+      <xsd:documentation>The HardDuning is a type of DunningCase.
+Hard dunning means all actions performed to recover the party’s debt after the contract termination by the company.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:DunningCase" />
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

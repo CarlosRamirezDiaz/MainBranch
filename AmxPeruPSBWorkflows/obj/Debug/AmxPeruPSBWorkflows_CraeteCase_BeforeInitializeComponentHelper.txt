@@ -1,0 +1,2 @@
+CraeteCase.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

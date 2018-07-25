@@ -1,0 +1,486 @@
+﻿<div style="border-bottom-color: #cd9835; border-bottom-style: solid; border-bottom-width: 2px">
+    <table>
+        <tr>
+            <td style="padding-left: 20px; text-align: left; border-right-color: none; border-right-width: 0px; border-right-style: none;">
+                <div class="processStepCompleteIconDiv">
+                    <img title="Completed" class="processStepCompleteIcon completedStep" alt="Completed" src="images/imagestrips/transparent_spacer.gif">
+                </div>
+                <span>Address Selected</span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">
+                <span>
+                    <b>Yes</b>
+                </span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: none; border-right-width: 0px; border-right-style: none;">
+                <div class="processStepCompleteIconDiv">
+                    <img title="Completed" class="processStepCompleteIcon completedStep" alt="Completed" src="images/imagestrips/transparent_spacer.gif">
+                </div>
+                <span>Product Selected</span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">
+                <span>
+
+                </span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: none; border-right-width: 0px; border-right-style: none;">
+                <div class="processStepCompleteIconDiv">
+                    <img title="Completed" class="processStepCompleteIcon completedStep" alt="Completed" src="images/imagestrips/transparent_spacer.gif">
+                </div>
+                <span>CreditCheck Performed</span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">
+                <span>
+
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left: 20px; text-align: left; border-right-color: none; border-right-width: 0px; border-right-style: none;">
+                <div class="processStepCompleteIconDiv">
+                    <img title="Completed" class="processStepCompleteIcon completedStep" alt="Completed" src="images/imagestrips/transparent_spacer.gif">
+                </div>
+                <span>Portability</span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">
+                <span>
+
+                </span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: none; border-right-width: 0px; border-right-style: none;">
+                <div class="processStepCompleteIconDiv">
+                    <img title="Completed" class="processStepCompleteIcon completedStep" alt="Completed" src="images/imagestrips/transparent_spacer.gif">
+                </div>
+                <span>Product Configured</span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">
+                <span>
+
+                </span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: none; border-right-width: 0px; border-right-style: none;">
+                <div class="processStepCompleteIconDiv">
+                    <img title="Completed" class="processStepCompleteIcon completedStep" alt="Completed" src="images/imagestrips/transparent_spacer.gif">
+                </div>
+                <span>Documents Uploaded</span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">
+                <span>
+
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left: 20px; text-align: left; border-right-color: none; border-right-width: 0px; border-right-style: none;">
+                <div class="processStepCompleteIconDiv">
+                    <img title="Completed" class="processStepCompleteIcon completedStep" alt="Completed" src="images/imagestrips/transparent_spacer.gif">
+                </div>
+                <span>Portability Verified</span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">
+                <span>
+
+                </span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: none; border-right-width: 0px; border-right-style: none;">
+                <div class="processStepCompleteIconDiv">
+                    <img title="Completed" class="processStepCompleteIcon completedStep" alt="Completed" src="images/imagestrips/transparent_spacer.gif">
+                </div>
+                <span>Resources Reserved</span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">
+                <span>
+
+                </span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: none; border-right-width: 0px; border-right-style: none;">
+                <div class="processStepCompleteIconDiv">
+                    <img title="Completed" class="processStepCompleteIcon completedStep" alt="Completed" src="images/imagestrips/transparent_spacer.gif">
+                </div>
+                <span></span>
+            </td>
+            <td style="padding-left: 20px; text-align: left; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">
+                <span>
+
+                </span>
+            </td>
+        </tr>
+    </table>
+    <br />
+</div>
+﻿<div id="container" ng-controller="customerDataController" rtl-dir="{{direct}}">
+    <div style="width: 100%" class="formContent" disable-contents="!rootScopeData.currentStage.isActive">
+        <table style="width: 100%" border="0">
+            <tr>
+                <td style="width: 30%; padding:0 10px 0 10px;" valign="top">
+                    <div class="dataGridTitleText dataGridTitleTextUnderlined"><span>Customer Address</span></div>
+
+                    <table class="formSectionTable">
+                        <colgroup>
+                            <col style="width: 115px;">
+                            <col>
+                        </colgroup>
+                        <tbody>
+                            <tr class="formField formFieldTextArea">
+                                <td>
+                                    <div title="Category" class="formFieldLabel">
+                                        <span>Address Name</span>
+                                        <div class="inlineGradientMask"></div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="formField">
+                                        <select ng-options="item.AddressName for item in scopeData.AddressSelection.Addresses"
+                                                ng-change="scopeData.AddressSelection.onSelectAddress(selectedAddress)"
+                                                ng-model="selectedAddress">
+                                            <option value="">--Select--</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="formField formFieldTextArea">
+                                <td>
+                                    <div title="Address Name" class="formFieldLabel">
+                                        <span>Address Name</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="formField">
+                                        <span class="nullable">{{scopeData.AddressSelection.SelectedAddress.AddressName}}</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="formField formFieldTextArea">
+                                <td>
+                                    <div title="Address Name" class="formFieldLabel">
+                                        <span>Address Number</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="formField">
+                                        <span class="nullable">{{scopeData.AddressSelection.SelectedAddress.AddressNumber}}</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="formField formFieldTextArea">
+                                <td>
+                                    <div title="Address Name" class="formFieldLabel">
+                                        <span>Address Type</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="formField">
+                                        <span class="nullable">{{scopeData.AddressSelection.SelectedAddress.AddressType}}</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="formField formFieldTextArea">
+                                <td>
+                                    <div title="Address Name" class="formFieldLabel">
+                                        <span>Primary Address</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="formField">
+                                        <span class="nullable">{{scopeData.AddressSelection.SelectedAddress.PrimaryAddress}}</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="formField formFieldTextArea">
+                                <td>
+                                    <div title="Address Name" class="formFieldLabel">
+                                        <span>Province</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="formField">
+                                        <span class="nullable">{{scopeData.AddressSelection.SelectedAddress.Province}}</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="formField formFieldTextArea">
+                                <td>
+                                    <div title="Address Name" class="formFieldLabel">
+                                        <span>Street 1</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="formField">
+                                        <span class="nullable">{{scopeData.AddressSelection.SelectedAddress.Street1}}</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="formField formFieldTextArea">
+                                <td>
+                                    <div title="Address Name" class="formFieldLabel">
+                                        <span>Street 2</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="formField">
+                                        <span class="nullable">{{scopeData.AddressSelection.SelectedAddress.Street2}}</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="formField formFieldTextArea">
+                                <td>
+                                    <div title="Address Name" class="formFieldLabel">
+                                        <span>Street 3</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="formField">
+                                        <span class="nullable">{{scopeData.AddressSelection.SelectedAddress.Street3}}</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="formField formFieldTextArea">
+                                <td>
+                                    <div title="Address Name" class="formFieldLabel">
+                                        <span>District</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="formField">
+                                        <span class="nullable">{{scopeData.AddressSelection.SelectedAddress.District}}</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="formField formFieldTextArea">
+                                <td>
+                                    <div title="Address Name" class="formFieldLabel">
+                                        <span>Department</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="formField">
+                                        <span class="nullable">{{scopeData.AddressSelection.SelectedAddress.Department}}</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="formField formFieldTextArea">
+                                <td>
+                                    <div title="Address Name" class="formFieldLabel">
+                                        <span>Country</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="formField">
+                                        <span class="nullable">{{scopeData.AddressSelection.SelectedAddress.Country}}</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td style="width: 15%; padding:0 10px 0 10px;" valign="top">
+                    <div class="dataGridTitleText dataGridTitleTextUnderlined"><span>Available Services</span></div>
+                    <div class="dataGridWrapper" style="border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none; max-width: 200px;">
+                        <div style="height: 200px; overflow: auto; max-width: 200px;">
+                            <table style="font-size: 11px;">
+                                <colgroup>
+                                    <col style="width: 70px;">
+                                </colgroup>
+                                <tbody>
+                                    <tr class="dataGridBodyRow" ng-repeat="services in scopeData.AvailableServices">
+                                        <td>
+                                            <div class="dataGridCellContent leftAligned">
+                                                <span>{{services.serviceName}}</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" ng-model="scopeData.NewStage" ng-click="scopeData.CheckNewStage()" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </td>
+                <td style="width: 55%; padding:0 10px 0 10px;" valign="top">
+                    <div class="dataGridTitleText dataGridTitleTextUnderlined"><span>Portability</span></div>
+                    <table class="formSectionTable" style="min-width: 250px;">
+                        <colgroup>
+                            <col style="width: 115px;">
+                            <col>
+                        </colgroup>
+                        <tbody>
+                            <tr class="formField formFieldTextArea">
+                                <td>
+                                    <div title="Line Number" class="formFieldLabel">
+                                        <span>Line Number</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="formFieldValue">
+                                        <input class="ng-pristine ng-valid ng-touched" id="numberOfSubscriptions" ng-model="scopeData.validatePortability.LineNumber">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="formField">
+                                <td>
+                                    <div title="Service Type" class="formFieldLabel">
+                                        <span>ServiceType</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="formFieldValue">
+                                        <select ng-options="itemServiceType.serviceType for itemServiceType in scopeData.validatePortability.ServiceTypes" ng-model="itemServiceType">
+                                            <option value="">--Select--</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="formField">
+                                <td>
+                                    <div title="Current Plan" class="formFieldLabel">
+                                        <span>Current Plan</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="formFieldValue">
+                                        <select ng-options="itemPlan.CurrentPlan for itemPlan in scopeData.validatePortability.CurrentPlans" ng-model="itemPlan">
+                                            <option value="">--Select--</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="formField">
+                                <td>
+                                    <div title="Current Carrier" class="formFieldLabel">
+                                        <span>Current Carrier</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="formFieldValue">
+                                        <select ng-options="itemCarrier.CurrentCarrier for itemCarrier in scopeData.validatePortability.CurrentCarriers" ng-model="itemCarrier">
+                                            <option value="">--Select--</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="formField">
+                                <td colspan="2">
+                                    <div class="floatRightButtonGroup_remove" id="newCustomerSearchButtonGroup">
+                                        <button class="formButton" ng-click="scopeData.validatePortability.addLineItems()">Add Line</button>
+                                        <!--</div>
+
+                                        <div class="floatRightButtonGroup_remove" id="newCustomerSearchButtonGroup">-->
+                                        <button class="formButton" ng-click="scopeData.validatePortability.clearLineItems()">Clear</button>
+                                        <!--</div>
+
+                                        <div class="floatRightButtonGroup_remove" id="newCustomerSearchButtonGroup">-->
+                                        <button class="formButton" ng-click="scopeData.validatePortability.validate()">Validate</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="dataGridWrapper">
+                        <table class="dataGridHeader" style="font-size: 11px;">
+                            <colgroup>
+                                <col style="width: 90px;">
+                                <col style="width: 2px;">
+                                <col style="width: 90px;">
+                                <col style="width: 2px;">
+                                <col style="width: 90px;">
+                                <col style="width: 2px;">
+                                <col style="width: 90px;">
+                                <col style="width: 2px;">
+                                <col style="width: 90px;">
+                                <col style="width: 2px;">
+                                <col style="width: 90px;">
+                                <col style="width: 2px;">
+                                <col style="width: 20px;">
+                            </colgroup>
+                            <tbody>
+                                <tr class="dataGridHeaderRow">
+                                    <th class="dataGridHeaderCell">tLineNumber</th>
+                                    <td class="dataGridHeaderResizeCell">
+                                        <img class="barLine" alt="" src="./customerdata_files/transparent_spacer.gif">
+                                    </td>
+                                    <th class="dataGridHeaderCell">Service Type</th>
+                                    <td class="dataGridHeaderResizeCell">
+                                        <img class="barLine" alt="" src="./customerdata_files/transparent_spacer.gif">
+                                    </td>
+                                    <th class="dataGridHeaderCell">Current Plan</th>
+                                    <td class="dataGridHeaderResizeCell">
+                                        <img class="barLine" alt="" src="./customerdata_files/transparent_spacer.gif">
+                                    </td>
+                                    <th class="dataGridHeaderCell">Current Carrier</th>
+                                    <td class="dataGridHeaderResizeCell">
+                                        <img class="barLine" alt="" src="./customerdata_files/transparent_spacer.gif">
+                                    </td>
+                                    <th class="dataGridHeaderCell">Upload Doc</th>
+                                    <td class="dataGridHeaderResizeCell">
+                                        <img class="barLine" alt="" src="./customerdata_files/transparent_spacer.gif">
+                                    </td>
+                                    <th class="dataGridHeaderCell">Status</th>
+                                    <td class="dataGridHeaderResizeCell">
+                                        <img class="barLine" alt="" src="./customerdata_files/transparent_spacer.gif">
+                                    </td>
+                                    <th class="dataGridHeaderCell">Delete</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div style="height: 200px;">
+                            <table style="text-align: left; font-size: 11px;">
+                                <colgroup>
+                                    <col style="width: 90px;">
+                                    <col style="width: 90px;">
+                                    <col style="width: 90px;">
+                                    <col style="width: 90px;">
+                                    <col style="width: 90px;">
+                                    <col style="width: 90px;">
+                                    <col style="width: 20px;">
+                                </colgroup>
+                                <tbody>
+                                    <tr class="dataGridBodyRow" ng-repeat="portitem in scopeData.portItems">
+                                        <td>
+                                            <div class="dataGridCellContent">
+                                                <span>{{portitem.LineNumber}}</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="dataGridCellContent">
+                                                <span>{{portitem.ServiceType}}</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="dataGridCellContent">
+                                                <span>{{portitem.CurrentPlan}}</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="dataGridCellContent">
+                                                <span>{{portitem.CurrentCarrier}}</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="dataGridCellContent">
+                                                <span>
+                                                    <input id="selectedFile" style="display: none;" type="file">
+                                                    <input onclick="document.getElementById('selectedFile').click();" type="button" value="Browse...">
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="dataGridCellContent">
+                                                <span>{{portitem.Status}}</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div style="position:static" class="deleteBtnIcon" ng-click="scopeData.validatePortability.removePortLineItem(portitem)">
+                                                <img alt="Delete Button" src="images/imagestrips/transparent_spacer.gif">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

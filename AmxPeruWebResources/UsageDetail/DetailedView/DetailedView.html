@@ -1,0 +1,185 @@
+﻿
+    <div ng-controller="DetailedViewController" class="main-container" dir="{{direct}}">
+        <style type="text/css">
+            * {
+                font-size: 12px;
+            }
+
+            body {
+                font-family: Segoe UI,Tahoma,Arial;
+                font-size: 11px;
+                margin: 0;
+                padding: 0;
+            }
+
+            h2 {
+                font-size: 18px;
+                font-weight: bold;
+                margin: 0;
+                margin-bottom: 15px;
+            }
+
+            table, th, td {
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+        <div>
+            <div ng-init="initPage()">
+                <table id="corpSearchContainer" style="width: 754px; padding-left: 0px; margin-top:-8px;">
+                    <colgroup>
+                        <col width="257">
+                        <col width="220">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td id="usageDetailProductSpecContainer" style="padding-left: 0px;">
+                                {{scopeData.usageData.tProductSpecLabel}}
+                                <span style="color: red; padding-right: 15px;">*</span>
+                                <select name="Usage Product Specification" id="comboProductSpec" required="" ng-model="specs.selected" style="margin-left:4px;">
+                                    <!--  ng-options="model.Serial for model in scopeData.usageData.ProductSpecs" -->
+                                    <option value="ALL" ng-selected="1">--ALL--</option>
+                                    <option value="{{specs.SerialNumber}}" ng-if="!specs.Description" ng:repeat="specs in scopeData.selectedProductSpec">{{specs.Resources[0].Name}}</option>
+                                    <option value="{{specs.SerialNumber}}" ng-if="specs.Description" ng:repeat="specs in scopeData.selectedProductSpec">{{specs.Description}}</option>
+                                </select>
+                            </td>
+                            <td id="corpSearchButtonContainer" style="text-align:left;">
+                                <button class="formButton" ng-disabled="scopeData.usageData.IsSearchInProgress" ng-click="getData()">{{scopeData.usageData.tSearch}}</button>
+                                <button class="formButton" ng-disabled="scopeData.usageData.IsSearchInProgress" ng-click="clearSearch()">{{scopeData.usageData.tReset}}</button>
+                                <button class="formButton" ng-disabled="scopeData.usageData.IsSearchInProgress" ng-click="downloadGrid()">{{scopeData.usageData.tDownload}}</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="width: 45%;">
+                <h2 class="dataGridTitleText">{{scopeData.usageData.tTitle }}<!--USAGE DATA DETAILS--></h2>
+                <table class="dataGridHeader" id="UsageCustomerDataGridHeader">
+                    <colgroup>
+                        <col style="width: 160px;">
+                        <col style="width: 2px;">
+                        <col style="width: 150px;">
+                        <col style="width: 2px;">
+                        <col style="width: 150px;">
+                        <col style="width: 2px;">
+                        <col style="width: 150px;">
+                        <col style="width: 2px;">
+                        <col style="width: 150px;">
+                        <col style="width: 2px;">
+                        <!--<col style="width: 100px;">
+                        <col style="width: 2px;">
+                        <col style="width: 100px;">
+                        <col style="width: 2px;">
+                        <col style="width: 100px;">-->
+                    </colgroup>
+                    <tbody>
+                        <tr class="dataGridHeaderRow">
+                            <th title="Time" class="dataGridHeaderCell">{{scopeData.usageData.tGridDate}}<!--Date--></th>
+                            <td class="dataGridHeaderResizeCell">
+                                <img class="barLine" alt="" src="style/transparent_spacer.gif">
+                            </td>
+                            <th title="Destination" class="dataGridHeaderCell">
+                                Destination
+                                <!--{{scopeData.usageData.tGridTo}}-->
+                                <!--To-->
+                            </th>
+                            <td class="dataGridHeaderResizeCell">
+                                <img class="barLine" alt="" src="style/transparent_spacer.gif">
+                            </td>
+                            <th title="Volume" class="dataGridHeaderCell">
+                                Consumption
+                                <!--{{scopeData.usageData.tVolume}}-->
+                                <!--Volume-->
+                            </th>
+                            <td class="dataGridHeaderResizeCell">
+                                <img class="barLine" alt="" src="style/transparent_spacer.gif">
+                            </td>
+                            <th title="Cost" class="dataGridHeaderCell">{{scopeData.usageData.tCost}}<!--Cost--></th>
+                            <td class="dataGridHeaderResizeCell">
+                                <img class="barLine" alt="" src="style/transparent_spacer.gif">
+                            </td>
+
+                            <th title="Service" class="dataGridHeaderCell">
+                                Type of Service
+                                <!--{{scopeData.usageData.tGridService}}-->
+                                <!--Service-->
+                            </th>
+                            <td class="dataGridHeaderResize
+                            <td class="dataGridHeaderResizeCell">
+                                <img class="barLine" alt="" src="style/transparent_spacer.gif">
+                            </td>
+
+                            <!--<th title="Origination" class="dataGridHeaderCell">
+                            {{scopeData.usageData.tGridForm}}<!--From </th>
+                            <td class="dataGridHeaderResizeCell">
+                                <img class="barLine" alt="" src="style/transparent_spacer.gif">
+                            </td>
+
+
+                            <th title="Call Type" class="dataGridHeaderCell">{{scopeData.usageData.tCallType}}<!--Call Type</th>
+                            <td class="dataGridHeaderResizeCell">
+                                <img class="barLine" alt="" src="style/transparent_spacer.gif">
+                            </td>
+
+
+
+                            <th title="Cost" class="dataGridHeaderCell">{{scopeData.usageData.tBill}}<!--Bill</th>
+                            <td class="dataGridHeaderResizeCell">
+                                <img class="barLine" alt="" src="style/transparent_spacer.gif">
+                            </td>-->
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="dataGridBody" id="UsageCustomerDataGrid">
+                    <colgroup>
+                        <col style="width: 142px;">
+                        <col style="width: 102px;">
+                        <col style="width: 102px;">
+                        <col style="width: 102px;">
+                        <col style="width: 102px;">
+                        <col style="width: 102px;">
+                        <col style="width: 102px;">
+                        <col style="width: 102px;">
+                    </colgroup>
+                    <tbody>
+                        <tr class="dataGridBodyRow" ng-repeat="usageDataLine in UsageData">
+                            <td>{{usageDataLine.timeOfCall}}</td>
+                            <td>{{usageDataLine.originationAddress}}</td>
+                            <td>{{usageDataLine.destinationAddress}}</td>
+                            <td>{{usageDataLine.productSpec}}</td>
+                            <td>{{usageDataLine.callType}}</td>
+                            <td>{{usageDataLine.callDuration}} {{usageDataLine.callDurationMeasureUnit}}</td>
+                            <td>{{usageDataLine.costOfCall}} {{usageDataLine.costOfCallCurrency}}</td>
+                            <td>{{usageDataLine.billIndicator}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="dataGridBody" id="usageCustomerDataGrid">
+                    <colgroup>
+                        <col style="width: 162px;">
+                        <col style="width: 152px;">
+                        <col style="width: 152px;">
+                        <col style="width: 152px;">
+                        <col style="width: 152px;">
+                        <!--<col style="width: 102px;">
+                        <col style="width: 102px;">
+                        <col style="width: 102px;">-->
+                    </colgroup>
+                    <tbody>
+                        <tr class="dataGridBodyRow">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <!--<td></td>
+                            <td></td>
+                            <td>
+
+                            </td>-->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

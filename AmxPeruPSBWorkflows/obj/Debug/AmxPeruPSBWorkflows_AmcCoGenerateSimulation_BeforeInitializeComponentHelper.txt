@@ -1,0 +1,2 @@
+AmxCoGenerateSimulation.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

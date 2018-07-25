@@ -1,0 +1,213 @@
+﻿<html>
+<head>
+    <meta charset="utf-8">
+    <script src="../../../amxperu_/newSubscription/controllers/summaryController.js" type="text/javascript"></script>
+    <script src="../../../amxperu_/newSubscription/controllers/productSelectionController.js" type="text/javascript"></script>
+    <script src="../../../amx_/common/components/ngDialog/ngDialog.min.js" type="text/javascript"></script>
+    <script src="../../../amx_/common/components/ngDialog/ngDialog.js" type="text/javascript"></script>
+    <link href="../../../amx_/common/components/ngDialog/ngDialog.css" rel="stylesheet" type="text/css">
+    <link href="../../../amx_/common/components/ngDialog/ngDialog.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../amx_/common/components/ngDialog/ngDialog_theme_default.css" rel="stylesheet" type="text/css">
+    <link href="../../../amx_/common/components/ngDialog/ngDialog_theme_default.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../amx_/common/components/ngDialog/ngDialog_theme_plain.css" rel="stylesheet" type="text/css">
+    <link href="../../../amx_/common/components/ngDialog/ngDialog_theme_plain.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../amx_/common/components/ngDialog/ngDialog_custom_width.css" rel="stylesheet" type="text/css">
+</head>
+<body style="word-wrap: break-word;" onbeforeunload="alert('hola')">
+    <div id="summaryPage" rtl-dir="{{direct}}" ng-controller="summaryController" style="height: 90%;width: 100%;overflow: auto;padding: 0px 10px;">
+        <table style="width: auto;">
+            <tbody>
+                <tr>
+                    <td valign="top">
+                        <div>
+                            <br>
+                            <div class="dataGridTitleText dataGridTitleTextUnderlined" style="padding-bottom: 5px; border-bottom: 1px solid rgb(218,39,44)"><span>{{scopeData.translations.tOrderBasket}}</span></div>
+                            <div class="dataGridWrapper" style="width:97%;margin:auto; border-bottom:none">
+                                <div style="overflow: auto;">
+                                    <table style="border: 5px solid rgb(218,39,44);width: 100%; font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif; font-size: 11px; border-collapse: collapse;">
+                                        <colgroup>
+                                            <col style="width: 100px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                        </colgroup>
+                                        <thead style="pointer-events: none;background: rgb(218,39,44);color: white;">
+                                            <tr style="border-top-color: rgb(204, 204, 204); border-bottom-color: rgb(204, 204, 204); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid;">
+                                                <th style="text-align: center; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">{{scopeData.translations.tOfferings}}</th>
+                                                <th style="text-align: center; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">{{scopeData.translations.tCharValues}}</th>
+                                                <th style="text-align: center; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">{{scopeData.translations.tMSISDN}}</th>
+                                                <th style="text-align: center; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">{{scopeData.translations.tSIM}}</th>
+                                                <th style="text-align: center; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">{{scopeData.translations.tOneTimePrice}}</th>
+                                                <th style="text-align: center; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">{{scopeData.translations.tDepositPrice}}</th>
+                                                <th style="text-align: center; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">{{scopeData.translations.tRecurringPrice}}</th>
+                                                <th style="text-align: center; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: solid;">{{scopeData.translations.tPeriod}}</th>
+                                                <th style="text-align: center; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: none;">{{scopeData.translations.tCheckoutPrice}}</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                    <table style="font-size: 11px;">
+                                        <colgroup>
+                                            <col style="width: 100px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                        </colgroup>
+                                        <tbody>
+                                            <tr class="dataGridBodyRow" ng-repeat-start="OrderItem in scopeData.OrderItems track by $index" ng-class="{ selectedRow : OrderItem.IsSelected }">
+                                                <td align="left">
+                                                    <div class="dataGridCellContent">
+                                                        <span>{{OrderItem.name}}</span>
+                                                    </div>
+                                                </td>
+                                                <td align="center">
+                                                    <div class="dataGridCellContent">
+                                                        <span>{{OrderItem.charValues}}</span>
+                                                    </div>
+                                                </td>
+                                                <td align="center">
+                                                    <div class="dataGridCellContent">
+                                                        <span>{{OrderItem.ResourceMSISDN}}</span>
+                                                    </div>
+                                                </td>
+                                                <td align="center">
+                                                    <div class="dataGridCellContent">
+                                                        <span>{{OrderItem.ResourceSIM}}</span>
+                                                    </div>
+                                                </td>
+                                                <td align="center">
+                                                    <div class="dataGridCellContent">
+                                                        <span>{{OrderItem.OneTimeCharge}}</span>
+                                                    </div>
+                                                </td>
+                                                <td align="center">
+                                                    <div class="dataGridCellContent">
+                                                        <span>{{OrderItem.DepositCharge}}</span>
+                                                    </div>
+                                                </td>
+                                                <td align="center">
+                                                    <div class="dataGridCellContent">
+                                                        <span>{{OrderItem.RecurringCharge}}</span>
+                                                    </div>
+                                                </td>
+                                                <td align="center">
+                                                    <div class="dataGridCellContent">
+                                                        <span>{{OrderItem.Period}}</span>
+                                                    </div>
+                                                </td>
+                                                <td align="center">
+                                                    <div class="dataGridCellContent">
+                                                        <span>{{OrderItem.CheckOutPrice}}</span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="dataGridBodyRow" style="text-align: center; font-size: 11px;" ng-repeat="char in OrderItem.CharacteristicList track by $index">
+                                                <td align="left" style="padding-left: 15px;">
+                                                    <div class="dataGridCellContent">
+                                                        <span>{{char.CharacteristicName}}</span>
+                                                    </div>
+                                                </td>
+                                                <td align="left">
+                                                    <div class="dataGridCellContent">
+                                                        <span>{{char.ValueList[0].ValueText}}</span>
+                                                    </div>
+                                                    <br>
+                                                </td>
+                                            </tr>
+                                            <tr ng-repeat-end=""></tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="dataGridTitleText dataGridTitleTextUnderlined" style="background-color: rgb(218,39,44);margin: 0px;height: 3px;border: 0px;padding: 0px;"><span></span></div>
+                                    <table style="border-right: 1px solid rgb(218,39,44); border-bottom : 1px solid rgb(218,39,44);width: 100%; font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif; font-size: 11px; border-collapse: collapse;">
+                                        <colgroup>
+                                            <col style="width: 100px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th style="background:rgb(218,39,44);color:white;text-align:center;">{{scopeData.translations.tTotals}}</th>
+                                                <th style="text-align: center"></th>
+                                                <th style="text-align: center"></th>
+                                                <th style="text-align: center"></th>
+                                                <th style="text-align: center">{{scopeData.oneTimeCostTotals}}</th>
+                                                <th style="text-align: center"></th>
+                                                <th style="text-align: center">{{scopeData.monthlyCostTotals}}</th>
+                                                <th style="text-align: center"></th>
+                                                <th style="text-align: center"></th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+
+
+
+                                    <!----th<div class="dataGridTitleText dataGridTitleTextUnderlined"><span>{{scopeData.customerdocumentinfo}}</span></div>----
+                                    <div class="dataGridTitleText dataGridTitleTextUnderlined"><span>{{scopeData.customerdocumentinfo.documentType}}</span></div>
+                                    <div class="dataGridTitleText dataGridTitleTextUnderlined"><span>{{scopeData.customerdocumentinfo.documentNumber}}</span></div>
+                                    <div class="dataGridTitleText dataGridTitleTextUnderlined"><span>{{scopeData.customerdocumentinfo.email}}</span></div>
+                                    <div class="dataGridTitleText dataGridTitleTextUnderlined"><span>{{scopeData.customerdocumentinfo.phoneNumber}}</span></div>
+                                    <div class="dataGridTitleText dataGridTitleTextUnderlined"><span>{{scopeData.customerdocumentinfo.documentType}}</span></div>!---->
+                                    <table>
+                                        <tr>
+                                            <th>
+                                                <button style="background:white; border-radius:4px;padding: 0px 15px;height: 27px;margin: 0px;border-color: rgb(218,39,44);" ng-click="scopeData.readTermsAndConditions()" class="dataGridTitleText">{{scopeData.translations.tReadTermsAndConditions}} </button>
+
+                                            </th>
+
+
+                                            <!----
+                                            <th>
+                                                <input id="accept" type="checkbox" ng-required /> <label for="accept" class="dataGridTitleText">{{scopeData.translations.tAccept}}</label>
+
+                                            </th>!---->
+
+
+                                            <br>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div id="container" ng-controller="productSelectionController" rtl-dir="{{direct}}">
+            <input type="hidden" id="estrato" value="{{scopeData.productSelection.selectedAddressStratum}}" />
+        </div>
+
+        <br>
+        <br>
+        <div class="dataGridTitleText dataGridTitleTextUnderlined" style="padding-bottom:  5px;"><span>Documentación</span> </div>
+
+        <div ng-app="app" ng-controller="Ctrl">
+            <div class="space">
+                <div class="form-group">
+                    <label for="adjuntarArchivo" class="dataGridTitleText dataGridTitleTextUnderlined"></label>
+                    <br>
+                    <div class="col-md-9">
+                        <input class="amxfont" type="file" ngf-select="cargarAdjunto($files)" id="adjuntarArchivo">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+</body>
+</html>

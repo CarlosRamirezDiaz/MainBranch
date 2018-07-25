@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Order Capture Postpone Dialog</title>
+
+        <script src="../../etel_/common/scripts/jquery.min.js" type="text/javascript"></script>
+        <script src="../../etel_CrmRestKit" type="text/javascript"></script>
+        <script src="../../etel_jscripttranslationhandler.js" type="text/javascript"></script>
+        <script src="../../etel_htmltranslate.js" type="text/javascript"></script>
+        <script src="../../etel_optionSetHandler" type="text/javascript"></script>
+
+        <script>
+            function load_Reason() {
+                
+                var optionData = GetOptionSetData("amx_ordercapturepostponereason");
+                for (var i = 0; i < optionData.length; i++) {
+                    $('#postPoneReason')
+                        .append($("<option>" + optionData[i].Text + "</option>")
+                            .attr("value", optionData[i].Value)
+                            .text(optionData[i].Text));
+                }
+                SetSelectedOption();
+            }
+
+            function SetSelectedOption() {
+                var select = document.getElementById("postPoneReason");
+                if (select.selectedIndex != undefined) {
+                    parent.Alert.getCrmWindow().OrderCaptureRibbonButton.PostponeSelectedOptionValue = select.options[select.selectedIndex].value;
+                }
+            }
+        </script>
+    </head>
+<body onload="load_Reason();">
+
+<div align="center">
+
+<!--<p>Postpone Reason</p>-->
+
+<select 
+    id="postPoneReason" 
+    tabindex="1"     
+    onchange="SetSelectedOption();" 
+    style='margin: 5px 5px 5px 0px; margin-right: 20px; padding: 2px 0px 3px 5px; border: 1px solid rgb(204, 204, 204); width: 300px; font-family: "Segoe UI"; font-size: 11px; font-weight: 600;'>
+</select>
+</div>
+
+</body>
+</html>

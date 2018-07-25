@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:worord="http://www.ericsson.com/entity/CommonBusiness/WorkOrder/V1/" xmlns:getbalres1="http://www.ericsson.com/esb/message/customer/getBalanceResponse/v1.0" xmlns:entbastyp="http://www.ericsson.com/entity/CommonBusiness/BaseTypes/V1/" xmlns="http://www.ericsson.com/esb/message/customer/getBalanceResponse/v1.0" xmlns:getbalres="http://www.ericsson.com/esb/message/customer/getBalanceResponse/v1.0" xmlns:getbalres2="http://www.ericsson.com/esb/message/customer/getBalanceResponse/v1.0" xmlns:getbalres3="http://www.ericsson.com/esb/message/customer/getBalanceResponse/v1.0" targetNamespace="http://www.ericsson.com/esb/message/customer/getBalanceResponse/v1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FCommonBusiness%2FBaseTypes_V1" namespace="http://www.ericsson.com/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:element name="getBalanceResponse" type="getbalres3:getBalanceResponse_TYPE" />
+  <xsd:complexType name="getBalanceResponse_TYPE">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="_responseStatus" type="entbastyp:ResponseStatus" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="currency1" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="availableServerCapabilities" type="getbalres3:AvailableServerCapabilitiesType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="negotiatedCapabilities" type="getbalres3:NegotiatedCapabilitiesType" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="offerInformationType" type="getbalres3:OfferInformationType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AvailableServerCapabilitiesType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="value" type="getbalres3:Value_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="NegotiatedCapabilitiesType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="value" type="getbalres3:Value_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Value_TYPE">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="i4" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OfferInformationType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="attributeInformationList" type="getbalres3:AttributeInformationListType" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="dedicatedAccountInformation" type="getbalres3:DedicatedAccountInformationType" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="usageCounterUsageThresholdInformation" type="getbalres3:UsageCounterUsageThresholdInformationType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="expiryDate" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="offerId" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="offerType" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="productId" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="productOfferingName" type="getbalres3:ProductOfferingNameType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="startDate" type="xsd:dateTime" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ProductOfferingNameType">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="offerType" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="trafficType" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="marketSegment" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="subMarketSegment" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AttributeInformationListType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="value" type="getbalres3:ValueAttributeInformationListType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DedicatedAccountInformationType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="value" type="getbalres3:ValueDedicatedAccountInformationType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ValueAttributeInformationListType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="attributeName" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="attributeSource" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="attributeValueString" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ValueDedicatedAccountInformationType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="dedicatedAccountActiveValue1" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="dedicatedAccountID" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="dedicatedAccountResourceConnected" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="dedicatedAccountUnitType" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="dedicatedAccountValue1" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="expiryDate" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="startDate" type="xsd:dateTime" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UsageCounterUsageThresholdInformationType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="usageCounterID" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="usageCounterNominalValue" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="usageCounterValue" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="usageThresholdInformation" type="getbalres3:UsageThresholdInformationType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UsageThresholdInformationType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="usageThresholdID" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="usageThresholdSource" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="usageThresholdValue" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

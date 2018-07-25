@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd_2="http://claro.com.pe/entity/EngagedParty/PaymentMethod/V1/" xmlns:xsd_3="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:xsd_1="http://claro.com.pe/entity/EngagedParty/Bank/V1/" xmlns:entgeoadd="http://claro.com.pe/entity/CommonBusiness/GeographicAddress/V1/" xmlns:xsd_4="http://claro.com.pe/entity/EngagedParty/PartyPayment/V1/" targetNamespace="http://claro.com.pe/entity/EngagedParty/Bank/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="PartyPayment_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/PartyPayment/V1/" />
+  <xsd:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:import schemaLocation="../EngagedParty/PaymentMethod_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/PaymentMethod/V1/" />
+  <xsd:import schemaLocation="../CommonBusiness/GeographicAddress_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/GeographicAddress/V1/" />
+  <xsd:annotation>
+    <xsd:documentation>Bank ABE inclueds entitites related to Bank.</xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="Bank">
+    <xsd:annotation>
+      <xsd:documentation>Represent the general bank.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="bankName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The name of the bank.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="bankCodeType" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The type of bank code, for example BIC(Bank Identifier Code).</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="bankCode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The bank code according to the bankCodeType.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="geographicAddress" type="entgeoadd:GeographicAddress" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="BankAccount">
+    <xsd:annotation>
+      <xsd:documentation>Represent the general bank account.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="type" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The type of bank account, for example IBAN (International Bank Account Number).</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="bankAccountNumber" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The bank account according to the accountType.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_3:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period for which the bank account is valid.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="bank" type="xsd_1:Bank" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,467 @@
+﻿<html>
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+
+
+
+
+
+    <script src="../../../amx_/common/components/ngDialog/ngDialog.min.js" type="text/javascript"></script>
+    <script src="../../../amx_/common/components/ngDialog/ngDialog.js" type="text/javascript"></script>
+    <link href="../../../amx_/common/components/ngDialog/ngDialog.css" rel="stylesheet" type="text/css">
+    <link href="../../../amx_/common/components/ngDialog/ngDialog.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../amx_/common/components/ngDialog/ngDialog_theme_default.css" rel="stylesheet" type="text/css">
+    <link href="../../../amx_/common/components/ngDialog/ngDialog_theme_default.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../amx_/common/components/ngDialog/ngDialog_theme_plain.css" rel="stylesheet" type="text/css">
+    <link href="../../../amx_/common/components/ngDialog/ngDialog_theme_plain.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../amx_/common/components/ngDialog/ngDialog_custom_width.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        .dataGridTitleRed + div {
+            color: white;
+            background-color: rgb(218,39,44);
+            margin-bottom: 4px;
+            padding: 3px 0px 3px 20px;
+        }
+
+        .tHead {
+            border: 1px solid rgb(215,215,215);
+            background-color: rgb(244,242,242);
+            padding: 3px 0px;
+        }
+
+            .tHead th {
+                padding: 3px 0px;
+            }
+
+        .beforeTbody:before {
+            content: "************";
+            display: table-caption;
+            line-height: 2px;
+            color: transparent;
+        }
+
+        /*first td*/
+        /*First div class left*/
+        #table_p {
+            overflow: visible;
+            width: 268px;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            border: 0px solid red;
+        }
+
+            #table_p table {
+                width: 266px;
+                border-collapse: collapse;
+                border: 1px solid rgb(215,215,215);
+            }
+
+                #table_p table td {
+                    border: 1px solid rgb(215,215,215);
+                }
+
+            #table_p > tbody:before {
+                line-height: 1px;
+            }
+
+            #table_p table > tbody > tr:not(:first-child) > td {
+                border-left: none;
+                border-right: none;
+                cursor: pointer;
+            }
+
+            #table_p table > tbody > tr:first-child > td {
+                padding: 5px 0px;
+            }
+
+        /*Second div class left*/
+
+        #idConfigurationDelivery {
+            overflow: visible;
+            width: 268px;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            border-collapse: collapse;
+            border: 0px solid red;
+        }
+
+            #idConfigurationDelivery td {
+                border: 1px solid rgb(215,215,215);
+            }
+        /*Second td*/
+        #dataTd .dataGridTitleText {
+            margin-bottom: 8px;
+        }
+
+            #dataTd .dataGridTitleText + form[name="myForm"] > table > tbody > tr {
+                border: 1px solid rgb(215,215,215);
+            }
+
+            #dataTd .dataGridTitleText + div[name="myForm"] {
+                border: 1px solid rgb(215,215,215);
+            }
+    </style>
+
+
+    <meta>
+    <div id="container" ng-controller="configurationController" rtl-dir="{{direct}}">
+        <table style="width: auto; white-space: nowrap;">
+            <tbody>
+                <tr>
+                    <td style="text-align: left; vertical-align: top;">
+                        <div class="left" style="background-color: rgb(255, 255, 255);">
+                            <div class="dataGridTitleText dataGridTitleRed" style="margin-bottom: 8px;"><span>{{scopeData.translations.tConfigureServices}}</span></div>
+                            <div class="dataGridTitleText"><span>{{scopeData.translations.tServiceC}}</span></div>
+                            <table id="table_p" ng-style="{'display': 'inline-block'}">
+
+                                <colgroup>
+                                    <col style="width: 110px;">
+                                    <col style="width: 153px;">
+                                </colgroup>
+                                <thead class="tHead">
+                                    <tr>
+                                        <th>{{scopeData.translations.tService}}</th>
+                                        <th>{{scopeData.translations.tStatus}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="beforeTbody">
+                                    <tr style="padding: 15px; height: 30px;" ng-repeat-start="OrderItem in scopeData.configurableItemsModel.orderItemsBasket.listOfOrderBasketOrderItems track by $index" ng-show="OrderItem.OfferTypeCodeValue == 'Basic Offer'">
+                                        <td align="left" style="font-size: 17px;" colspan="2">
+                                            <table>
+                                                <colgroup>
+                                                    <col style="width: 110px;">
+                                                    <col style="width: 150px;">
+                                                </colgroup>
+                                                <tbody>
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <div style="font-weight: bold; margin-left: 5px;">
+                                                                <span>{{OrderItem.name}}</span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr ng-style="scopeData.selectedConfiguration == 'cuenta' &amp;&amp; {'background-color': '#ffffff','border':'3px solid rgb(218,39,44)'} || {'border': 'none'}" ng-show="OrderItem.name == 'Servicio Internet'" ng-click="scopeData.changeConfiguration('cuenta')">
+                                                        <td>
+                                                            <div style="margin-left: 15px;">
+                                                                <span>Cuenta Correo</span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;">
+                                                            <img width="20" height="19" ng-src="{{scopeData.pendingCongigurationIconUrl}}">
+                                                        </td>
+                                                    </tr>
+                                                    <tr ng-style="scopeData.selectedConfiguration == 'primaryPhone' &amp;&amp; {'background-color': '#ffffff','border':'3px solid rgb(218,39,44)'} || {'border': 'none'}" ng-show="OrderItem.name == 'Servicio Telefonia Fija'" ng-click="scopeData.changeConfiguration('primaryPhone', OrderItem.guid)">
+                                                        <td>
+                                                            <div style="margin-left: 15px;">
+                                                                <span>Configuración de Número</span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;">
+                                                            <img width="20" height="19" ng-src="{{scopeData.pendingCongigurationIconUrl}}" ng-hide="scopeData.isPrimaryNumberServiceCalled == true">
+                                                            <span style="color: green; font-family: wingdings; font-size: 15px;" ng-show="scopeData.isPrimaryNumberServiceCalled == true">ü</span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr ng-style="scopeData.selectedConfiguration == 'faf' &amp;&amp; {'background-color': '#ffffff','border':'3px solid rgb(218,39,44)'} || {'border': 'none'}" ng-show="OrderItem.name == 'Servicio Telefonia Fija'" ng-click="scopeData.changeConfiguration('faf')">
+                                                        <td>
+                                                            <div style="margin-left: 15px;">
+                                                                <span>Elegidos</span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;">
+                                                            <img width="20" height="19" ng-src="{{scopeData.pendingCongigurationIconUrl}}">
+                                                        </td>
+                                                    </tr>
+                                                    <tr ng-style="scopeData.selectedConfiguration == 'barring' &amp;&amp; {'background-color': '#ffffff','border':'3px solid rgb(218,39,44)'} || {'border': 'none'}" ng-show="OrderItem.name == 'Servicio Telefonia Fija'" ng-click="scopeData.changeConfiguration('barring')">
+                                                        <td>
+                                                            <div style="margin-left: 15px;">
+                                                                <span>Bloqueos</span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;">
+                                                            <img width="20" height="19" ng-src="{{scopeData.pendingCongigurationIconUrl}}">
+                                                        </td>
+                                                    </tr>
+                                                    <tr ng-style="scopeData.selectedConfiguration == 'secondaryPhone' &amp;&amp; {'background-color': '#ffffff','border':'3px solid rgb(218,39,44)'} || {'border': 'none'}" ng-show="OrderItem.name == 'Segunda Linea Telefonia Fija'" ng-click="scopeData.changeConfiguration('secondaryPhone', OrderItem.guid)">
+                                                        <td>
+                                                            <div style="margin-left: 15px;">
+                                                                <span>Configuración de Número</span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;">
+                                                            <img width="20" height="19" ng-src="{{scopeData.pendingCongigurationIconUrl}}" ng-hide="scopeData.isSecondaryNumberServiceCalled == true">
+                                                            <span style="color: green; font-family: wingdings; font-size: 15px;" ng-show="scopeData.isSecondaryNumberServiceCalled == true">ü</span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr ng-style="scopeData.selectedConfiguration == 'tv' &amp;&amp; {'background-color': '#ffffff','border':'3px solid rgb(218,39,44)'} || {'border': 'none'}" ng-show="OrderItem.name == 'Servicio TV'" ng-click="scopeData.changeConfiguration('tv')">
+                                                        <td>
+                                                            <div style="margin-left: 15px;">
+                                                                <span>{{OrderItem.name}}</span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;">
+                                                            <img width="20" height="19" ng-src="{{scopeData.pendingCongigurationIconUrl}}">
+                                                        </td>
+                                                    </tr>
+                                                    <tr ng-style="scopeData.selectedConfiguration.Id == prepaid.Id  &amp;&amp; {'background-color': '#ffffff','border':'3px solid rgb(253,33,40)'} || {'border': 'none'}" ng-show="OrderItem.name == 'Servicio Movil Prepago'" ng-click="scopeData.changeConfiguration(prepaid, OrderItem.guid)" ng-repeat="prepaid in scopeData.prepaid" ng-if="prepaid.RootOrderItemId == OrderItem.guid">
+                                                        <td>
+                                                            <div style="margin-left: 15px;">
+                                                                <span>{{prepaid.Name}}</span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;">
+                                                            <img width="20" height="19" ng-src="{{scopeData.pendingCongigurationIconUrl}}" ng-hide="scopeData.isPrepaidNumberServiceCalled == true">
+                                                            <span style="color: green; font-family: wingdings; font-size: 15px;" ng-show="scopeData.isPrepaidNumberServiceCalled == true">ü</span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr ng-style="scopeData.selectedConfiguration.OrderItemId == prepaidplans.OrderItemId &amp;&amp; {'background-color': '#ffffff','border':'3px solid rgb(218,39,44)'} || {'border': 'none'}" ng-show="OrderItem.name == 'Servicio Movil Prepago'" ng-click="scopeData.changeConfiguration(prepaidplans, prepaidplans.OrderItemId)" ng-repeat="prepaidplans in scopeData.prepaidfafplans" ng-if="prepaidplans.RootOrderItemId == OrderItem.guid">
+                                                        <!--<tr ng-style="scopeData.selectedConfiguration == 'prepaidfaf' &amp;&amp; {'background-color': '#ffffff','border':'3px solid rgb(218,39,44)'} || {'border': 'none'}" ng-show="OrderItem.name == 'Servicio Movil Prepago'" ng-click="scopeData.changeConfiguration('prepaidfaf')" ng-repeat="prepaidplans in scopeData.prepaidfafplans">-->
+
+                                                        <td>
+
+                                                            <div style="margin-left: 15px;">
+                                                                {{prepaidplans.OfferingName}}
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;">
+                                                            <img width="20" height="19" ng-src="{{scopeData.pendingCongigurationIconUrl}}">
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr ng-repeat-end=""></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="left" style="margin-top: 18px; background-color: rgb(255, 255, 255);">
+                            <div class="dataGridTitleText dataGridTitleRed" style="margin-bottom: 8px;"><span>{{scopeData.translations.tConfigureDelivery}}</span></div>
+                            <div class="dataGridTitleText"><span>{{scopeData.translations.tServiceC}}</span></div>
+                            <!--            <table id="idConfigurationDelivery" style="width: auto;white-space:nowrap;border: none; padding: 0px;display:none">-->
+                            <table class="tableCls" id="idConfigurationDelivery">
+                                <colgroup>
+                                    <col style="width: 134px;">
+                                    <col style="width: 134px;">
+                                </colgroup>
+                                <thead class="tHead" style="padding: 3px 0px;">
+                                    <tr>
+                                        <th>{{scopeData.translations.tDeviceName}}</th>
+                                        <th>{{scopeData.translations.tDeliveryOption}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="beforeTbody">
+                                    <tr ng-repeat="orderItem in scopeData.configuration.deliverableOrderItems">
+                                        <td>{{ orderItem.OfferingName}}</td>
+                                        <td>
+                                            <select>
+                                                <option ng-repeat="option in orderItem.BIdeliveryOptions">{{option}}</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                    <td id="dataTd" style="text-align: left; vertical-align: top;">
+                        <div ng-repeat-start="OrderItem in scopeData.configurableItemsModel.orderItemsBasket.listOfOrderBasketOrderItems" ng-init="indexOrderItem = $index">
+                            <div ng-if="OrderItem.name == 'Cuenta Correo' &amp;&amp; scopeData.selectedConfiguration == 'cuenta'">
+                                <div class="right" style="margin-left: 50px; background-color: rgb(255, 255, 255);" ng-style="scopeData.selectedConfiguration == 'cuenta' &amp;&amp; {'display': 'inline-block'} || {'display': 'none'}">
+                                    <div valign="top" ng-repeat="ProductResourceSpec in  OrderItem.resourceSpecList" ng-init="indexResourceSpec = $index">
+                                        <div class="dataGridTitleText" style="align-content: center;"><span>{{scopeData.translations.tConfigure}} {{OrderItem.offeringFullDesc.OfferingName}}</span></div>
+                                        <div name="myForm">
+                                            <table style="width: auto; text-align: left; margin-top: 5px; white-space: nowrap; background-color: rgb(255, 255, 255);" ng-style="{'display':'inline-block', 'vertical-align': 'top'}">
+                                                <tbody>
+                                                    <tr ng-repeat="resourceCharRow in ProductResourceSpec.resourceCharList" ng-init="indexResourceCharList = $index">
+                                                        <td ng-repeat="resourceChar in resourceCharRow" ng-init="indexResourceCharRow = $index">
+                                                            <form name="myform">
+                                                                <div style="padding: 10px; border-radius: 3px; border: 1px solid rgb(221, 221, 221); border-image: none; width: 200px; margin-top: 10px; margin-right: 5px; margin-left: 5px; display: block;">
+                                                                    <label style="background: rgb(255, 255, 255); padding: 2px 5px; height: 14px; color: rgb(128, 128, 128); overflow: hidden; font-family: Arial, Helvetica, sans-serif; font-size: 11px; margin-top: -19px; float: left; display: block;" for="email">
+                                                                        {{resourceChar.name}}
+                                                                    </label>
+                                                                    <input id="input" style="padding: 0px; border: currentColor; border-image: none; width: 100%; height: 20px; line-height: 25px; font-family: Georgia,; font-size: 14px; display: block; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box;" required="" type="email" times="" new="" roman",="" times,="" serif;"="" ng-trim="false" ng-model="scopeData.configurableItemsModel.orderItemsBasket.listOfOrderBasketOrderItems[indexOrderItem].resourceSpecList[indexResourceSpec].resourceCharList[indexResourceCharList][indexResourceCharRow].etel_value" e-form="rowform">
+                                                                    <div ng-if="myform.$error.email">
+                                                                        <span style="background: rgb(243, 243, 243); margin: 0px -9px -9px; padding: 3px; text-align: center; color: rgb(255, 0, 0); font-family: Arial, Helvetica, sans-serif; font-size: 11px; display: block;">{{scopeData.translations.tInvalidEmailAddress}}</span>
+                                                                    </div>
+                                                                    <div ng-if="scopeData.configurableItemsModel.orderItemsBasket.listOfOrderBasketOrderItems[indexOrderItem].resourceSpecList[indexResourceSpec].resourceCharList[indexResourceCharList][indexResourceCharRow].etel_value == ''">
+                                                                        <span style="background: rgb(243, 243, 243); margin: 0px -9px -9px; padding: 3px; text-align: center; color: rgb(192, 192, 192); font-family: Arial, Helvetica, sans-serif; font-size: 11px; display: block;" {{scopedata.translations.tentervalidemailaddress}}=""></span>
+                                                                    </div>
+                                                                    <div ng-if="scopeData.configurableItemsModel.orderItemsBasket.listOfOrderBasketOrderItems[indexOrderItem].resourceSpecList[indexResourceSpec].resourceCharList[indexResourceCharList][indexResourceCharRow].etel_value != '' &amp;&amp; !myform.$error.email">
+                                                                        <span style="background: rgb(243, 243, 243); margin: 0px -9px -9px; padding: 3px; text-align: center; color: rgb(124, 203, 167); font-family: Arial, Helvetica, sans-serif; font-size: 11px; display: block;">{{scopeData.translations.tValidEmailAddress}}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                    <tr ng-repeat-end=""></tr>
+                                                </tbody>
+                                            </table>
+                                            <button ng-click="scopeData.CreateUpdateResourceChar(scopeData.configurableItemsModel.orderItemsBasket.listOfOrderBasketOrderItems[indexOrderItem])">
+                                                {{scopeData.translations.tSave}}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="OrderItem.name == 'Servicio TV' &amp;&amp; scopeData.selectedConfiguration == 'tv'">
+                                <div class="right" style="margin-left: 50px; background-color: rgb(255, 255, 255);" ng-style="scopeData.selectedConfiguration == 'tv' &amp;&amp; {'display': 'inline-block'} || {'display': 'none'}">
+                                    <div class="dataGridTitleText" style="align-content: center;"><span>{{scopeData.translations.tConfigure}} {{OrderItem.offeringFullDesc.OfferingName}}</span></div>
+                                    <form name="myForm">
+                                        <table style="width: auto; height: auto; text-align: left; margin-top: 5px; white-space: nowrap; background-color: rgb(255, 255, 255);">
+                                            <colgroup>
+                                                <col style="width: 150px;">
+                                                <col style="width: 150px;">
+                                                <col style="width: auto;" ng-repeat="item in OrderItem.equipmentChannelMatrix[0].channels">
+                                            </colgroup>
+                                            <thead class="tHead">
+                                                <tr style="padding: 5px; border-top-width: 1px; border-bottom-width: 1px;">
+                                                    <th style="text-align: center;">{{scopeData.translations.tEquipments}}</th>
+                                                    <th style="text-align: center;">{{scopeData.translations.tDescription}}</th>
+                                                    <th style="border: 3px solid rgb(255, 255, 255); border-image: none; text-align: center; white-space: normal; -ms-word-wrap: break-word; background-color: rgb(237, 237, 237);" ng-repeat="channel in OrderItem.equipmentChannelMatrix[0].channels">{{channel.channel.name}}</th>
+                                                    <th ng-repeat-end=""></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="beforeTbody" style="margin-top: 10px;">
+                                                <tr style="padding: 5px;" ng-repeat-start="EquipmentChannelMatrix in OrderItem.equipmentChannelMatrix" ng-init="equipmentChannelIndex = $index">
+                                                    <td align="center" style="padding: 5px;">
+                                                        <span>{{EquipmentChannelMatrix.equipment.name}}</span>
+                                                    </td>
+                                                    <td align="center" style="padding: 5px;">
+                                                        <input id="input" type="text" ng-trim="false" ng-model="EquipmentChannelMatrix.description" e-form="rowform">
+                                                    </td>
+                                                    <td align="center" style="padding: 5px;" ng-repeat="Channel in EquipmentChannelMatrix.channels" ng-init="channelIndex = $index">
+                                                        <input name="equipment_{{EquipmentChannelMatrix.equipment}}" type="checkbox" ng-checked="scopeData.EquipmentChannelMatrix[equipmentChannelIndex].channels[channelIndex].selected">
+                                                    </td>
+                                                    <td ng-repeat-end=""></td>
+                                                </tr>
+                                                <tr ng-repeat-end=""></tr>
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                </div>
+                            </div>
+                            <div ng-show="OrderItem.name == 'Servicio Telefonia Fija' &amp;&amp; scopeData.selectedConfiguration == 'primaryPhone'">
+                                <div class="right" style="margin-left: 50px; background-color: rgb(255, 255, 255);" ng-style="scopeData.selectedConfiguration == 'primaryPhone' &amp;&amp; {'display': 'inline-block'} || {'display': 'none'}">
+                                    <div style="margin-bottom: 30px; display: none;">
+                                        <span style="font-size: 12px; font-weight: bold; text-decoration: underline;">{{scopeData.translations.tNumberConfiguration}}</span>
+                                        <div>
+                                            <input name="numberConfiguration" type="radio" value="regular"> {{scopeData.translations.tRegular}}
+                                            <input name="numberConfiguration" type="radio" value="gold"> {{scopeData.translations.tGold}}
+                                            <input name="numberConfiguration" type="radio" value="silver"> {{scopeData.translations.tSilver}}
+                                        </div>
+                                        <div>
+                                            <select>
+                                                <option value="starts">{{scopeData.translations.tStartsWith}}</option>
+                                                <option value="ends">{{scopeData.translations.tEndsWith}}</option>
+                                            </select>
+                                            <input type="text">
+                                            <button type="button">{{scopeData.translations.tSearch}}</button>
+                                        </div>
+                                    </div>
+                                    <div class="dataGridTitleText"><span>Available Numbers</span></div>
+                                    <div style="height: 150px; position: absolute;" ng-show="scopeData.selectedConfiguration == 'primaryPhone'">
+                                        <div style="height: 35px;" ng-repeat="primaryNumber in scopeData.numberListPrimary">
+                                            <div style="margin-right: 25px; float: left;">{{primaryNumber}}</div> <div style="color: green; font-family: wingdings; font-size: 20px; float: left;" ng-show="scopeData.selectedNumberPrimary == primaryNumber">ü</div> <div ng-click="scopeData.reserveNumber(primaryNumber, OrderItem.guid, true)" ng-hide="scopeData.selectedNumberPrimary == primaryNumber">Reserve</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-show="OrderItem.name == 'Servicio Telefonia Fija' &amp;&amp; scopeData.selectedConfiguration == 'faf'">
+                                <div class="right" style="margin-left: 50px; background-color: rgb(255, 255, 255);" ng-style="scopeData.selectedConfiguration == 'faf' &amp;&amp; {'display': 'inline-block'} || {'display': 'none'}">
+                                    <div style="margin-bottom: 30px;">
+                                        <span style="font-size: 12px; font-weight: bold; text-decoration: underline;">{{scopeData.translations.tFriendsandFamily}}</span>
+                                        <div>
+                                            <input type="text">
+                                            <button onclick="alert({{scopeData.translations.tValidated}})" type="button">{{scopeData.translations.tValidate}}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-show="OrderItem.name == 'Servicio Telefonia Fija' &amp;&amp; scopeData.selectedConfiguration == 'barring'">
+                                <div class="right" style="margin-left: 50px; background-color: rgb(255, 255, 255);" ng-style="scopeData.selectedConfiguration == 'barring' &amp;&amp; {'display': 'inline-block'} || {'display': 'none'}">
+                                    <div style="margin-bottom: 30px;">
+                                        <span style="font-size: 12px; font-weight: bold; text-decoration: underline;">{{scopeData.translations.tBarring}}</span>
+                                        <div ng-repeat="char in scopeData.cfssCharacteristicList">
+                                            <input type="checkbox" ng-model="char.Value" ng-checked="char.Value == true" ng-change="scopeData.checkedItems(char)"> {{char.Name}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-show="OrderItem.name == 'Segunda Linea Telefonia Fija' &amp;&amp; scopeData.selectedConfiguration == 'secondaryPhone'">
+                                <div class="right" style="margin-left: 50px; background-color: rgb(255, 255, 255);" ng-style="scopeData.selectedConfiguration == 'secondaryPhone' &amp;&amp; {'display': 'inline-block'} || {'display': 'none'}">
+                                    <div style="margin-bottom: 30px; display: none;">
+                                        <span style="font-size: 12px; font-weight: bold; text-decoration: underline;">{{scopeData.translations.tNumberConfiguration}}</span>
+                                        <div>
+                                            <input name="numberConfiguration" type="radio" value="regular"> {{scopeData.translations.tRegular}}
+                                            <input name="numberConfiguration" type="radio" value="gold"> {{scopeData.translations.tGold}}
+                                            <input name="numberConfiguration" type="radio" value="silver"> {{scopeData.translations.tSilver}}
+                                        </div>
+                                        <div>
+                                            <select>
+                                                <option value="starts">{{scopeData.translations.tStartsWith}}</option>
+                                                <option value="ends">{{scopeData.translations.tEndsWith}}</option>
+                                            </select>
+                                            <input type="text">
+                                            <button type="button">{{scopeData.translations.tSearch}}</button>
+                                        </div>
+                                    </div>
+                                    <div class="dataGridTitleText"><span>Available Numbers</span></div>
+                                    <div style="height: 150px; position: absolute;" ng-show="scopeData.selectedConfiguration == 'secondaryPhone'">
+                                        <div style="height: 35px;" ng-repeat="secondaryNumber in scopeData.numberListSecondary">
+                                            <div style="margin-right: 25px; float: left;">{{secondaryNumber}}</div> <div style="color: green; font-family: wingdings; font-size: 20px; float: left;" ng-show="scopeData.selectedNumberSecondary == secondaryNumber">ü</div> <div ng-click="scopeData.reserveNumber(secondaryNumber, OrderItem.guid, false)" ng-hide="scopeData.selectedNumberSecondary == secondaryNumber">Reserve</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div ng-show="OrderItem.name == scopeData.selectedConfiguration">
+                            <div class="right" style="margin-left: 50px; background-color: rgb(255, 255, 255);" ng-style="OrderItem.name == scopeData.selectedConfiguration &amp;&amp; {'display': 'inline-block'} || {'display': 'none'}">
+
+                                <div class="dataGridTitleText"><span>Reserved Numbers</span></div>
+                                <div style="height: 150px; position: absolute;" ng-show="OrderItem.name == scopeData.selectedConfiguration">
+                                    <!--<div style="height: 35px;" ng-repeat="PrepaidNumber in prepaidNumber">-->
+                            <!--<div style="margin-right: 25px; float: left;">{{prepaidNumber}}</div>-->
+                            <!--<div style="color: green; font-family: wingdings; font-size: 20px; float: left;" ng-show="scopeData.selectedNumberSecondary == secondaryNumber">ü</div> <div ng-click="scopeData.reserveNumber(secondaryNumber, OrderItem.guid, false)" ng-hide="scopeData.selectedNumberSecondary == secondaryNumber">Reserve</div>-->
+                            <!--</div>-->
+                            <!--</div>
+                                </div>
+                            </div>-->
+                            <div ng-show="OrderItem.name == 'Servicio Movil Prepago' &amp;&amp; scopeData.selectedConfiguration.Id == prepaid.Id" ng-repeat="prepaid in scopeData.prepaid" ng-if="prepaid.RootOrderItemId == OrderItem.guid">
+                                <div class="right" style="margin-left: 50px; background-color: rgb(255, 255, 255);" ng-style="scopeData.selectedConfiguration.Id == prepaid.Id &amp;&amp; {'display': 'inline-block'} || {'display': 'none'}">
+
+                                    <div class="dataGridTitleText"><span>Reserved Numbers</span></div>
+                                    <div style="height: 150px; position: absolute;" ng-show="scopeData.selectedConfiguration.Id == prepaid.Id">
+                                        <!--<div style="height: 35px;" ng-repeat="PrepaidNumber in prepaidNumber">-->
+                                        <div style="margin-right: 25px; float: left;">{{prepaidNumber}}</div>
+                                        <!--<div style="color: green; font-family: wingdings; font-size: 20px; float: left;" ng-show="scopeData.selectedNumberSecondary == secondaryNumber">ü</div> <div ng-click="scopeData.reserveNumber(secondaryNumber, OrderItem.guid, false)" ng-hide="scopeData.selectedNumberSecondary == secondaryNumber">Reserve</div>-->
+                                        <!--</div>-->
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div ng-show="scopeData.selectedConfiguration.OrderItemId == prepaidplans.OrderItemId" ng-repeat="prepaidplans in scopeData.prepaidfafplans" ng-if="prepaidplans.RootOrderItemId == OrderItem.guid">
+                                <div class="right" style="margin-left: 50px; background-color: rgb(255, 255, 255);" ng-style="scopeData.selectedConfiguration.OrderItemId == prepaidplans.OrderItemId &amp;&amp; {'display': 'inline-block'} || {'display': 'none'}">
+                                    <div style="margin-bottom: 30px;">
+                                        <span style="font-size: 12px; font-weight: bold; text-decoration: underline;">{{scopeData.translations.tFriendsandFamily}}</span>
+                                        <div ng-repeat="DefaultValue in scopeData.FaFDefaultValue track by $index">
+                                            <input type="text" ng-model="DefaultValue.Name">
+                                            <!--<button onclick="alert({{scopeData.translations.tValidated}})" type="button">{{scopeData.translations.tValidate}}</button>-->
+                                            <button type="button" ng-click="scopeData.contractsSearchByDirnum(DefaultValue.Name,DefaultValue.Id, $index)">{{scopeData.translations.tValidate}}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-repeat-end=""></div>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+
+</body>
+</html>

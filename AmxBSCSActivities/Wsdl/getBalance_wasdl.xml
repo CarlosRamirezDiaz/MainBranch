@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WL5G3N0:definitions targetNamespace="http://www.ericsson.com/esb/service/CustomerAccount/v1/" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://www.ericsson.com/esb/data/generico/CommonTypes/v2/" xmlns:WL5G3N10="http://www.ericsson.com/esb/message/customer/GetTariffChangeResponse/v1.0" xmlns:WL5G3N11="http://www.ericsson.com/esb/message/customer/PaymentCustomerBillResponse/v1.0" xmlns:WL5G3N12="http://www.ericsson.com/esb/message/customer/getCustomerAgreementResponse/v1.0" xmlns:WL5G3N13="http://www.ericsson.com/esb/message/customer/getSubscriberPackagesResponse/v1.0" xmlns:WL5G3N14="http://www.ericsson.com/esb/service/CustomerAccount/v1/" xmlns:WL5G3N15="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:WL5G3N2="http://www.ericsson.com/esb/message/customer/changeTariffRequest/v1.0" xmlns:WL5G3N3="http://www.ericsson.com/esb/message/customer/getBalanceRequest/v1.0" xmlns:WL5G3N4="http://www.ericsson.com/esb/message/customer/GetTariffChangeRequest/v1.0" xmlns:WL5G3N5="http://www.ericsson.com/esb/message/customer/PaymentCustomerBillRequest/v1.0" xmlns:WL5G3N6="http://www.ericsson.com/esb/message/customer/getCustomerAgreementRequest/v1.0" xmlns:WL5G3N7="http://www.ericsson.com/esb/message/customer/getSubscriberPackagesRequest/v1.0" xmlns:WL5G3N8="http://www.ericsson.com/esb/message/customer/changeTariffResponse/v1.0" xmlns:WL5G3N9="http://www.ericsson.com/esb/message/customer/getBalanceResponse/v1.0">
+  <WL5G3N0:types>
+    <xsd:schema xmlns:chatarreq="http://www.ericsson.com/esb/message/customer/changeTariffRequest/v1.0" xmlns:chatarres="http://www.ericsson.com/esb/message/customer/changeTariffResponse/v1.0" xmlns:ef="http://www.ericsson.com/esb/data/generico/CommonTypes/v2/" xmlns:getappstareq="http://www.ericsson.com/esb/message/customer/getCustomerAgreementRequest/v1.0" xmlns:getappstares="http://www.ericsson.com/esb/message/customer/getCustomerAgreementResponse/v1.0" xmlns:getbalreq="http://www.ericsson.com/esb/message/customer/getBalanceRequest/v1.0" xmlns:getbalres="http://www.ericsson.com/esb/message/customer/getBalanceResponse/v1.0" xmlns:getsubspackreq="http://www.ericsson.com/esb/message/customer/getSubscriberPackagesRequest/v1.0" xmlns:getsubspackres="http://www.ericsson.com/esb/message/customer/getSubscriberPackagesResponse/v1.0" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:paybilreq="http://www.ericsson.com/esb/message/customer/PaymentCustomerBillRequest/v1.0" xmlns:paybilres="http://www.ericsson.com/esb/message/customer/PaymentCustomerBillResponse/v1.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:srv="http://www.ericsson.com/esb/service/CustomerAccount/v1/" xmlns:tarchareq="http://www.ericsson.com/esb/message/customer/GetTariffChangeRequest/v1.0" xmlns:tarchares="http://www.ericsson.com/esb/message/customer/GetTariffChangeResponse/v1.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://www.ericsson.com/esb/data/generico/CommonTypes/v2/" schemaLocation="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FCommonBusiness%2FCommonTypes_V2"/>
+      <xsd:import namespace="http://www.ericsson.com/esb/message/customer/changeTariffRequest/v1.0" schemaLocation="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FChangeTariffRequest_V1.0"/>
+      <xsd:import namespace="http://www.ericsson.com/esb/message/customer/getBalanceRequest/v1.0" schemaLocation="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FGetBalanceRequest_V1.0"/>
+      <xsd:import namespace="http://www.ericsson.com/esb/message/customer/GetTariffChangeRequest/v1.0" schemaLocation="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FGetTariffChangeRequest_V1.0"/>
+      <xsd:import namespace="http://www.ericsson.com/esb/message/customer/PaymentCustomerBillRequest/v1.0" schemaLocation="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FPaymentCustomerBillRequest_V1.0"/>
+      <xsd:import namespace="http://www.ericsson.com/esb/message/customer/getCustomerAgreementRequest/v1.0" schemaLocation="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FGetCustomerAgreementRequest_V1.0"/>
+      <xsd:import namespace="http://www.ericsson.com/esb/message/customer/getSubscriberPackagesRequest/v1.0" schemaLocation="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FGetSubscriberPackagesRequest_V1.0"/>
+    </xsd:schema>
+    <xsd:schema xmlns:chatarreq="http://www.ericsson.com/esb/message/customer/changeTariffRequest/v1.0" xmlns:chatarres="http://www.ericsson.com/esb/message/customer/changeTariffResponse/v1.0" xmlns:ef="http://www.ericsson.com/esb/data/generico/CommonTypes/v2/" xmlns:getappstareq="http://www.ericsson.com/esb/message/customer/getCustomerAgreementRequest/v1.0" xmlns:getappstares="http://www.ericsson.com/esb/message/customer/getCustomerAgreementResponse/v1.0" xmlns:getbalreq="http://www.ericsson.com/esb/message/customer/getBalanceRequest/v1.0" xmlns:getbalres="http://www.ericsson.com/esb/message/customer/getBalanceResponse/v1.0" xmlns:getsubspackreq="http://www.ericsson.com/esb/message/customer/getSubscriberPackagesRequest/v1.0" xmlns:getsubspackres="http://www.ericsson.com/esb/message/customer/getSubscriberPackagesResponse/v1.0" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:paybilreq="http://www.ericsson.com/esb/message/customer/PaymentCustomerBillRequest/v1.0" xmlns:paybilres="http://www.ericsson.com/esb/message/customer/PaymentCustomerBillResponse/v1.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:srv="http://www.ericsson.com/esb/service/CustomerAccount/v1/" xmlns:tarchareq="http://www.ericsson.com/esb/message/customer/GetTariffChangeRequest/v1.0" xmlns:tarchares="http://www.ericsson.com/esb/message/customer/GetTariffChangeResponse/v1.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://www.ericsson.com/esb/message/customer/changeTariffResponse/v1.0" schemaLocation="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FChangeTariffResponse_V1.0"/>
+      <xsd:import namespace="http://www.ericsson.com/esb/message/customer/getBalanceResponse/v1.0" schemaLocation="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FGetBalanceResponse_V1.0"/>
+      <xsd:import namespace="http://www.ericsson.com/esb/message/customer/GetTariffChangeResponse/v1.0" schemaLocation="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FGetTariffChangeResponse_V1.0"/>
+      <xsd:import namespace="http://www.ericsson.com/esb/message/customer/PaymentCustomerBillResponse/v1.0" schemaLocation="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FPaymentCustomerBillResponse_V1.0"/>
+      <xsd:import namespace="http://www.ericsson.com/esb/message/customer/getCustomerAgreementResponse/v1.0" schemaLocation="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FGetCustomerAgreementResponse_V1.0"/>
+      <xsd:import namespace="http://www.ericsson.com/esb/message/customer/getSubscriberPackagesResponse/v1.0" schemaLocation="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FMensajes%2FGetSubscriberPackagesResponse_V1.0"/>
+    </xsd:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="headerRequest">
+    <WL5G3N0:part element="WL5G3N1:headerRequest" name="headerRequest"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="headerResponse">
+    <WL5G3N0:part element="WL5G3N1:headerResponse" name="headerResponse"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="changeTariffRequest">
+    <WL5G3N0:part element="WL5G3N2:changeTariffRequest" name="changeTariffRequest"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="getBalanceRequest">
+    <WL5G3N0:part element="WL5G3N3:getBalanceRequest" name="getBalanceRequest"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="getTariffChangeRequest">
+    <WL5G3N0:part element="WL5G3N4:getTariffChangeRequest" name="getTariffChangeRequest"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="paymentCustomerBillRequest">
+    <WL5G3N0:part element="WL5G3N5:paymentCustomerBillRequest" name="paymentCustomerBillRequest"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="getCustomerAgreementRequest">
+    <WL5G3N0:part element="WL5G3N6:getCustomerAgreementRequest" name="getCustomerAgreementRequest"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="getSubscriberPackagesRequest">
+    <WL5G3N0:part element="WL5G3N7:getSubscriberPackagesRequest" name="getSubscriberPackagesRequest"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="changeTariffResponse">
+    <WL5G3N0:part element="WL5G3N8:changeTariffResponse" name="changeTariffResponse"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="getBalanceResponse">
+    <WL5G3N0:part element="WL5G3N9:getBalanceResponse" name="getBalanceResponse"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="getTariffChangeResponse">
+    <WL5G3N0:part element="WL5G3N10:getTariffChangeResponse" name="getTariffChangeResponse"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="paymentCustomerBillResponse">
+    <WL5G3N0:part element="WL5G3N11:paymentCustomerBillResponse" name="paymentCustomerBillResponse"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="getCustomerAgreementResponse">
+    <WL5G3N0:part element="WL5G3N12:getCustomerAgreementResponse" name="getCustomerAgreementResponse"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="getSubscriberPackagesResponse">
+    <WL5G3N0:part element="WL5G3N13:getSubscriberPackagesResponse" name="getSubscriberPackagesResponse"/>
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="customerAccountPortType">
+    <WL5G3N0:operation name="changeTariff">
+      <WL5G3N0:input message="WL5G3N14:changeTariffRequest"/>
+      <WL5G3N0:output message="WL5G3N14:changeTariffResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="getBalance">
+      <WL5G3N0:input message="WL5G3N14:getBalanceRequest"/>
+      <WL5G3N0:output message="WL5G3N14:getBalanceResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="getTariffChange">
+      <WL5G3N0:input message="WL5G3N14:getTariffChangeRequest"/>
+      <WL5G3N0:output message="WL5G3N14:getTariffChangeResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="paymentCustomerBill">
+      <WL5G3N0:input message="WL5G3N14:paymentCustomerBillRequest"/>
+      <WL5G3N0:output message="WL5G3N14:paymentCustomerBillResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="getCustomerAgreement">
+      <WL5G3N0:input message="WL5G3N14:getCustomerAgreementRequest"/>
+      <WL5G3N0:output message="WL5G3N14:getCustomerAgreementResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="getSubscriberPackages">
+      <WL5G3N0:input message="WL5G3N14:getSubscriberPackagesRequest"/>
+      <WL5G3N0:output message="WL5G3N14:getSubscriberPackagesResponse"/>
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="customerAccountBindingType" type="WL5G3N14:customerAccountPortType">
+    <WL5G3N15:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <WL5G3N0:operation name="changeTariff">
+      <WL5G3N15:operation soapAction="http://www.ericsson.com/esb/message/customer/changeTariffRequest/v1.0"/>
+      <WL5G3N0:input>
+        <WL5G3N15:body use="literal"/>
+        <WL5G3N15:header message="WL5G3N14:headerRequest" part="headerRequest" use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N15:body use="literal"/>
+        <WL5G3N15:header message="WL5G3N14:headerResponse" part="headerResponse" use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="getBalance">
+      <WL5G3N15:operation soapAction="http://www.ericsson.com/esb/message/customer/getBalanceRequest/v1.0"/>
+      <WL5G3N0:input>
+        <WL5G3N15:body use="literal"/>
+        <WL5G3N15:header message="WL5G3N14:headerRequest" part="headerRequest" use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N15:body use="literal"/>
+        <WL5G3N15:header message="WL5G3N14:headerResponse" part="headerResponse" use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="getTariffChange">
+      <WL5G3N15:operation soapAction="http://www.ericsson.com/esb/message/customer/GetTariffChange/v1.0"/>
+      <WL5G3N0:input>
+        <WL5G3N15:body use="literal"/>
+        <WL5G3N15:header message="WL5G3N14:headerRequest" part="headerRequest" use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N15:body use="literal"/>
+        <WL5G3N15:header message="WL5G3N14:headerResponse" part="headerResponse" use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="paymentCustomerBill">
+      <WL5G3N15:operation soapAction="http://www.ericsson.com/esb/message/customer/PaymentCustomerBillRequest/v1.0"/>
+      <WL5G3N0:input>
+        <WL5G3N15:body use="literal"/>
+        <WL5G3N15:header message="WL5G3N14:headerRequest" part="headerRequest" use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N15:body use="literal"/>
+        <WL5G3N15:header message="WL5G3N14:headerResponse" part="headerResponse" use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="getCustomerAgreement">
+      <WL5G3N15:operation soapAction="http://www.ericsson.com/esb/message/customer/getCustomerAgreementRequest/v1.0"/>
+      <WL5G3N0:input>
+        <WL5G3N15:body use="literal"/>
+        <WL5G3N15:header message="WL5G3N14:headerRequest" part="headerRequest" use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N15:body use="literal"/>
+        <WL5G3N15:header message="WL5G3N14:headerResponse" part="headerResponse" use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="getSubscriberPackages">
+      <WL5G3N15:operation soapAction="http://www.ericsson.com/esb/message/customer/getSubscriberPackagesRequest/v1.0"/>
+      <WL5G3N0:input>
+        <WL5G3N15:body use="literal"/>
+        <WL5G3N15:header message="WL5G3N14:headerRequest" part="headerRequest" use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N15:body use="literal"/>
+        <WL5G3N15:header message="WL5G3N14:headerResponse" part="headerResponse" use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="customerAccountService">
+    <WL5G3N0:documentation>OSB Service</WL5G3N0:documentation>
+    <WL5G3N0:port binding="WL5G3N14:customerAccountBindingType" name="customerAccountPortType">
+      <WL5G3N15:address location="http://localhost:8003/CustomerAccount/v1.0/"/>
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd_2="http://www.ericsson.com/entity/EngagedParty/Party/V1/" xmlns:xsd_3="http://www.ericsson.com/entity/CommonBusiness/BaseTypes/V1/" xmlns:xsd_1="http://www.ericsson.com/entity/CommonBusiness/ProjectElement/V1/" xmlns:xsd_4="http://www.ericsson.com/entity/CommonBusiness/WorkOrder/V1/" xmlns:xsd_5="http://www.ericsson.com/entity/CommonBusiness/Location/V1/" xmlns:entbastyp="http://www.ericsson.com/entity/CommonBusiness/BaseTypes/V1/" xmlns="http://www.ericsson.com/entity/CommonBusiness/ProjectElement/V1/" xmlns:entproele="http://www.ericsson.com/entity/CommonBusiness/ProjectElement/V1/" targetNamespace="http://www.ericsson.com/entity/CommonBusiness/ProjectElement/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FCommonBusiness%2FBaseTypes_V1" namespace="http://www.ericsson.com/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FCommonBusiness%2FWorkOrder_V1" namespace="http://www.ericsson.com/entity/CommonBusiness/WorkOrder/V1/" />
+  <xsd:import schemaLocation="http://localhost:50124/esb/Service/BssServiceOrder/v1/notifyCancellationAppointment?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FEngagedParty%2FParty_V1" namespace="http://www.ericsson.com/entity/EngagedParty/Party/V1/" />
+  <xsd:complexType name="ProjectElement" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>This is an abstract entity used to hold the attributes and associations common to Project, WBS Element and Activity.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="_projectElementSpec" type="entproele:ProjectElementSpec" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_partyRole" type="xsd_2:PartyRole" />
+      <xsd:element name="BCWS" type="entbastyp:Money">
+        <xsd:annotation>
+          <xsd:documentation>budgeted cost of work scheduled</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="BCWP" type="entbastyp:Money">
+        <xsd:annotation>
+          <xsd:documentation>budgeted cost of work performed</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ACWP" type="entbastyp:Money">
+        <xsd:annotation>
+          <xsd:documentation>actual cost of work scheduled</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="plannedDuration" type="entbastyp:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The duration expected during the planning process</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="actualDuration" type="entbastyp:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>the duration that actually occurred</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="currentDuration" type="entbastyp:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>the latest expected duration before the actual occurrence</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="scheduledDuration" type="entbastyp:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>the duration expected during the detailed scheduling process</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="lifecycleStatus" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>the current status</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="priority" type="xsd:integer" />
+      <xsd:element name="description" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>descriptive text about the ProjectElement</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="timingConstraint" type="xsd:string" />
+      <xsd:element name="timingConstraintDate" type="xsd:anyType" />
+      <xsd:element name="_projectElement" type="entproele:ProjectElementRelationship">
+        <xsd:annotation>
+          <xsd:documentation>Allows us to relate ProjectElements. This is an abstract entity used to hold common attributes and associations for the concrete relationship types Substitution, Division, Fusion &amp; Dependency</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_projectElement1" type="entproele:ProjectElementRelationship">
+        <xsd:annotation>
+          <xsd:documentation>Allows us to relate ProjectElements. This is an abstract entity used to hold common attributes and associations for the concrete relationship types Substitution, Division, Fusion &amp; Dependency</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_workOrderItem" type="xsd_4:WorkOrderItem" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_workOrder" type="xsd_4:WorkOrder" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_place" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ProjectElementDependency">
+    <xsd:annotation>
+      <xsd:documentation>This allows us to show dependencies, that typically relate to a ProjectElement not being able to commence until another Element has been completed.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="dependencyType" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>the relationship to be applied between the start or end points of the project elements (refer table 2)
+
+Notes: see [PSL]</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="lead" type="entbastyp:Duration">
+        <xsd:annotation>
+          <xsd:documentation>the time lead to be applied to the dependency
+
+Notes: May be zero</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="lag" type="entbastyp:Duration">
+        <xsd:annotation>
+          <xsd:documentation>the time lag to be applied to the dependency
+
+Notes: May be zero</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ProjectElementDivision">
+    <xsd:annotation>
+      <xsd:documentation>Is a type of ProjectElement relationship where one ProjectElement is succeeded by more than one ProjectElement. (i.e. the Element is split into many new Elements)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="entproele:ProjectElementSuccession" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ProjectElementFusion">
+    <xsd:annotation>
+      <xsd:documentation>Is a type of ProjectElement relationship where more than one ProjectElement is succeeded by one ProjectElement. (i.e. a number of Elements are combined into a single new Element)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="entproele:ProjectElementSuccession" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ProjectElementRelationship" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>Allows us to relate ProjectElements. This is an abstract entity used to hold common attributes and associations for the concrete relationship types Substitution, Division, Fusion &amp; Dependency</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="validFor" type="entbastyp:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>the TimePeriod that the relationship is valid for.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ProjectElementSpec" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>Specifies characteristics that apply to types of ProjectElements. This is an abstract entity used to hold the attributes and associations common to ProjectSpecification, WBS ElementSpecification and ActivitySpecification. These entities can be used to build standard project templates to aid in Project creation.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_projectElement" type="entproele:ProjectElement" />
+      <xsd:element name="name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>short text allowing for easy identification of the element specification</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="description" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>descriptive text about the specification</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="expectedDuration" type="entbastyp:Duration">
+        <xsd:annotation>
+          <xsd:documentation>the normal duration of this standard element</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="type" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ProjectElementSubstitution">
+    <xsd:annotation>
+      <xsd:documentation>Is a type of ProjectElement relationship where one ProjectElement is succeeded by another ProjectElement.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="entproele:ProjectElementSuccession" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ProjectElementSuccession" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>Is a type of ProjectElement relationship where one or more ProjectElements are succeeded by one or more ProjectElements. This is an abstract entity used to hold common attributes and associations for the concrete relationship types Substitution, Division &amp; Fusion</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="successionDate" type="xsd:anyType">
+        <xsd:annotation>
+          <xsd:documentation>the date that the substitution, division or fusion takes effect</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

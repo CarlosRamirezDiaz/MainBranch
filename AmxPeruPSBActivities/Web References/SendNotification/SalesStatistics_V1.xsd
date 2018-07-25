@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:entsalsta="http://claro.com.pe/entity/MarketSales/SalesStatistics/V1/" targetNamespace="http://claro.com.pe/entity/MarketSales/SalesStatistics/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="SalesStatistics">
+    <xsd:sequence>
+      <xsd:element name="_documentId" type="xsd:int" />
+      <xsd:element name="_mask" type="xsd:string" />
+      <xsd:element name="_listeningTime" type="xsd:integer" />
+      <xsd:element name="_ringsNumber" type="xsd:integer" />
+      <xsd:element name="_retries" type="xsd:integer" />
+      <xsd:element name="_typificationId" type="xsd:integer" />
+      <xsd:element name="_voiceMailExist" type="xsd:string" />
+      <xsd:element name="_action" type="xsd:string" />
+      <xsd:element name="_indexExperience" type="xsd:float" />
+      <xsd:element name="_customerSatisfaction" type="xsd:integer" />
+      <xsd:element name="_abandonmentRate" type="xsd:string" />
+      <xsd:element name="_efficacy" type="xsd:integer" />
+      <xsd:element name="_unansweredCalls" type="xsd:integer" />
+      <xsd:element name="_answeredCalls" type="xsd:integer" />
+      <xsd:element name="_totalSales" type="xsd:integer" />
+      <xsd:element name="_totalCustomers" type="xsd:integer" />
+      <xsd:element name="_totalParticipants" type="xsd:int" />
+      <xsd:element name="_heardMessages" type="xsd:integer" />
+      <xsd:element name="_unansweredMessages" type="xsd:integer" />
+      <xsd:element name="_uncontactedPeople" type="xsd:integer" />
+      <xsd:element name="_messagePercentage" type="xsd:float" />
+      <xsd:element name="_missingAmountManage" type="xsd:integer" />
+      <xsd:element name="_percentageCompletion" type="xsd:float" />
+      <xsd:element name="_averageListening" type="xsd:float" />
+      <xsd:element name="_numberLinesRequested" type="xsd:integer" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

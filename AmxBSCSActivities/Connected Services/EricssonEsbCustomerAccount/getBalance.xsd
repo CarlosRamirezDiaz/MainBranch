@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.ericsson.com/esb/message/customer/getSubscriberPackagesResponse/v1.0" xmlns:entbastyp="http://www.ericsson.com/entity/CommonBusiness/BaseTypes/V1/" xmlns:worord="http://www.ericsson.com/entity/CommonBusiness/WorkOrder/V1/" xmlns:getsubspackres="http://www.ericsson.com/esb/message/customer/getSubscriberPackagesResponse/v1.0" targetNamespace="http://www.ericsson.com/esb/message/customer/getSubscriberPackagesResponse/v1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="http://localhost:8003/CustomerAccount/v1.0/getBalance?SCHEMA%2FUT_MODELO_ONTOLOGICO%2FEntidades%2FCommonBusiness%2FBaseTypes_V1" namespace="http://www.ericsson.com/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:element name="getSubscriberPackagesResponse" type="getsubspackres:getSubscriberPackagesResponse_TYPE" />
+  <xsd:complexType name="getSubscriberPackagesResponse_TYPE">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="_responseStatus" type="entbastyp:ResponseStatus" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="listaDetalleSuscripcionPaquetes" type="getsubspackres:listaDetalleSuscripcionPaquetesType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="listaDetalleSuscripcionPaquetesType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="subscriberPackagesDetails" type="getsubspackres:subscriberPackagesDetailsType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="subscriberPackagesDetailsType">
+    <xsd:sequence>
+      <xsd:element name="idSuscripcion" type="xsd:string" />
+      <xsd:element name="idPaquete" type="xsd:string" />
+      <xsd:element name="codigoPaquete" type="xsd:string" />
+      <xsd:element name="codigoExternoPaquete" type="xsd:string" />
+      <xsd:element name="descripionPaquete" type="xsd:string" />
+      <xsd:element name="tipoPaquete" type="xsd:string" />
+      <xsd:element name="idGrupoPaquete" type="xsd:string" />
+      <xsd:element name="nombreGrupoPaquete" type="xsd:string" />
+      <xsd:element name="idOfertaPaquete" type="xsd:string" />
+      <xsd:element name="codigoExternoOfertaPaquete" type="xsd:string" />
+      <xsd:element name="descripcionOfertaPaquete" type="xsd:string" />
+      <xsd:element name="tipoUnidadPaquete" type="xsd:string" />
+      <xsd:element name="unidadPaquete" type="xsd:string" />
+      <xsd:element name="saldoPaquete" type="xsd:string" />
+      <xsd:element name="tipoDuracionPaquete" type="xsd:string" />
+      <xsd:element name="duracionPaquete" type="xsd:string" />
+      <xsd:element name="porcentajeIGV" type="xsd:string" />
+      <xsd:element name="flagProrrateo" type="xsd:string" />
+      <xsd:element name="unidadPorDuracionPaquete" type="xsd:string" />
+      <xsd:element name="cargoProducto" type="xsd:string" />
+      <xsd:element name="cargoIGV" type="xsd:string" />
+      <xsd:element name="cargoTotalAPagar" type="xsd:string" />
+      <xsd:element name="fechaActivacion" type="xsd:dateTime" />
+      <xsd:element name="canal" type="xsd:string" />
+      <xsd:element name="fechaExpiracion" type="xsd:dateTime" />
+      <xsd:element name="flagAnidado" type="xsd:string" />
+      <xsd:element name="flagRenovable" type="xsd:string" />
+      <xsd:element name="flagAplicaEliminar" type="xsd:string" />
+      <xsd:element name="estadoSuscripcion" type="xsd:string" />
+      <xsd:element name="numeroRenovaciones" type="xsd:string" />
+      <xsd:element name="ultimaFechaRenovacion" type="xsd:string" />
+      <xsd:element name="fechaCompra" type="xsd:dateTime" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

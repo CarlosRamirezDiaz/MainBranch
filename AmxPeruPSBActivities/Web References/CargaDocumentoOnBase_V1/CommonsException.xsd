@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://claro.com.pe/eai/ebs/xsd/CommonsException" elementFormDefault="qualified" targetNamespace="http://claro.com.pe/eai/ebs/xsd/CommonsException" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="IntegrationError" type="tns:Fault" />
+  <xs:complexType name="Fault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="faultcode" type="xs:string" />
+      <xs:element minOccurs="0" name="faultstring" type="xs:string" />
+      <xs:element minOccurs="0" name="faultactor" type="xs:string" />
+      <xs:element minOccurs="0" name="detail" type="tns:Detail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Detail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="code" type="xs:string" />
+      <xs:element minOccurs="0" name="description" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

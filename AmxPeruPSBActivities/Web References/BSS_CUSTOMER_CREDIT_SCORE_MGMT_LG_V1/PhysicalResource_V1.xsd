@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:entphyres="http://claro.com.pe/entity/Resource/PhysicalResource/V1/" targetNamespace="http://claro.com.pe/entity/Resource/PhysicalResource/V1/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="PhysicalResource">
+    <xs:annotation>
+      <xs:documentation>This is an abstract base class for describing different types of hardware that constitute a Product. It has two main purposes: (1) to collect common attributes and relationships for all hardware, and (2) to provide a convenient, single point where relationships with other managed objects can be defined.
+
+The HasWarrantyInfo association (not shown) describes warranty information of hardware.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="id" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="manufacturedate" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>This is a string attribute that defines the date of manufacture of this item in the fixed format "dd/mm/yyyy". This is an optional attribute.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="otheridentifier" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>This is a string that is used to contain other important identifying data, such as a bar code, of the hardware item. This is an optional attribute.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="powerstate" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>This is an enumerated integer that defines the current power status of the hardware item. Values include:
+
+ 0: Unknown
+ 1: Not Applicable
+ 2: No Power Applied
+ 3: Full Power Applied
+ 4: Power Save - Normal
+ 5: Power Save - Degraded
+ 6: Power Save - Standby
+ 7: Power Save - Critical
+ 8: Power Save - Low Power Mode
+ 9: Power Save - Unknown
+ 10: Power Cycle
+ 11: Power Warning
+ 12: Power Off
+
+Value 1 means that the hardware item doesn't require the direct application of power (e.g., a but or bolt). If the value for this item is 3, then the PowerCapability class will describe the particular power requirements of this item through the HasPower association.
+
+This is an optional attribute.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="serialnumber" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>This is a string that represents a manufacturer-allocated number used to identify different instances of the same hardware item. The ModelNumber and PartNumber attributes are used to identify different types of hardware items. This is a REQUIRED attribute.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="versionnumber" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>This is a string that identifies the version of this object. This is an optional attribute.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,135 @@
+﻿<html>
+<head>
+</head>
+<body>
+    ﻿
+
+
+    <style type="text/css">
+        /* Arabic translation style */
+        .processControlContainer[dir=rtl] #processStagesContainer {
+            float: right;
+        }
+
+            .processControlContainer[dir=rtl] #processStagesContainer .stageNameContent {
+                text-align: right;
+                padding-right: 40px;
+            }
+
+            .processControlContainer[dir=rtl] #processStagesContainer .globalActiveStageFlag {
+                right: auto !important;
+            }
+
+        .processControlContainer[dir=rtl] #processActionsContainer {
+            float: left;
+        }
+
+        .processControlContainer[dir=rtl] #processActionsContainer {
+            float: left;
+        }
+
+            .processControlContainer[dir=rtl] #processActionsContainer .stageActionIcon {
+                transform: scaleX(-1);
+            }
+
+        .processControlContainer[dir=rtl] div.stageBackActionContainer {
+            float: right;
+        }
+
+        .processControlContainer[dir=rtl] .hasNext div.processStageHeadContainer {
+            padding-left: 11px;
+            padding-right: 0;
+            background-image: url('../images/ProcessControl/processControlArrowsReverse.png');
+        }
+
+        .processControlContainer[dir=rtl] .selectedStage.hasNext div.processStageHeadContainer {
+            background-position: left -42px;
+        }
+
+        .processControlContainer[dir=rtl] .unselectedStage.hasNext div.processStageHeadContainer {
+            background-position: left 0px;
+        }
+
+        .processControlContainer[dir=rtl] div.hasPrevious.processStageContainer .processStageTailContainer {
+            padding-right: 11px;
+            padding-left: 6px;
+            background-image: url('../images/ProcessControl/processControlArrowsReverse.png');
+        }
+
+        .processControlContainer[dir=rtl] div.selectedStage.processStageContainer.hasPrevious .processStageTailContainer {
+            background-position: right -63px;
+        }
+
+        .processControlContainer[dir=rtl] div.stageLabelMask {
+            float: left;
+        }
+
+        .processControlContainer[dir=rtl] .hasNext div.stageLabelMask {
+            left: 15px;
+            right: auto;
+        }
+
+        .processControlContainer[dir=rtl] div.hasPrevious.processStageContainer.unselectedStage .processStageTailContainer {
+            background-position: right -21px;
+        }
+    </style>
+
+
+    <div class="processControlContainer Firefox win" dir="{{direct}}">
+        <div class="processHeaderArea" id="processHeaderArea">
+            <div id="processHeaderContainer">
+                <div class="processStagesContainer" id="processStagesContainer" style="width: calc(100% - 120px); display: table;">
+                    <div tabindex="1000" ng-class="{'processStageContainer':response.StageName==history.data[history.data.length-1].StageName &amp;&amp; history.data.length==1,             'processStageContainer hasNext':response.StageName==history.data[history.data.length-1].StageName &amp;&amp; history.data.length>1,                  'processStageContainer hasPrevious': response.StageName!=history.data[history.data.length-1].StageName &amp;&amp; history.data.length>1,             'processStageContainer hasNext hasPrevious': response.StageName!=history.data[history.data.length-1].StageName &amp;&amp; history.data.length>1 &amp;&amp; response.StageName!=history.data[0].StageName,         ' selectedStage': response.StageName==workflowContext.StageName, ' unselectedStage' : response.StageName!=workflowContext.StageName, ' activeStage': response.StageName==workflowContext.StageName }" ng-click="gotoStage(response.ResponseData.WorkflowName,response.StageName,response.InstanceId)" ng-repeat="response in history.data | reverse" ng-style="{'width': ((100 / history.data.length)+1) + '%'}">
+                        <div class="globalActiveStageFlag" style="visibility: visible;" ng-show="response.StageName==history.data[0].StageName">
+                            <img title="{{psbWizardTranslations.tActive}}" alt="{{psbWizardTranslations.tActive}}" src="../images/processcontrol/process_control_global_active_flag.png">
+                        </div>
+                        <div class="processStageTailContainer">
+                            <div class="processStageHeadContainer">
+                                <div class="stageContentArea">
+                                    <div class="stageContent">
+                                        <div class="stageIconHolder">
+                                            <img title="{{psbWizardTranslations.tCompleted}}" class="stageCompleteIcon stageIcon" alt="{{psbWizardTranslations.tCompleted}}" src="../images/imagestrips/transparent_spacer.gif" ng-show="currentStage.Order>stage.Order">
+                                        </div>
+                                        <div ng-if="response.StageName == null">
+                                            <span class="stageNameContent">{{psbWizardTranslations.tFinished}}</span>
+                                        </div>
+                                        <div ng-if="response.StageName != null">
+                                            <span class="stageNameContent">{{response.StageName}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stageLabelMask"></div>
+                        <div class="selectedStageExtensionUpper"></div>
+                        <div class="selectedStageExtensionLower"></div>
+                    </div>
+                </div>
+                <div class="processActionsContainer" id="processActionsContainer">
+                    <div tabindex="-2" title="{{psbWizardTranslations.tExitPreview}}" class="stageAdvanceActionContainer" id="exitPreviewModeActionContainer" ng-click="exitPreviewMode(workflowContext.ResponseData.WorkflowName,workflowContext.InstanceId)" ng-show="workflowContext.IsOnlyPreviewAvailable">
+                        <div class="stageActionText" style="width: 100px; max-width: 100px;">
+                            <img title="{{psbWizardTranslations.tExitPreview}}" class="advanceArrowIcon stageActionIcon" alt="{{psbWizardTranslations.tExitPreview}}" src="../images/imagestrips/transparent_spacer.gif">
+                            {{psbWizardTranslations.tExitPreview}}
+                        </div>
+                    </div>
+                    <div tabindex="-1" title="{{psbWizardTranslations.tRollbackToPreviousStage}}" class="stageBackActionContainer" id="stageBackActionContainer" ng-class="{'disabled' : !isRollbackAvailable}" ng-click="!isRollbackAvailable || rollback()" ng-show="isRollbackAvailable" ng-disabled="!isRollbackAvailable">
+                        <div class="stageActionEmptyText">
+                            <img title="{{psbWizardTranslations.tRollbackToPreviousStage}}" class="backArrowIcon stageActionIcon" alt="{{psbWizardTranslations.tRollbackToPreviousStage}}" src="../images/imagestrips/transparent_spacer.gif">
+                        </div>
+                    </div>
+                    <div tabindex="1000" title="{{psbWizardTranslations.tMoveToNextStage}}" class="stageAdvanceActionContainer" id="stageAdvanceActionContainer" ng-class="{'disabled' : !isNextAvailable}" ng-click="!isNextAvailable || next()" ng-show="isNextAvailable" ng-disabled="!isNextAvailable">
+                        <div class="stageActionText">
+                            <img title="{{psbWizardTranslations.tMoveToNextStage}}" class="advanceArrowIcon stageActionIcon" alt="{{psbWizardTranslations.tMoveToNextStage}}" src="../images/imagestrips/transparent_spacer.gif">
+                            {{psbWizardTranslations.tNext}}
+                        </div>
+                    </div>
+                </div>
+                <div class="processStagesContainer" id="processBusinessFlow" style="width: calc(100% - 120px); height:100px; display: table;">
+                    
+                </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://ericsson.com/services/ws_CIL_7" xmlns:sch0="http://lhsgroup.com/lhsws/money" xmlns:sch2="http://ericsson.com/services/ws_CIL_7/sessionchange" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sch1="http://lhsgroup.com/lhsws/svlany" xmlns:sch3="http://ericsson.com/services/ws_CIL_7/nkaveragebillread" targetNamespace="http://ericsson.com/services/ws_CIL_7" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns:lhsws="http://lhsgroup.com/lhsws/money" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://lhsgroup.com/lhsws/money" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="money">
+        <xs:sequence>
+          <xs:element name="amount" type="xs:double" />
+          <xs:element name="currency" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:lhsws="http://lhsgroup.com/lhsws/svlany" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://lhsgroup.com/lhsws/svlany" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="svlany">
+        <xs:sequence>
+          <xs:element name="content" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:ericsson="http://ericsson.com/schemas" xmlns:wsi="http://ericsson.com/services/ws_CIL_7/sessionchange" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ericsson.com/services/ws_CIL_7/sessionchange" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="sessionChangeResponse" />
+      <xs:complexType name="valuesListpartRequest">
+        <xs:all>
+          <xs:element name="key" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt; Name of the value that shall be changed. See release dependent documentation for supported keys&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="value" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;New value for a named value.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:all>
+      </xs:complexType>
+      <xs:complexType name="valuesRequest">
+        <xs:annotation>
+          <xs:documentation>&lt;p&gt;A list of all named values that shall be changed with this command.&lt;/p&gt;</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="item" type="wsi:valuesListpartRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="sessionChangeRequest">
+        <xs:annotation>
+          <xs:documentation>&lt;p&gt;
+					
+					&lt;/p&gt;</xs:documentation>
+        </xs:annotation>
+        <xs:all>
+          <xs:element minOccurs="0" name="values" type="wsi:valuesRequest" />
+        </xs:all>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:ericsson="http://ericsson.com/schemas" xmlns:wsi="http://ericsson.com/services/ws_CIL_7/nkaveragebillread" xmlns:money="http://lhsgroup.com/lhsws/money" xmlns:sessionchange="http://ericsson.com/services/ws_CIL_7/sessionchange" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ericsson.com/services/ws_CIL_7/nkaveragebillread" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://ericsson.com/services/ws_CIL_7/sessionchange" />
+      <xs:import namespace="http://lhsgroup.com/lhsws/money" />
+      <xs:element name="nkAverageBillReadRequest" type="wsi:nkAverageBillReadRequest" />
+      <xs:element name="nkAverageBillReadResponse" type="wsi:nkAverageBillReadResponse" />
+      <xs:complexType name="nkAverageBillReadResponse">
+        <xs:all>
+          <xs:element minOccurs="0" name="csIdPub" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Customer Public key.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="averageBillAmount" type="money:money">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Average bill amount of the customer&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:all>
+      </xs:complexType>
+      <xs:complexType name="inputAttributes">
+        <xs:all>
+          <xs:element name="csIdPub" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>&lt;p&gt;Customer Public key.&lt;/p&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:all>
+      </xs:complexType>
+      <xs:complexType name="nkAverageBillReadRequest">
+        <xs:all>
+          <xs:element minOccurs="0" name="inputAttributes" type="wsi:inputAttributes" />
+          <xs:element minOccurs="0" name="sessionChangeRequest" type="sessionchange:sessionChangeRequest" />
+        </xs:all>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="nkAverageBillReadResponse">
+    <wsdl:part name="nkAverageBillReadResponse" element="sch3:nkAverageBillReadResponse" />
+  </wsdl:message>
+  <wsdl:message name="nkAverageBillReadRequest">
+    <wsdl:part name="nkAverageBillReadRequest" element="sch3:nkAverageBillReadRequest" />
+  </wsdl:message>
+  <wsdl:portType name="NkAverageBillReadService">
+    <wsdl:operation name="nkAverageBillRead">
+      <wsdl:documentation>&lt;![CDATA[&lt;p&gt;Command to read average bill against a customer&lt;/p&gt;]]&gt;</wsdl:documentation>
+      <wsdl:input name="nkAverageBillReadRequest" message="tns:nkAverageBillReadRequest" />
+      <wsdl:output name="nkAverageBillReadResponse" message="tns:nkAverageBillReadResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NkAverageBillReadServiceSoap11" type="tns:NkAverageBillReadService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="nkAverageBillRead">
+      <soap:operation soapAction="" />
+      <wsdl:input name="nkAverageBillReadRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="nkAverageBillReadResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NkAverageBillReadService">
+    <wsdl:port name="NkAverageBillReadServiceSoap11" binding="tns:NkAverageBillReadServiceSoap11">
+      <soap:address location="http://10.103.27.183:20103/wsi/services" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

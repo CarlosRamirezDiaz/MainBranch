@@ -1,0 +1,2 @@
+AmxPeruAffiliateDisaffiliatetoWhitePages.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

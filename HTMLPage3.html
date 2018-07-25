@@ -1,0 +1,98 @@
+﻿<div class="container">
+    <div class="main">
+        <form class="cbp-mc-form">
+            <div class="cbp-mc-column">
+                <div layout="row" layout-margin="">
+                    <md-input-container flex="">
+                        <label for="txt_appointmentdate">Appointment Date:</label>
+                        <input name="txt_appointmentdate" id="txt_appointmentdate" type="text" onkeydown="event.preventDefault()" readonly="">
+                    </md-input-container>
+                    <md-input-container flex="">
+                        <label for="txt_timeslot">Time slot:</label>
+                        <input name="txt_timeslot" id="txt_timeslot" type="text" onkeydown="event.preventDefault()" readonly="">
+                    </md-input-container>
+                    <md-input-container flex="">
+                        <label for="txt_confirmationstatus">Confirmation status:</label>
+                        <input name="txt_confirmationstatus" id="txt_confirmationstatus" type="text" onkeydown="event.preventDefault()" readonly="">
+                    </md-input-container>
+                    <md-input-container flex="">
+                        <label for="txt_personvisit">Person visit:</label>
+                        <input name="txt_personvisit" id="txt_personvisit" type="text" onkeydown="event.preventDefault()" readonly="">
+                    </md-input-container>
+                    <md-input-container flex="">
+                        <label for="txt_email1">Email1:</label>
+                        <input name="txt_email1" id="txt_email1" type="text" onkeydown="event.preventDefault()" readonly="">
+                    </md-input-container>
+                    <md-input-container flex="">
+                        <label for="txt_email2">Email2:</label>
+                        <input name="txt_email2" id="txt_email2" type="text" onkeydown="event.preventDefault()" readonly="">
+                    </md-input-container>
+                    <md-input-container flex="">
+                        <label for="txt_telefone1">telefone1:</label>
+                        <input name="txt_telefone1" id="txt_telefone1" type="text" onkeydown="event.preventDefault()" readonly="">
+                    </md-input-container>
+                    <md-input-container flex="">
+                        <label for="txt_telefone2">telefone2:</label>
+                        <input name="txt_telefone2" id="txt_telefone2" type="text" onkeydown="event.preventDefault()" readonly="">
+                    </md-input-container>
+                    <md-input-container flex="">
+                        <label id="lslSpecialconditions">Special Conditions:</label>
+                        <label id="lslSpecialconditionstext"></label>
+                    </md-input-container>
+                    <!--<label>-Letter of Work Authorization Infrastructure (Codensa)</label>
+                    <label>-Certificate of Heights</label>-->
+                </div>
+            </div>
+            <div class="cbp-mc-column">
+                <div layout="row" layout-margin="">
+                    <md-input-container flex="">
+                        <label for="txt_delivery">Visit data</label>
+                    </md-input-container>
+                    <md-input-container flex="">
+                        <label for="txt_appointmentstartdate">Appointment start date:</label>
+                        <input name="txt_appointmentstartdate" id="txt_appointmentstartdate" type="text" onkeydown="event.preventDefault()" readonly="">
+                    </md-input-container>
+                    <md-input-container flex="">
+                        <label for="txt_appointmentclosedate">Appointment close date:</label>
+                        <input name="txt_appointmentclosedate" id="txt_appointmentclosedate" type="text" onkeydown="event.preventDefault()" readonly="">
+                    </md-input-container>
+                    <md-input-container flex="">
+                        <label for="txt_resolution">Resolution</label>
+                        <input name="txt_resolution" id="txt_resolution" type="text" onkeydown="event.preventDefault()" readonly="">
+                    </md-input-container>
+                    <md-input-container flex="">
+                        <label> Technician Name: </label>
+                        <input name="txt_technician_Name" id="lbltechnicianName" type="text" readonly="">
+                    </md-input-container>
+                    <md-input-container flex="">
+                        <label>Technician Id: </label>
+                        <input name="txt_technician_id" id="lbltechnicianId" type="text" readonly="">
+                    </md-input-container>
+                    <md-input-container flex="">
+                        <label>Technician ParentId: </label>
+                        <input name="txt_technician_parentId" id="lbltechnicianParentId" type="text" readonly="">
+                    </md-input-container>
+                </div>
+                <div class="cbp-mc-column">
+                    <label> </label>
+                    <md-input-container flex="">
+                        <label for="txt_notes">Notes</label>
+                    </md-input-container>
+                    <md-input-container flex="">
+                        <textarea name="txt_notes" id="txt_notes"></textarea>
+                    </md-input-container>
+                    <md-input-container flex="">
+                        <div style="display:inline-block;padding-top:10%;width:49%"><input class="cbp-mc-submit" type="submit" ng-click="cancelAppointment()" value="Cancel Appointment"></div>
+                    </md-input-container>
+                    <md-input-container flex="">
+                        <div style="display:inline-block;padding-top:10%;width:49%"><input class="cbp-mc-submit" type="submit" value="Reschedule"></div>
+                    </md-input-container>
+
+                </div>
+
+
+        </form>
+    </div>
+</div>
+
+

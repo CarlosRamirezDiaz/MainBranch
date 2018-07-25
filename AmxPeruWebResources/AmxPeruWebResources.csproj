@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6C23BA45-CBEE-4DE6-B005-1436D4BF659F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AmxPeruWebResources</RootNamespace>
+    <AssemblyName>AmxPeruWebResources</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Address\JS\etel_customeraddressbihandler.js" />
+    <Content Include="AffiliateDisaffiliateBI\JS\AffiliateDisaffiliateBlacklist.js" />
+    <Content Include="AffiliateDisaffiliateBI\JS\AffiliateDisaffiliateDataProtection .js" />
+    <Content Include="AMXCOLOMBIA\AlertMessage\amx_alert.css" />
+    <Content Include="AMXCOLOMBIA\AlertMessage\amx_alert.js" />
+    <Content Include="AMXCOLOMBIA\AlertMessage\amx_imgalert.png" />
+    <Content Include="AMXCOLOMBIA\AlertMessage\amx_imgalertload.gif" />
+    <Content Include="AMXCOLOMBIA\Calendar\css\fullcalendar.min.css" />
+    <Content Include="AMXCOLOMBIA\Calendar\css\fullcalendar.print.min.css" />
+    <Content Include="AMXCOLOMBIA\Calendar\js\fullcalendar.min.js" />
+    <Content Include="AMXCOLOMBIA\Calendar\js\jquery.min.js" />
+    <Content Include="AMXCOLOMBIA\Calendar\js\moment.min.js" />
+    <Content Include="AMXCOLOMBIA\amx_globalsearch.htm" />
+    <Content Include="AMXCOLOMBIA\CancelAppointment\controller\appointmentContactInformationController.js" />
+    <Content Include="AMXCOLOMBIA\CancelAppointment\controller\openAppointmentDetailsController.js" />
+    <Content Include="AMXCOLOMBIA\CancelAppointment\controller\openAppointmentModernizr.custom.js" />
+    <Content Include="AMXCOLOMBIA\CancelAppointment\css\openAppointmentComponent.css" />
+    <Content Include="AMXCOLOMBIA\CancelAppointment\css\openAppointmentDefault.css" />
+    <Content Include="AMXCOLOMBIA\CancelAppointment\template\appointmentContactInformation.htm" />
+    <Content Include="AMXCOLOMBIA\CancelAppointment\template\Openappointmentdetails.htm" />
+    <Content Include="AMXCOLOMBIA\Common\amx_common.js" />
+    <Content Include="AMXCOLOMBIA\CustomerAddress\controller\amx_customeraddress.js" />
+    <Content Include="AMXCOLOMBIA\CustomerAddress\controller\amx_customeraddress_angular.js" />
+    <Content Include="AMXCOLOMBIA\CustomerAddress\template\amx_customeraddress.htm" />
+    <Content Include="AMXCOLOMBIA\CustomerAddress\template\amx_mgltabularsave.htm" />
+    <Content Include="AMXCOLOMBIA\GlobalCustomerSearch\amx_globalcustomersearch.htm" />
+    <Content Include="AMXCOLOMBIA\GlobalCustomerSearch\etel_customersearch.htm" />
+    <Content Include="AMXCOLOMBIA\GlobalCustomerSearch\etel_customersearch.js" />
+    <Content Include="AMXCOLOMBIA\IndividualCustomer\amx_individualcustomer.js" />
+    <Content Include="AMXCOLOMBIA\IndividualCustomer\Certicamara\ValidateCustomerInCerticamara.html" />
+    <Content Include="AMXCOLOMBIA\IndividualCustomer\Certicamara\ValidateCustomerInCerticamara.js" />
+    <Content Include="AMXCOLOMBIA\IndividualCustomer\Contact Information\amx_angular-mocks.js" />
+    <Content Include="AMXCOLOMBIA\IndividualCustomer\Contact Information\amx_angular-sanitize.min.js" />
+    <Content Include="AMXCOLOMBIA\IndividualCustomer\Contact Information\amx_angular.min.js" />
+    <Content Include="AMXCOLOMBIA\IndividualCustomer\Contact Information\amx_cuscontactInfoControllerUpd.js" />
+    <Content Include="AMXCOLOMBIA\IndividualCustomer\Contact Information\amx_customerContactInfoUpd.htm" />
+    <Content Include="AMXCOLOMBIA\IndividualCustomer\Contact Information\customerCycleChange.html" />
+    <Content Include="AMXCOLOMBIA\IndividualCustomer\Contact Information\customerCycleChangeController.js" />
+    <Content Include="AMXCOLOMBIA\IndividualCustomer\Contact Information\amx_jquery-ui.structure.css" />
+    <Content Include="AMXCOLOMBIA\IndividualCustomer\Contact Information\amx_jquery-ui.structure.min.css" />
+    <Content Include="AMXCOLOMBIA\IndividualCustomer\Contact Information\amx_jquery-ui.theme.min.css" />
+    <Content Include="AMXCOLOMBIA\IndividualCustomer\Contact Information\amx_jquery.ui.custom.js" />
+    <Content Include="AMXCOLOMBIA\IndividualCustomer\Contact Information\amx_bootstrap.min.css" />
+    <Content Include="AMXCOLOMBIA\IndividualCustomer\Contact Information\amx_cuscontactInfoController.js" />
+    <Content Include="AMXCOLOMBIA\IndividualCustomer\Contact Information\amx_customerContactInfo.htm" />
+    <Content Include="AMXCOLOMBIA\IndividualCustomer\Contact Information\amx_jquery.ui.css" />
+    <Content Include="AMXCOLOMBIA\IndividualCustomer\Contact Information\amx_stratumChangeFileUplController.js" />
+    <Content Include="AMXCOLOMBIA\IndividualCustomer\Contact Information\amx_stratumChangeFileUpload.html" />
+    <Content Include="AMXCOLOMBIA\IndividualCustomer\Contact Information\amx_xeditable.css" />
+    <Content Include="AMXCOLOMBIA\IndividualCustomer\Contact Information\amx_xeditable.js" />
+    <Content Include="AMXCOLOMBIA\IVR\controller\amx_ivrappointmentlog.js" />
+    <Content Include="AMXCOLOMBIA\IVR\template\amx_ivrappointmentlog.htm" />
+    <Content Include="AMXCOLOMBIA\MultiselectOptionset\amx_multiselect.css" />
+    <Content Include="AMXCOLOMBIA\MultiselectOptionset\amx_multiselect.htm" />
+    <Content Include="AMXCOLOMBIA\MultiselectOptionset\amx_multiselect.js" />
+    <Content Include="amxperu_\MSISDNChange\Controllers\ConfigurationController.js" />
+    <Content Include="amxperu_\MSISDNChange\Controllers\GeneralInformationController.js" />
+    <Content Include="amxperu_\MSISDNChange\Controllers\SummaryController.js" />
+    <Content Include="amxperu_\MSISDNChange\MSISDNChangeScriptHandler.js" />
+    <Content Include="amxperu_\MSISDNChange\Templates\Configuration.html" />
+    <Content Include="amxperu_\MSISDNChange\Templates\GeneralInformation.html" />
+    <Content Include="amxperu_\MSISDNChange\Templates\Summary.html" />
+    <Content Include="amxperu_\SimChange\Controllers\ConfigurationController.js" />
+    <Content Include="amxperu_\SimChange\SimChangeScriptHandler.js" />
+    <Content Include="amxperu_\SimChange\Controllers\GeneralInformationController.js" />
+    <Content Include="amxperu_\SimChange\Controllers\SummaryController.js" />
+    <Content Include="amxperu_\SimChange\Templates\Configuration.html" />
+    <Content Include="amxperu_\SimChange\Templates\GeneralInformation.html" />
+    <Content Include="amxperu_\SimChange\Templates\Summary.html" />
+    <Content Include="amxperu_\UpdateCreditLimit\JS\CreditEvaluation.js" />
+    <Content Include="BillingAccount\etel_customerbillingaccountbihandler.js" />
+    <Content Include="ChangePlan\GeneralInfoController.js" />
+    <Content Include="ChangePlan\PreSearch.js" />
+    <Content Include="ChangeResumeDate\controllers\changeResumeDateController.js" />
+    <Content Include="ChangeResumeDate\controllers\debtReconnectionDelayController.js" />
+    <Content Include="ChangeResumeDate\controllers\wrongSuspensionController.js" />
+    <Content Include="ChangeResumeDate\templates\changeResumeDate.html" />
+    <Content Include="ChangeResumeDate\templates\debtReconnectionDelay.html" />
+    <Content Include="ChangeResumeDate\templates\DocumentUpload.html" />
+    <Content Include="ChangeResumeDate\templates\resumeDateSummary.html" />
+    <Content Include="ChangeResumeDate\templates\wrongSuspension.html" />
+    <Content Include="Common\Html\CreateCustomerDocument.html" />
+    <Content Include="Common\Html\UploadCustomerDocument.html" />
+    <Content Include="Create Customer\CreateIndividual.js" />
+    <Content Include="Create Customer\IndividualCustomer.js" />
+    <Content Include="Customer Search\html\DocumentID.html" />
+    <Content Include="Customer Search\html\ISDN.html" />
+    <Content Include="Customer Search\html\SocialProfile.html" />
+    <Content Include="Customer Search\script\DocumentId.js" />
+    <Content Include="Customer Search\script\ISDN.js" />
+    <Content Include="Customer Search\script\SocialProfile.js" />
+    <Content Include="Demographic\etel_individualdemographicbihandler.js" />
+    <Content Include="GeneralInquiry\controllers\CatalogOffersQueryController.js" />
+    <Content Include="GeneralInquiry\templates\GeneralEnquiryOfferCatalog.html" />
+    <Content Include="ModifySubscription\controllers\ModifyGeneralInformationController.js" />
+    <Content Include="ModifySubscription\templates\generalInformation.htm" />
+    <Content Include="NewSubscription\AmxOrderNewScreens\billingNew.htm" />
+    <Content Include="NewSubscription\AmxOrderNewScreens\configurationNew.htm" />
+    <Content Include="NewSubscription\AmxOrderNewScreens\customerDataNew.htm" />
+    <Content Include="NewSubscription\AmxOrderNewScreens\selectProductsNew.htm" />
+    <Content Include="AMXCOLOMBIA\CancelAppointment\controller\accountsummarytabbedviewcontroller.js" />
+    <Content Include="AMXCOLOMBIA\CancelAppointment\controller\AppointmentCancelationreasonsController.js" />
+    <Content Include="NewSubscription\controllers\appointmentController.js" />
+    <Content Include="AMXCOLOMBIA\CancelAppointment\controller\AppointmentListController.js" />
+    <Content Include="NewSubscription\controllers\billingController.js" />
+    <Content Include="NewSubscription\controllers\configurationController.js" />
+    <Content Include="NewSubscription\controllers\customerDataController.js" />
+    <Content Include="NewSubscription\controllers\deliveryController.js" />
+    <Content Include="NewSubscription\controllers\documentController.js" />
+    <Content Include="NewSubscription\controllers\paymentController.js" />
+    <Content Include="NewSubscription\controllers\productSelectionController.js" />
+    <Content Include="NewSubscription\controllers\selectProductController.js" />
+    <Content Include="NewSubscription\controllers\summaryController.js" />
+    <Content Include="NewSubscription\controllers\termsAndConditionsController.js" />
+    <Content Include="AMXCOLOMBIA\CancelAppointment\template\accountsummarytabbedview.htm" />
+    <Content Include="NewSubscription\templates\appointment.htm" />
+    <Content Include="AMXCOLOMBIA\CancelAppointment\template\AppointmentCancelationreasons.htm" />
+    <Content Include="AMXCOLOMBIA\CancelAppointment\template\AppointmentList.htm" />
+    <Content Include="NewSubscription\templates\billing.htm" />
+    <Content Include="NewSubscription\templates\configuration.htm" />
+    <Content Include="NewSubscription\templates\customerData.htm" />
+    <Content Include="NewSubscription\templates\delivery.htm" />
+    <Content Include="NewSubscription\templates\document.htm" />
+    <Content Include="NewSubscription\templates\payment.html" />
+    <Content Include="NewSubscription\templates\productSelection.htm" />
+    <Content Include="NewSubscription\templates\selectProduct.htm" />
+    <Content Include="NewSubscription\templates\summary.html" />
+    <Content Include="NewSubscription\templates\termsAndConditions.htm" />
+    <Content Include="processapp\app\bulkImportIndividualCreation\scripts\bulkUploadController.js" />
+    <Content Include="processapp\app\bulkImportIndividualCreation\stages\bulkUpload.html" />
+    <Content Include="processapp\bulkImportIndividualCreation.html" />
+    <Content Include="ReconnectionFullfilment\JS\ReconnectionFullfilment.js" />
+    <Content Include="SimChangeOrderCapture\controller\SimChangeGeneralInforation.js" />
+    <Content Include="SimChangeOrderCapture\template\SimChangeGeneralInforation.html" />
+    <Content Include="Susbcription\amx_subscriptionribbonaction.js" />
+    <Content Include="Task\JS\taskCustomization.js" />
+    <Content Include="TCRMWebResources\creditprofile\creditprofilewithuigrid\creditprofilegridtabviewController.js" />
+    <Content Include="TCRMWebResources\etel_creditprofilebihandler.js" />
+    <Content Include="TCRMWebResources\etel_msisdnchangebihandler.js" />
+    <Content Include="TCRMWebResources\etel_ordercapturescripthandler.js" />
+    <Content Include="TCRMWebResources\etel_subscriptionribbonaction.js" />
+    <Content Include="TCRMWebResources\psb\Wizard\templates\breadCrumb.htm" />
+    <Content Include="TCRMWebResources\psb\Wizard\wizard.html" />
+    <Content Include="TCRMWebResources\psb\Wizard\wizardController.js" />
+    <Content Include="Training\firstStage.htm" />
+    <Content Include="Training\firstStageController.js" />
+    <Content Include="Training\secondStage.htm" />
+    <Content Include="Training\secondStageController.js" />
+    <Content Include="UsageDetail\ConsumptionView\ConsumptionView.html" />
+    <Content Include="UsageDetail\ConsumptionView\ConsumptionViewController.js" />
+    <Content Include="UsageDetail\DetailedView\DetailedView.html" />
+    <Content Include="UsageDetail\DetailedView\DetailedViewController.js" />
+    <Content Include="UsageDetail\UsageDetailTabbedView.html" />
+    <Content Include="UsageDetail\UsageDetailTabbedViewController.js" />
+    <Content Include="UsageDetail\UsageGraph\UsageGraph.html" />
+    <Content Include="UsageDetail\UsageGraph\UsageGraphController.js" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

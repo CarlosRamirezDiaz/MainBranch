@@ -1,0 +1,34 @@
+﻿<table style="height:60px;backgroung-color:#ccc;">
+   <tr>
+      <td>
+         <table>
+            <tr>
+               <td class="tFirstName" id="lblFirstName" style="width: 60px; " data-translate="tFirstName">Name</td>
+               <td>
+                  <!--name field-->
+                  <input tabindex="2" id="SearchText" style='padding: 2px 0px 3px 5px; border: 1px solid rgb(204, 204, 204); width: 150px; font-family: "Segoe UI"; font-size: 11px; font-weight: 600;' type="text">
+               </td>
+            </tr>
+            <tr id="customerSearchLastNameSection">
+               <td class="tLastName" style="position: absolute; margin-top: 5px; " data-translate="tLastName">>LastName</td>
+               <td>
+                  <!--surname field-->
+                  <input tabindex="3" id="SearchLastNameText" style='padding: 2px 0px 3px 5px; border: 1px solid rgb(204, 204, 204); width: 150px; font-family: "Segoe UI"; font-size: 11px; font-weight: 600; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; position: absolute;' type="text">
+               </td>
+            </tr>
+         </table>
+      </td>
+      <td style="padding-left: 5px;padding-right: 5px">
+         <input name="CustomerType" tabindex="4"  type="radio"  onclick="changeCustomerType(this)" checked="checked" value="Individuals"><span class="tIndividuals" data-translate="tIndividuals">Individuals</span>
+<!--          <input name="CustomerType" tabindex="5"  type="radio" onclick="changeCustomerType(this)" value="Corporates"><span class="tCorporates" data-translate="tCorporates">Corporates</span> -->      </td>
+      <td>
+         <a tabindex="6" class="easyui-linkbutton l-btn l-btn-plain" onclick=" doSimpleSearch() " href=" #" data-options="plain:true,iconCls:'icon-search'" group="">
+         <span class="l-btn-left">
+         <span class="l-btn-text icon-search l-btn-icon-left">
+         <span class="tSearch" style="font-size: 12px;" data-translate="tSearch">SEARCH</span>
+         </span>
+         </span>
+         </a>
+      </td>
+   </tr>
+</table>

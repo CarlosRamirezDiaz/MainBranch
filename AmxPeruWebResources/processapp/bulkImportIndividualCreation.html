@@ -1,0 +1,157 @@
+﻿<html>
+<head>
+</head>
+<body ng-app="ETELProcessApp">
+    ﻿
+
+
+    <title>ETEL Process Framework</title>
+    <script src="../../ClientGlobalContext.js.aspx" type="text/javascript"></script>
+    <link href="../../etel_/processapp/styles/global.css" rel="stylesheet" type="text/css">
+    <link href="../../etel_/processapp/styles/fonts.css" rel="stylesheet" type="text/css">
+    <link href="../../etel_/processapp/styles/processControl.css" rel="stylesheet" type="text/css">
+
+
+
+    <script>
+        debugger;
+        window.processName = "bulkImportIndividualCreation";
+        window.debugStages = [
+            { 'Name': "bulkUpload", 'Order': 1, 'Caption': 'Order', 'Url': 'app/bulkImportIndividualCreation/stages/bulkUpload.htm' }
+        ];
+
+    </script>
+    <!-- ReSharper disable Html.TagNotResolved -->
+    <htm-template name="header" global="true"></htm-template>
+    <!-- ReSharper restore Html.TagNotResolved -->
+    <div class="processControlContainer Firefox win">
+        <div class="collapsibleArea" id="processControlCollapsibleArea" style="display: none;">
+            <div class="processStepsContainer" id="processStepsContainer">
+                <div class="processStepColumn">
+                    <div class="processStepSeparator"></div>
+                    <!--<div id="processStep_corporateCustomer" class="processStep">
+                        <div class="processStepCompleteIconDiv">
+                            <img class="processStepCompleteIcon completedStep" title="Completed" alt="Completed" src="images/imagestrips/transparent_spacer.gif" ng-show="rootScopeData.customerInformation.Name">
+                        </div>
+                        <div class="processStepLabel">
+                            <span>{{ rootScopeData.translations.tCustomer}}</span>
+                        </div>
+                        <div class="processStepValue">
+                            <div ng-click="openPage('customer')" class="processStepValueText processStepLookupValueText">
+                                {{ rootScopeData.customerInformation.Name }}
+                                <div class="inlineGradientMask"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="processStep_AccountNo" class="processStep">
+                        <div class="process_accountNumber">
+                            <div class="processStepCompleteIconDiv">
+                                <img class="processStepCompleteIcon completedStep" title="Completed" alt="Completed" src="images/imagestrips/transparent_spacer.gif" ng-show="rootScopeData.customerInformation.Telephone">
+                            </div>
+                            <div class="processStepLabel">
+                                <span>{{ rootScopeData.translations.tPhone}}</span>
+                            </div>
+                            <div class="processStepValue">
+                                <div class="processStepValueText">
+                                    {{ rootScopeData.customerInformation.Telephone }}
+                                    <div class="inlineGradientMask"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="processStepColumn">
+                    <div class="processStepSeparator" ng-show="rootScopeData.customerInformation.CustomerType == 1"></div>
+                    <!--<div id="processStep_corporateCustomer" class="processStep">
+                        <div class="processStepCompleteIconDiv">
+                            <img class="processStepCompleteIcon completedStep" title="Completed" alt="Completed" src="images/imagestrips/transparent_spacer.gif" ng-show="rootScopeData.customerInformation.Email">
+                        </div>
+                        <div class="processStepLabel">
+                            <span>{{ rootScopeData.translations.tEmail}}</span>
+                        </div>
+                        <div class="processStepValue">
+                            <div ng-href="#corporatecustomer.html?id={{ rootScopeData.customerInformation.ID }}" class="processStepValueText processStepLookupValueText">
+                                {{ rootScopeData.customerInformation.Email }}
+                                <div class="inlineGradientMask"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="processStep_AccountNo" class="processStep">
+                        <div class="process_accountNumber">
+                            <div class="processStepCompleteIconDiv">
+                                <img class="processStepCompleteIcon completedStep" title="Completed" alt="Completed" src="images/imagestrips/transparent_spacer.gif" ng-show="rootScopeData.customerInformation.Status">
+                            </div>
+                            <div class="processStepLabel">
+                                <span>{{ rootScopeData.translations.tStatus}}</span>
+                            </div>
+                            <div class="processStepValue">
+                                <div class="processStepValueText">
+                                    {{ rootScopeData.customerInformation.Status }}
+                                    <div class="inlineGradientMask"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="processStepColumn" ng-show="rootScopeData.customerInformation.CustomerType == 1">
+                    <!--<div id="processStep_AccountNo" class="processStep">
+                        <div class="process_accountNumber">
+                            <div class="processStepCompleteIconDiv">
+                                <img class="processStepCompleteIcon completedStep" title="Completed" alt="Completed" src="images/imagestrips/transparent_spacer.gif" ng-show="rootScopeData.customerInformation.ShortName">
+                            </div>
+                            <div class="processStepLabel">
+                                <span>{{ rootScopeData.translations.tShortName}}</span>
+                            </div>
+                            <div class="processStepValue">
+                                <div class="processStepValueText">
+                                    {{ rootScopeData.customerInformation.ShortName }}
+                                    <div class="inlineGradientMask"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="processStep_AccountNo" class="processStep">
+                        <div class="process_accountNumber">
+                            <div class="processStepCompleteIconDiv">
+                                <img class="processStepCompleteIcon completedStep" title="Completed" alt="Completed" src="images/imagestrips/transparent_spacer.gif" ng-show="rootScopeData.customerInformation.ParentCustomer">
+                            </div>
+                            <div class="processStepLabel">
+                                <span>{{ rootScopeData.translations.tParentCustomer}}</span>
+                            </div>
+                            <div class="processStepValue">
+                                <div ng-click="openPage('parentCustomer')" class="processStepValueText">
+                                    {{ rootScopeData.customerInformation.ParentCustomer }}
+                                    <div class="inlineGradientMask"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="processHeaderFooter"></div>
+    <div>
+        <div class="wizard-body" ng-view=""></div>
+    </div>
+    <htm-template name="loading" global="true"></htm-template>
+    <script src="../../etel_/common/scripts/jquery.min.js" type="text/javascript"></script>
+    <script src="../../etel_/common/scripts/angular.min.js" type="text/javascript"></script>
+    <script src="../../etel_/common/scripts/uibootstraptpls0.13.2.js" type="text/javascript"></script>
+    <script src="../../etel_/common/scripts/angular_route.min.js" type="text/javascript"></script>
+    <script src="../../etel_/common/scripts/angularsanitize.js" type="text/javascript"></script>
+    <script src="../../etel_/common/scripts/ng_grid.js" type="text/javascript"></script>
+    <script src="../../etel_/common/scripts/ui_select.js" type="text/javascript"></script>
+    <script src="../../etel_/common/scripts/angular_input_masks_dependencies.js" type="text/javascript"></script>
+    <script src="../../etel_/common/scripts/angular_input_masks.js" type="text/javascript"></script>
+    <script src="../../etel_jscripttranslationhandler" type="text/javascript"></script>
+    <script src="../../etel_/processapp/app/app.js" type="text/javascript"></script>
+    <script src="../../etel_/processapp/app/templates/datagrid/grid.js" type="text/javascript"></script>
+    <script src="../../etel_/processapp/app/bulkImportIndividualCreation/" type="text/javascript"></script>
+    <script src="app/bulkImportIndividualCreation/scripts/bulkUploadController.js" type="text/javascript"></script>
+
+    <script src="../../etel_/common/components/components.js" type="text/javascript"></script>
+    <script src="../../etel_/common/components/lookUpComponent.js" type="text/javascript"></script>
+
+</body>
+</html>

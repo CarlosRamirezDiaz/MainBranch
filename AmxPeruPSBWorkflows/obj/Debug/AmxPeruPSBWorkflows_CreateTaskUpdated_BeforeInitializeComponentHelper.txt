@@ -1,0 +1,2 @@
+CreateTaskUpdated.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

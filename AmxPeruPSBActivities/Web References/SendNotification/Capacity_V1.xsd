@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd_2="http://claro.com.pe/entity/CommonBusiness/GeographicPlace/V1/" xmlns:xsd_3="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:xsd_10="http://claro.com.pe/entity/Product/Product/V1/" xmlns:xsd_1="http://claro.com.pe/entity/CommonBusiness/Capacity/V1/" xmlns:xsd_6="http://claro.com.pe/entity/Service/ServiceSpecification/V1/" xmlns:xsd_7="http://claro.com.pe/entity/Service/Service/V1/" xmlns:xsd_4="http://claro.com.pe/entity/Resource/Resource/V1/" xmlns:xsd_5="http://claro.com.pe/entity/Resource/ResourceSpecification/V1/" xmlns:xsd_8="http://claro.com.pe/entity/Product/ProductSpecification/V1/" xmlns:xsd_9="http://claro.com.pe/entity/Product/ProductOffering/V1/" targetNamespace="http://claro.com.pe/entity/CommonBusiness/Capacity/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="../Product/Product_V1.xsd" namespace="http://claro.com.pe/entity/Product/Product/V1/" />
+  <xsd:import schemaLocation="../Product/ProductOffering_V1.xsd" namespace="http://claro.com.pe/entity/Product/ProductOffering/V1/" />
+  <xsd:import schemaLocation="../Product/ProductSpecification_V1.xsd" namespace="http://claro.com.pe/entity/Product/ProductSpecification/V1/" />
+  <xsd:import schemaLocation="../Service/Service_V1.xsd" namespace="http://claro.com.pe/entity/Service/Service/V1/" />
+  <xsd:import schemaLocation="../Service/ServiceSpecification_V1.xsd" namespace="http://claro.com.pe/entity/Service/ServiceSpecification/V1/" />
+  <xsd:import schemaLocation="../Resource/ResourceSpecification_V1.xsd" namespace="http://claro.com.pe/entity/Resource/ResourceSpecification/V1/" />
+  <xsd:import schemaLocation="../Resource/Resource_V1.xsd" namespace="http://claro.com.pe/entity/Resource/Resource/V1/" />
+  <xsd:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:annotation>
+    <xsd:documentation>A generalized ABE and specializations that provide capacity and capacity demand for products, services, and resources.</xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="Capacity" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>Specific ability of an entity measured in quantity and units of quantity over an extended period.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="plannedOrActualCapacity" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>An indicator that specifies whether the capacity is planned or actual.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_capacitySchedule" type="xsd_1:ApplicableTimePeriod" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_availableCapacityAmount" type="xsd_1:CapacityAmount" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CapacityAmount">
+    <xsd:annotation>
+      <xsd:documentation>A quantity that defines the Capacity.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="capacityAmount" type="xsd_3:Quantity">
+        <xsd:annotation>
+          <xsd:documentation>A value and units that define the CapacityAmount, such as 10000 ea, 10B Mb.
+
+Instance values are mutually exclusive with From and To capacityAmounts and range interval.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="capacityAmountFrom" type="xsd_3:Quantity">
+        <xsd:annotation>
+          <xsd:documentation>The low range value that a CapacityAmount can take on.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="capacityAmountTo" type="xsd_3:Quantity">
+        <xsd:annotation>
+          <xsd:documentation>The upper range value that a CapacityAmount can take on.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="rangeInterval" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>An indicator that specifies the inclusion or exclusion of the capacityAmountFrom and capacityAmountTo attributes.
+
+Possible values are "open", "closed", "closedBottom" and "closedTop".</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_availableCapacity" type="xsd_1:Capacity" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_appliedCapacityDemand" type="xsd_1:AppliedCapacityDemand" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AppliedCapacityDemand">
+    <xsd:annotation>
+      <xsd:documentation>The amount of CapcityDemand applied to a CapacityAmount.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="appliedDemandAmount" type="xsd_1:CapacityAmount">
+        <xsd:annotation>
+          <xsd:documentation>An amount of demand applied to a CapacityAmount.
+
+Note that this is a composite attribute defined by CapacityAmount.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_capacityAmount" type="xsd_1:CapacityAmount" />
+      <xsd:element name="_capacityDemand" type="xsd_1:CapacityDemand" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CapacityDemand" abstract="true">
+    <xsd:annotation>
+      <xsd:documentation>The amount of capacity that is planned to be consumed or has been consumed.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="plannedOrActualDemand" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>An indicator that specifies whether the capacity demand is planned or actual.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="capacityDemandAmount" type="xsd_3:Quantity">
+        <xsd:annotation>
+          <xsd:documentation>A value and units that define the CapacityDemand, such as 10000 ea, 10B Mb.
+
+Instance values are mutually exclusive with From and To capacityDemandAmounts and range interval.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="capacityDemandAmountFrom" type="xsd_3:Quantity">
+        <xsd:annotation>
+          <xsd:documentation>The low range value that a CapacityDemand can take on.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="capacityDemandAmountTo" type="xsd_3:Quantity">
+        <xsd:annotation>
+          <xsd:documentation>The upper range value that a CapacityDemand can take on.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="rangeInterval" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>An indicator that specifies the inclusion or exclusion of the capacityDemandAmountFrom and capacityDemandAmountTo attributes.
+
+Possible values are "open", "closed", "closedBottom" and "closedTop".</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="priority" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The relative importance of the CapacityDemand.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="_capacitySchedule" type="xsd_1:ApplicableTimePeriod" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_appliedCapacityDemand" type="xsd_1:AppliedCapacityDemand" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResourceCapacityDemand">
+    <xsd:annotation>
+      <xsd:documentation>The amount of  ResourceCapacity that is planned to be consumed or has been consumed.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:CapacityDemand">
+        <xsd:sequence>
+          <xsd:element name="resource" type="xsd_4:Resource" />
+          <xsd:element name="resourceSpecification" type="xsd_5:ResourceSpecification" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ResourceCapacity">
+    <xsd:annotation>
+      <xsd:documentation>Specific ability of Resource domain entities measured in quantity and units of quantity over an extended period.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:Capacity">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="resource" type="xsd_4:Resource" />
+          <xsd:element minOccurs="0" name="resourceSpecification" type="xsd_5:ResourceSpecification" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ApplicableTimePeriod">
+    <xsd:annotation>
+      <xsd:documentation>The period of time for which Capacity or CapacityDemand applies.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="fromToDateTime" type="xsd_3:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period of time for which the schedule is applicable.
+
+Instance values are mutually exclusive with daysOfWeek values.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="rangeInterval" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>An indicator that specifies the inclusion or exclusion of the from and to DateTime attributes.
+
+Possible values are "open", "closed", "closedBottom" and "closedTop".</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="daysOfWeek" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A day or days representing when the schedule is applicable.  For example 2, 3 represent Monday and Tuesday.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_3:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period of time during which the schedule is considered of interest to the business.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_capacity" type="xsd_1:Capacity" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="_capacityDemand" type="xsd_1:CapacityDemand" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceCapacity">
+    <xsd:annotation>
+      <xsd:documentation>Specific ability of Service domain entities measured in quantity and units of quantity over an extended period.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:Capacity">
+        <xsd:sequence>
+          <xsd:element name="serviceSpecification" type="xsd_6:ServiceSpecification" />
+          <xsd:element name="service" type="xsd_7:Service" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ProductCapacity">
+    <xsd:annotation>
+      <xsd:documentation>Specific ability of Product domain entities measured in quantity and units of quantity over an extended period.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:Capacity">
+        <xsd:sequence>
+          <xsd:element name="_productSpecification" type="xsd_8:ProductSpecification" />
+          <xsd:element name="_productOffering" type="xsd_9:ProductOffering" />
+          <xsd:element name="_product" type="xsd_10:Product" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceCapacityDemand">
+    <xsd:annotation>
+      <xsd:documentation>The amount of ServiceCapacity that is planned to be consumed or has been consumed.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:CapacityDemand">
+        <xsd:sequence>
+          <xsd:element name="serviceSpecification" type="xsd_6:ServiceSpecification" />
+          <xsd:element name="service" type="xsd_7:Service" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ProductCapacityDemand">
+    <xsd:annotation>
+      <xsd:documentation>The amount of ProductCapacity that is planned to be consumed or has been consumed.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="xsd_1:CapacityDemand">
+        <xsd:sequence>
+          <xsd:element name="productSpecification" type="xsd_8:ProductSpecification" />
+          <xsd:element name="productOffering" type="xsd_9:ProductOffering" />
+          <xsd:element name="product" type="xsd_10:Product" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="CapacityRelationship">
+    <xsd:annotation>
+      <xsd:documentation>A relationship between/among Capacity.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="capRelType" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A categorization of the relationship, such as aggregation, used to calculate.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_3:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period of time during which the relationship applies.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CapacityDemandRelationship">
+    <xsd:annotation>
+      <xsd:documentation>A relationship between/among CapacityDemand.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="capDemandRelType" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A categorization of the relationship, such as aggregation, used to calculate.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_3:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period of time during which the relationship applies.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

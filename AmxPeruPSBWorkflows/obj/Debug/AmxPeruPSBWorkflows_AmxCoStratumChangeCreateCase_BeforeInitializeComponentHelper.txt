@@ -1,0 +1,2 @@
+AmxCoStratumChangeCreateCase.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

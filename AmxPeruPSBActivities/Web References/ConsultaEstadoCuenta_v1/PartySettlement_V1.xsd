@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd_2="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" xmlns:xsd_3="http://claro.com.pe/entity/EngagedParty/Agreement/V1/" xmlns:xsd_1="http://claro.com.pe/entity/EngagedParty/PartySettlement/V1/" xmlns:xsd_6="http://claro.com.pe/entity/Customer/AppliedCustomerBillingRate/V1/" xmlns:xsd_7="http://claro.com.pe/entity/EngagedParty/AppliedPartyBillingRate/V1/" xmlns:xsd_8="http://claro.com.pe/entity/EngagedParty/PartyPayment/V1/" xmlns:xsd_9="http://claro.com.pe/entity/EngagedParty/Party/V1/" targetNamespace="http://claro.com.pe/entity/EngagedParty/PartySettlement/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="Party_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/Party/V1/" />
+  <xsd:import schemaLocation="PartyPayment_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/PartyPayment/V1/" />
+  <xsd:import schemaLocation="AppliedPartyBillingRate_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/AppliedPartyBillingRate/V1/" />
+  <xsd:import schemaLocation="../Customer/AppliedCustomerBillingRate_V1.xsd" namespace="http://claro.com.pe/entity/Customer/AppliedCustomerBillingRate/V1/" />
+  <xsd:import schemaLocation="Agreement_V1.xsd" namespace="http://claro.com.pe/entity/EngagedParty/Agreement/V1/" />
+  <xsd:import schemaLocation="../CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:annotation>
+    <xsd:documentation>It is a group of entities that represent a monetary value that will be paid to a party by the enterprise or a party will pay to the enterprise as a result of the usage/recurring fee of a product/service/resource provided. PartySettlement is managed by agreements and can be created between an enterprise and other MVNOs, dealers, retailers, content providers, etc. </xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="PartySettlement">
+    <xsd:annotation>
+      <xsd:documentation>A monetary value that will be paid to a party by the enterprise or a party will pay to the enterprise as a result of the usage/recurring fee of a product/service/resource provided. PartySettlement is managed by agreements and can be created between an enterprise and other MVNOs, dealers, retailers, content providers, etc. </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="settlementNumber" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A unique identifier that enables different instances of a PartySettlement to be distinguished from each other.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="settlementDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Issue date of a PartySettlement.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="amount" type="xsd_2:Money">
+        <xsd:annotation>
+          <xsd:documentation>Monetary amount that will be paid to a party by the enterprise or a party that will pay to the enterprise.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="agreement" type="xsd_3:Agreement" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="partySettlementRole" type="xsd_1:PartySettlementRole" />
+      <xsd:element name="partySettlementSpecification" type="xsd_1:PartySettlementSpecification" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="appliedCustomerBillingRate" type="xsd_6:AppliedCustomerBillingRate" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="appliedPartyBillingRate" type="xsd_7:AppliedPartyBillingRate" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="partySettlementPayment" type="xsd_1:PartySettlementPayment" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PartySettlementPayment">
+    <xsd:annotation>
+      <xsd:documentation>A PartyPayment applied to a PartySettlement.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="partyPayment" type="xsd_8:PartyPayment" />
+      <xsd:element name="partySettlement" type="xsd_1:PartySettlement" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PartySettlementRole">
+    <xsd:annotation>
+      <xsd:documentation>PartySettlementRole captures all the roles that are included like settlement payment responsible and for example, the role of parties responsible for a) calculating or b) forwarding settlements, etc.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="partySettlementRoleType" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>An indicator that specifies the involment such as payment responsible and parties/unit responsible for calculating settlements.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="partySettlement" type="xsd_1:PartySettlement" />
+      <xsd:element name="partyRole" type="xsd_9:PartyRole" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PartySettlementSpecification">
+    <xsd:annotation>
+      <xsd:documentation>A detailed description of PartySettlement.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="partySettlement" type="xsd_1:PartySettlement" />
+      <xsd:element name="name" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A short descriptive name.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="specType" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A classification that groups PartySettlemenSpecifications that share common characteristics.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_2:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period during which the PartySettlementSpecification is applicable.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="description" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A detailed description of PartySettlementSpecification.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="partySettlementSpecVersion" type="xsd_1:PartySettlementSpecVersion" />
+      <xsd:element name="Class1">
+        <xsd:complexType />
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PartySettlementSpecVersion">
+    <xsd:annotation>
+      <xsd:documentation>A particular form or variety of a PartySettlementSpecification that is different from others or from the original. The form represents differences in properties that characterize a PartySettlementSpecification, that are not enough to warrant creating a new PartySettlementSpecification. </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="revisionType" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The significance of the revision.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="revisionNumber" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>A number that represents the occurrence of the version in the sequence of versions. </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_2:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period during which the version is applicable.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="description" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A narrative that explains the reason for the version’s creation.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="revisionDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>The date the version was created.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="partySettlementSpecification" type="xsd_1:PartySettlementSpecification" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PartySettlementSpecRelationship">
+    <xsd:annotation>
+      <xsd:documentation>A significant connection between two PartySettlementSpecifications such as migration, substitution, dependency, exclusivity.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="relType" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Specifies the relationship type of two PartySettlementSpecifications suh as migration, substitution, dependency, exclusivity.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_2:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period for which the PartySettlementSpecRelationship is valid.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PartySettlementRelationship">
+    <xsd:annotation>
+      <xsd:documentation>A significant connection between two PartySettlements such as migration, substitution, dependency, exclusivity.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="relType" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Specifies the relationship type of two PartySettlements suh as migration, substitution, dependency, exclusivity.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="validFor" type="xsd_2:TimePeriod">
+        <xsd:annotation>
+          <xsd:documentation>The period for which the PartySettlementRelationship is valid.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

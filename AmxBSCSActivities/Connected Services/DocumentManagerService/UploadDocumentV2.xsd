@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:bsty="http://www.amx.com/CO/Schema/BaseTypeABE/v1" xmlns:tns="http://www.amx.com/Schema/Operation/UploadDocument/V2.0" xmlns:clhe="http://www.amx.com/CO/Schema/ClaroHeaders/v1" elementFormDefault="qualified" targetNamespace="http://www.amx.com/Schema/Operation/UploadDocument/V2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="ClaroHeaders.xsd" namespace="http://www.amx.com/CO/Schema/ClaroHeaders/v1" />
+  <xsd:import schemaLocation="BaseTypesABE.xsd" namespace="http://www.amx.com/CO/Schema/BaseTypeABE/v1" />
+  <xsd:annotation>
+    <xsd:documentation> 
+          
+      Author: Daniel Bustacara
+      Date: 18/01/2018
+      Version: 2.0
+      Purpose: Operation UploadDocument
+      Track changes: Modification. Released second version
+      Observations: La primera version corresponde a el xsd UploadAgreementDocumentV1.0
+      
+  </xsd:documentation>
+  </xsd:annotation>
+  <xsd:element name="uploadDocumentRequest" type="tns:UploadDocumentRequest" />
+  <xsd:element name="uploadDocumentResponse" type="tns:UploadDocumentResponse" />
+  <xsd:complexType name="UploadDocumentRequest">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="headerRequest" type="clhe:HeaderRequest" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="document" type="tns:Document" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="file" type="tns:File" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UploadDocumentResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="headerResponse" type="clhe:HeaderResponse" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="actionStatus" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="statusMessage" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="document" type="tns:Document" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="exception" type="tns:Exception" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Document">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="field" type="bsty:AttributeValuePair" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="File">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="name" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="content" type="xsd:base64Binary" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Exception">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="code" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="message" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="dateTime" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

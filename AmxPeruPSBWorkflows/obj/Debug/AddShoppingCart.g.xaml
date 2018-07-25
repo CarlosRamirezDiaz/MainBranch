@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<a:AddShoppingCart sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="AmxPeruPSBWorkflows.AddShoppingCart_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:a="clr-namespace:AmxPeruPSBWorkflows;assembly=AmxPeruPSBWorkflows" xmlns:aao="clr-namespace:AmxPeruPSBActivities.Activities.Order;assembly=AmxPeruPSBActivities" xmlns:aao1="clr-namespace:AmxPeruPSBActivities.Activities.OrderItem;assembly=AmxPeruPSBActivities" xmlns:am="clr-namespace:AmxPeruPSBActivities.Model;assembly=AmxPeruPSBActivities" xmlns:amo="clr-namespace:AmxPeruPSBActivities.Model.OrderItem;assembly=AmxPeruPSBActivities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:ec="clr-namespace:ExternalApiActivities.Common;assembly=ExternalApiActivities" xmlns:eeec="clr-namespace:Ericsson.ETELCRM.Entities.Crm;assembly=Ericsson.ETELCRM.CrmFoundationLibrary" xmlns:epwa="clr-namespace:Ericsson.PSB.Workflow.Activities;assembly=Ericsson.PSB.Workflow.Activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>Ericsson.ETELCRM.Entities.Crm</x:String>
+      <x:String>AmxPeruPSBActivities.Model</x:String>
+      <x:String>AmxPeruPSBActivities.Model.OrderItem</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Ericsson.ETELCRM.CrmCachingLibrary</AssemblyReference>
+      <AssemblyReference>Ericsson.ETELCRM.CrmFoundationLibrary</AssemblyReference>
+      <AssemblyReference>Ericsson.ETELCRM.Entities.Crm</AssemblyReference>
+      <AssemblyReference>Ericsson.PSB.Workflow.Activities</AssemblyReference>
+      <AssemblyReference>Ericsson.PSB.Workflow.Client.Core</AssemblyReference>
+      <AssemblyReference>ExternalApiActivities</AssemblyReference>
+      <AssemblyReference>ExternalApiWorkflows</AssemblyReference>
+      <AssemblyReference>Microsoft.Crm.Sdk.Proxy</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Compatibility</AssemblyReference>
+      <AssemblyReference>Microsoft.Xrm.Client</AssemblyReference>
+      <AssemblyReference>Microsoft.Xrm.Sdk</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Activities.Core.Presentation</AssemblyReference>
+      <AssemblyReference>System.Activities.Presentation</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data.Linq</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Net.Http</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>AmxPeruPSBActivities</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>AmxPeruPSBWorkflows</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <a:AddShoppingCart.Implementation>
+    <Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_1">
+      <Flowchart.Variables>
+        <Variable x:TypeArguments="x:String" Name="connectionString" />
+        <Variable x:TypeArguments="eeec:etel_ordercapture" Name="orderCapture" />
+        <Variable x:TypeArguments="scg:List(eeec:etel_orderitem)" Name="orderCaptureItems" />
+      </Flowchart.Variables>
+      <Flowchart.StartNode>
+        <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+          <epwa:ConfigurationActivity sap2010:WorkflowViewState.IdRef="ConfigurationActivity_1" Key="connectionString">
+            <epwa:ConfigurationActivity.Value>
+              <OutArgument x:TypeArguments="x:String">
+                <mca:CSharpReference x:TypeArguments="x:String">connectionString</mca:CSharpReference>
+              </OutArgument>
+            </epwa:ConfigurationActivity.Value>
+          </epwa:ConfigurationActivity>
+          <FlowStep.Next>
+            <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+              <ec:XrmAwareCompositeActivity sap2010:WorkflowViewState.IdRef="XrmAwareCompositeActivity_1" IsGlobalContext="False" UseServiceUser="False">
+                <ec:XrmAwareCompositeActivity.Activities>
+                  <aao:RetrieveOrderCapture sap2010:WorkflowViewState.IdRef="RetrieveOrderCapture_2">
+                    <aao:RetrieveOrderCapture.OrderCapture>
+                      <OutArgument x:TypeArguments="eeec:etel_ordercapture">
+                        <mca:CSharpReference x:TypeArguments="eeec:etel_ordercapture">orderCapture</mca:CSharpReference>
+                      </OutArgument>
+                    </aao:RetrieveOrderCapture.OrderCapture>
+                    <aao:RetrieveOrderCapture.OrderItemShoppingCartModel>
+                      <InArgument x:TypeArguments="amo:OrderItemAddShoppingCartModel">
+                        <mca:CSharpValue x:TypeArguments="amo:OrderItemAddShoppingCartModel">orderItemShoppingCartModel</mca:CSharpValue>
+                      </InArgument>
+                    </aao:RetrieveOrderCapture.OrderItemShoppingCartModel>
+                  </aao:RetrieveOrderCapture>
+                  <aao1:AddOrderItemToShoppingCart sap2010:WorkflowViewState.IdRef="AddOrderItemToShoppingCart_2">
+                    <aao1:AddOrderItemToShoppingCart.ActivationEndDate>
+                      <InArgument x:TypeArguments="s:Nullable(s:DateTime)">
+                        <mca:CSharpValue x:TypeArguments="s:Nullable(s:DateTime)">activationEndDate</mca:CSharpValue>
+                      </InArgument>
+                    </aao1:AddOrderItemToShoppingCart.ActivationEndDate>
+                    <aao1:AddOrderItemToShoppingCart.ActivationStartDate>
+                      <InArgument x:TypeArguments="s:Nullable(s:DateTime)">
+                        <mca:CSharpValue x:TypeArguments="s:Nullable(s:DateTime)">activationStartDate</mca:CSharpValue>
+                      </InArgument>
+                    </aao1:AddOrderItemToShoppingCart.ActivationStartDate>
+                    <aao1:AddOrderItemToShoppingCart.OrderCapture>
+                      <InArgument x:TypeArguments="eeec:etel_ordercapture">
+                        <mca:CSharpValue x:TypeArguments="eeec:etel_ordercapture">orderCapture</mca:CSharpValue>
+                      </InArgument>
+                    </aao1:AddOrderItemToShoppingCart.OrderCapture>
+                    <aao1:AddOrderItemToShoppingCart.OrderItemId>
+                      <InOutArgument x:TypeArguments="s:Guid">
+                        <mca:CSharpReference x:TypeArguments="s:Guid">createdOrderItemId</mca:CSharpReference>
+                      </InOutArgument>
+                    </aao1:AddOrderItemToShoppingCart.OrderItemId>
+                    <aao1:AddOrderItemToShoppingCart.OrderItemShoppingCartModel>
+                      <InArgument x:TypeArguments="amo:OrderItemAddShoppingCartModel">
+                        <mca:CSharpValue x:TypeArguments="amo:OrderItemAddShoppingCartModel">orderItemShoppingCartModel</mca:CSharpValue>
+                      </InArgument>
+                    </aao1:AddOrderItemToShoppingCart.OrderItemShoppingCartModel>
+                  </aao1:AddOrderItemToShoppingCart>
+                  <aao1:AddRelevantPOToCart sap2010:WorkflowViewState.IdRef="AddRelevantPOToCart_1">
+                    <aao1:AddRelevantPOToCart.OrderItemId>
+                      <InOutArgument x:TypeArguments="s:Guid">
+                        <mca:CSharpReference x:TypeArguments="s:Guid">createdOrderItemId</mca:CSharpReference>
+                      </InOutArgument>
+                    </aao1:AddRelevantPOToCart.OrderItemId>
+                    <aao1:AddRelevantPOToCart.OrderItemShoppingCartModel>
+                      <InArgument x:TypeArguments="amo:OrderItemAddShoppingCartModel">
+                        <mca:CSharpValue x:TypeArguments="amo:OrderItemAddShoppingCartModel">orderItemShoppingCartModel</mca:CSharpValue>
+                      </InArgument>
+                    </aao1:AddRelevantPOToCart.OrderItemShoppingCartModel>
+                  </aao1:AddRelevantPOToCart>
+                  <aao:RetrieveOrderCaptureItems sap2010:WorkflowViewState.IdRef="RetrieveOrderCaptureItems_1">
+                    <aao:RetrieveOrderCaptureItems.OrderCaptureId>
+                      <InArgument x:TypeArguments="s:Guid">
+                        <mca:CSharpValue x:TypeArguments="s:Guid">orderCapture.Id</mca:CSharpValue>
+                      </InArgument>
+                    </aao:RetrieveOrderCaptureItems.OrderCaptureId>
+                    <aao:RetrieveOrderCaptureItems.OrderItems>
+                      <OutArgument x:TypeArguments="scg:List(eeec:etel_orderitem)">
+                        <mca:CSharpReference x:TypeArguments="scg:List(eeec:etel_orderitem)">orderCaptureItems</mca:CSharpReference>
+                      </OutArgument>
+                    </aao:RetrieveOrderCaptureItems.OrderItems>
+                  </aao:RetrieveOrderCaptureItems>
+                  <aao:MapOrderCaptureActivity sap2010:WorkflowViewState.IdRef="MapOrderCaptureActivity_1">
+                    <aao:MapOrderCaptureActivity.OrderCapture>
+                      <InArgument x:TypeArguments="eeec:etel_ordercapture">
+                        <mca:CSharpValue x:TypeArguments="eeec:etel_ordercapture">orderCapture</mca:CSharpValue>
+                      </InArgument>
+                    </aao:MapOrderCaptureActivity.OrderCapture>
+                    <aao:MapOrderCaptureActivity.OrderItems>
+                      <InArgument x:TypeArguments="scg:List(eeec:etel_orderitem)">
+                        <mca:CSharpValue x:TypeArguments="scg:List(eeec:etel_orderitem)">orderCaptureItems</mca:CSharpValue>
+                      </InArgument>
+                    </aao:MapOrderCaptureActivity.OrderItems>
+                    <aao:MapOrderCaptureActivity.OrderModel>
+                      <OutArgument x:TypeArguments="am:OrderDataModel">
+                        <mca:CSharpReference x:TypeArguments="am:OrderDataModel">orderDataModel</mca:CSharpReference>
+                      </OutArgument>
+                    </aao:MapOrderCaptureActivity.OrderModel>
+                  </aao:MapOrderCaptureActivity>
+                </ec:XrmAwareCompositeActivity.Activities>
+                <ec:XrmAwareCompositeActivity.ConnectionString>
+                  <InArgument x:TypeArguments="x:String">
+                    <mca:CSharpValue x:TypeArguments="x:String">connectionString</mca:CSharpValue>
+                  </InArgument>
+                </ec:XrmAwareCompositeActivity.ConnectionString>
+              </ec:XrmAwareCompositeActivity>
+            </FlowStep>
+          </FlowStep.Next>
+        </FlowStep>
+      </Flowchart.StartNode>
+      <x:Reference>__ReferenceID0</x:Reference>
+      <x:Reference>__ReferenceID1</x:Reference>
+      <sads:DebugSymbol.Symbol>9xB/GGD2uYM9/1/J+V1myq9PTEQ6XENhcmxvc1JhbWlyZXpcRGVza3RvcFxNYWluQnJhbmNoXEFteFBlcnVQU0JXb3JrZmxvd3NcQWRkU2hvcHBpbmdDYXJ0LnhhbWwbTwPAAQ8CAQFXCV0mAwGRAWANuAEsAgECWg9aZQMBkwFXY1d1AwGSAbUBE7UBYQIBBWB5YIABAgEEYJABYJcBAgEDYhFtLAIBfm4RiAEzAgFQiQERlAEsAgE9lQERoAExAgEqoQERsQEvAgEOZRdldwMBiAFqF2qIAQIBf3YXdnYCAXWAAReAAW0CAWx7F3tvAgFjhQEXhQGIAQIBWnEXcXQCAVGMAReMAW0CAUeRAReRAYgBAgE+mAEXmAFiAgE0nQEXnQGDAQIBK64BF64BdAIBIaQBF6QBbwIBGKkBF6kBewIBDw==</sads:DebugSymbol.Symbol>
+    </Flowchart>
+  </a:AddShoppingCart.Implementation>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="ConfigurationActivity_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RetrieveOrderCapture_2" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="AddOrderItemToShoppingCart_2" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="AddRelevantPOToCart_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RetrieveOrderCaptureItems_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="MapOrderCaptureActivity_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="XrmAwareCompositeActivity_1" sap:VirtualizedContainerService.HintSize="222,394">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">300,199.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">300,127.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">400,149.5 400,199.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="614,636">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,107.5 400,107.5 400,127.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="AmxPeruPSBWorkflows.AddShoppingCart_1" sap:VirtualizedContainerService.HintSize="654,716" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</a:AddShoppingCart>

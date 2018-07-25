@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:entcusproext="http://claro.com.pe/entity/Customer/CustomerProblemExtension/V1/" xmlns:entcusprob="http://claro.com.pe/entity/Customer/CustomerProblem/V1/" targetNamespace="http://claro.com.pe/entity/Customer/CustomerProblemExtension/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="CustomerProblem_V1.xsd" namespace="http://claro.com.pe/entity/Customer/CustomerProblem/V1/" />
+  <xsd:complexType name="CustomerProblemExtension">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="entcusprob:CustomerProblem">
+        <xsd:sequence>
+          <xsd:element name="_buyBackCouponId" type="xsd:int" />
+          <xsd:element name="_typification" type="xsd:string" />
+          <xsd:element name="_affectedServices" type="xsd:string" />
+          <xsd:element name="_affectedZone" type="xsd:string" />
+          <xsd:element name="_ticketRemedy" type="xsd:string" />
+          <xsd:element name="_claimTicket" type="xsd:string" />
+          <xsd:element name="_solutionReason" type="xsd:string" />
+          <xsd:element name="_questionId" type="xsd:int" />
+          <xsd:element name="_questionDescription" type="xsd:string" />
+          <xsd:element name="_questionAnswer" type="xsd:string" />
+          <xsd:element name="_cost" type="xsd:decimal" />
+          <xsd:element name="_totalMonths" type="xsd:int" />
+          <xsd:element name="_remainingMonths" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

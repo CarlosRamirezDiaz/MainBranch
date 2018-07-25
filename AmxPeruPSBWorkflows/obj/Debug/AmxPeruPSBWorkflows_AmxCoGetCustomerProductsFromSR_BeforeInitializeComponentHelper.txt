@@ -1,0 +1,2 @@
+AmxCoGetCustomerProductsFromSR.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

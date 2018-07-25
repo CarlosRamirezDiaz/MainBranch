@@ -1,0 +1,597 @@
+﻿
+    <div ng-controller="ConsumptionViewController" class="main-container" dir="{{direct}}">
+        <style type="text/css">
+            * {
+                font-size: 12px;
+            }
+
+            body {
+                font-family: Segoe UI, Tahoma, Arial;
+                font-size: 11px;
+                margin: 0;
+                padding: 0;
+            }
+
+            h2 {
+                font-size: 18px;
+                font-weight: bold;
+                margin: 0;
+                margin-bottom: 15px;
+            }
+
+            table, th, td {
+                margin: 0;
+                padding: 0;
+            }
+
+            ul.account {
+                padding: 0px;
+                margin: 0px;
+                padding-bottom: 20px;
+            }
+
+                ul.account li {
+                    width: 30%;
+                    padding-right: 5%;
+                    float: left;
+                    display: block;
+                }
+
+                    ul.account li:last-child {
+                        padding-right: 0px;
+                    }
+
+                    ul.account li label {
+                        font-weight: bold;
+                        margin-right: 20px;
+                    }
+
+            .selected {
+                background: #b1d6f0;
+            }
+        </style>
+        <!--START Balance History Style-->
+        <style>
+                .etel_grid_w50 {
+                    width: 50%;
+                    float: left;
+                    display: block;
+                }
+
+                .ms-crm-InlineEditLabelText {
+                    color: #444444;
+                    display: block;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    position: relative;
+                    font-size: 12px;
+                    width: 140px;
+                    float: left;
+                }
+
+                    /*span {
+                float: left;
+                display: block;
+            } */
+
+                    .ms-crm-InlineEditLabelText span:first-child, .ms-crm-InlineEditLabelText img:first-child {
+                        float: left;
+                        overflow: hidden;
+                        display: inline-block;
+                    }
+                /*
+                .barLine {
+                    background: url("../processapp/images/imagestrips/grid_ctrl_imgs.png") no-repeat scroll -171px -17px #000000;
+                    background: rgba(0, 0, 0, 0) url('../processapp/images/imagestrips/grid_ctrl_imgs.png') no-repeat -171px -17px;
+                    height: 14px;
+                    width: 1px;
+                    overflow: hidden;
+                }
+                */
+                .dataGridHeaderCell {
+                    font-weight: normal;
+                    color: #444444;
+                    font-size: 12px;
+                    height: 24px;
+                    text-align: left;
+                    padding-left: 2px;
+                }
+
+                body, div.dataGrid {
+                    font-family: "Segoe UI","Helvetica Neue",Helvetica,Tahoma,"Microsoft Sans Serif",Verdana,sans-serif;
+                    font-size: 11px;
+                }
+
+                body {
+                    margin: 0px;
+                }
+
+                img.goToBeginArrowGrid1 {
+                    background: transparent url("/_imgs/imagestrips/grid_ctrl_imgs.png?ver=-866851860") no-repeat scroll -157px -113px;
+                    overflow: hidden;
+                    vertical-align: middle;
+                    border: none;
+                    width: 10px;
+                    height: 9px;
+                }
+
+                img.goToBeginArrowGrid0 {
+                    background: transparent url("/_imgs/imagestrips/grid_ctrl_imgs.png?ver=-866851860") no-repeat scroll -157px -135px;
+                    overflow: hidden;
+                    vertical-align: middle;
+                    border: none;
+                    width: 10px;
+                    height: 9px;
+                    cursor: default;
+                }
+
+                img.leftArrowGrid0 {
+                    background: transparent url("/_imgs/imagestrips/grid_ctrl_imgs.png?ver=-866851860") no-repeat scroll -167px -118px;
+                    overflow: hidden;
+                    vertical-align: middle;
+                    border: none;
+                    width: 10px;
+                    height: 9px;
+                    cursor: default;
+                }
+
+                img.leftArrowGrid1 {
+                    background: transparent url("/_imgs/imagestrips/grid_ctrl_imgs.png?ver=-866851860") no-repeat scroll -171px -107px;
+                    overflow: hidden;
+                    vertical-align: middle;
+                    border: none;
+                    width: 10px;
+                    height: 9px;
+                }
+
+                img.rightArrowGrid1 {
+                    background: transparent url("/_imgs/imagestrips/grid_ctrl_imgs.png?ver=-866851860") no-repeat scroll -157px -124px;
+                    overflow: hidden;
+                    vertical-align: middle;
+                    border: none;
+                    width: 10px;
+                    height: 9px;
+                }
+
+                img.rightArrowGrid0 {
+                    background: transparent url("/_imgs/imagestrips/grid_ctrl_imgs.png?ver=-866851860") no-repeat scroll -95px -159px;
+                    overflow: hidden;
+                    vertical-align: middle;
+                    border: none;
+                    width: 10px;
+                    height: 9px;
+                    cursor: default;
+                }
+
+
+                table, .dataGridBody, table.dataGridFooter {
+                    width: 100%;
+                    table-layout: fixed;
+                    word-wrap: normal;
+                    border-collapse: collapse;
+                    border-spacing: 0;
+                    border-bottom-style: solid;
+                    border-bottom-width: 1px;
+                    border-top-style: solid;
+                    border-top-width: 1px;
+                    color: #444444;
+                    background-color: #FFFFFF;
+                    border-bottom: none;
+                    border-top: none;
+                }
+
+                .dataGridBody {
+                    overflow-y: scroll;
+                }
+
+                table.dataGridHeader {
+                    /* border-bottom: none; */
+                    border-top: 1px solid #D6D6D6;
+                    border-bottom: 1px solid #D6D6D6;
+                }
+
+                div.dataGridWrapper {
+                    min-width: 570px;
+                    border-bottom: 1px solid #D6D6D6;
+                }
+
+                tr.dataGridBodyRow:hover:not(.selectedRow):not(.expandedRow), th:hover {
+                    background-color: #D7EBF9;
+                }
+
+                tr.dataGridBodyRow {
+                    height: 28px;
+                }
+
+                div.dataGridCellContent {
+                    overflow: hidden;
+                    font-size: 12px;
+                    font-weight: normal;
+                    color: black;
+                }
+
+                tr.dataGridBodyRow div.dataGridCellContent span.summarySectionTitle, tr.dataGridBodyRow div.dataGridCellContent span.gridSectionTitle {
+                    font-size: 12px;
+                    font-weight: bold;
+                    text-align: right;
+                    white-space: nowrap;
+                    word-wrap: normal;
+                    color: #666666;
+                    text-transform: uppercase;
+                    line-height: 24px;
+                    min-width: 400px;
+                    max-width: 400px;
+                }
+
+                div.dataGridCellContent span {
+                    max-width: 80%;
+                    display: inline-block;
+                    vertical-align: middle;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                }
+
+                td {
+                    color: #444444;
+                    margin: 0;
+                    /* border: 1px solid black; */
+                }
+
+
+                tr.dataGridBodyRow td, tr.dataGridBodyRow th {
+                    padding: 0 5px;
+                }
+
+                .wizard-body .ng-scope {
+                    width: 100%;
+                }
+
+                .wizard-body .ng-scope {
+                    width: 100%;
+                }
+
+                .tbody {
+                    overflow-y: auto;
+                }
+        </style>
+        <style>
+            .buttonStyle {
+                height: 20px;
+                text-align: center;
+                color: #262626;
+                font-size: 11px;
+                margin-top: 0px;
+                margin-left: 0px;
+                margin-right: 10px;
+                margin-bottom: 10px;
+                border-top-color: #c6c6c6;
+                border-left-color: #c6c6c6;
+                border-right-color: #c6c6c6;
+                border-bottom-color: #c6c6c6;
+                border-top-width: 1px;
+                border-left-width: 1px;
+                border-right-width: 1px;
+                border-bottom-width: 1px;
+                border-top-style: solid;
+                border-bottom-style: solid;
+                border-right-style: solid;
+                border-left-style: solid;
+                cursor: pointer;
+                background-image: none;
+                background-color: rgb(253,253,253);
+            }
+
+            .bzm-date-picker input {
+                height: 20px !important;
+            }
+        </style>
+        <div id="configBlock">
+            <h2 class="dataGridTitleText">{{scopeData.translations.tTitleD}}</h2>
+            <ul class="account">
+                <li>
+                    <label>{{scopeData.translations.tMsisdn}}</label><span class="value">{{MSISDN}}</span>
+                </li>
+                <li>
+                </li>
+                <li>
+                    <label>{{scopeData.translations.tMainAccountBalance}}</label><span class="value">{{MainaccountBalance}} {{UnitCode}} {{UnitOfMeasure}}</span>
+                </li>
+                <li>
+                </li>
+            </ul>
+            <table class="dataGridHeader" id="configDataGridHeader">
+                <colgroup>
+                    <col style="width: 150px;">
+                    <col style="width: 2px">
+                    <col style="width: 150px;">
+                    <col style="width: 2px">
+                    <col style="width: 95px;">
+                    <col style="width: 2px">
+                    <col style="width: 95px;">
+                    <col style="width: 2px">
+                    <col style="width: 130px;">
+                    <col style="width: 2px">
+                    <col style="width: 110px;">
+                    <col style="width: 2px">
+                    <col style="width: 100px;">
+                    <col style="width: 2px">
+                    <col style="width: 100px;">
+                    <col style="width: 2px">
+                </colgroup>
+                <tbody>
+                    <!--<tr class="dataGridHeaderRow">
+                        <th class="dataGridHeaderCell" style="text-align: center;">{{scopeData.translations.tDedicatedAccountID}}</th>
+                        <th class="dataGridHeaderCell" style="text-align: center;">{{scopeData.translations.tBalanceD}}</th>
+                        <th class="dataGridHeaderCell" style="text-align: center;">{{scopeData.translations.tUnitCode}}</th>
+                        <th class="dataGridHeaderCell" style="text-align: center;">{{scopeData.translations.tUnitOfMeasure}}</th>
+                        <th class="dataGridHeaderCell" style="text-align: center;">{{scopeData.translations.tExpiryDate}}</th>
+                    </tr>-->
+                    <tr class="dataGridHeaderRow">
+
+                        <th title="{{scopeData.translations.tOffering}}" class="dataGridHeaderCell">{{scopeData.translations.tOffering}}</th>
+                        <td class="dataGridHeaderResizeCell">
+                            at
+                            <img class="barLine" alt="" src="etel_/processapp/images/imagestrips/transparent_spacer.gif">
+                        </td>
+                        <th title="{{scopeData.translations.tService}}" class="dataGridHeaderCell">{{scopeData.translations.tService}}</th>
+                        <td class="dataGridHeaderResizeCell">
+                            <img class="barLine" alt="" src="etel_/processapp/images/imagestrips/transparent_spacer.gif">
+                        </td>
+                        <th title="{{scopeData.translations.tStartdate}}" class="dataGridHeaderCell">{{scopeData.translations.tStartdate}}</th>
+                        <td class="dataGridHeaderResizeCell">
+                            <img class="barLine" alt="" src="etel_/processapp/images/imagestrips/transparent_spacer.gif">
+                        </td>
+                        <th title="{{scopeData.translations.tEnddate}}" class="dataGridHeaderCell">{{scopeData.translations.tEnddate}}</th>
+                        <td class="dataGridHeaderResizeCell">
+                            <img class="barLine" alt="" src="etel_/processapp/images/imagestrips/transparent_spacer.gif">
+                        </td>
+                        <th title="{{scopeData.translations.tDedicatedAccount}}" class="dataGridHeaderCell">{{scopeData.translations.tDedicatedAccount}}</th>
+                        <td class="dataGridHeaderResizeCell">
+                            <img class="barLine" alt="" src="etel_/processapp/images/imagestrips/transparent_spacer.gif">
+                        </td>
+                        <th title="{{scopeData.translations.tBalanceD}}" class="dataGridHeaderCell">{{scopeData.translations.tBalanceD}}</th>
+                        <td class="dataGridHeaderResizeCell">
+                            <img class="barLine" alt="" src="etel_/processapp/images/imagestrips/transparent_spacer.gif">
+                        </td>
+                        <th title="{{scopeData.translations.tUnitOfMeasure}}" class="dataGridHeaderCell">{{scopeData.translations.tUnitOfMeasure}}</th>
+                        <td class="dataGridHeaderResizeCell">
+                            <img class="barLine" alt="" src="etel_/processapp/images/imagestrips/transparent_spacer.gif">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="dataGridBody" id="configDataGridBody">
+                <colgroup>
+
+                    <col style="width: 152px;">
+                    <col style="width: 152px;">
+                    <col style="width: 97px;">
+                    <col style="width: 97px;">
+                    <col style="width: 132px;">
+                    <col style="width: 112px;">
+                    <col style="width: 102px;">
+                    <col style="width: 102px;">
+                </colgroup>
+                <tbody>
+                    <tr class="dataGridBodyRow" ng-repeat="dedicatedAccount in DedicatedAccounts" ng-class="{'selected': ($index == selectedRow &amp;&amp; isSelected[$index] == 'selected')}" ng-click="toggleClass($index);">
+
+                        <td>
+                            <div class="dataGridCellContent">{{dedicatedAccount.PODescription}}</div>
+                        </td>
+                        <td>
+                            <div class="dataGridCellContent">{{dedicatedAccount.CFSSDescription}}</div>
+                        </td>
+                        <td>
+                            <div class="dataGridCellContent">{{dedicatedAccount.StartDate}}</div>
+                        </td>
+                        <td>
+                            <div class="dataGridCellContent">{{dedicatedAccount.EndDate}}</div>
+                        </td>
+                        <td>
+                            <div class="dataGridCellContent">{{dedicatedAccount.DADescription}}</div>
+                        </td>
+                        <td>
+                            <div class="dataGridCellContent">{{dedicatedAccount.Balance}}</div>
+                        </td>
+                        <td>
+                            <div class="dataGridCellContent">{{dedicatedAccount.UnitOfMeasure}}</div>
+                        </td>
+                        <td style="display:none;">
+                            <div class="dataGridCellContent" style="visibility:hidden">{{dedicatedAccount.DedicatedAccountID}}</div>
+                        </td>
+                        <td style="display:none;">
+                            <div id="daProductId" class="dataGridCellContent" style="visibility:hidden">{{dedicatedAccount.ProductId}}</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div ng-show="!DedicatedAccounts">{{scopeData.translations.tNoDedicatedAccountsData}}</div>
+        </div>
+
+        <div>
+            <br>
+            <br>
+            <br>
+        </div>
+        <!--Balance History-->
+        <div id="configBlock">
+            <h2 class="dataGridTitleText">{{scopeData.translations.tTitleBalanceHistory}}</h2>
+            <div>
+                <div style="float: left;">
+                    <div id="GridToolBar" style="padding: 2px; ">
+                        <div>
+                            <div style="padding-top: 3px; padding-right: 5px; float: left;">
+                                <span class="tPeriodFrom" data-translate="tPeriodFrom">Start Date:</span>
+                            </div>
+                            <div style="padding-right: 5px; float: left;">
+                                <date-picker id="FromDate" format="M/d/yyyy" callback="dateSelected" ng-model="FromDate" placeholder="m/dd/yyyy"></date-picker>
+                            </div>
+                            <div style="padding-top: 3px; padding-right: 5px; padding-left: 20px; float: left;">
+                                <span class="tPeriodUntil" data-translate="tPeriodUntil">End Date:</span>
+                            </div>
+                            <div style="padding-right: 5px; float: left;">
+                                <date-picker id="EndDate" format="M/d/yyyy" callback="dateSelected" ng-model="EndDate" placeholder="m/dd/yyyy"></date-picker>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="padding-top: 3px; padding-left: 20px; float: left;">
+                    <input class="buttonStyle" type="button" value="Show History" ng-click="SearchBalanceHistoryInquiry()">
+                </div>
+                <div style="padding-top: 3px; padding-left: 20px; float: left;">
+                    <input class="buttonStyle" type="button" value="Download History" ng-click="DownloadBalanceHistoryInquiry()">
+                </div>
+                <table class="dataGridHeader" id="balanceHistoryGrid">
+                    <colgroup>
+                        <col style="width: 90px;">
+                        <col style="width: 2px;">
+                        <col style="width: 120px;">
+                        <col style="width: 2px;">
+                        <col style="width: 120px;">
+                        <col style="width: 2px;">
+                        <col style="width: 90px;">
+                        <col style="width: 2px;">
+                        <col style="width: 105px;">
+                        <col style="width: 2px;">
+                        <col style="width: 90px;">
+                        <col style="width: 2px;">
+                        <col style="width: 90px;">
+                    </colgroup>
+                    <tbody>
+                        <tr class="dataGridHeaderRow">
+                            <th title="{{scopeData.translations.tRequestDate}}" class="dataGridHeaderCell">{{scopeData.translations.tRequestDate}}</th>
+                            <td class="dataGridHeaderResizeCell">
+                                <img class="barLine" alt="" src="etel_/processapp/images/imagestrips/transparent_spacer.gif">
+                            </td>
+                            <th title="{{scopeData.translations.tAdjustmentValueCurrency}}" class="dataGridHeaderCell">{{scopeData.translations.tAdjustmentValueCurrency}}</th>
+                            <td class="dataGridHeaderResizeCell">
+                                <img class="barLine" alt="" src="etel_/processapp/images/imagestrips/transparent_spacer.gif">
+                            </td>
+                            <th title="{{scopeData.translations.tRemainingCreditCurrency}}" class="dataGridHeaderCell">{{scopeData.translations.tRemainingCreditCurrency}}</th>
+                            <td class="dataGridHeaderResizeCell">
+                                <img class="barLine" alt="" src="etel_/processapp/images/imagestrips/transparent_spacer.gif">
+                            </td>
+                            <th title="{{scopeData.translations.tCurrentValue}}" class="dataGridHeaderCell">{{scopeData.translations.tCurrentValue}}</th>
+                            <td class="dataGridHeaderResizeCell">
+                                <img class="barLine" alt="" src="etel_/processapp/images/imagestrips/transparent_spacer.gif">
+                            </td>
+                            <th title="{{scopeData.translations.tRequestType}}" class="dataGridHeaderCell">{{scopeData.translations.tRequestType}}</th>
+                            <td class="dataGridHeaderResizeCell">
+                                <img class="barLine" alt="" src="etel_/processapp/images/imagestrips/transparent_spacer.gif">
+                            </td>
+                            <th title="{{scopeData.translations.tReason}}" class="dataGridHeaderCell">{{scopeData.translations.tReason}}</th>
+                            <td class="dataGridHeaderResizeCell">
+                                <img class="barLine" alt="" src="etel_/processapp/images/imagestrips/transparent_spacer.gif">
+                            </td>
+                            <th title="{{scopeData.translations.tSerialNumber}}" class="dataGridHeaderCell">{{scopeData.translations.tSerialNumber}}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="width: 100%; height: 190px; display: block; -ms-overflow-y: scroll;">
+                <table class="dataGridBody" id="configDataGridBody">
+                    <colgroup>
+                        <col style="width: 90px;">
+                        <col style="width: 2px;">
+                        <col style="width: 120px;">
+                        <col style="width: 2px;">
+                        <col style="width: 120px;">
+                        <col style="width: 2px;">
+                        <col style="width: 90px;">
+                        <col style="width: 2px;">
+                        <col style="width: 105px;">
+                        <col style="width: 2px;">
+                        <col style="width: 90px;">
+                        <col style="width: 2px;">
+                        <col style="width: 90px;">
+                    </colgroup>
+                    <tbody>
+                        <tr class="dataGridBodyRow" ng-repeat="BalanceItem in BalanceHistoryItems | orderBy:'-snapDate' ">
+                            <td>
+                                <div class="dataGridCellContent">{{BalanceItem.snapDate | date : "MM/dd/yyyy"}}</div>
+                            </td>
+                            <td></td>
+                            <td>
+                                <div class="dataGridCellContent" style="text-align: right;">{{BalanceItem.requestedAmount}} {{BalanceItem.requestedAmountUnitCode &amp;&amp; BalanceItem.requestedAmountUnitCode || BalanceItem.requestedAmountUnitOfMeasure}}</div>
+                            </td>
+                            <td></td>
+                            <td>
+                                <div class="dataGridCellContent" style="text-align: right;">{{BalanceItem.remainingAmount}} {{BalanceItem.requestedAmountUnitCode &amp;&amp; BalanceItem.requestedAmountUnitCode || BalanceItem.requestedAmountUnitOfMeasure}}</div>
+                            </td>
+                            <td></td>
+                            <td>
+                                <div class="dataGridCellContent" style="text-align: right;">{{BalanceItem.aggregatedAmount}} {{BalanceItem.requestedAmountUnitCode &amp;&amp; BalanceItem.requestedAmountUnitCode || BalanceItem.requestedAmountUnitOfMeasure}}</div>
+                            </td>
+                            <td></td>
+                            <td>
+                                <div class="dataGridCellContent" style="text-align:center">{{BalanceItem.requestType === 'C' &amp;&amp; 'Credit' || BalanceItem.requestType === 'D' &amp;&amp; 'Debit'|| BalanceItem.requestType === 'U' &amp;&amp; 'Update' || BalanceItem.requestType}}</div>
+                            </td>
+                            <td></td>
+                            <td>
+                                <div class="dataGridCellContent">{{BalanceItem.reason}}</div>
+                            </td>
+                            <td></td>
+                            <td>
+                                <div class="dataGridCellContent" style="padding-left: 10px;">{{BalanceItem.voucherId}}</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div>
+            <br>
+        </div>
+        <!--Accumulator Accounts-->
+        <div id="configBlock" ng-hide="!AccumulatorAccounts">
+            <h2 class="dataGridTitleText">{{scopeData.translations.tTitleA}}</h2>
+            <table class="dataGridHeader" id="configDataGridHeader">
+                <colgroup>
+                    <col style="width: 100px;">
+                    <col style="width: 100px;">
+                    <col style="width: 100px;">
+                    <col style="width: 100px;">
+                    <col style="width: 100px;">
+                </colgroup>
+                <tbody>
+                    <tr class="dataGridHeaderRow">
+                        <th class="dataGridHeaderCell">{{scopeData.translations.tAccumulatorAccountID}}</th>
+                        <th class="dataGridHeaderCell">{{scopeData.translations.tBalanceA}}</th>
+                        <th class="dataGridHeaderCell">{{scopeData.translations.tUnitOfMeasureA}}</th>
+                        <th class="dataGridHeaderCell">{{scopeData.translations.tStartDate}}</th>
+                        <th class="dataGridHeaderCell">{{scopeData.translations.tEndDate}}</th>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="dataGridBody" id="configDataGridBody" ng-hide="!AccumulatorAccounts">
+                <colgroup>
+                    <col style="width: 100px;">
+                    <col style="width: 100px;">
+                    <col style="width: 100px;">
+                    <col style="width: 100px;">
+                    <col style="width: 100px;">
+                </colgroup>
+                <tbody>
+                    <tr class="dataGridBodyRow" ng-repeat="accumulatorAccount in AccumulatorAccounts">
+                        <td>
+                            <div class="dataGridCellContent">{{accumulatorAccount.AccumulatorAccountID}}</div>
+                        </td>
+                        <td>
+                            <div class="dataGridCellContent">{{accumulatorAccount.Balance}} {{accumulatorAccount.UnitCode}}</div>
+                        </td>
+                        <td>
+                            <div class="dataGridCellContent">{{accumulatorAccount.UnitOfMeasure}}</div>
+                        </td>
+                        <td>
+                            <div class="dataGridCellContent">{{accumulatorAccount.StartDate}}</div>
+                        </td>
+                        <td>
+                            <div class="dataGridCellContent">{{accumulatorAccount.EndDate}}</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div ng-show="!AccumulatorAccounts">{{scopeData.translations.tNoAccumulatorAccountsData}}</div>
+        </div>
+    </div>

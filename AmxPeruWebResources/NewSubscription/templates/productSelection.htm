@@ -1,0 +1,649 @@
+﻿<html>
+<head>
+    <script type="text/javascript">
+        function onmouseoveragent(elementId) {
+            document.getElementById(elementId).style.display = "block";
+        }
+        function onmouseoutagent(elementId) {
+            document.getElementById(elementId).style.display = "none";
+        }
+
+        function showPlans(checkbox) {
+            displayValue = "none";
+            if (checkbox.checked) {
+                displayValue = "block";
+            }
+            document.getElementById("offeringMenuDiv").style.display = displayValue;
+            document.getElementById("addOnsMenuDiv").style.display = "none";
+        }
+
+        function showAddOns() {
+            document.getElementById("addOnsMenuDiv").style.display = "block";
+        }
+
+        function showLoadingGif() {
+            document.getElementById("loadingDiv").style.display = "block";
+            document.getElementById("emptycartDiv").style.display = "none";
+        }
+
+        function cancelOrder() {
+            var orderCaptureId = Xrm.Page.data.entity.getId().substring(1).substring(0, 36);
+            var entity = {};
+            entity.statecode = 0; //Active
+            entity.statuscode = 831260011; //Cancelled
+            entity.amx_cancelreason = 5; // Verificacion de identidad no exitosa
+            AMX.COMMON.UpdateEntityWebApi("etel_ordercaptures", orderCaptureId, entity, function (sData) { }, function (eData) { parent.Xrm.Utility.alertDialog(eData); }, false);
+            var etel_individualcustomerid = Xrm.Page.getAttribute("etel_individualcustomerid").getValue();
+            if (etel_individualcustomerid != null) {
+                Xrm.Utility.openEntityForm("contact", etel_individualcustomerid[0].id);
+            }
+        }
+
+    </script>
+    <style type="text/css">
+        body {
+            font: 11px Arial;
+            margin-top: -30px;
+        }
+
+        #container {
+            width: 100%;
+            margin: auto;
+        }
+
+        #menuBar {
+            height: 45px;
+            background: #f8f8f8;
+            border: 1px solid #e0e0e0;
+            padding: 10px 5px;
+        }
+
+            #menuBar ul {
+                margin: 0;
+                padding: 0;
+            }
+
+                #menuBar ul li {
+                    display: block;
+                    float: left;
+                    border-right: 1px solid #b2b2b2;
+                    padding: 5px 40px 3px 0;
+                    margin: 5px 5px 0 10px;
+                    position: relative;
+                    cursor: pointer;
+                }
+
+                    #menuBar ul li div {
+                        position: absolute;
+                        width: 320px;
+                        min-height: 200px;
+                        padding-bottom: 10px;
+                        /* overflow: hidden;
+                overflow-y: scroll; */
+                        border: 1px solid #e0e0e0;
+                        border-top: none;
+                        background: #f8f8f8;
+                        top: 35px;
+                        left: -16px;
+                        display: none;
+                        z-index: 100000;
+                    }
+
+                    #menuBar ul li .location-hover-menu {
+                    }
+
+                    #menuBar ul li .family-hover-menu {
+                        width: 232px !important;
+                        min-height: 240px;
+                        overflow: inherit;
+                    }
+                        #menuBar ul li .family-hover-menu .notSellable {
+                            background-color: #f53030;
+                            color: #e0e0e0;
+                        }
+
+                    #menuBar ul li .offering-hover-menu {
+                        left: 222px;
+                        top: 10px;
+                    }
+
+                        #menuBar ul li .offering-hover-menu .notSellable {
+                            background-color: #f53030;
+                            color: #e0e0e0;
+                        }
+
+                    #menuBar ul li div ul.addresses {
+                        margin: 10px 0 0 10px;
+                        padding: 0;
+                    }
+
+                        #menuBar ul li div ul.addresses li {
+                            display: block;
+                            float: initial;
+                            min-height: 50px;
+                            border: 1px solid #b6b6b6;
+                            width: 230px;
+                            margin: 8px 0;
+                            padding: 8px;
+                            line-height: 19px;
+                        }
+
+                            #menuBar ul li div ul.addresses li:hover {
+                                background-color: #e0e0e0;
+                                border: 1px solid #b6b6b6;
+                            }
+
+                        #menuBar ul li div ul.addresses .selected {
+                            background-color: #aff671;
+                            border: 1px solid #3ca818;
+                        }
+
+                    #menuBar ul li div ul.family {
+                        margin: 10px 0 0 10px;
+                        padding: 0;
+                    }
+
+                        #menuBar ul li div ul.family li {
+                            display: block;
+                            float: initial;
+                            border: 1px solid #b6b6b6;
+                            border-bottom: none;
+                            width: 190px;
+                            margin: 0;
+                            padding: 10px 10px;
+                        }
+
+                        #menuBar ul li div ul.family .last-li {
+                            border-bottom: 1px solid #b6b6b6;
+                        }
+
+            #menuBar table {
+                margin: 0px 0 0 20px;
+                font-size: 11px;
+                width: 90%;
+                background-color: #f8f8f8;
+            }
+
+                #menuBar table th {
+                    text-decoration: underline;
+                    font-weight: normal;
+                    text-align: left;
+                }
+
+                #menuBar table td {
+                    padding: 8px 0;
+                }
+
+        #middleContainer #cartGrid table {
+            color: #020202;
+            width: 100%;
+            border: 2px dashed #fff;
+            border-top: 2px solid;
+            background: #f8f8f8;
+            margin-top: 5px;
+        }
+
+            #middleContainer #cartGrid table tr {
+                background-color: #ebf3f5;
+            }
+
+                #middleContainer #cartGrid table tr td.firstColumn {
+                    padding: 12px 0 10px 40px;
+                }
+
+                #middleContainer #cartGrid table tr.parent {
+                    background-color: #c8e5ea;
+                }
+
+                    #middleContainer #cartGrid table tr.parent td.firstColumn {
+                        padding: 12px 0 10px 20px;
+                    }
+
+                #middleContainer #cartGrid table tr.child {
+                    background-color: #ebf3f5;
+                }
+
+                #middleContainer #cartGrid table tr th {
+                    background: #fff;
+                    padding: 7px;
+                }
+
+                #middleContainer #cartGrid table tr td {
+                    border: 2px solid #fff;
+                    padding: 4px;
+                }
+
+        #addressLine {
+            font-size: 15px;
+            margin: 20px 0 0 5px;
+        }
+    </style>
+    <meta>
+</head>
+<body style="word-wrap: break-word;">
+
+    <div id="container" rtl-dir="{{direct}}" ng-controller="productSelectionController">
+            <div id="menuBar">
+                <ul>
+                    <li onmouseover="onmouseoveragent('locationMenuDiv');" onmouseout="onmouseoutagent('locationMenuDiv');">
+                        <span>{{scopeData.productSelection.translations.tSelect}}<br />{{scopeData.productSelection.translations.tLocation}}</span>
+                        <div id="locationMenuDiv" class="location-hover-menu">
+                            <div style="height: 180px; overflow: hidden; overflow-y:scroll; display: block; position: relative; width: 100%; border: none; background: none; top:0; left: 0;">
+                                <ul class="addresses">
+                                    <li ng-repeat="address in scopeData.productSelection.customerAddresses" ng-click="scopeData.productSelection.selectCustomerAddress(address); scopeData.productSelection.updateSelection($index, scopeData.productSelection.customerAddresses);" ng-class="{selected: address.AddressId === scopeData.productSelection.selectedAddressId}">
+                                        <table style="background: none;">
+                                            <tr>
+                                                <td>
+                                                    {{address.AddressName}} <br>
+                                                    {{address.District}} <br>
+                                                    {{address.City}} <br>
+                                                </td>
+                                                <td><input type="checkbox" id="" ng-click="scopeData.productSelection.updateSelection($index, scopeData.productSelection.customerAddresses);" style="float: right; margin-left: 10px;" ng-model="address.checked"></td>
+                                            </tr>
+                                        </table>
+                                    </li>
+                                </ul>
+                            </div>
+                            <input type="button" value="{{scopeData.productSelection.translations.tRefreshAddress}}" ng-click=" scopeData.productSelection.getCustomerAddress();" style="float: right; margin: 10px 30px 10px 0;">
+                            <input type="button" value="{{scopeData.productSelection.translations.tCreateAddress}}" ng-click=" scopeData.productSelection.createCustomerAddress();" style="float: right; margin: 10px 30px 10px 0;">
+                        </div>
+                    </li>
+                    <li onmouseover="onmouseoveragent('familyMenuDiv');" onmouseout="onmouseoutagent('familyMenuDiv');">
+                        <span>{{scopeData.productSelection.translations.tSelect}}<br />{{scopeData.productSelection.translations.tFamily}}</span>
+                        <div id="familyMenuDiv" class="family-hover-menu">
+                            <ul class="family">
+                                <li ng-repeat="basicOffering in scopeData.productSelection.basicOfferingList" ng-class="{notSellable: !basicOffering.IsSellable, 'last-li':$last} ">
+                                    <span>{{ basicOffering.OfferingName }}</span>
+                                    <input type="checkbox" id="" ng-click="scopeData.productSelection.updateBasicOfferingSelection($index, scopeData.productSelection.basicOfferingList)" ng-show="(basicOffering.IsSellable && basicOffering.Family !='TEL2') || (basicOffering.IsSellable && basicOffering.Family =='TEL2' && scopeData.productSelection.firstLineTelSelected) " onchange="showPlans(this);" style="float: right; margin-left: 10px;" ng-model="basicOffering.checked" ng-change="scopeData.productSelection.basicOfferCartOperations(basicOffering);">
+                                </li>
+                            </ul>
+                            <div id="offeringMenuDiv" class="offering-hover-menu">
+                                <!-- <input type="text" style="margin: 10px auto 0 20px; padding: 4px; width: 260px" /> -->
+                                <table>
+                                    <colgroup>
+                                        <col>
+                                        <col width="80">
+                                        <col width="80">
+                                        <col width="30">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="4" style="padding: 5px; font-weight: bold;">{{scopeData.productSelection.translations.tPlans}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>{{scopeData.productSelection.translations.tService}}</th>
+                                            <th style="text-align: center">{{scopeData.productSelection.translations.tOT}}</th>
+                                            <th style="text-align: center">{{scopeData.productSelection.translations.tOT}}</th>
+                                            <th></th>
+                                        </tr>
+                                        <tr ng-repeat="addon in scopeData.productSelection.availableAddons" ng-show="addon.SubOfferingTypeCode === '10'">
+                                            <td ng-class="{notSellable: !addon.IsSellable}">{{addon.OfferingName}}</td>
+                                            <td ng-class="{notSellable: !addon.IsSellable}" align="right">{{addon.OneTimePrice}}</td>
+                                            <td ng-class="{notSellable: !addon.IsSellable}" align="right">{{addon.RecurringPrice}} </td>
+                                            <td ng-class="{notSellable: !addon.IsSellable}"><input type="radio" ng-model="plan.val" ng-show="addon.IsSellable" name="plans" style="margin-left: 10px;" value="{{addon}}" ng-true-value="1" onclick="showAddOns();" ng-click="scopeData.productSelection.plansCartOperations(addon);scopeData.productSelection.checkLDILDNOffers();"></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" style="padding: 15px 5px 5px; font-weight: bold;" ng-show="scopeData.productSelection.showLDILDNOffering">{{scopeData.productSelection.translations.tLDILDNOfferings}}</td>
+                                        </tr>
+                                        <tr ng-repeat="addon in scopeData.productSelection.availableAddons" ng-show="scopeData.productSelection.showLDILDNOffering && addon.LDILDNOffering">
+                                            <td>{{addon.OfferingName}}</td>
+                                            <td align="right">{{addon.OneTimePrice}}</td>
+                                            <td align="right">{{addon.RecurringPrice}} </td>
+                                            <td><input type="radio" ng-model="plan.val" name="plans" style="margin-left: 10px;" value="{{addon}}" ng-true-value="1" onclick="showAddOns();" ng-click="scopeData.productSelection.plansCartOperations(addon); "></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div id="addOnsMenuDiv" style="left: 319px; top:0;">
+                                    <div style="height: 220px; overflow: hidden; overflow-y:scroll; display: block; position: relative; width: 100%; border: none; background: none; top:0; left: 0;">
+                                        <input type="text" ng-model="scopeData.productSelection.filter" ng-change="scopeData.productSelection.filterProducts();" style="margin: 10px auto 0 20px; padding: 4px; width: 260px" />
+                                        <table>
+                                            <colgroup>
+                                                <col>
+                                                <col width="80">
+                                                <col width="80">
+                                                <col width="30">
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="4" style="padding: 5px; font-weight: bold;">{{scopeData.productSelection.translations.tAddons}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>{{scopeData.productSelection.translations.tService}}</th>
+                                                    <th style="text-align: center">OT</th>
+                                                    <th style="text-align: center">RP</th>
+                                                    <th></th>
+                                                </tr>
+                                                <tr ng-repeat="addon in scopeData.productSelection.availableAddons" ng-show="addon.SubOfferingTypeCode !== '10' && !addon.LDILDNOffering">
+                                                    <td>{{addon.OfferingName}}</td>
+                                                    <td align="right">{{addon.OneTimePrice}}</td>
+                                                    <td align="right">{{addon.RecurringPrice}}</td>
+                                                    <td><input type="checkbox" ng-model="addon.val" style="margin-left: 10px;"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <input type="button" value="{{scopeData.productSelection.translations.tAddToCart}}" ng-click="scopeData.productSelection.addOnsCartOperations();" onclick="showLoadingGif();" style="float: right; margin: 15px 50px 15px 0;">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li onmouseover="onmouseoveragent('promotionMenuDiv');" onmouseout="onmouseoutagent('promotionMenuDiv');">
+                        <span>{{scopeData.productSelection.translations.tApply}}<br />{{scopeData.productSelection.translations.tPromotion}}</span>
+                        <div id="promotionMenuDiv" class="promotion-hover-menu"></div>
+                    </li>
+                </ul>
+
+                <div style="float: right; width: 450px;">
+                    <table style="background: none; margin: -5px;" ng-show="scopeData.productSelection.cart.show">
+                        <tr>
+                            <td width="70" rowspan="2">{{scopeData.productSelection.translations.tTotal}}</td>
+                            <td width="110">{{scopeData.productSelection.translations.tMontlyAmount}}</td>
+                            <td width="70">{{ scopeData.productSelection.monthlyTotalPrice }}</td>
+                            <td width="100">{{scopeData.productSelection.translations.tMonthlyTax}}</td>
+                            <td width="70">{{ scopeData.productSelection.monthlyTotalTax }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ scopeData.productSelection.translations.tOneTimeAmount}}</td>
+                            <td>{{ scopeData.productSelection.oneTimeTotalPrice }}</td>
+                            <td>{{ scopeData.productSelection.translations.tOneTimeTax}}</td>
+                            <td>{{ scopeData.productSelection.oneTimeTotalTax }}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="clear:both;"></div>
+
+            </div>
+
+            <div id="middleContainer">
+                <!--  style="height: 320px; overflow: hidden; overflow-y:scroll; display: block; " -->
+                <div id="addressLine" style="margin-bottom: 10px;" ng-show="scopeData.productSelection.selectedAddressId &amp;&amp; scopeData.productSelection.cart.show"><b>{{scopeData.productSelection.translations.tDireccionServicio}}:</b> {{scopeData.productSelection.selectedAddressName}} / <b>{{scopeData.productSelection.translations.tDireccionServicio}}:</b> {{scopeData.productSelection.selectedAddressStratum}}</div>
+                <div id="cartGrid">
+
+                    <div id="loadingDiv" ng-show="!scopeData.productSelection.cart.show" style="margin:30px auto; display: none;"><img src="../../../../webresources/etel_/common/styles/themes/gray/images/loading.gif"> </div>
+                    <div id="emptycartDiv" ng-show="!scopeData.productSelection.cart.show" style="margin:30px;"><img src="../../../../webresources/amx_/img/emptycart1.png"> </div>
+
+                    <table ng-show="scopeData.productSelection.cart.show">
+                        <thead>
+                            <tr>
+                                <th>{{scopeData.productSelection.translations.tService}}</th>
+                                <th width="90">{{scopeData.productSelection.translations.tType}}</th>
+                                <th width="100">{{scopeData.productSelection.translations.tServiceDate}}</th>
+                                <th width="100">{{scopeData.productSelection.translations.tEndDate}}</th>
+                                <th width="80">{{scopeData.productSelection.translations.tChargeType}}</th>
+                                <th width="80">{{scopeData.productSelection.translations.tFrequency}}</th>
+                                <th width="140">{{scopeData.productSelection.translations.tAmount}}</th>
+                                <th width="30"> </th>
+                                <th width="100">{{scopeData.productSelection.translations.tAction}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-class="{parent:orderitem.ParentOrder}" ng-show="orderitem.ParentOrder || scopeData.productSelection.cartSubItems[0].show" ng-repeat="orderitem in scopeData.productSelection.cart.family1.items">
+                                <td class="firstColumn">
+                                    
+                                    <input type="image" src="../../../../webresources/amx_/img/arrowdown.png" ng-click="(expanded[0] = !expanded[0]); scopeData.productSelection.collapseSubItems(expanded[0],0);" expand ng-show="orderitem.ParentOrder && !expanded[0]">
+                                    <input type="image" src="../../../../webresources/amx_/img/arrowup.png" ng-click="(expanded[0] = !expanded[0]); scopeData.productSelection.collapseSubItems(expanded[0],0);" expand ng-show="orderitem.ParentOrder && expanded[0]">
+                                {{orderitem.name}}</td>
+                                <td>{{orderitem.OfferTypeCodeValue}}</td>
+                                <td>{{orderitem.ActivationStartDate}}</td>
+                                <td>{{orderitem.ActivationEndDate}}</td>
+                                <td>
+                                    <span ng-show="orderitem.RecurringCharge" style="line-height: 24px;">{{scopeData.productSelection.translations.tMRC}} <br /></span>
+
+                                    <span ng-show="orderitem.OneTimeCharge" style="line-height: 24px;">{{scopeData.productSelection.translations.tOTC}} <br /></span>
+
+                                    <span ng-show="orderitem.IsThereTax" style="line-height: 24px;">{{ orderitem.TaxType }} </span>
+                                </td>
+                                <td>
+                                    <span ng-show="orderitem.RecurringCharge" style="line-height: 24px;">{{scopeData.productSelection.translations.tMonthly}} <br /></span>
+
+                                    <span ng-show="orderitem.OneTimeCharge" style="line-height: 24px;">{{scopeData.productSelection.translations.tOneTime}} <br /></span>
+
+                                    <span ng-show="orderitem.IsThereTax && orderitem.RecurringCharge" style="line-height: 24px;">{{scopeData.productSelection.translations.tMonthly}} <br /></span>
+                                    <span ng-show="orderitem.IsThereTax && orderitem.OneTimeCharge" style="line-height: 24px;">{{scopeData.productSelection.translations.tOneTime}}</span>
+                                </td>
+                                <td style="text-align: right;">
+                                    <table style="margin: 0;" ng-show="!scopeData.productSelection.cartSubItems[0].show" border="0" cellpadding="0">
+                                        <tr>
+                                            <td width="30">{{scopeData.productSelection.translations.tRP}}:</td>
+                                            <td width="70" align="right">{{scopeData.productSelection.cart.family[0].monthlyTotalPrice}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="30">{{scopeData.productSelection.translations.tOT}}:</td>
+                                            <td align="right">{{scopeData.productSelection.cart.family[0].oneTimeTotalPrice}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{scopeData.productSelection.translations.tRPT}}:</td>
+                                            <td align="right">{{scopeData.productSelection.cart.family[0].monthlyTotalTax}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{scopeData.productSelection.translations.tOTT}}:</td>
+                                            <td align="right">{{scopeData.productSelection.cart.family[0].oneTimeTotalTax}}</td>
+                                        </tr>
+                                    </table>
+                                    
+                                    <span ng-show="orderitem.RecurringCharge" style="line-height: 24px;">{{orderitem.RecurringCharge}}</span>
+                                    <span ng-show="orderitem.SinglePlanCharge" style="text-decoration:line-through; font-size:11px;">{{orderitem.SinglePlanCharge}}</span>
+                                    <span ng-show="orderitem.RecurringCharge"><br /></span>
+
+                                    <span ng-show="orderitem.OneTimeCharge" style="line-height: 24px;">{{orderitem.OneTimeCharge}}</span>
+                                    <span ng-show="orderitem.OTSinglePlanCharge" style="text-decoration:line-through; font-size:11px;">{{orderitem.OTSinglePlanCharge}}</span>
+                                    <span ng-show="orderitem.OneTimeCharge"><br /></span>
+
+                                    <span ng-show="orderitem.IsThereTax && orderitem.RecurringCharge" style="line-height: 24px;">{{ orderitem.RecurringTaxAmount }} <br /></span>
+                                    <span ng-show="orderitem.IsThereTax && orderitem.OneTimeCharge" style="line-height: 24px;">{{ orderitem.OneTimeTaxAmount }}</span>
+                                </td>
+                                <td>
+                                    <div align="center" class="deleteBtnIcon" ng-show="orderitem.OrderItemAction=='Add' || orderitem.ParentOrder" style="position: static;" ng-click="scopeData.productSelection.removeCheck(orderitem)">
+                                        <img alt="Delete Button" src="images/imagestrips/transparent_spacer.gif">
+                                    </div>
+                                </td>
+                                <td>
+                                    <img ng-show="orderitem.OrderItemAction=='Delete'" src="../../../../webresources/amx_/img/redpoint.png">
+                                    <img ng-show="orderitem.OrderItemAction=='Add'" src="../../../../webresources/amx_/img/greenpoint.png">
+                                    <img ng-show="orderitem.OrderItemAction=='No_Change'" src="../../../../webresources/amx_/img/greypoint.png">
+                                    {{orderitem.OrderItemAction}}
+                                </td>
+                            </tr>
+                            <tr ng-class="{parent:orderitem.ParentOrder}" ng-show="orderitem.ParentOrder || scopeData.productSelection.cartSubItems[1].show" ng-repeat="orderitem in scopeData.productSelection.cart.family2.items">
+                                <td class="firstColumn">
+                                    <input type="image" src="../../../../webresources/amx_/img/arrowdown.png" ng-click="(expanded[1] = !expanded[1]); scopeData.productSelection.collapseSubItems(expanded[1],1);" expand ng-show="orderitem.ParentOrder && !expanded[1]">
+                                    <input type="image" src="../../../../webresources/amx_/img/arrowup.png" ng-click="(expanded[1] = !expanded[1]); scopeData.productSelection.collapseSubItems(expanded[1],1);" expand ng-show="orderitem.ParentOrder && expanded[1]">
+                                {{orderitem.name}}</td>
+                                <td>{{orderitem.OfferTypeCodeValue}}</td>
+                                <td>{{orderitem.ActivationStartDate}}</td>
+                                <td>{{orderitem.ActivationEndDate}}</td>
+                                <td>
+                                    <span ng-show="orderitem.RecurringCharge" style="line-height: 24px;">{{scopeData.productSelection.translations.tMRC}} <br /></span>
+
+                                    <span ng-show="orderitem.OneTimeCharge" style="line-height: 24px;">{{scopeData.productSelection.translations.tOTC}} <br /></span>
+
+                                    <span ng-show="orderitem.IsThereTax" style="line-height: 24px;">{{ orderitem.TaxType }} </span>
+                                </td>
+                                <td>
+                                    <span ng-show="orderitem.RecurringCharge" style="line-height: 24px;">{{scopeData.productSelection.translations.tMonthly}} <br /></span>
+
+                                    <span ng-show="orderitem.OneTimeCharge" style="line-height: 24px;">{{scopeData.productSelection.translations.tOneTime}} <br /></span>
+
+                                    <span ng-show="orderitem.IsThereTax && orderitem.RecurringCharge" style="line-height: 24px;">{{scopeData.productSelection.translations.tMonthly}} <br /></span>
+                                    <span ng-show="orderitem.IsThereTax && orderitem.OneTimeCharge" style="line-height: 24px;">{{scopeData.productSelection.translations.tOneTime}}</span>
+                                </td>
+                                <td style="text-align: right;">
+                                    <table style="margin: 0;" ng-show="!scopeData.productSelection.cartSubItems[1].show" border="0" cellpadding="0">
+                                        <tr>
+                                            <td width="30">{{scopeData.productSelection.translations.tRP}}:</td>
+                                            <td width="70" align="right">{{scopeData.productSelection.cart.family[1].monthlyTotalPrice}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="30">{{scopeData.productSelection.translations.tOT}}:</td>
+                                            <td align="right">{{scopeData.productSelection.cart.family[1].oneTimeTotalPrice}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{scopeData.productSelection.translations.tRPT}}:</td>
+                                            <td align="right">{{scopeData.productSelection.cart.family[1].monthlyTotalTax}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{scopeData.productSelection.translations.tOTT}}:</td>
+                                            <td align="right">{{scopeData.productSelection.cart.family[1].oneTimeTotalTax}}</td>
+                                        </tr>
+                                    </table>
+                                    <span ng-show="orderitem.RecurringCharge" style="line-height: 24px;">{{orderitem.RecurringCharge}}</span>
+                                    <span ng-show="orderitem.SinglePlanCharge" style="text-decoration:line-through; font-size:11px;">{{orderitem.SinglePlanCharge}}</span>
+                                    <span ng-show="orderitem.RecurringCharge"><br /></span>
+
+                                    <span ng-show="orderitem.OneTimeCharge" style="line-height: 24px;">{{orderitem.OneTimeCharge}}</span>
+                                    <span ng-show="orderitem.OTSinglePlanCharge" style="text-decoration:line-through; font-size:11px;">{{orderitem.OTSinglePlanCharge}}</span>
+                                    <span ng-show="orderitem.OneTimeCharge"><br /></span>
+
+                                    <span ng-show="orderitem.IsThereTax && orderitem.RecurringCharge" style="line-height: 24px;">{{ orderitem.RecurringTaxAmount }} <br /></span>
+                                    <span ng-show="orderitem.IsThereTax && orderitem.OneTimeCharge" style="line-height: 24px;">{{ orderitem.OneTimeTaxAmount }}</span>
+                                </td>
+                                <td>
+                                    <div align="center" class="deleteBtnIcon" ng-show="orderitem.OrderItemAction=='Add' || orderitem.ParentOrder" style="position: static;" ng-click="scopeData.productSelection.removeCheck(orderitem)">
+                                        <img alt="Delete Button" src="images/imagestrips/transparent_spacer.gif">
+                                    </div>
+                                </td>
+                                <td>
+                                    <img ng-show="orderitem.OrderItemAction=='Delete'" src="../../../..//webresources/amx_/img/redpoint.png">
+                                    <img ng-show="orderitem.OrderItemAction=='Add'" src="../../../../webresources/amx_/img/greenpoint.png">
+                                    <img ng-show="orderitem.OrderItemAction=='No_Change'" src="../../../../webresources/amx_/img/greypoint.png">
+                                    {{orderitem.OrderItemAction}}
+                                </td>
+                            </tr>
+                            <tr ng-class="{parent:orderitem.ParentOrder}" ng-show="orderitem.ParentOrder || scopeData.productSelection.cartSubItems[2].show" ng-repeat="orderitem in scopeData.productSelection.cart.family3.items">
+                                <td class="firstColumn">
+                                    <input type="image" src="../../../../webresources/amx_/img/arrowdown.png" ng-click="(expanded[2] = !expanded[2]); scopeData.productSelection.collapseSubItems(expanded[2],2);" expand ng-show="orderitem.ParentOrder && !expanded[2]">
+                                    <input type="image" src="../../../../webresources/amx_/img/arrowup.png" ng-click="(expanded[2] = !expanded[2]); scopeData.productSelection.collapseSubItems(expanded[2],2);" expand ng-show="orderitem.ParentOrder && expanded[2]">
+                                {{orderitem.name}}</td>
+                                <td>{{orderitem.OfferTypeCodeValue}}</td>
+                                <td>{{orderitem.ActivationStartDate}}</td>
+                                <td>{{orderitem.ActivationEndDate}}</td>
+                                <td>
+                                    <span ng-show="orderitem.RecurringCharge" style="line-height: 24px;">{{scopeData.productSelection.translations.tMRC}} <br /></span>
+
+                                    <span ng-show="orderitem.OneTimeCharge" style="line-height: 24px;">{{scopeData.productSelection.translations.tOTC}} <br /></span>
+
+                                    <span ng-show="orderitem.IsThereTax" style="line-height: 24px;">{{ orderitem.TaxType }} </span>
+                                </td>
+                                <td>
+                                    <span ng-show="orderitem.RecurringCharge" style="line-height: 24px;">{{scopeData.productSelection.translations.tMonthly}} <br /></span>
+
+                                    <span ng-show="orderitem.OneTimeCharge" style="line-height: 24px;">{{scopeData.productSelection.translations.tOneTime}} <br /></span>
+
+                                    <span ng-show="orderitem.IsThereTax && orderitem.RecurringCharge" style="line-height: 24px;">{{scopeData.productSelection.translations.tMonthly}} <br /></span>
+                                    <span ng-show="orderitem.IsThereTax && orderitem.OneTimeCharge" style="line-height: 24px;">{{scopeData.productSelection.translations.tOneTime}}</span>
+                                </td>
+                                <td style="text-align: right;">
+                                    <table style="margin: 0;" ng-show="!scopeData.productSelection.cartSubItems[2].show" border="0" cellpadding="0">
+                                        <tr>
+                                            <td width="30">RP:</td>
+                                            <td width="70" align="right">{{scopeData.productSelection.cart.family[2].monthlyTotalPrice}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="30">OT</td>
+                                            <td align="right">{{scopeData.productSelection.cart.family[2].oneTimeTotalPrice}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>RPT:</td>
+                                            <td align="right">{{scopeData.productSelection.cart.family[2].monthlyTotalTax}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>OTT</td>
+                                            <td align="right">{{scopeData.productSelection.cart.family[2].oneTimeTotalTax}}</td>
+                                        </tr>
+                                    </table>
+                                    <span ng-show="orderitem.RecurringCharge" style="line-height: 24px;">{{orderitem.RecurringCharge}}</span>
+                                    <span ng-show="orderitem.SinglePlanCharge" style="text-decoration:line-through; font-size:11px;">{{orderitem.SinglePlanCharge}}</span>
+                                    <span ng-show="orderitem.RecurringCharge"><br /></span>
+
+                                    <span ng-show="orderitem.OneTimeCharge" style="line-height: 24px;">{{orderitem.OneTimeCharge}}</span>
+                                    <span ng-show="orderitem.OTSinglePlanCharge" style="text-decoration:line-through; font-size:11px;">{{orderitem.OTSinglePlanCharge}}</span>
+                                    <span ng-show="orderitem.OneTimeCharge"><br /></span>
+
+                                    <span ng-show="orderitem.IsThereTax && orderitem.RecurringCharge" style="line-height: 24px;">{{ orderitem.RecurringTaxAmount }} <br /></span>
+                                    <span ng-show="orderitem.IsThereTax && orderitem.OneTimeCharge" style="line-height: 24px;">{{ orderitem.OneTimeTaxAmount }}</span>
+                                </td>
+                                <td>
+                                    <div align="center" class="deleteBtnIcon" ng-show="orderitem.OrderItemAction=='Add' || orderitem.ParentOrder" style="position: static;" ng-click="scopeData.productSelection.removeCheck(orderitem)">
+                                        <img alt="Delete Button" src="images/imagestrips/transparent_spacer.gif">
+                                    </div>
+                                </td>
+                                <td>
+                                    <img ng-show="orderitem.OrderItemAction=='Delete'" src="../../../../webresources/amx_/img/redpoint.png">
+                                    <img ng-show="orderitem.OrderItemAction=='Add'" src="../../../../webresources/amx_/img/greenpoint.png">
+                                    <img ng-show="orderitem.OrderItemAction=='No_Change'" src="../../../../webresources/amx_/img/greypoint.png">
+                                    {{orderitem.OrderItemAction}}
+                                </td>
+                            </tr>
+                            <tr ng-class="{parent:orderitem.ParentOrder}" ng-show="orderitem.ParentOrder || scopeData.productSelection.cartSubItems[3].show" ng-repeat="orderitem in scopeData.productSelection.cart.family4.items">
+                                <td class="firstColumn">
+                                    <input type="image" src="../../../../webresources/amx_/img/arrowdown.png" ng-click="(expanded[3] = !expanded[3]); scopeData.productSelection.collapseSubItems(expanded[3],3);" expand ng-show="orderitem.ParentOrder && !expanded[3]">
+                                    <input type="image" src="../../../../webresources/amx_/img/arrowup.png" ng-click="(expanded[3] = !expanded[3]); scopeData.productSelection.collapseSubItems(expanded[3],3);" expand ng-show="orderitem.ParentOrder && expanded[3]">
+                                {{orderitem.name}}</td>
+                                <td>{{orderitem.OfferTypeCodeValue}}</td>
+                                <td>{{orderitem.ActivationStartDate}}</td>
+                                <td>{{orderitem.ActivationEndDate}}</td>
+                                <td>
+                                    <span ng-show="orderitem.RecurringCharge" style="line-height: 24px;">{{scopeData.productSelection.translations.tMRC}} <br /></span>
+
+                                    <span ng-show="orderitem.OneTimeCharge" style="line-height: 24px;">{{scopeData.productSelection.translations.tOTC}} <br /></span>
+
+                                    <span ng-show="orderitem.IsThereTax" style="line-height: 24px;">{{ orderitem.TaxType }} </span>
+                                </td>
+                                <td>
+                                    <span ng-show="orderitem.RecurringCharge" style="line-height: 24px;">{{scopeData.productSelection.translations.tMonthly}} <br /></span>
+
+                                    <span ng-show="orderitem.OneTimeCharge" style="line-height: 24px;">{{scopeData.productSelection.translations.tOneTime}} <br /></span>
+
+                                    <span ng-show="orderitem.IsThereTax && orderitem.RecurringCharge" style="line-height: 24px;">{{scopeData.productSelection.translations.tMonthly}} <br /></span>
+                                    <span ng-show="orderitem.IsThereTax && orderitem.OneTimeCharge" style="line-height: 24px;">{{scopeData.productSelection.translations.tOneTime}}</span>
+                                </td>
+                                <td style="text-align: right;">
+                                    <table style="margin: 0;" ng-show="!scopeData.productSelection.cartSubItems[3].show" border="0" cellpadding="0">
+                                        <tr>
+                                            <td width="30">RP:</td>
+                                            <td width="70" align="right">{{scopeData.productSelection.cart.family[3].monthlyTotalPrice}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="30">OT</td>
+                                            <td align="right">{{scopeData.productSelection.cart.family[3].oneTimeTotalPrice}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>RPT:</td>
+                                            <td align="right">{{scopeData.productSelection.cart.family[3].monthlyTotalTax}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>OTT</td>
+                                            <td align="right">{{scopeData.productSelection.cart.family[3].oneTimeTotalTax}}</td>
+                                        </tr>
+                                    </table>
+                                    <span ng-show="orderitem.RecurringCharge" style="line-height: 24px;">{{orderitem.RecurringCharge}}</span>
+                                    <span ng-show="orderitem.SinglePlanCharge" style="text-decoration:line-through; font-size:11px;">{{orderitem.SinglePlanCharge}}</span>
+                                    <span ng-show="orderitem.RecurringCharge"><br /></span>
+
+                                    <span ng-show="orderitem.OneTimeCharge" style="line-height: 24px;">{{orderitem.OneTimeCharge}}</span>
+                                    <span ng-show="orderitem.OTSinglePlanCharge" style="text-decoration:line-through; font-size:11px;">{{orderitem.OTSinglePlanCharge}}</span>
+                                    <span ng-show="orderitem.OneTimeCharge"><br /></span>
+
+                                    <span ng-show="orderitem.IsThereTax && orderitem.RecurringCharge" style="line-height: 24px;">{{ orderitem.RecurringTaxAmount }} <br /></span>
+                                    <span ng-show="orderitem.IsThereTax && orderitem.OneTimeCharge" style="line-height: 24px;">{{ orderitem.OneTimeTaxAmount }}</span>
+                                </td>
+                                <td>
+                                    <div align="center" class="deleteBtnIcon" ng-show="orderitem.OrderItemAction=='Add' || orderitem.ParentOrder" style="position: static;" ng-click="scopeData.productSelection.removeCheck(orderitem)">
+                                        <img alt="Delete Button" src="images/imagestrips/transparent_spacer.gif">
+                                    </div>
+                                </td>
+                                <td>
+                                    <img ng-show="orderitem.OrderItemAction=='Delete'" src="../../../../webresources/amx_/img/redpoint.png">
+                                    <img ng-show="orderitem.OrderItemAction=='Add'" src="../../../../webresources/amx_/img/greenpoint.png">
+                                    <img ng-show="orderitem.OrderItemAction=='No_Change'" src="../../../../webresources/amx_/img/greypoint.png">
+                                    {{orderitem.OrderItemAction}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    </div>
+
+</body>
+</html>

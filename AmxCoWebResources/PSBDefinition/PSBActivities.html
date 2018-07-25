@@ -1,0 +1,110 @@
+<html ng-app="listPSBActivities">
+<head>
+	<title>List PSB Activities</title>
+	<script src="../../etel_/common/scripts/angular.min.js"></script>
+	<script src="../../ClientGlobalContext.js.aspx" type="text/javascript" ></script>
+	<script>
+		var app = angular.module('listPSBActivities', []);
+		app.controller("listPSBActivitiesCtrl", function ($scope, $http){
+			$scope.listPSBActivities = "";
+			
+			listPSBActivities = function ($http) {
+				var workflowUrlName = Xrm.Page.context.getClientUrlForInteractioncentricDashboard() + ":6005/api/v1/definitions/versions";
+
+				try {
+					$http.get(workflowUrlName)
+						.then(function (result) {
+							if (result) {
+								$scope.message = "";
+								$scope.listPSBActivities = result.data;
+							}}, 
+							function errorCallback(response) {
+								// called asynchronously if an error occurs
+								// or server returns response with an error status.
+								$scope.message = "ListPSBActivities: [" + response.config.url + "] " + response.xhrStatus + "-" + response.statusText;
+							});
+				}
+				catch (err) {
+					$scope.message = "ListPSBActivities: [" + workflowUrlName + "] " + err.message;
+				}
+			};
+
+			listPSBActivities($http);
+		});
+
+	</script>
+	<style>
+<!-- 		/* ------------------
+		 styling for the tables 
+		   ------------------   */   
+ -->		
+		body
+		{
+			line-height: 1.6em;
+		}
+
+		#hor-minimalist-a
+		{
+			font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+			font-size: 12px;
+			background: #fff;
+			margin: 5px;
+			border-collapse: collapse;
+			text-align: left;
+			display: block;
+		}
+		#hor-minimalist-a th
+		{
+			font-size: 14px;
+			font-weight: normal;
+			color: #039;
+			padding: 2px 8px;
+			border-bottom: 2px solid #6678b1;
+		}
+		#hor-minimalist-a td
+		{
+			color: #669;
+			padding: 2px 0px 0px 8px;
+		}
+		#hor-minimalist-a tbody tr:hover td
+		{
+			background-color: #e6e2d3;
+		}
+	</style>	
+</head>
+<body>
+	<div ng-controller="listPSBActivitiesCtrl">
+		<table id="hor-minimalist-a">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Status</th>
+					<th>Definition</th>
+					<th>FileName</th>
+					<th>Persist</th>
+					<th>SaveDataHistory</th>
+					<th>CreateDate</th>
+					<th>UpdateDate</th>
+				</tr>
+			</thead>
+			<tbody ng-repeat="item in listPSBActivities | orderBy:'-UpdateDate'">
+				<tr ng-repeat="version in item.Versions | orderBy:'-UpdateDate'">
+					<td>{{version.Name}}</td>
+					<td>{{version.Description}}</td>
+					<td>{{version.Status}}</td>
+					<td>{{version.Definition}}</td>
+					<td>{{version.FileName}}</td>
+					<td>{{version.Persist}}</td>
+					<td>{{version.SaveDataHistory}}</td>
+					<td>{{version.CreateDate}}</td>
+					<td>{{version.UpdateDate}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<div id="messageId">
+			<p>{{message}}</p>
+		</div>
+	</div>
+	</body>
+</html>

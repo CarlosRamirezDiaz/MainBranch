@@ -1,0 +1,8 @@
+D:\CarlosRamirez\Desktop\MainBranch\AmxPeruPluginsPatch\bin\Debug\AmxPeruPluginsPatch.dll
+D:\CarlosRamirez\Desktop\MainBranch\AmxPeruPluginsPatch\bin\Debug\AmxPeruPluginsPatch.pdb
+D:\CarlosRamirez\Desktop\MainBranch\AmxPeruPluginsPatch\bin\Debug\Microsoft.Xrm.Sdk.dll
+D:\CarlosRamirez\Desktop\MainBranch\AmxPeruPluginsPatch\obj\Debug\AmxPeruPluginsPatch.csprojResolveAssemblyReference.cache
+D:\CarlosRamirez\Desktop\MainBranch\AmxPeruPluginsPatch\obj\Debug\AmxPeruPluginsPatch.csproj.CoreCompileInputs.cache
+D:\CarlosRamirez\Desktop\MainBranch\AmxPeruPluginsPatch\obj\Debug\AmxPeruPluginsPatch.dll
+D:\CarlosRamirez\Desktop\MainBranch\AmxPeruPluginsPatch\obj\Debug\AmxPeruPluginsPatch.pdb
+D:\CarlosRamirez\Desktop\MainBranch\AmxPeruPluginsPatch\obj\Debug\AmxPeruPluginsPatch.csproj.CopyComplete

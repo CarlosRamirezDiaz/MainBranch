@@ -1,0 +1,2 @@
+CustomerBiographic.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

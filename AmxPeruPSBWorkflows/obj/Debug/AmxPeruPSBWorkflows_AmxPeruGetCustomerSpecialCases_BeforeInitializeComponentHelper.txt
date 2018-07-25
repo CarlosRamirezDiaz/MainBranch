@@ -1,0 +1,2 @@
+AmxPeruGetCustomerSpecialCases.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

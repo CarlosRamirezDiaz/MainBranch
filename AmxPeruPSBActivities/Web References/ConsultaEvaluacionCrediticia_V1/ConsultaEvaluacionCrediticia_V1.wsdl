@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:bilis="http://claro.com.pe/esb/enterprise/consultaEvaluacionCrediticia/v1/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:comtyp="http://claro.com.pe/generic/messageFormat/v1.0/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:comexcep="http://claro.com.pe/eai/ebs/xsd/CommonsException" xmlns:conevcred="http://claro.com.pe/esb/data/consultaEvaluacionCrediticia/consultarEvaluacionCrediticia/v1/" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap11/" targetNamespace="http://claro.com.pe/esb/enterprise/consultaEvaluacionCrediticia/v1/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://claro.com.pe/esb/enterprise/consultaEvaluacionCrediticia/v1/types">
+      <xsd:import schemaLocation="../esquemas/ConsultaEvaluacionCrediticia_V1.xsd" namespace="http://claro.com.pe/esb/data/consultaEvaluacionCrediticia/consultarEvaluacionCrediticia/v1/" />
+      <xsd:import schemaLocation="../../../../framework/servicios/esquemas/HeaderGeneric_v1.0.xsd" namespace="http://claro.com.pe/generic/messageFormat/v1.0/" />
+      <xsd:import schemaLocation="../../../../framework/servicios/esquemas/CommonsException.xsd" namespace="http://claro.com.pe/eai/ebs/xsd/CommonsException" />
+    </xsd:schema>
+  </types>
+  <message name="consultaEvaluacionCrediticiaRequestMessage">
+    <part name="consultaEvaluacionCrediticiaReq" element="conevcred:consultaEvaluacionCrediticiaRequestMessageType" />
+  </message>
+  <message name="consultaEvaluacionCrediticiaResponseMessage">
+    <part name="consultaEvaluacionCrediticiaRes" element="conevcred:consultaEvaluacionCrediticiaResponseMessageType" />
+  </message>
+  <message name="claroFault">
+    <part name="claroFault" element="comexcep:IntegrationError" />
+  </message>
+  <message name="headerRequest">
+    <part name="headerReq" element="comtyp:HeaderRequest" />
+  </message>
+  <message name="headerResponse">
+    <part name="headerResp" element="comtyp:HeaderResponse" />
+  </message>
+  <portType name="consultaEvaluacionCrediticiaPort">
+    <operation name="consultarEvaluacionCrediticia">
+      <input message="bilis:consultaEvaluacionCrediticiaRequestMessage" />
+      <output message="bilis:consultaEvaluacionCrediticiaResponseMessage" />
+      <fault name="claroFault" message="bilis:claroFault" />
+    </operation>
+  </portType>
+  <binding name="consultaEvaluacionCrediticiaBinding" type="bilis:consultaEvaluacionCrediticiaPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="consultarEvaluacionCrediticia">
+      <soap:operation soapAction="http://claro.com.pe/esb/resource/enterprise/consultaEvaluacionCrediticia/v1/" style="document" />
+      <input>
+        <soap:header message="bilis:headerRequest" part="headerReq" use="literal" />
+        <soap:body use="literal" parts="consultaEvaluacionCrediticiaReq" />
+      </input>
+      <output>
+        <soap:header message="bilis:headerResponse" part="headerResp" use="literal" />
+        <soap:body use="literal" parts="consultaEvaluacionCrediticiaRes" />
+      </output>
+      <fault name="claroFault">
+        <soap:fault use="literal" name="claroFault" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="consultaEvaluacionCrediticiaSOAP">
+    <port name="consultaEvaluacionCrediticiaSOAP" binding="bilis:consultaEvaluacionCrediticiaBinding">
+      <soap:address location="http://www.example.org/" />
+    </port>
+  </service>
+</definitions>

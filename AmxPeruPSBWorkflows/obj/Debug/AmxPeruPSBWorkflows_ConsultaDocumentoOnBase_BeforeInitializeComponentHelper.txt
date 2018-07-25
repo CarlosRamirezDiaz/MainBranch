@@ -1,0 +1,2 @@
+ConsultaDocumentoOnBase.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

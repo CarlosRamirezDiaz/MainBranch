@@ -1,0 +1,2 @@
+AmxCoSendSurvey.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

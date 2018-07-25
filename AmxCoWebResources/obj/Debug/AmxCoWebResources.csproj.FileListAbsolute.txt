@@ -1,0 +1,6 @@
+D:\CarlosRamirez\Desktop\MainBranch\AmxCoWebResources\bin\Debug\AmxCoWebResources.dll
+D:\CarlosRamirez\Desktop\MainBranch\AmxCoWebResources\bin\Debug\AmxCoWebResources.pdb
+D:\CarlosRamirez\Desktop\MainBranch\AmxCoWebResources\obj\Debug\AmxCoWebResources.csprojResolveAssemblyReference.cache
+D:\CarlosRamirez\Desktop\MainBranch\AmxCoWebResources\obj\Debug\AmxCoWebResources.csproj.CoreCompileInputs.cache
+D:\CarlosRamirez\Desktop\MainBranch\AmxCoWebResources\obj\Debug\AmxCoWebResources.dll
+D:\CarlosRamirez\Desktop\MainBranch\AmxCoWebResources\obj\Debug\AmxCoWebResources.pdb

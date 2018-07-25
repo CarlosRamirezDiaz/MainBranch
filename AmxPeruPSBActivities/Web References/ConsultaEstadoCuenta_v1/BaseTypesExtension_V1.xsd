@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:entbastypext="http://claro.com.pe/entity/CommonBusiness/BaseTypesExtension/V1/" xmlns:entbastyp="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" targetNamespace="http://claro.com.pe/entity/CommonBusiness/BaseTypesExtension/V1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="../../Entidades/CommonBusiness/BaseTypes_V1.xsd" namespace="http://claro.com.pe/entity/CommonBusiness/BaseTypes/V1/" />
+  <xsd:complexType name="ResponseStatusExtension">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="entbastyp:ResponseStatus">
+        <xsd:sequence>
+          <xsd:element name="_Return" type="xsd:int" />
+          <xsd:element name="_engineResponse" type="xsd:base64Binary" />
+          <xsd:element name="_messageLength" type="xsd:int" />
+          <xsd:element name="_outputLength" type="xsd:int" />
+          <xsd:element name="_locateError" type="xsd:string" />
+          <xsd:element name="_date" type="xsd:dateTime" />
+          <xsd:element name="_originError" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="messageType" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="messageNumber" type="xsd:string" />
+          <xsd:element name="_reasonType" type="xsd:string" />
+          <xsd:element name="_analyzeType" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="MoneyExtension">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="entbastyp:Money">
+        <xsd:sequence>
+          <xsd:element name="_amountPEN" type="xsd:decimal" />
+          <xsd:element name="_amountUSD" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="_changeType" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="_monyid" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="UtilityFieldsExtension">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="entbastyp:UtilityFields">
+        <xsd:sequence>
+          <xsd:element name="_flag1" type="xsd:boolean" />
+          <xsd:element name="_flag2" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="_textid" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

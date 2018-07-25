@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:clfa="http://www.amx.com/CO/Schema/ClaroFault/v1" elementFormDefault="qualified" targetNamespace="http://www.amx.com/CO/Schema/ClaroFault/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="claroFault" type="clfa:ClaroFault">
+    <xsd:annotation>
+      <xsd:documentation>
+                          Author: Lesmen Garcia
+                          email: lesmen.garcia.ext@claro.com.co
+                          Date: 96/09/2017
+                          Version: 1.0
+                          Purpose: Estructura Fault que utilizaran todos los servicios a exponer
+                                                                                    
+       </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ClaroFault">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="traceabilityId" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="categoryCode">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:length value="2" />
+            <xsd:enumeration value="01" />
+            <xsd:enumeration value="02" />
+            <xsd:enumeration value="03" />
+            <xsd:enumeration value="04" />
+            <xsd:enumeration value="05" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="categoryDescription" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="location" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="technicalDescription" type="xsd:anyType" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

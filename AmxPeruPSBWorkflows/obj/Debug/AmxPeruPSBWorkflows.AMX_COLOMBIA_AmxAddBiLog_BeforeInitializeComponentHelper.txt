@@ -1,0 +1,2 @@
+AmxAddBiLog.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper
