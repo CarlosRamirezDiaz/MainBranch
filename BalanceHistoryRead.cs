@@ -16,7 +16,6 @@ namespace AmxSoapServicesActivities.Activities
         {
             var jsonResponseStr = "";
             if (BalanceHistoryReadRequest.Get(context) != null)
-			if (BalanceHistoryReadRequest.Get(context) != null)
             {
                 jsonResponseStr = new BalanceHistoryReadBusiness().GetBalanceHistoryReadDetails(BalanceHistoryReadRequest.Get(context), HostUrl.Get(context), ContextProvider.OrganizationService);
             }
