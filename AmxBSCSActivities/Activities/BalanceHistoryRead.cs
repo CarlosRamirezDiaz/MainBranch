@@ -3,7 +3,7 @@ using Ericsson.ETELCRM.Entities.Crm;
 using ExternalApiActivities.Common;
 using System.Activities;
 
-namespace AmxSoapServicesActivities.Activities
+namespace AmxSoapServicesActivities.Activities   PRUEBA
 {
     public class BalanceHistoryRead : XrmAwareCodeActivity
     {
